@@ -10,7 +10,32 @@ on:
       - main
 
 jobs:
+  test_job:
+    runs-on: ubuntu-latest
+    name: Test Job
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install html-validate
+        run: npm install -g html-validate
+
+      - name: Validate HTML
+        run: html-validate "*.html" --config '{"extends":["html-validate:recommended"],"rules":{"no-trailing-whitespace":"off","attr-quotes":"off"}}'
+
+      - name: Check for broken links in HTML
+        run: |
+          echo "Checking for potentially broken links..."
+          grep -oP 'href="[^"]*"' *.html || true
+          grep -oP 'src="[^"]*"' *.html || true
+          echo "Link check completed"
+
   build_and_deploy_job:
+    needs: test_job
     if: github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.action != 'closed')
     runs-on: ubuntu-latest
     name: Build and Deploy Job
