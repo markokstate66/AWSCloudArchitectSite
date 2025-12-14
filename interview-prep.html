@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AWS Cloud Architect interview questions and answers. Prepare for your next cloud architecture interview with our comprehensive question bank.">
+    <meta name="keywords" content="AWS interview questions, cloud architect interview, AWS solutions architect interview, cloud computing interview prep">
+    <title>AWS Cloud Architect Interview Questions | Interview Prep Guide</title>
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6676281664229738" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header class="header">
+        <nav class="nav-container">
+            <div class="logo">
+                <a href="index.html" style="display: flex; align-items: center; gap: 10px; color: inherit; text-decoration: none;">
+                    <span class="logo-icon">&#9729;</span>
+                    <span class="logo-text">AWS Cloud Architect Guide</span>
+                </a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html#roadmap">Roadmap</a></li>
+                <li><a href="index.html#certifications">Certifications</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="interview-prep.html">Interview Prep</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="resources.html">Resources</a></li>
+                <li><a href="tools.html">Tools</a></li>
+            </ul>
+            <button class="mobile-menu-btn" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero" style="padding: 140px 20px 60px;">
+            <div class="hero-content">
+                <h1>AWS Cloud Architect <span class="highlight">Interview Prep</span></h1>
+                <p class="hero-subtitle">Master the most common interview questions and land your dream cloud architect role</p>
+            </div>
+        </section>
+
+        <!-- Ad Banner -->
+        <div class="ad-container ad-banner">
+            <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-6676281664229738"
+                data-ad-slot="auto"
+                data-ad-format="horizontal"
+                data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        </div>
+
+        <section class="section">
+            <div class="container">
+                <h2>Interview Question Categories</h2>
+                <p class="section-subtitle">Click on any question to reveal the answer</p>
+
+                <div class="interview-grid">
+                    <!-- Core AWS Services -->
+                    <div class="interview-category">
+                        <h3>Core AWS Services</h3>
+                        <ul class="question-list">
+                            <li>
+                                <div class="question-item" onclick="toggleAnswer(this)">
+                                    <strong>Explain the difference between EC2, Lambda, and Fargate. When would you use each?
+                                        <span class="question-difficulty difficulty-easy">Easy</span>
+                                    </strong>
+                                    <span>Click to reveal answer</span>
+                                    <div class="answer" style="display: none; margin-top: 15px; padding-top: 15px; border-top: 1px solid #ddd;">
+                                        <p><strong>EC2:</strong> Virtual servers with full control over OS and configuration. Best for applications requiring specific OS configurations, long-running workloads, or when you need persistent storage.</p>
+                                        <p><strong>Lambda:</strong> Serverless compute that runs code in response to events. Best for event-driven workloads, short-running tasks (up to 15 min), and when you want zero server management.</p>
+                                        <p><strong>Fargate:</strong> Serverless containers without managing servers. Best for containerized applications where you want container benefits without cluster management.</p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="question-item" onclick="toggleAnswer(this)">
+                                    <strong>What are the differences between S3 storage classes and when would you use each?
+                                        <span class="question-difficulty difficulty-medium">Medium</span>
+                                    </strong>
+                                    <span>Click to reveal answer</span>
+                                    <div class="answer" style="display: none; margin-top: 15px; padding-top: 15px; border-top: 1px solid #ddd;">
+                                        <p><strong>S3 Standard:</strong> Frequently accessed data, low latency, high throughput.</p>
+                                        <p><strong>S3 Intelligent-Tiering:</strong> Unknown or changing access patterns - automatically moves data between tiers.</p>
+                                        <p><strong>S3 Standard-IA:</strong> Infrequently accessed but requires rapid access when needed.</p>
+                                        <p><strong>S3 One Zone-IA:</strong> Infrequent access, lower cost, data stored in single AZ.</p>
+                                        <p><strong>S3 Glacier:</strong> Archive data with retrieval times of minutes to hours.</p>
+                                        <p><strong>S3 Glacier Deep Archive:</strong> Lowest cost, retrieval times of 12-48 hours.</p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="question-item" onclick="toggleAnswer(this)">
+                                    <strong>Explain the difference between RDS, Aurora, and DynamoDB.
+                                        <span class="question-difficulty difficulty-medium">Medium</span>
+                                    </strong>
+                                    <span>Click to reveal answer</span>
+                                    <div class="answer" style="display: none; margin-top: 15px; padding-top: 15px; border-top: 1px solid #ddd;">
+                                        <p><strong>RDS:</strong> Managed relational database service supporting MySQL, PostgreSQL, Oracle, SQL Server, MariaDB. Good for traditional relational workloads with predictable scale.</p>
+                                        <p><strong>Aurora:</strong> AWS-built relational database compatible with MySQL/PostgreSQL. 5x faster than MySQL, 3x faster than PostgreSQL, with automated scaling up to 128TB. Best for high-performance relational workloads.</p>
+                                        <p><strong>DynamoDB:</strong> Fully managed NoSQL key-value and document database. Single-digit millisecond latency at any scale. Best for high-scale, low-latency workloads with flexible schema requirements.</p>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Architecture Design -->
+                    <div class="interview-category">
+                        <h3>Architecture Design</h3>
+                        <ul class="question-list">
+                            <li>
+                                <div class="question-item" onclick="toggleAnswer(this)">
+                                    <strong>Design a highly available web application architecture on AWS.
+                                        <span class="question-difficulty difficulty-medium">Medium</span>
+                                    </strong>
+                                    <span>Click to reveal answer</span>
+                                    <div class="answer" style="display: none; margin-top: 15px; padding-top: 15px; border-top: 1px solid #ddd;">
+                                        <p><strong>Key components:</strong></p>
+                                        <ul style="margin-left: 20px; margin-top: 10px;">
+                                            <li>Route 53 for DNS with health checks and failover routing</li>
+                                            <li>CloudFront CDN for static content and edge caching</li>
+                                            <li>Application Load Balancer across multiple AZs</li>
+                                            <li>Auto Scaling Group with EC2 instances in multiple AZs (or ECS/EKS)</li>
+                                            <li>RDS Multi-AZ or Aurora for database with read replicas</li>
+                                            <li>ElastiCache for session management and caching</li>
+                                            <li>S3 for static assets and user uploads</li>
+                                            <li>WAF for web application firewall protection</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="question-item" onclick="toggleAnswer(this)">
+                                    <strong>How would you design a serverless event-driven architecture?
+                                        <span class="question-difficulty difficulty-hard">Hard</span>
+                                    </strong>
+                                    <span>Click to reveal answer</span>
+                                    <div class="answer" style="display: none; margin-top: 15px; padding-top: 15px; border-top: 1px solid #ddd;">
+                                        <p><strong>Components:</strong></p>
+                                        <ul style="margin-left: 20px; margin-top: 10px;">
+                                            <li>API Gateway for HTTP endpoints, or AppSync for GraphQL</li>
+                                            <li>Lambda functions for business logic</li>
+                                            <li>EventBridge for event routing and scheduling</li>
+                                            <li>SQS for decoupling and buffering</li>
+                                            <li>SNS for fan-out patterns and notifications</li>
+                                            <li>Step Functions for orchestrating complex workflows</li>
+                                            <li>DynamoDB for NoSQL data with streams for CDC</li>
+                                            <li>S3 with event notifications for file processing</li>
+                                        </ul>
+                                        <p style="margin-top: 10px;"><strong>Patterns to mention:</strong> Event sourcing, CQRS, saga pattern, fan-out/fan-in, dead letter queues for error handling.</p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="question-item" onclick="toggleAnswer(this)">
+                                    <strong>How do you achieve disaster recovery across regions?
+                                        <span class="question-difficulty difficulty-hard">Hard</span>
+                                    </strong>
+                                    <span>Click to reveal answer</span>
+                                    <div class="answer" style="display: none; margin-top: 15px; padding-top: 15px; border-top: 1px solid #ddd;">
+                                        <p><strong>DR Strategies (in order of cost/complexity):</strong></p>
+                                        <ul style="margin-left: 20px; margin-top: 10px;">
+                                            <li><strong>Backup & Restore:</strong> Lowest cost, highest RTO. Regular backups to S3, restore when needed.</li>
+                                            <li><strong>Pilot Light:</strong> Core components running in DR region, scale up during failover.</li>
+                                            <li><strong>Warm Standby:</strong> Scaled-down version running in DR region, scale up during failover.</li>
+                                            <li><strong>Active-Active:</strong> Full deployment in both regions with traffic routing. Lowest RTO/RPO, highest cost.</li>
+                                        </ul>
+                                        <p style="margin-top: 10px;"><strong>Key services:</strong> Route 53 (failover routing), Aurora Global Database, DynamoDB Global Tables, S3 Cross-Region Replication, AWS Backup.</p>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Security -->
+                    <div class="interview-category">
+                        <h3>Security</h3>
+                        <ul class="question-list">
+                            <li>
+                                <div class="question-item" onclick="toggleAnswer(this)">
+                                    <strong>Explain the shared responsibility model in AWS.
+                                        <span class="question-difficulty difficulty-easy">Easy</span>
+                                    </strong>
+                                    <span>Click to reveal answer</span>
+                                    <div class="answer" style="display: none; margin-top: 15px; padding-top: 15px; border-top: 1px solid #ddd;">
+                                        <p><strong>AWS Responsibility (Security OF the Cloud):</strong></p>
+                                        <ul style="margin-left: 20px;">
+                                            <li>Physical security of data centers</li>
+                                            <li>Hardware and infrastructure</li>
+                                            <li>Network infrastructure</li>
+                                            <li>Virtualization layer</li>
+                                        </ul>
+                                        <p style="margin-top: 10px;"><strong>Customer Responsibility (Security IN the Cloud):</strong></p>
+                                        <ul style="margin-left: 20px;">
+                                            <li>IAM and access management</li>
+                                            <li>Data encryption (at rest and in transit)</li>
+                                            <li>Network configuration (Security Groups, NACLs)</li>
+                                            <li>OS patching and updates</li>
+                                            <li>Application security</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="question-item" onclick="toggleAnswer(this)">
+                                    <strong>How do you implement least privilege access in AWS?
+                                        <span class="question-difficulty difficulty-medium">Medium</span>
+                                    </strong>
+                                    <span>Click to reveal answer</span>
+                                    <div class="answer" style="display: none; margin-top: 15px; padding-top: 15px; border-top: 1px solid #ddd;">
+                                        <p><strong>Best practices:</strong></p>
+                                        <ul style="margin-left: 20px; margin-top: 10px;">
+                                            <li>Start with no permissions and add only what's needed</li>
+                                            <li>Use IAM policies with specific actions, resources, and conditions</li>
+                                            <li>Implement permission boundaries for delegated administration</li>
+                                            <li>Use AWS Organizations SCPs for account-level guardrails</li>
+                                            <li>Regular access reviews using IAM Access Analyzer</li>
+                                            <li>Use IAM roles instead of long-term credentials</li>
+                                            <li>Implement just-in-time access with IAM Identity Center</li>
+                                            <li>Monitor with CloudTrail and set up alerts for privilege escalation</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="question-item" onclick="toggleAnswer(this)">
+                                    <strong>How would you secure data at rest and in transit on AWS?
+                                        <span class="question-difficulty difficulty-medium">Medium</span>
+                                    </strong>
+                                    <span>Click to reveal answer</span>
+                                    <div class="answer" style="display: none; margin-top: 15px; padding-top: 15px; border-top: 1px solid #ddd;">
+                                        <p><strong>Data at Rest:</strong></p>
+                                        <ul style="margin-left: 20px;">
+                                            <li>S3: Server-side encryption (SSE-S3, SSE-KMS, SSE-C)</li>
+                                            <li>EBS: Encrypted volumes using KMS</li>
+                                            <li>RDS: Encryption at rest using KMS</li>
+                                            <li>DynamoDB: Encryption using AWS owned or customer managed keys</li>
+                                        </ul>
+                                        <p style="margin-top: 10px;"><strong>Data in Transit:</strong></p>
+                                        <ul style="margin-left: 20px;">
+                                            <li>TLS/SSL for all communications</li>
+                                            <li>VPC endpoints for AWS service traffic</li>
+                                            <li>ACM for certificate management</li>
+                                            <li>VPN or Direct Connect for hybrid connectivity</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Networking -->
+                    <div class="interview-category">
+                        <h3>Networking</h3>
+                        <ul class="question-list">
+                            <li>
+                                <div class="question-item" onclick="toggleAnswer(this)">
+                                    <strong>Explain the difference between Security Groups and NACLs.
+                                        <span class="question-difficulty difficulty-easy">Easy</span>
+                                    </strong>
+                                    <span>Click to reveal answer</span>
+                                    <div class="answer" style="display: none; margin-top: 15px; padding-top: 15px; border-top: 1px solid #ddd;">
+                                        <p><strong>Security Groups:</strong></p>
+                                        <ul style="margin-left: 20px;">
+                                            <li>Operate at instance/ENI level</li>
+                                            <li>Stateful (return traffic automatically allowed)</li>
+                                            <li>Only allow rules (implicit deny)</li>
+                                            <li>All rules evaluated before decision</li>
+                                        </ul>
+                                        <p style="margin-top: 10px;"><strong>NACLs:</strong></p>
+                                        <ul style="margin-left: 20px;">
+                                            <li>Operate at subnet level</li>
+                                            <li>Stateless (must define both inbound and outbound)</li>
+                                            <li>Allow and deny rules</li>
+                                            <li>Rules processed in order by rule number</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="question-item" onclick="toggleAnswer(this)">
+                                    <strong>When would you use VPC Peering vs Transit Gateway?
+                                        <span class="question-difficulty difficulty-medium">Medium</span>
+                                    </strong>
+                                    <span>Click to reveal answer</span>
+                                    <div class="answer" style="display: none; margin-top: 15px; padding-top: 15px; border-top: 1px solid #ddd;">
+                                        <p><strong>VPC Peering:</strong></p>
+                                        <ul style="margin-left: 20px;">
+                                            <li>Simple 1:1 connection between two VPCs</li>
+                                            <li>Lower cost for simple setups</li>
+                                            <li>Non-transitive (can't route through peered VPCs)</li>
+                                            <li>Best for: Small number of VPCs, simple connectivity</li>
+                                        </ul>
+                                        <p style="margin-top: 10px;"><strong>Transit Gateway:</strong></p>
+                                        <ul style="margin-left: 20px;">
+                                            <li>Hub-and-spoke model for connecting multiple VPCs</li>
+                                            <li>Transitive routing supported</li>
+                                            <li>Connect VPCs, VPNs, Direct Connect</li>
+                                            <li>Best for: Large number of VPCs, complex routing, hybrid connectivity</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="question-item" onclick="toggleAnswer(this)">
+                                    <strong>How do you design a multi-account VPC architecture?
+                                        <span class="question-difficulty difficulty-hard">Hard</span>
+                                    </strong>
+                                    <span>Click to reveal answer</span>
+                                    <div class="answer" style="display: none; margin-top: 15px; padding-top: 15px; border-top: 1px solid #ddd;">
+                                        <p><strong>Key components:</strong></p>
+                                        <ul style="margin-left: 20px; margin-top: 10px;">
+                                            <li><strong>AWS Organizations:</strong> Account management and SCPs</li>
+                                            <li><strong>Transit Gateway:</strong> Central hub for VPC connectivity</li>
+                                            <li><strong>RAM (Resource Access Manager):</strong> Share subnets across accounts</li>
+                                            <li><strong>Centralized egress VPC:</strong> NAT Gateways, inspection</li>
+                                            <li><strong>Shared services VPC:</strong> AD, DNS, monitoring tools</li>
+                                            <li><strong>Network Firewall:</strong> Centralized inspection</li>
+                                            <li><strong>Route 53 Resolver:</strong> DNS resolution across accounts</li>
+                                        </ul>
+                                        <p style="margin-top: 10px;"><strong>IP addressing:</strong> Plan non-overlapping CIDR ranges, use IPAM for management.</p>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Ad in content -->
+                <div class="ad-container" style="margin: 40px 0;">
+                    <ins class="adsbygoogle"
+                        style="display:block"
+                        data-ad-client="ca-pub-6676281664229738"
+                        data-ad-slot="auto"
+                        data-ad-format="rectangle"
+                        data-full-width-responsive="true"></ins>
+                    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+                </div>
+
+                <!-- More Categories -->
+                <div class="interview-grid">
+                    <!-- Cost Optimization -->
+                    <div class="interview-category">
+                        <h3>Cost Optimization</h3>
+                        <ul class="question-list">
+                            <li>
+                                <div class="question-item" onclick="toggleAnswer(this)">
+                                    <strong>What strategies would you use to reduce AWS costs?
+                                        <span class="question-difficulty difficulty-medium">Medium</span>
+                                    </strong>
+                                    <span>Click to reveal answer</span>
+                                    <div class="answer" style="display: none; margin-top: 15px; padding-top: 15px; border-top: 1px solid #ddd;">
+                                        <p><strong>Key strategies:</strong></p>
+                                        <ul style="margin-left: 20px; margin-top: 10px;">
+                                            <li><strong>Rightsizing:</strong> Use Compute Optimizer to identify underutilized resources</li>
+                                            <li><strong>Reserved Instances/Savings Plans:</strong> Commit to 1-3 year terms for 30-72% savings</li>
+                                            <li><strong>Spot Instances:</strong> For fault-tolerant workloads, up to 90% savings</li>
+                                            <li><strong>S3 lifecycle policies:</strong> Move data to cheaper storage classes</li>
+                                            <li><strong>Auto Scaling:</strong> Scale down during low demand</li>
+                                            <li><strong>Delete unused resources:</strong> EBS snapshots, unattached volumes, idle load balancers</li>
+                                            <li><strong>Use managed services:</strong> Often cheaper than self-managed</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="question-item" onclick="toggleAnswer(this)">
+                                    <strong>Explain the difference between Reserved Instances and Savings Plans.
+                                        <span class="question-difficulty difficulty-easy">Easy</span>
+                                    </strong>
+                                    <span>Click to reveal answer</span>
+                                    <div class="answer" style="display: none; margin-top: 15px; padding-top: 15px; border-top: 1px solid #ddd;">
+                                        <p><strong>Reserved Instances:</strong></p>
+                                        <ul style="margin-left: 20px;">
+                                            <li>Commitment to specific instance type, region, OS</li>
+                                            <li>Standard RIs less flexible, Convertible RIs can change attributes</li>
+                                            <li>Available for EC2, RDS, ElastiCache, Redshift, OpenSearch</li>
+                                        </ul>
+                                        <p style="margin-top: 10px;"><strong>Savings Plans:</strong></p>
+                                        <ul style="margin-left: 20px;">
+                                            <li>Commitment to $/hour spend, more flexibility</li>
+                                            <li>Compute Savings Plans: Apply across EC2, Lambda, Fargate</li>
+                                            <li>EC2 Instance Savings Plans: Specific to instance family in a region</li>
+                                            <li>Generally recommended over RIs for most use cases</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Behavioral -->
+                    <div class="interview-category">
+                        <h3>Behavioral Questions</h3>
+                        <ul class="question-list">
+                            <li>
+                                <div class="question-item" onclick="toggleAnswer(this)">
+                                    <strong>Tell me about a time you had to make a difficult architectural decision.
+                                        <span class="question-difficulty difficulty-medium">Medium</span>
+                                    </strong>
+                                    <span>Click to reveal answer</span>
+                                    <div class="answer" style="display: none; margin-top: 15px; padding-top: 15px; border-top: 1px solid #ddd;">
+                                        <p><strong>Use the STAR method:</strong></p>
+                                        <ul style="margin-left: 20px; margin-top: 10px;">
+                                            <li><strong>Situation:</strong> Describe the context and challenge</li>
+                                            <li><strong>Task:</strong> Your responsibility in the situation</li>
+                                            <li><strong>Action:</strong> What you did, focusing on trade-off analysis</li>
+                                            <li><strong>Result:</strong> Quantifiable outcomes</li>
+                                        </ul>
+                                        <p style="margin-top: 10px;"><strong>Good topics:</strong> Cost vs performance trade-offs, build vs buy decisions, migration strategies, handling tech debt.</p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="question-item" onclick="toggleAnswer(this)">
+                                    <strong>How do you stay current with AWS services and best practices?
+                                        <span class="question-difficulty difficulty-easy">Easy</span>
+                                    </strong>
+                                    <span>Click to reveal answer</span>
+                                    <div class="answer" style="display: none; margin-top: 15px; padding-top: 15px; border-top: 1px solid #ddd;">
+                                        <p><strong>Good answers include:</strong></p>
+                                        <ul style="margin-left: 20px; margin-top: 10px;">
+                                            <li>AWS re:Invent sessions and announcements</li>
+                                            <li>AWS blogs and What's New feed</li>
+                                            <li>AWS certifications and recertification</li>
+                                            <li>Hands-on experimentation in personal/sandbox accounts</li>
+                                            <li>Community involvement (user groups, forums)</li>
+                                            <li>Following AWS Heroes and Community Builders</li>
+                                            <li>Reading architecture whitepapers</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="question-item" onclick="toggleAnswer(this)">
+                                    <strong>Describe a situation where you had to explain complex technical concepts to non-technical stakeholders.
+                                        <span class="question-difficulty difficulty-medium">Medium</span>
+                                    </strong>
+                                    <span>Click to reveal answer</span>
+                                    <div class="answer" style="display: none; margin-top: 15px; padding-top: 15px; border-top: 1px solid #ddd;">
+                                        <p><strong>Key points to cover:</strong></p>
+                                        <ul style="margin-left: 20px; margin-top: 10px;">
+                                            <li>Use analogies and real-world comparisons</li>
+                                            <li>Focus on business outcomes, not technical details</li>
+                                            <li>Use visual aids and diagrams</li>
+                                            <li>Translate technical benefits to business value (cost savings, time to market, risk reduction)</li>
+                                            <li>Check for understanding and adjust explanation</li>
+                                        </ul>
+                                        <p style="margin-top: 10px;"><strong>Example:</strong> Explaining multi-AZ deployment as "having a backup generator that kicks in automatically if the power goes out."</p>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>AWS Cloud Architect Guide</h4>
+                    <p>Your roadmap to a successful career in cloud architecture.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html#roadmap">Roadmap</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="interview-prep.html">Interview Prep</a></li>
+                        <li><a href="projects.html">Projects</a></li>
+                        <li><a href="resources.html">Resources</a></li>
+                        <li><a href="tools.html">Tools</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Official AWS Links</h4>
+                    <ul>
+                        <li><a href="https://aws.amazon.com/certification/" target="_blank" rel="noopener">AWS Certification</a></li>
+                        <li><a href="https://aws.amazon.com/training/" target="_blank" rel="noopener">AWS Training</a></li>
+                        <li><a href="https://aws.amazon.com/architecture/" target="_blank" rel="noopener">AWS Architecture Center</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 AWS Cloud Architect Guide. Not affiliated with Amazon Web Services.</p>
+                <p>AWS and Amazon Web Services are trademarks of Amazon.com, Inc.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        function toggleAnswer(element) {
+            const answer = element.querySelector('.answer');
+            const span = element.querySelector('span:not(.question-difficulty)');
+            if (answer.style.display === 'none') {
+                answer.style.display = 'block';
+                span.textContent = 'Click to hide answer';
+            } else {
+                answer.style.display = 'none';
+                span.textContent = 'Click to reveal answer';
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AWS Cloud Architect tools including salary calculator, certification cost planner, and career planning resources.">
+    <meta name="keywords" content="AWS salary calculator, cloud architect salary, AWS certification cost, cloud career tools">
+    <title>AWS Cloud Architect Tools | Salary Calculator & Career Planning</title>
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6676281664229738" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header class="header">
+        <nav class="nav-container">
+            <div class="logo">
+                <a href="index.html" style="display: flex; align-items: center; gap: 10px; color: inherit; text-decoration: none;">
+                    <span class="logo-icon">&#9729;</span>
+                    <span class="logo-text">AWS Cloud Architect Guide</span>
+                </a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html#roadmap">Roadmap</a></li>
+                <li><a href="index.html#certifications">Certifications</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="interview-prep.html">Interview Prep</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="resources.html">Resources</a></li>
+                <li><a href="tools.html">Tools</a></li>
+            </ul>
+            <button class="mobile-menu-btn" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero" style="padding: 140px 20px 60px;">
+            <div class="hero-content">
+                <h1>Cloud Architect <span class="highlight">Tools</span></h1>
+                <p class="hero-subtitle">Plan your career with our salary calculator and certification cost planner</p>
+            </div>
+        </section>
+
+        <!-- Ad Banner -->
+        <div class="ad-container ad-banner">
+            <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-6676281664229738"
+                data-ad-slot="auto"
+                data-ad-format="horizontal"
+                data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        </div>
+
+        <section class="section">
+            <div class="container">
+                <h2>AWS Cloud Architect Salary Calculator</h2>
+                <p class="section-subtitle">Estimate your potential earnings based on experience, location, and certifications</p>
+
+                <div class="calculator-container">
+                    <h3>Calculate Your Estimated Salary</h3>
+
+                    <div class="form-group">
+                        <label for="experience">Years of Cloud Experience</label>
+                        <select id="experience">
+                            <option value="0">0-1 years (Entry Level)</option>
+                            <option value="2">2-3 years (Junior)</option>
+                            <option value="4" selected>4-6 years (Mid-Level)</option>
+                            <option value="7">7-10 years (Senior)</option>
+                            <option value="10">10+ years (Principal/Staff)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="location">Location</label>
+                        <select id="location">
+                            <option value="sf">San Francisco / Bay Area</option>
+                            <option value="seattle">Seattle</option>
+                            <option value="nyc">New York City</option>
+                            <option value="austin">Austin / Dallas</option>
+                            <option value="denver">Denver / Boulder</option>
+                            <option value="chicago">Chicago</option>
+                            <option value="atlanta">Atlanta</option>
+                            <option value="remote" selected>Remote (US)</option>
+                            <option value="midwest">Midwest (Other)</option>
+                            <option value="south">South (Other)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="certifications">Highest AWS Certification</label>
+                        <select id="certifications">
+                            <option value="none">No Certification</option>
+                            <option value="ccp">Cloud Practitioner</option>
+                            <option value="saa" selected>Solutions Architect Associate</option>
+                            <option value="sap">Solutions Architect Professional</option>
+                            <option value="specialty">Professional + Specialty Certs</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="company">Company Type</label>
+                        <select id="company">
+                            <option value="startup">Startup</option>
+                            <option value="midsize" selected>Mid-size Company</option>
+                            <option value="enterprise">Enterprise</option>
+                            <option value="faang">FAANG / Big Tech</option>
+                            <option value="consulting">Consulting Firm</option>
+                        </select>
+                    </div>
+
+                    <button class="calc-button" onclick="calculateSalary()">Calculate Salary</button>
+
+                    <div class="salary-result" id="salaryResult">
+                        <h4>Estimated Annual Salary</h4>
+                        <div class="salary-amount" id="salaryAmount">$150,000</div>
+                        <p class="salary-range-text" id="salaryRange">Range: $130,000 - $170,000</p>
+                        <p style="margin-top: 15px; font-size: 0.85rem; opacity: 0.7;">
+                            *Estimates based on industry data. Actual salaries vary by company, negotiation, and specific role requirements.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Ad in content -->
+                <div class="ad-container" style="margin: 40px 0;">
+                    <ins class="adsbygoogle"
+                        style="display:block"
+                        data-ad-client="ca-pub-6676281664229738"
+                        data-ad-slot="auto"
+                        data-ad-format="rectangle"
+                        data-full-width-responsive="true"></ins>
+                    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+                </div>
+
+                <!-- Certification Cost Calculator -->
+                <h2 style="margin-top: 60px;">AWS Certification Cost Planner</h2>
+                <p class="section-subtitle">Plan your certification journey and budget accordingly</p>
+
+                <div class="calculator-container">
+                    <h3>Calculate Certification Investment</h3>
+
+                    <div class="form-group">
+                        <label>Select certifications you plan to pursue:</label>
+                        <div style="display: grid; gap: 10px; margin-top: 10px;">
+                            <label style="display: flex; align-items: center; gap: 10px; font-weight: normal; cursor: pointer;">
+                                <input type="checkbox" id="cert-ccp" value="100" onchange="calculateCertCost()">
+                                Cloud Practitioner ($100)
+                            </label>
+                            <label style="display: flex; align-items: center; gap: 10px; font-weight: normal; cursor: pointer;">
+                                <input type="checkbox" id="cert-saa" value="150" checked onchange="calculateCertCost()">
+                                Solutions Architect Associate ($150)
+                            </label>
+                            <label style="display: flex; align-items: center; gap: 10px; font-weight: normal; cursor: pointer;">
+                                <input type="checkbox" id="cert-sap" value="300" checked onchange="calculateCertCost()">
+                                Solutions Architect Professional ($300)
+                            </label>
+                            <label style="display: flex; align-items: center; gap: 10px; font-weight: normal; cursor: pointer;">
+                                <input type="checkbox" id="cert-security" value="300" onchange="calculateCertCost()">
+                                Security Specialty ($300)
+                            </label>
+                            <label style="display: flex; align-items: center; gap: 10px; font-weight: normal; cursor: pointer;">
+                                <input type="checkbox" id="cert-networking" value="300" onchange="calculateCertCost()">
+                                Advanced Networking Specialty ($300)
+                            </label>
+                            <label style="display: flex; align-items: center; gap: 10px; font-weight: normal; cursor: pointer;">
+                                <input type="checkbox" id="cert-database" value="300" onchange="calculateCertCost()">
+                                Database Specialty ($300)
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="studyMaterials">Study Materials</label>
+                        <select id="studyMaterials" onchange="calculateCertCost()">
+                            <option value="0">Free resources only</option>
+                            <option value="15" selected>Udemy courses (~$15 each on sale)</option>
+                            <option value="50">Premium courses (Cantrill, etc. ~$50)</option>
+                            <option value="30">A Cloud Guru subscription (~$30/month)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="practiceExams">Practice Exams</label>
+                        <select id="practiceExams" onchange="calculateCertCost()">
+                            <option value="0">None</option>
+                            <option value="15" selected>Tutorials Dojo (~$15 per cert)</option>
+                            <option value="25">Whizlabs (~$25 per cert)</option>
+                            <option value="40">Multiple providers (~$40 per cert)</option>
+                        </select>
+                    </div>
+
+                    <div class="salary-result visible" id="certCostResult">
+                        <h4>Total Certification Investment</h4>
+                        <div class="salary-amount" id="certTotalCost">$510</div>
+                        <p class="salary-range-text" id="certBreakdown">Exam fees: $450 | Study materials: $30 | Practice exams: $30</p>
+                        <p style="margin-top: 15px; font-size: 0.85rem; opacity: 0.7;">
+                            Tip: Pass one cert to get a 50% discount voucher for your next exam!
+                        </p>
+                    </div>
+                </div>
+
+                <!-- More Tools Section -->
+                <h2 style="margin-top: 60px;">More Career Resources</h2>
+                <div class="tools-grid">
+                    <div class="tool-card">
+                        <div class="tool-icon">📊</div>
+                        <h4>AWS Pricing Calculator</h4>
+                        <p>Official AWS tool to estimate costs for your architecture designs.</p>
+                        <a href="https://calculator.aws/" target="_blank" rel="noopener" class="project-link" style="margin-top: 15px;">Open Tool</a>
+                    </div>
+
+                    <div class="tool-card">
+                        <div class="tool-icon">📐</div>
+                        <h4>AWS Architecture Icons</h4>
+                        <p>Official icon set for creating professional architecture diagrams.</p>
+                        <a href="https://aws.amazon.com/architecture/icons/" target="_blank" rel="noopener" class="project-link" style="margin-top: 15px;">Download</a>
+                    </div>
+
+                    <div class="tool-card">
+                        <div class="tool-icon">📋</div>
+                        <h4>Well-Architected Tool</h4>
+                        <p>Review your workloads against AWS best practices.</p>
+                        <a href="https://aws.amazon.com/well-architected-tool/" target="_blank" rel="noopener" class="project-link" style="margin-top: 15px;">Learn More</a>
+                    </div>
+
+                    <div class="tool-card">
+                        <div class="tool-icon">🎯</div>
+                        <h4>Certification Prep</h4>
+                        <p>Official AWS exam readiness courses and practice questions.</p>
+                        <a href="https://aws.amazon.com/certification/certification-prep/" target="_blank" rel="noopener" class="project-link" style="margin-top: 15px;">Start Prep</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>AWS Cloud Architect Guide</h4>
+                    <p>Your roadmap to a successful career in cloud architecture.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html#roadmap">Roadmap</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="interview-prep.html">Interview Prep</a></li>
+                        <li><a href="projects.html">Projects</a></li>
+                        <li><a href="resources.html">Resources</a></li>
+                        <li><a href="tools.html">Tools</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Official AWS Links</h4>
+                    <ul>
+                        <li><a href="https://aws.amazon.com/certification/" target="_blank" rel="noopener">AWS Certification</a></li>
+                        <li><a href="https://aws.amazon.com/training/" target="_blank" rel="noopener">AWS Training</a></li>
+                        <li><a href="https://aws.amazon.com/architecture/" target="_blank" rel="noopener">AWS Architecture Center</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 AWS Cloud Architect Guide. Not affiliated with Amazon Web Services.</p>
+                <p>AWS and Amazon Web Services are trademarks of Amazon.com, Inc.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Salary calculation data
+        const baseSalaries = {
+            '0': 85000,
+            '2': 110000,
+            '4': 140000,
+            '7': 175000,
+            '10': 210000
+        };
+
+        const locationMultipliers = {
+            'sf': 1.35,
+            'seattle': 1.25,
+            'nyc': 1.30,
+            'austin': 1.10,
+            'denver': 1.05,
+            'chicago': 1.00,
+            'atlanta': 0.95,
+            'remote': 1.10,
+            'midwest': 0.90,
+            'south': 0.88
+        };
+
+        const certBonuses = {
+            'none': 0,
+            'ccp': 3000,
+            'saa': 8000,
+            'sap': 15000,
+            'specialty': 22000
+        };
+
+        const companyMultipliers = {
+            'startup': 0.95,
+            'midsize': 1.00,
+            'enterprise': 1.10,
+            'faang': 1.40,
+            'consulting': 1.05
+        };
+
+        function calculateSalary() {
+            const experience = document.getElementById('experience').value;
+            const location = document.getElementById('location').value;
+            const certLevel = document.getElementById('certifications').value;
+            const company = document.getElementById('company').value;
+
+            let baseSalary = baseSalaries[experience];
+            baseSalary *= locationMultipliers[location];
+            baseSalary += certBonuses[certLevel];
+            baseSalary *= companyMultipliers[company];
+
+            const midpoint = Math.round(baseSalary / 1000) * 1000;
+            const lowRange = Math.round((midpoint * 0.88) / 1000) * 1000;
+            const highRange = Math.round((midpoint * 1.15) / 1000) * 1000;
+
+            document.getElementById('salaryAmount').textContent = '$' + midpoint.toLocaleString();
+            document.getElementById('salaryRange').textContent =
+                'Range: $' + lowRange.toLocaleString() + ' - $' + highRange.toLocaleString();
+            document.getElementById('salaryResult').classList.add('visible');
+        }
+
+        function calculateCertCost() {
+            const checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
+            let examFees = 0;
+            let certCount = 0;
+
+            checkboxes.forEach(cb => {
+                examFees += parseInt(cb.value);
+                certCount++;
+            });
+
+            const studyMaterialCost = parseInt(document.getElementById('studyMaterials').value) * certCount;
+            const practiceExamCost = parseInt(document.getElementById('practiceExams').value) * certCount;
+            const totalCost = examFees + studyMaterialCost + practiceExamCost;
+
+            document.getElementById('certTotalCost').textContent = '$' + totalCost.toLocaleString();
+            document.getElementById('certBreakdown').textContent =
+                'Exam fees: $' + examFees + ' | Study materials: $' + studyMaterialCost + ' | Practice exams: $' + practiceExamCost;
+        }
+
+        // Initialize cert cost on page load
+        calculateCertCost();
+    </script>
+</body>
+</html>
