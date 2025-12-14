@@ -5,7 +5,14 @@
       "Bash(gh repo create:*)",
       "Bash(git add:*)",
       "Bash(git commit:*)",
-      "Bash(git push:*)"
+      "Bash(git push:*)",
+      "Bash(az account show:*)",
+      "Bash(az staticwebapp secrets list:*)",
+      "Bash(gh secret set:*)",
+      "Bash(gh workflow run:*)",
+      "Bash(git pull:*)",
+      "Bash(git stash:*)",
+      "Bash(gh run list:*)"
     ]
   }
 }

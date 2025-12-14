@@ -10,6 +10,42 @@
 
     <!-- Google AdSense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6676281664229738" crossorigin="anonymous"></script>
+
+    <!-- Azure Application Insights -->
+    <script type="text/javascript">
+    !function(T,l,y){var S=T.location,k="script",D="instrumentationKey",C="ingestionendpoint",I="disableExceptionTracking",E="ai.device.",b="toLowerCase",w="crossOrigin",N="POST",e="appInsightsSDK",t=y.name||"appInsights";(y.name||T[e])&&(T[e]=t);var n=T[t]||function(d){var g=!1,f=!1,m={initialize:!0,queue:[],sv:"5",version:2,config:d};function v(e,t){var n={},a="Browser";return n[E+"id"]=a[b](),n[E+"type"]=a,n["ai.operation.name"]=S&&S.pathname||"_unknown_",n["ai.internal.sdkVersion"]="javascript:snippet:"+(m.sv||m.version),n}var i=d.url||y.src;function a(e){var t,n,a,i,r,o,s,c,u,p,l;if((f=!0)&&m.config.enableRequestHeaderTracking){for(c=e.target,u=c&&c.getAllResponseHeaders&&c.getAllResponseHeaders(),p={},l=(r=(r=(u||"").split(/[\r\n]+/))&&r.length)&&r;--r>=0;)o=l[r],s=o.indexOf(": "),o&&s>0&&(t=o.substring(0,s)[b](),n=o.substring(s+1),p[t]=n);m.queue.push({name:"ai.internal.azHeader",value:p.authorization||""})}m.queue.push(e)}if(i){var r=!1,o=!1,s=d[D]||y[D]||"",c=d.connectionString||y.connectionString;!c&&s&&(c="InstrumentationKey="+s),c&&-1!=c.indexOf(C)||(c=(c||"")+";"+C+"=https://dc.applicationinsights.azure.com"),T.fetch&&(r=!0),!d.disableXhr&&T.XMLHttpRequest&&(o=!0);var u=function(e,t){var n=l.createElement(k);n.src=i,n.async=!0,w in n&&(n[w]="anonymous"),n.onload=n.onreadystatechange=function(){var e=n.readyState;e&&"loaded"!==e&&"complete"!==e||(g=!0,n.onload=n.onreadystatechange=null,n.parentNode&&n.parentNode.removeChild(n),t&&t())},l.getElementsByTagName("head")[0].appendChild(n)};o&&!r?(u(),T.XMLHttpRequest.prototype.open=function(e,t,n,a,i){return this.ajaxData={method:e,url:t},this.addEventListener("readystatechange",function(){this.readyState===4&&!f&&a.call(this)}),this._open(e,t,n,a,i)},T.XMLHttpRequest.prototype._open=T.XMLHttpRequest.prototype.open):u(0,function(){var e=T[t];e.queue&&0===e.queue.length})}function p(e,t){g?e():m.queue.push(e)}m.trackPageView=function(e,t){p(function(){var n=T[t];n&&n.trackPageView&&n.trackPageView(e,t)})},m.trackEvent=function(e,t){p(function(){var n=T[t];n&&n.trackEvent&&n.trackEvent(e,t)})};return m}(y.cfg);T[t]=n,n.queue&&0===n.queue.length&&n.trackPageView({})}(window,document,{
+        src: "https://js.monitor.azure.com/scripts/b/ai.2.min.js",
+        crossOrigin: "anonymous",
+        cfg: {
+            connectionString: "InstrumentationKey=edc8dcee-4e7e-4ebf-ba76-09986edb3c0f;IngestionEndpoint=https://eastus2-3.in.applicationinsights.azure.com/;LiveEndpoint=https://eastus2.livediagnostics.monitor.azure.com/"
+        }
+    });
+    document.addEventListener('DOMContentLoaded', function() {
+        var scrollMarks = {25: false, 50: false, 75: false, 90: false, 100: false};
+        var startTime = Date.now();
+        window.addEventListener('scroll', function() {
+            var scrollPercent = Math.round((window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100);
+            Object.keys(scrollMarks).forEach(function(mark) {
+                if (scrollPercent >= parseInt(mark) && !scrollMarks[mark]) {
+                    scrollMarks[mark] = true;
+                    appInsights.trackEvent({name: 'ScrollDepth', properties: {depth: mark + '%', page: window.location.pathname}});
+                }
+            });
+        });
+        document.addEventListener('click', function(e) {
+            var link = e.target.closest('a');
+            if (link && link.hostname !== window.location.hostname) {
+                appInsights.trackEvent({name: 'OutboundClick', properties: {url: link.href, text: link.innerText.substring(0, 100), page: window.location.pathname}});
+            } else if (link && link.hostname === window.location.hostname) {
+                appInsights.trackEvent({name: 'InternalNavigation', properties: {to: link.pathname || link.hash, from: window.location.pathname}});
+            }
+        });
+        window.addEventListener('beforeunload', function() {
+            appInsights.trackEvent({name: 'TimeOnPage', properties: {seconds: Math.round((Date.now() - startTime) / 1000), page: window.location.pathname}});
+            appInsights.flush();
+        });
+    });
+    </script>
 </head>
 <body>
     <header class="header">
