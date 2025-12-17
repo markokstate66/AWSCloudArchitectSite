@@ -2,7 +2,7 @@ const { app } = require("@azure/functions");
 
 const ACS_CONNECTION_STRING = process.env.ACS_CONNECTION_STRING || "";
 const NOTIFICATION_EMAIL = process.env.NOTIFICATION_EMAIL || "";
-const SENDER_EMAIL = process.env.SENDER_EMAIL || "noreply@awscloudarchitect.com";
+const SENDER_EMAIL = process.env.SENDER_EMAIL || "DoNotReply@awscloudarchitect.com";
 const ADMIN_KEY = process.env.ADMIN_API_KEY || "aws-ab-admin-2025";
 
 async function testEmail(request, context) {
