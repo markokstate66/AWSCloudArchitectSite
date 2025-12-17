@@ -119,12 +119,16 @@ async function analyzeVariants(myTimer, context) {
           const poolItems = await getRandomFromPool(slotId, needed);
           for (const poolItem of poolItems) {
             const newVariantId = await promoteFromPool(slotId, poolItem);
-            context.log(`Promoted from pool: "${poolItem.title}" as ${newVariantId}`);
-            changes.promoted.push({
-              slotName,
-              title: poolItem.title,
-              variantId: newVariantId
-            });
+            if (newVariantId) {
+              context.log(`Promoted from pool: "${poolItem.title}" as ${newVariantId}`);
+              changes.promoted.push({
+                slotName,
+                title: poolItem.title,
+                variantId: newVariantId
+              });
+            } else {
+              context.log(`Skipped "${poolItem.title}" - was recently dropped from this slot`);
+            }
           }
         }
         continue;
@@ -208,12 +212,16 @@ async function analyzeVariants(myTimer, context) {
         const poolItems = await getRandomFromPool(slotId, needed);
         for (const poolItem of poolItems) {
           const newVariantId = await promoteFromPool(slotId, poolItem);
-          context.log(`Promoted from pool: "${poolItem.title}" as ${newVariantId}`);
-          changes.promoted.push({
-            slotName,
-            title: poolItem.title,
-            variantId: newVariantId
-          });
+          if (newVariantId) {
+            context.log(`Promoted from pool: "${poolItem.title}" as ${newVariantId}`);
+            changes.promoted.push({
+              slotName,
+              title: poolItem.title,
+              variantId: newVariantId
+            });
+          } else {
+            context.log(`Skipped "${poolItem.title}" - was recently dropped from this slot`);
+          }
         }
 
         if (poolItems.length === 0) {

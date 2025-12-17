@@ -242,8 +242,34 @@ async function removeFromPool(slotId, poolId) {
   await productPoolTable.deleteEntity(slotId, poolId);
 }
 
+// Check if a product was recently dropped (by Amazon URL)
+async function wasRecentlyDropped(slotId, amazonUrl, daysThreshold = 30) {
+  const cutoffDate = new Date();
+  cutoffDate.setDate(cutoffDate.getDate() - daysThreshold);
+  const cutoffString = cutoffDate.toISOString();
+
+  const entities = variantsTable.listEntities({
+    queryOptions: { filter: odata`PartitionKey eq ${slotId} and isActive eq false` }
+  });
+
+  for await (const entity of entities) {
+    if (entity.amazonUrl === amazonUrl && entity.droppedAt && entity.droppedAt > cutoffString) {
+      return true;
+    }
+  }
+  return false;
+}
+
 // Promote item from pool to active variant
 async function promoteFromPool(slotId, poolItem) {
+  // Check if this product was recently dropped - skip if so
+  const recentlyDropped = await wasRecentlyDropped(slotId, poolItem.amazonUrl, 30);
+  if (recentlyDropped) {
+    // Remove from pool but don't promote (it was a loser)
+    await removeFromPool(slotId, poolItem.rowKey);
+    return null; // Signal that we didn't promote
+  }
+
   const variantId = `var-${Date.now().toString(36)}${Math.random().toString(36).substr(2, 5)}`;
 
   // Create as active variant
