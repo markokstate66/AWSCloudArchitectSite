@@ -3,13 +3,33 @@
     {
       "route": "/index.html",
       "rewrite": "/"
+    },
+    {
+      "route": "/admin.html",
+      "allowedRoles": ["authenticated"]
+    },
+    {
+      "route": "/api/stats",
+      "allowedRoles": ["authenticated"]
+    },
+    {
+      "route": "/api/seed",
+      "allowedRoles": ["authenticated"]
+    },
+    {
+      "route": "/api/clear",
+      "allowedRoles": ["authenticated"]
     }
   ],
   "navigationFallback": {
     "rewrite": "/index.html",
-    "exclude": ["*.css", "*.js", "*.png", "*.jpg", "*.jpeg", "*.gif", "*.svg", "*.ico", "*.webp", "*.woff", "*.woff2", "/api/*"]
+    "exclude": ["*.css", "*.js", "*.png", "*.jpg", "*.jpeg", "*.gif", "*.svg", "*.ico", "*.webp", "*.woff", "*.woff2", "/api/*", "/admin.html"]
   },
   "responseOverrides": {
+    "401": {
+      "redirect": "/.auth/login/aad?post_login_redirect_uri=/admin.html",
+      "statusCode": 302
+    },
     "404": {
       "rewrite": "/index.html",
       "statusCode": 200
@@ -21,7 +41,7 @@
     "X-XSS-Protection": "1; mode=block",
     "Referrer-Policy": "strict-origin-when-cross-origin",
     "Permissions-Policy": "accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=()",
-    "Content-Security-Policy": "default-src 'self'; script-src 'self' 'unsafe-inline' https://pagead2.googlesyndication.com https://www.googletagservices.com https://js.monitor.azure.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; frame-src https://googleads.g.doubleclick.net https://tpc.googlesyndication.com; connect-src 'self' https://pagead2.googlesyndication.com https://*.applicationinsights.azure.com https://*.in.applicationinsights.azure.com"
+    "Content-Security-Policy": "default-src 'self'; script-src 'self' 'unsafe-inline' https://pagead2.googlesyndication.com https://www.googletagservices.com https://js.monitor.azure.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; frame-src https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://login.microsoftonline.com; connect-src 'self' https://pagead2.googlesyndication.com https://*.applicationinsights.azure.com https://*.in.applicationinsights.azure.com"
   },
   "mimeTypes": {
     ".json": "application/json",
