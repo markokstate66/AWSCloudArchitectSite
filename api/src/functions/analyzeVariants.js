@@ -21,7 +21,7 @@ const TARGET_VARIANTS_PER_SLOT = parseInt(process.env.AB_TARGET_VARIANTS || "2")
 // Email configuration
 const ACS_CONNECTION_STRING = process.env.ACS_CONNECTION_STRING || "";
 const NOTIFICATION_EMAIL = process.env.NOTIFICATION_EMAIL || "";
-const SENDER_EMAIL = process.env.SENDER_EMAIL || "DoNotReply@e57d08f2-19aa-4d8b-a7d1-f94a39c4065a.azurecomm.net";
+const SENDER_EMAIL = process.env.SENDER_EMAIL || "noreply@awscloudarchitect.com";
 
 // Send email notification
 async function sendNotification(subject, htmlBody, context) {
