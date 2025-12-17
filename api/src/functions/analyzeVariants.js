@@ -6,12 +6,17 @@ const {
   getTotalImpressions,
   calculateRollingCTR,
   updateVariantWeight,
-  dropVariant
+  dropVariant,
+  getRandomFromPool,
+  promoteFromPool,
+  getPoolCounts
 } = require("../services/tableStorage");
 
 const MIN_IMPRESSIONS = parseInt(process.env.AB_MIN_IMPRESSIONS || "50");
 const MIN_DAYS = parseInt(process.env.AB_MIN_DAYS || "7");
 const DROP_THRESHOLD = parseFloat(process.env.AB_DROP_THRESHOLD || "0.5");
+const MIN_VARIANTS_PER_SLOT = parseInt(process.env.AB_MIN_VARIANTS || "1");
+const TARGET_VARIANTS_PER_SLOT = parseInt(process.env.AB_TARGET_VARIANTS || "2");
 
 function daysSince(dateString) {
   const created = new Date(dateString);
@@ -99,7 +104,28 @@ async function analyzeVariants(myTimer, context) {
           context.log(`Updated weight for ${analysis.variant.rowKey}: ${newWeight}`);
         }
       }
+
+      // Auto-promote from pool if below target variants
+      const currentVariantCount = remainingVariants.length;
+      if (currentVariantCount < TARGET_VARIANTS_PER_SLOT) {
+        const needed = TARGET_VARIANTS_PER_SLOT - currentVariantCount;
+        context.log(`Slot ${slotId}: Need ${needed} more variants, checking pool...`);
+
+        const poolItems = await getRandomFromPool(slotId, needed);
+        for (const poolItem of poolItems) {
+          const newVariantId = await promoteFromPool(slotId, poolItem);
+          context.log(`Promoted from pool: "${poolItem.title}" as ${newVariantId}`);
+        }
+
+        if (poolItems.length === 0) {
+          context.log(`Slot ${slotId}: No items in pool to promote`);
+        }
+      }
     }
+
+    // Log pool status
+    const poolCounts = await getPoolCounts();
+    context.log("Pool status:", JSON.stringify(poolCounts));
 
     context.log("A/B variant analysis completed");
   } catch (error) {

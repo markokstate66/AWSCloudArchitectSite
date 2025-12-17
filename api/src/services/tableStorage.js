@@ -6,6 +6,7 @@ const connectionString = process.env.AZURE_STORAGE_CONNECTION_STRING || "";
 const productsTable = TableClient.fromConnectionString(connectionString, "Products");
 const variantsTable = TableClient.fromConnectionString(connectionString, "Variants");
 const dailyStatsTable = TableClient.fromConnectionString(connectionString, "DailyStats");
+const productPoolTable = TableClient.fromConnectionString(connectionString, "ProductPool");
 
 // Helper to get today's date string
 function getTodayString() {
@@ -183,6 +184,106 @@ function calculateRollingCTR(stats) {
   return (totalClicks / totalImpressions) * 100;
 }
 
+// ============================================
+// Product Pool Operations (for auto-rotation)
+// ============================================
+
+// Add a product to the pool
+async function addToPool(slotId, data) {
+  const poolId = `pool-${Date.now().toString(36)}${Math.random().toString(36).substr(2, 5)}`;
+  await productPoolTable.createEntity({
+    partitionKey: slotId,
+    rowKey: poolId,
+    title: data.title,
+    author: data.author || "",
+    description: data.description || "",
+    amazonUrl: data.amazonUrl,
+    imageUrl: data.imageUrl || "",
+    tags: JSON.stringify(data.tags || []),
+    addedAt: new Date().toISOString()
+  });
+  return poolId;
+}
+
+// Get all pool items for a slot
+async function getPoolItemsForSlot(slotId) {
+  const items = [];
+  const entities = productPoolTable.listEntities({
+    queryOptions: { filter: odata`PartitionKey eq ${slotId}` }
+  });
+  for await (const entity of entities) {
+    items.push(entity);
+  }
+  return items;
+}
+
+// Get all pool items (all slots)
+async function getAllPoolItems() {
+  const items = [];
+  const entities = productPoolTable.listEntities();
+  for await (const entity of entities) {
+    items.push(entity);
+  }
+  return items;
+}
+
+// Get random item(s) from pool for a slot
+async function getRandomFromPool(slotId, count = 1) {
+  const items = await getPoolItemsForSlot(slotId);
+  if (items.length === 0) return [];
+
+  // Shuffle and take requested count
+  const shuffled = items.sort(() => Math.random() - 0.5);
+  return shuffled.slice(0, Math.min(count, items.length));
+}
+
+// Remove item from pool
+async function removeFromPool(slotId, poolId) {
+  await productPoolTable.deleteEntity(slotId, poolId);
+}
+
+// Promote item from pool to active variant
+async function promoteFromPool(slotId, poolItem) {
+  const variantId = `var-${Date.now().toString(36)}${Math.random().toString(36).substr(2, 5)}`;
+
+  // Create as active variant
+  await createVariant(slotId, variantId, {
+    title: poolItem.title,
+    author: poolItem.author,
+    description: poolItem.description,
+    amazonUrl: poolItem.amazonUrl,
+    imageUrl: poolItem.imageUrl,
+    tags: JSON.parse(poolItem.tags || "[]")
+  });
+
+  // Remove from pool
+  await removeFromPool(slotId, poolItem.rowKey);
+
+  return variantId;
+}
+
+// Get pool count per slot
+async function getPoolCounts() {
+  const counts = {};
+  const entities = productPoolTable.listEntities();
+  for await (const entity of entities) {
+    const slotId = entity.partitionKey;
+    counts[slotId] = (counts[slotId] || 0) + 1;
+  }
+  return counts;
+}
+
+// Clear entire pool
+async function clearPool() {
+  let deleted = 0;
+  const entities = productPoolTable.listEntities();
+  for await (const entity of entities) {
+    await productPoolTable.deleteEntity(entity.partitionKey, entity.rowKey);
+    deleted++;
+  }
+  return deleted;
+}
+
 module.exports = {
   getActiveProducts,
   createProduct,
@@ -195,5 +296,14 @@ module.exports = {
   getStatsForVariant,
   getTotalImpressions,
   selectVariantWeighted,
-  calculateRollingCTR
+  calculateRollingCTR,
+  // Pool operations
+  addToPool,
+  getPoolItemsForSlot,
+  getAllPoolItems,
+  getRandomFromPool,
+  removeFromPool,
+  promoteFromPool,
+  getPoolCounts,
+  clearPool
 };

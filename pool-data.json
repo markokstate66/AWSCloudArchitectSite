@@ -1,0 +1,95 @@
+{
+  "clearExisting": false,
+  "products": [
+    {
+      "slotId": "slot-1",
+      "title": "AWS Certified Cloud Practitioner Study Guide",
+      "author": "Ben Piper & David Clinton",
+      "description": "Your one-stop resource for the foundational AWS certification. Great for beginners starting their cloud journey.",
+      "amazonUrl": "https://www.amazon.com/Certified-Cloud-Practitioner-Study-Guide/dp/1119490707?tag=dreamscribe09-20",
+      "imageUrl": "/images/books/saa-c03.jpg",
+      "tags": ["Beginner", "Cloud Practitioner"]
+    },
+    {
+      "slotId": "slot-2",
+      "title": "Kubernetes Up & Running",
+      "author": "Brendan Burns, Joe Beda & Kelsey Hightower",
+      "description": "Dive into the world of Kubernetes with this practical guide from the creators themselves.",
+      "amazonUrl": "https://www.amazon.com/Kubernetes-Running-Dive-Future-Infrastructure/dp/1492046531?tag=dreamscribe09-20",
+      "imageUrl": "/images/books/sap-c02.jpg",
+      "tags": ["Kubernetes", "Advanced"]
+    },
+    {
+      "slotId": "slot-3",
+      "title": "System Design Interview Volume 1",
+      "author": "Alex Xu",
+      "description": "An insider's guide to system design interviews. Learn to design scalable systems step by step.",
+      "amazonUrl": "https://www.amazon.com/System-Design-Interview-insiders-Second/dp/B08CMF2CQF?tag=dreamscribe09-20",
+      "imageUrl": "/images/books/ddia.jpg",
+      "tags": ["System Design", "Interview"]
+    },
+    {
+      "slotId": "slot-4",
+      "title": "The Unicorn Project",
+      "author": "Gene Kim",
+      "description": "The sequel to The Phoenix Project. A story of developers, digital disruption, and thriving in the age of data.",
+      "amazonUrl": "https://www.amazon.com/Unicorn-Project-Developers-Disruption-Thriving/dp/1942788762?tag=dreamscribe09-20",
+      "imageUrl": "/images/books/phoenix-project.jpg",
+      "tags": ["DevOps", "Fiction"]
+    },
+    {
+      "slotId": "slot-5",
+      "title": "Building Microservices",
+      "author": "Sam Newman",
+      "description": "Designing fine-grained systems. The definitive guide to microservices architecture patterns.",
+      "amazonUrl": "https://www.amazon.com/Building-Microservices-Designing-Fine-Grained-Systems/dp/1492034029?tag=dreamscribe09-20",
+      "imageUrl": "/images/books/cloud-native.jpg",
+      "tags": ["Microservices", "Architecture"]
+    },
+    {
+      "slotId": "slot-6",
+      "title": "Infrastructure as Code",
+      "author": "Kief Morris",
+      "description": "Dynamic systems for the cloud age. Comprehensive guide to managing infrastructure programmatically.",
+      "amazonUrl": "https://www.amazon.com/Infrastructure-Code-Dynamic-Systems-Cloud/dp/1098114671?tag=dreamscribe09-20",
+      "imageUrl": "/images/books/terraform.jpg",
+      "tags": ["IaC", "Cloud"]
+    },
+    {
+      "slotId": "slot-7",
+      "title": "The Pragmatic Programmer",
+      "author": "David Thomas & Andrew Hunt",
+      "description": "Your journey to mastery. Timeless advice for modern developers on crafting better software.",
+      "amazonUrl": "https://www.amazon.com/Pragmatic-Programmer-journey-mastery-Anniversary/dp/0135957052?tag=dreamscribe09-20",
+      "imageUrl": "/images/books/aws-security.jpg",
+      "tags": ["Programming", "Classic"]
+    },
+    {
+      "slotId": "slot-8",
+      "title": "Accelerate",
+      "author": "Nicole Forsgren, Jez Humble & Gene Kim",
+      "description": "The science of lean software and DevOps. Data-driven insights on building high-performing tech organizations.",
+      "amazonUrl": "https://www.amazon.com/Accelerate-Software-Performing-Technology-Organizations/dp/1942788339?tag=dreamscribe09-20",
+      "imageUrl": "/images/books/devops-handbook.jpg",
+      "tags": ["DevOps", "Research"]
+    },
+    {
+      "slotId": "slot-1",
+      "title": "AWS Certified Developer Associate Guide",
+      "author": "John Paul Mueller",
+      "description": "Complete preparation for the DVA-C02 exam with practice questions and detailed explanations.",
+      "amazonUrl": "https://www.amazon.com/Certified-Developer-Official-Study-Guide/dp/1119508193?tag=dreamscribe09-20",
+      "imageUrl": "/images/books/saa-c03.jpg",
+      "tags": ["Developer", "DVA-C02"]
+    },
+    {
+      "slotId": "slot-3",
+      "title": "System Design Interview Volume 2",
+      "author": "Alex Xu & Sahn Lam",
+      "description": "More real-world system design problems with step-by-step solutions.",
+      "amazonUrl": "https://www.amazon.com/System-Design-Interview-Insiders-Guide/dp/1736049119?tag=dreamscribe09-20",
+      "imageUrl": "/images/books/ddia.jpg",
+      "tags": ["System Design", "Advanced"]
+    }
+  ]
+}
