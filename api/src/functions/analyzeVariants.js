@@ -1,4 +1,5 @@
 const { app } = require("@azure/functions");
+const { EmailClient } = require("@azure/communication-email");
 const {
   getActiveProducts,
   getActiveVariantsForSlot,
@@ -18,6 +19,40 @@ const DROP_THRESHOLD = parseFloat(process.env.AB_DROP_THRESHOLD || "0.5");
 const MIN_VARIANTS_PER_SLOT = parseInt(process.env.AB_MIN_VARIANTS || "1");
 const TARGET_VARIANTS_PER_SLOT = parseInt(process.env.AB_TARGET_VARIANTS || "2");
 
+// Email configuration
+const ACS_CONNECTION_STRING = process.env.ACS_CONNECTION_STRING || "";
+const NOTIFICATION_EMAIL = process.env.NOTIFICATION_EMAIL || "";
+const SENDER_EMAIL = process.env.SENDER_EMAIL || "DoNotReply@e57d08f2-19aa-4d8b-a7d1-f94a39c4065a.azurecomm.net";
+
+// Send email notification
+async function sendNotification(subject, htmlBody, context) {
+  if (!ACS_CONNECTION_STRING || !NOTIFICATION_EMAIL) {
+    context.log("Email not configured, skipping notification");
+    return;
+  }
+
+  try {
+    const emailClient = new EmailClient(ACS_CONNECTION_STRING);
+
+    const message = {
+      senderAddress: SENDER_EMAIL,
+      content: {
+        subject: subject,
+        html: htmlBody
+      },
+      recipients: {
+        to: [{ address: NOTIFICATION_EMAIL }]
+      }
+    };
+
+    const poller = await emailClient.beginSend(message);
+    await poller.pollUntilDone();
+    context.log(`Email sent: ${subject}`);
+  } catch (error) {
+    context.error("Failed to send email:", error.message);
+  }
+}
+
 function daysSince(dateString) {
   const created = new Date(dateString);
   const now = new Date();
@@ -28,18 +63,69 @@ function daysSince(dateString) {
 async function analyzeVariants(myTimer, context) {
   context.log("Starting daily A/B variant analysis");
 
+  // Track changes for email notification
+  const changes = {
+    dropped: [],
+    promoted: [],
+    totalImpressions: 0,
+    totalClicks: 0
+  };
+
   try {
     const products = await getActiveProducts();
     context.log(`Found ${products.length} active product slots`);
 
+    // First pass: check if there were any impressions at all
+    let hadAnyImpressions = false;
     for (const product of products) {
       const slotId = product.rowKey;
+      const variants = await getActiveVariantsForSlot(slotId);
+
+      for (const variant of variants) {
+        const stats = await getStatsForVariant(variant.rowKey, 1); // Last 1 day
+        const recentImpressions = stats.reduce((sum, s) => sum + (s.impressions || 0), 0);
+        const recentClicks = stats.reduce((sum, s) => sum + (s.clicks || 0), 0);
+        changes.totalImpressions += recentImpressions;
+        changes.totalClicks += recentClicks;
+        if (recentImpressions > 0) {
+          hadAnyImpressions = true;
+        }
+      }
+    }
+
+    // Skip analysis if no visitors in the last day
+    if (!hadAnyImpressions) {
+      context.log("No impressions in the last 24 hours - skipping analysis");
+      return;
+    }
+
+    context.log(`Found ${changes.totalImpressions} impressions and ${changes.totalClicks} clicks in last 24 hours`);
+
+    // Main analysis loop
+    for (const product of products) {
+      const slotId = product.rowKey;
+      const slotName = product.slotName || slotId;
       const variants = await getActiveVariantsForSlot(slotId);
 
       context.log(`Slot ${slotId}: ${variants.length} active variants`);
 
       if (variants.length <= 1) {
         context.log(`Skipping slot ${slotId} - need at least 2 variants to compare`);
+
+        // Still check if we need to add from pool
+        if (variants.length < TARGET_VARIANTS_PER_SLOT) {
+          const needed = TARGET_VARIANTS_PER_SLOT - variants.length;
+          const poolItems = await getRandomFromPool(slotId, needed);
+          for (const poolItem of poolItems) {
+            const newVariantId = await promoteFromPool(slotId, poolItem);
+            context.log(`Promoted from pool: "${poolItem.title}" as ${newVariantId}`);
+            changes.promoted.push({
+              slotName,
+              title: poolItem.title,
+              variantId: newVariantId
+            });
+          }
+        }
         continue;
       }
 
@@ -85,6 +171,13 @@ async function analyzeVariants(myTimer, context) {
           context.log(`Dropping variant ${analysis.variant.rowKey}: ${reason}`);
           await dropVariant(slotId, analysis.variant.rowKey, reason);
           activeCount--;
+
+          changes.dropped.push({
+            slotName,
+            title: analysis.variant.title,
+            ctr: analysis.ctr.toFixed(2),
+            reason
+          });
         }
       }
 
@@ -115,6 +208,11 @@ async function analyzeVariants(myTimer, context) {
         for (const poolItem of poolItems) {
           const newVariantId = await promoteFromPool(slotId, poolItem);
           context.log(`Promoted from pool: "${poolItem.title}" as ${newVariantId}`);
+          changes.promoted.push({
+            slotName,
+            title: poolItem.title,
+            variantId: newVariantId
+          });
         }
 
         if (poolItems.length === 0) {
@@ -127,9 +225,54 @@ async function analyzeVariants(myTimer, context) {
     const poolCounts = await getPoolCounts();
     context.log("Pool status:", JSON.stringify(poolCounts));
 
+    // Send email notification if there were changes
+    if (changes.dropped.length > 0 || changes.promoted.length > 0) {
+      const subject = `A/B Testing Update: ${changes.dropped.length} dropped, ${changes.promoted.length} promoted`;
+
+      let html = `
+        <h2>Daily A/B Testing Report</h2>
+        <p><strong>Date:</strong> ${new Date().toISOString().split('T')[0]}</p>
+        <p><strong>Last 24 Hours:</strong> ${changes.totalImpressions} impressions, ${changes.totalClicks} clicks</p>
+      `;
+
+      if (changes.dropped.length > 0) {
+        html += `<h3>Dropped Variants (${changes.dropped.length})</h3><ul>`;
+        for (const d of changes.dropped) {
+          html += `<li><strong>${d.slotName}:</strong> "${d.title}" - CTR: ${d.ctr}%</li>`;
+        }
+        html += `</ul>`;
+      }
+
+      if (changes.promoted.length > 0) {
+        html += `<h3>Promoted from Pool (${changes.promoted.length})</h3><ul>`;
+        for (const p of changes.promoted) {
+          html += `<li><strong>${p.slotName}:</strong> "${p.title}"</li>`;
+        }
+        html += `</ul>`;
+      }
+
+      html += `<h3>Pool Status</h3><ul>`;
+      for (const [slot, count] of Object.entries(poolCounts)) {
+        html += `<li>${slot}: ${count} items waiting</li>`;
+      }
+      html += `</ul>`;
+
+      html += `<p><a href="https://green-water-0b250a80f.3.azurestaticapps.net/admin.html">View Admin Dashboard</a></p>`;
+
+      await sendNotification(subject, html, context);
+    }
+
     context.log("A/B variant analysis completed");
   } catch (error) {
     context.error("Error in variant analysis:", error);
+
+    // Send error notification
+    await sendNotification(
+      "A/B Testing Error",
+      `<h2>Error in Daily Analysis</h2><p>${error.message}</p><pre>${error.stack}</pre>`,
+      context
+    );
+
     throw error;
   }
 }
