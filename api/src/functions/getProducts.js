@@ -1,26 +1,15 @@
-import { app, HttpRequest, HttpResponseInit, InvocationContext } from "@azure/functions";
-import { getActiveProducts, getActiveVariantsForSlot, selectVariantWeighted, Variant } from "../services/tableStorage";
+const { app } = require("@azure/functions");
+const { getActiveProducts, getActiveVariantsForSlot, selectVariantWeighted } = require("../services/tableStorage");
 
-interface ProductResponse {
-  slotId: string;
-  variantId: string;
-  title: string;
-  author: string;
-  description: string;
-  amazonUrl: string;
-  imageUrl: string | null;
-  tags: string[];
-}
-
-export async function getProducts(request: HttpRequest, context: InvocationContext): Promise<HttpResponseInit> {
+async function getProducts(request, context) {
   context.log("getProducts function processing request");
 
   try {
     const products = await getActiveProducts();
-    const response: ProductResponse[] = [];
+    const response = [];
 
     for (const product of products) {
-      const slotId = product.rowKey as string;
+      const slotId = product.rowKey;
       const variants = await getActiveVariantsForSlot(slotId);
 
       if (variants.length === 0) {
@@ -32,7 +21,7 @@ export async function getProducts(request: HttpRequest, context: InvocationConte
 
       response.push({
         slotId,
-        variantId: selected.rowKey as string,
+        variantId: selected.rowKey,
         title: selected.title,
         author: selected.author,
         description: selected.description,

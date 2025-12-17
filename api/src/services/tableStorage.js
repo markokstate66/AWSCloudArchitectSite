@@ -1,4 +1,4 @@
-import { TableClient, TableEntity, odata } from "@azure/data-tables";
+const { TableClient, odata } = require("@azure/data-tables");
 
 const connectionString = process.env.AZURE_STORAGE_CONNECTION_STRING || "";
 
@@ -7,42 +7,15 @@ const productsTable = TableClient.fromConnectionString(connectionString, "Produc
 const variantsTable = TableClient.fromConnectionString(connectionString, "Variants");
 const dailyStatsTable = TableClient.fromConnectionString(connectionString, "DailyStats");
 
-// Interfaces
-export interface Product extends TableEntity {
-  slotName: string;
-  isActive: boolean;
-  createdAt: string;
-}
-
-export interface Variant extends TableEntity {
-  title: string;
-  author: string;
-  description: string;
-  amazonUrl: string;
-  imageUrl?: string;
-  tags: string; // JSON array
-  isActive: boolean;
-  weight: number;
-  createdAt: string;
-  droppedAt?: string;
-  dropReason?: string;
-}
-
-export interface DailyStat extends TableEntity {
-  impressions: number;
-  clicks: number;
-  ctr: number;
-}
-
 // Helper to get today's date string
-export function getTodayString(): string {
+function getTodayString() {
   return new Date().toISOString().split("T")[0];
 }
 
 // Products operations
-export async function getActiveProducts(): Promise<Product[]> {
-  const products: Product[] = [];
-  const entities = productsTable.listEntities<Product>({
+async function getActiveProducts() {
+  const products = [];
+  const entities = productsTable.listEntities({
     queryOptions: { filter: odata`isActive eq true` }
   });
   for await (const entity of entities) {
@@ -51,7 +24,7 @@ export async function getActiveProducts(): Promise<Product[]> {
   return products;
 }
 
-export async function createProduct(slotId: string, slotName: string): Promise<void> {
+async function createProduct(slotId, slotName) {
   await productsTable.createEntity({
     partitionKey: "products",
     rowKey: slotId,
@@ -62,9 +35,9 @@ export async function createProduct(slotId: string, slotName: string): Promise<v
 }
 
 // Variants operations
-export async function getActiveVariantsForSlot(slotId: string): Promise<Variant[]> {
-  const variants: Variant[] = [];
-  const entities = variantsTable.listEntities<Variant>({
+async function getActiveVariantsForSlot(slotId) {
+  const variants = [];
+  const entities = variantsTable.listEntities({
     queryOptions: { filter: odata`PartitionKey eq ${slotId} and isActive eq true` }
   });
   for await (const entity of entities) {
@@ -73,29 +46,7 @@ export async function getActiveVariantsForSlot(slotId: string): Promise<Variant[
   return variants;
 }
 
-export async function getAllVariantsForSlot(slotId: string): Promise<Variant[]> {
-  const variants: Variant[] = [];
-  const entities = variantsTable.listEntities<Variant>({
-    queryOptions: { filter: odata`PartitionKey eq ${slotId}` }
-  });
-  for await (const entity of entities) {
-    variants.push(entity);
-  }
-  return variants;
-}
-
-export async function createVariant(
-  slotId: string,
-  variantId: string,
-  data: {
-    title: string;
-    author: string;
-    description: string;
-    amazonUrl: string;
-    imageUrl?: string;
-    tags: string[];
-  }
-): Promise<void> {
+async function createVariant(slotId, variantId, data) {
   await variantsTable.createEntity({
     partitionKey: slotId,
     rowKey: variantId,
@@ -111,16 +62,13 @@ export async function createVariant(
   });
 }
 
-export async function updateVariantWeight(slotId: string, variantId: string, weight: number): Promise<void> {
-  const entity = await variantsTable.getEntity<Variant>(slotId, variantId);
-  await variantsTable.updateEntity({
-    ...entity,
-    weight
-  }, "Merge");
+async function updateVariantWeight(slotId, variantId, weight) {
+  const entity = await variantsTable.getEntity(slotId, variantId);
+  await variantsTable.updateEntity({ ...entity, weight }, "Merge");
 }
 
-export async function dropVariant(slotId: string, variantId: string, reason: string): Promise<void> {
-  const entity = await variantsTable.getEntity<Variant>(slotId, variantId);
+async function dropVariant(slotId, variantId, reason) {
+  const entity = await variantsTable.getEntity(slotId, variantId);
   await variantsTable.updateEntity({
     ...entity,
     isActive: false,
@@ -131,10 +79,10 @@ export async function dropVariant(slotId: string, variantId: string, reason: str
 }
 
 // DailyStats operations
-export async function incrementImpression(variantId: string): Promise<void> {
+async function incrementImpression(variantId) {
   const today = getTodayString();
   try {
-    const entity = await dailyStatsTable.getEntity<DailyStat>(variantId, today);
+    const entity = await dailyStatsTable.getEntity(variantId, today);
     const impressions = (entity.impressions || 0) + 1;
     const clicks = entity.clicks || 0;
     await dailyStatsTable.updateEntity({
@@ -142,7 +90,7 @@ export async function incrementImpression(variantId: string): Promise<void> {
       impressions,
       ctr: clicks > 0 ? (clicks / impressions) * 100 : 0
     }, "Merge");
-  } catch (error: any) {
+  } catch (error) {
     if (error.statusCode === 404) {
       await dailyStatsTable.createEntity({
         partitionKey: variantId,
@@ -157,10 +105,10 @@ export async function incrementImpression(variantId: string): Promise<void> {
   }
 }
 
-export async function incrementClick(variantId: string): Promise<void> {
+async function incrementClick(variantId) {
   const today = getTodayString();
   try {
-    const entity = await dailyStatsTable.getEntity<DailyStat>(variantId, today);
+    const entity = await dailyStatsTable.getEntity(variantId, today);
     const clicks = (entity.clicks || 0) + 1;
     const impressions = entity.impressions || 1;
     await dailyStatsTable.updateEntity({
@@ -168,7 +116,7 @@ export async function incrementClick(variantId: string): Promise<void> {
       clicks,
       ctr: (clicks / impressions) * 100
     }, "Merge");
-  } catch (error: any) {
+  } catch (error) {
     if (error.statusCode === 404) {
       await dailyStatsTable.createEntity({
         partitionKey: variantId,
@@ -183,13 +131,13 @@ export async function incrementClick(variantId: string): Promise<void> {
   }
 }
 
-export async function getStatsForVariant(variantId: string, days: number = 7): Promise<DailyStat[]> {
-  const stats: DailyStat[] = [];
+async function getStatsForVariant(variantId, days = 7) {
+  const stats = [];
   const cutoffDate = new Date();
   cutoffDate.setDate(cutoffDate.getDate() - days);
   const cutoffString = cutoffDate.toISOString().split("T")[0];
 
-  const entities = dailyStatsTable.listEntities<DailyStat>({
+  const entities = dailyStatsTable.listEntities({
     queryOptions: { filter: odata`PartitionKey eq ${variantId} and RowKey ge ${cutoffString}` }
   });
 
@@ -199,9 +147,9 @@ export async function getStatsForVariant(variantId: string, days: number = 7): P
   return stats;
 }
 
-export async function getTotalImpressions(variantId: string): Promise<number> {
+async function getTotalImpressions(variantId) {
   let total = 0;
-  const entities = dailyStatsTable.listEntities<DailyStat>({
+  const entities = dailyStatsTable.listEntities({
     queryOptions: { filter: odata`PartitionKey eq ${variantId}` }
   });
   for await (const entity of entities) {
@@ -211,7 +159,7 @@ export async function getTotalImpressions(variantId: string): Promise<number> {
 }
 
 // Weighted random selection
-export function selectVariantWeighted(variants: Variant[]): Variant {
+function selectVariantWeighted(variants) {
   const activeVariants = variants.filter(v => v.isActive);
   if (activeVariants.length === 0) throw new Error("No active variants");
   if (activeVariants.length === 1) return activeVariants[0];
@@ -228,9 +176,24 @@ export function selectVariantWeighted(variants: Variant[]): Variant {
 }
 
 // Calculate rolling CTR
-export function calculateRollingCTR(stats: DailyStat[]): number {
+function calculateRollingCTR(stats) {
   const totalImpressions = stats.reduce((sum, s) => sum + (s.impressions || 0), 0);
   const totalClicks = stats.reduce((sum, s) => sum + (s.clicks || 0), 0);
   if (totalImpressions === 0) return 0;
   return (totalClicks / totalImpressions) * 100;
 }
+
+module.exports = {
+  getActiveProducts,
+  createProduct,
+  getActiveVariantsForSlot,
+  createVariant,
+  updateVariantWeight,
+  dropVariant,
+  incrementImpression,
+  incrementClick,
+  getStatsForVariant,
+  getTotalImpressions,
+  selectVariantWeighted,
+  calculateRollingCTR
+};

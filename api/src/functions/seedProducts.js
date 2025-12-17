@@ -1,30 +1,13 @@
-import { app, HttpRequest, HttpResponseInit, InvocationContext } from "@azure/functions";
-import { createProduct, createVariant } from "../services/tableStorage";
-
-interface SeedVariant {
-  title: string;
-  author: string;
-  description: string;
-  amazonUrl: string;
-  imageUrl?: string;
-  tags: string[];
-}
-
-interface SeedRequest {
-  products: {
-    slotId: string;
-    slotName: string;
-    variants: SeedVariant[];
-  }[];
-}
+const { app } = require("@azure/functions");
+const { createProduct, createVariant } = require("../services/tableStorage");
 
 const ADMIN_KEY = process.env.ADMIN_API_KEY || "aws-ab-admin-2025";
 
-function generateVariantId(): string {
+function generateVariantId() {
   return "var-" + Date.now().toString(36) + Math.random().toString(36).substr(2, 5);
 }
 
-export async function seedProducts(request: HttpRequest, context: InvocationContext): Promise<HttpResponseInit> {
+async function seedProducts(request, context) {
   // Check admin key
   const authKey = request.headers.get("x-admin-key");
   if (authKey !== ADMIN_KEY) {
@@ -35,7 +18,7 @@ export async function seedProducts(request: HttpRequest, context: InvocationCont
   }
 
   try {
-    const body = await request.json() as SeedRequest;
+    const body = await request.json();
 
     if (!body.products || !Array.isArray(body.products)) {
       return {
@@ -52,7 +35,7 @@ export async function seedProducts(request: HttpRequest, context: InvocationCont
         await createProduct(product.slotId, product.slotName);
         productsCreated++;
         context.log(`Created product slot: ${product.slotId}`);
-      } catch (error: any) {
+      } catch (error) {
         if (error.statusCode !== 409) { // Ignore if already exists
           throw error;
         }
@@ -80,7 +63,7 @@ export async function seedProducts(request: HttpRequest, context: InvocationCont
     context.error("Error seeding products:", error);
     return {
       status: 500,
-      body: JSON.stringify({ error: "Failed to seed products" })
+      body: JSON.stringify({ error: "Failed to seed products", details: error.message })
     };
   }
 }

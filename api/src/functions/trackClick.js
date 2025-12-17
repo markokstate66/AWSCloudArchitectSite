@@ -1,16 +1,9 @@
-import { app, HttpRequest, HttpResponseInit, InvocationContext } from "@azure/functions";
-import { incrementClick } from "../services/tableStorage";
+const { app } = require("@azure/functions");
+const { incrementClick } = require("../services/tableStorage");
 
-interface TrackRequest {
-  variantId: string;
-  slotId: string;
-  sessionId?: string;
-  page?: string;
-}
-
-export async function trackClick(request: HttpRequest, context: InvocationContext): Promise<HttpResponseInit> {
+async function trackClick(request, context) {
   try {
-    const body = await request.json() as TrackRequest;
+    const body = await request.json();
 
     if (!body.variantId) {
       return {
@@ -23,9 +16,7 @@ export async function trackClick(request: HttpRequest, context: InvocationContex
 
     context.log(`Click tracked for variant ${body.variantId}`);
 
-    return {
-      status: 204
-    };
+    return { status: 204 };
   } catch (error) {
     context.error("Error tracking click:", error);
     return {
