@@ -1,5 +1,4 @@
 const { app } = require("@azure/functions");
-const { EmailClient } = require("@azure/communication-email");
 
 const ACS_CONNECTION_STRING = process.env.ACS_CONNECTION_STRING || "";
 const NOTIFICATION_EMAIL = process.env.NOTIFICATION_EMAIL || "";
@@ -24,6 +23,8 @@ async function testEmail(request, context) {
   }
 
   try {
+    // Lazy load email client
+    const { EmailClient } = require("@azure/communication-email");
     const emailClient = new EmailClient(ACS_CONNECTION_STRING);
 
     // Sample data that mimics a real daily report

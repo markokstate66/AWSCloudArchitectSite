@@ -1,5 +1,4 @@
 const { app } = require("@azure/functions");
-const { EmailClient } = require("@azure/communication-email");
 const {
   getActiveProducts,
   getActiveVariantsForSlot,
@@ -32,6 +31,8 @@ async function sendNotification(subject, htmlBody, context) {
   }
 
   try {
+    // Lazy load email client to avoid crashing other functions
+    const { EmailClient } = require("@azure/communication-email");
     const emailClient = new EmailClient(ACS_CONNECTION_STRING);
 
     const message = {
