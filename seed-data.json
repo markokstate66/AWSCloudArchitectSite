@@ -1,0 +1,108 @@
+{
+  "products": [
+    {
+      "slotId": "slot-1",
+      "slotName": "SAA-C03 Study Guide",
+      "variants": [
+        {
+          "title": "AWS Certified Solutions Architect Study Guide: Associate SAA-C03 Exam",
+          "author": "Ben Piper & David Clinton",
+          "description": "The most comprehensive study guide for the SAA-C03 exam. Covers all exam objectives with hands-on labs and practice questions.",
+          "amazonUrl": "https://www.amazon.com/Certified-Solutions-Architect-Study-Guide/dp/1119982626?tag=dreamscribe09-20",
+          "tags": ["Best Seller", "SAA-C03"]
+        }
+      ]
+    },
+    {
+      "slotId": "slot-2",
+      "slotName": "SAP-C02 Professional Guide",
+      "variants": [
+        {
+          "title": "AWS Certified Solutions Architect Professional Study Guide (SAP-C02)",
+          "author": "Ben Piper & David Clinton",
+          "description": "Advanced guide for the professional-level certification. Deep dives into complex architectural patterns and enterprise scenarios.",
+          "amazonUrl": "https://www.amazon.com/Certified-Solutions-Architect-Professional-Study/dp/1119951097?tag=dreamscribe09-20",
+          "tags": ["Advanced", "SAP-C02"]
+        }
+      ]
+    },
+    {
+      "slotId": "slot-3",
+      "slotName": "Data-Intensive Applications",
+      "variants": [
+        {
+          "title": "Designing Data-Intensive Applications",
+          "author": "Martin Kleppmann",
+          "description": "The definitive guide to building reliable, scalable, and maintainable systems. Essential reading for any cloud architect.",
+          "amazonUrl": "https://www.amazon.com/Designing-Data-Intensive-Applications-Reliable-Maintainable/dp/1449373321?tag=dreamscribe09-20",
+          "tags": ["Must Read", "Architecture"]
+        }
+      ]
+    },
+    {
+      "slotId": "slot-4",
+      "slotName": "DevOps Culture",
+      "variants": [
+        {
+          "title": "The Phoenix Project",
+          "author": "Gene Kim, Kevin Behr & George Spafford",
+          "description": "A novel about IT, DevOps, and helping your business win. Understand the cultural and organizational aspects of cloud transformation.",
+          "amazonUrl": "https://www.amazon.com/Phoenix-Project-DevOps-Helping-Business/dp/1942788290?tag=dreamscribe09-20",
+          "tags": ["DevOps", "Culture"]
+        }
+      ]
+    },
+    {
+      "slotId": "slot-5",
+      "slotName": "Cloud Native Patterns",
+      "variants": [
+        {
+          "title": "Cloud Native Patterns",
+          "author": "Cornelia Davis",
+          "description": "Design patterns for building resilient, scalable cloud-native applications. Learn microservices, containers, and serverless patterns.",
+          "amazonUrl": "https://www.amazon.com/Cloud-Native-Designing-change-tolerant-software/dp/1617294292?tag=dreamscribe09-20",
+          "tags": ["Patterns", "Cloud Native"]
+        }
+      ]
+    },
+    {
+      "slotId": "slot-6",
+      "slotName": "Infrastructure as Code",
+      "variants": [
+        {
+          "title": "Terraform: Up & Running",
+          "author": "Yevgeniy Brikman",
+          "description": "Write infrastructure as code using Terraform. Essential for any cloud architect working with multi-cloud or AWS deployments.",
+          "amazonUrl": "https://www.amazon.com/Terraform-Running-Writing-Infrastructure-Code/dp/1098116747?tag=dreamscribe09-20",
+          "tags": ["IaC", "Terraform"]
+        }
+      ]
+    },
+    {
+      "slotId": "slot-7",
+      "slotName": "AWS Security",
+      "variants": [
+        {
+          "title": "AWS Security",
+          "author": "Dylan Shields",
+          "description": "Master AWS security services and best practices. Learn to secure your cloud infrastructure from the ground up.",
+          "amazonUrl": "https://www.amazon.com/AWS-Security-Dylan-Shields/dp/1617297003?tag=dreamscribe09-20",
+          "tags": ["Security", "Best Practices"]
+        }
+      ]
+    },
+    {
+      "slotId": "slot-8",
+      "slotName": "DevOps Handbook",
+      "variants": [
+        {
+          "title": "The DevOps Handbook",
+          "author": "Gene Kim, Jez Humble, Patrick Debois & John Willis",
+          "description": "How to create world-class agility, reliability, and security in technology organizations. The companion to The Phoenix Project.",
+          "amazonUrl": "https://www.amazon.com/DevOps-Handbook-World-Class-Reliability-Organizations/dp/1950508404?tag=dreamscribe09-20",
+          "tags": ["DevOps", "Essential"]
+        }
+      ]
+    }
+  ]
+}

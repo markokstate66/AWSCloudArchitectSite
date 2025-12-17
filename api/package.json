@@ -1,0 +1,20 @@
+{
+  "name": "aws-architect-ab-api",
+  "version": "1.0.0",
+  "description": "A/B Testing API for AWS Cloud Architect affiliate products",
+  "main": "dist/src/functions/*.js",
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc -w",
+    "start": "func start",
+    "test": "echo \"No tests yet\""
+  },
+  "dependencies": {
+    "@azure/data-tables": "^13.2.2",
+    "@azure/functions": "^4.5.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.x",
+    "typescript": "^5.x"
+  }
+}

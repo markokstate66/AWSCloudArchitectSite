@@ -81,44 +81,13 @@
             </div>
         </section>
 
-        <!-- CSP Partner Ad - Summit Technology Group -->
-        <section class="section csp-banner">
-            <div class="container">
-                <div class="csp-ad">
-                    <div class="csp-content">
-                        <div class="csp-badge">Trusted Partner</div>
-                        <h2>Summit Technology Group</h2>
-                        <p class="csp-tagline">Your One-Stop Shop for Business Technology</p>
-                        <div class="csp-services">
-                            <div class="csp-service">
-                                <span class="csp-icon">&#128187;</span>
-                                <h4>Software Licensing</h4>
-                                <p>Microsoft, AWS, and enterprise software licenses at competitive prices</p>
-                            </div>
-                            <div class="csp-service">
-                                <span class="csp-icon">&#9881;</span>
-                                <h4>Equipment & Hardware</h4>
-                                <p>Servers, workstations, networking gear - everything you need to run your business</p>
-                            </div>
-                            <div class="csp-service">
-                                <span class="csp-icon">&#128101;</span>
-                                <h4>Consulting Services</h4>
-                                <p>Expert guidance on cloud architecture, migrations, and IT strategy</p>
-                            </div>
-                        </div>
-                        <a href="#contact-csp" class="cta-button csp-cta">Get a Quote</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
         <!-- Recommended Books Section -->
         <section class="section">
             <div class="container">
                 <h2>Recommended AWS Books</h2>
                 <p class="section-subtitle">Essential reading for aspiring and experienced cloud architects</p>
 
-                <div class="books-grid">
+                <div class="books-grid" id="ab-books-container">
                     <!-- Book 1 -->
                     <div class="book-card">
                         <div class="book-cover">
@@ -381,33 +350,6 @@
             </div>
         </section>
 
-        <!-- CSP Contact Section -->
-        <section class="section" id="contact-csp">
-            <div class="container">
-                <div class="csp-contact">
-                    <h2>Ready to Power Your Business?</h2>
-                    <p>Summit Technology Group provides everything you need to build and run your IT infrastructure.</p>
-                    <div class="csp-features">
-                        <div class="csp-feature">
-                            <span>&#10003;</span> Competitive licensing pricing
-                        </div>
-                        <div class="csp-feature">
-                            <span>&#10003;</span> Enterprise hardware solutions
-                        </div>
-                        <div class="csp-feature">
-                            <span>&#10003;</span> Expert consulting available
-                        </div>
-                        <div class="csp-feature">
-                            <span>&#10003;</span> Dedicated account support
-                        </div>
-                    </div>
-                    <div class="csp-contact-info">
-                        <p>Contact us for a custom quote tailored to your business needs.</p>
-                        <a href="mailto:contact@summittechnologygroup.com" class="cta-button">Request a Quote</a>
-                    </div>
-                </div>
-            </div>
-        </section>
     </main>
 
     <footer class="footer">
@@ -446,5 +388,12 @@
     </footer>
 
     <script src="script.js"></script>
+    <script src="abtest.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', async function() {
+        // Try to load A/B tested products, fallback content stays if API fails
+        await ABTest.loadProducts('ab-books-container');
+    });
+    </script>
 </body>
 </html>

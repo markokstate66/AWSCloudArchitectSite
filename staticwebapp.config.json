@@ -7,7 +7,7 @@
   ],
   "navigationFallback": {
     "rewrite": "/index.html",
-    "exclude": ["*.css", "*.js", "*.png", "*.jpg", "*.jpeg", "*.gif", "*.svg", "*.ico", "*.webp", "*.woff", "*.woff2"]
+    "exclude": ["*.css", "*.js", "*.png", "*.jpg", "*.jpeg", "*.gif", "*.svg", "*.ico", "*.webp", "*.woff", "*.woff2", "/api/*"]
   },
   "responseOverrides": {
     "404": {
@@ -21,7 +21,7 @@
     "X-XSS-Protection": "1; mode=block",
     "Referrer-Policy": "strict-origin-when-cross-origin",
     "Permissions-Policy": "accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=()",
-    "Content-Security-Policy": "default-src 'self'; script-src 'self' 'unsafe-inline' https://pagead2.googlesyndication.com https://www.googletagservices.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; frame-src https://googleads.g.doubleclick.net https://tpc.googlesyndication.com; connect-src 'self' https://pagead2.googlesyndication.com"
+    "Content-Security-Policy": "default-src 'self'; script-src 'self' 'unsafe-inline' https://pagead2.googlesyndication.com https://www.googletagservices.com https://js.monitor.azure.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; frame-src https://googleads.g.doubleclick.net https://tpc.googlesyndication.com; connect-src 'self' https://pagead2.googlesyndication.com https://*.applicationinsights.azure.com https://*.in.applicationinsights.azure.com"
   },
   "mimeTypes": {
     ".json": "application/json",
