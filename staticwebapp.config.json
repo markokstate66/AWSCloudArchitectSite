@@ -11,14 +11,6 @@
     {
       "route": "/api/stats",
       "allowedRoles": ["admin"]
-    },
-    {
-      "route": "/api/seed",
-      "allowedRoles": ["admin"]
-    },
-    {
-      "route": "/api/clear",
-      "allowedRoles": ["admin"]
     }
   ],
   "navigationFallback": {
