@@ -71,6 +71,6 @@ async function seedProducts(request, context) {
 app.http("seedProducts", {
   methods: ["POST"],
   authLevel: "anonymous",
-  route: "admin/seed",
+  route: "seed",
   handler: seedProducts
 });
