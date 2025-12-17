@@ -1,4 +1,11 @@
 const { app } = require("@azure/functions");
+const {
+  getActiveProducts,
+  getActiveVariantsForSlot,
+  getStatsForVariant,
+  getTotalImpressions,
+  getPoolCounts
+} = require("../services/tableStorage");
 
 const ACS_CONNECTION_STRING = process.env.ACS_CONNECTION_STRING || "";
 const NOTIFICATION_EMAIL = process.env.NOTIFICATION_EMAIL || "";
@@ -27,60 +34,85 @@ async function testEmail(request, context) {
     const { EmailClient } = require("@azure/communication-email");
     const emailClient = new EmailClient(ACS_CONNECTION_STRING);
 
-    // Sample data that mimics a real daily report
-    const sampleReport = {
-      date: new Date().toISOString().split('T')[0],
-      impressions: 1247,
-      clicks: 43,
-      dropped: [
-        { slotName: "DevOps Culture", title: "The Phoenix Project", ctr: "1.2" },
-        { slotName: "Clean Code", title: "Clean Code: A Handbook of Agile Software Craftsmanship", ctr: "0.8" }
-      ],
-      promoted: [
-        { slotName: "DevOps Culture", title: "The Unicorn Project" },
-        { slotName: "Clean Code", title: "The Pragmatic Programmer" }
-      ],
-      poolCounts: {
-        "slot-1": 1,
-        "slot-2": 0,
-        "slot-3": 2,
-        "slot-4": 0,
-        "slot-5": 1,
-        "slot-6": 1,
-        "slot-7": 0,
-        "slot-8": 1
+    // Fetch real data from database
+    const products = await getActiveProducts();
+    let totalImpressions = 0;
+    let totalClicks = 0;
+    const variants = [];
+
+    for (const product of products) {
+      const slotId = product.rowKey;
+      const slotName = product.slotName || slotId;
+      const slotVariants = await getActiveVariantsForSlot(slotId);
+
+      for (const variant of slotVariants) {
+        const stats = await getStatsForVariant(variant.rowKey, 7);
+        const impressions = stats.reduce((sum, s) => sum + (s.impressions || 0), 0);
+        const clicks = stats.reduce((sum, s) => sum + (s.clicks || 0), 0);
+        const allTimeImpressions = await getTotalImpressions(variant.rowKey);
+        const ctr = impressions > 0 ? ((clicks / impressions) * 100).toFixed(2) : "0.00";
+
+        totalImpressions += impressions;
+        totalClicks += clicks;
+
+        variants.push({
+          slotName,
+          title: variant.title,
+          impressions,
+          clicks,
+          ctr,
+          allTimeImpressions,
+          weight: variant.weight || 100
+        });
       }
+    }
+
+    const poolCounts = await getPoolCounts();
+    const overallCTR = totalImpressions > 0 ? ((totalClicks / totalImpressions) * 100).toFixed(2) : "0.00";
+
+    const realReport = {
+      date: new Date().toISOString().split('T')[0],
+      impressions: totalImpressions,
+      clicks: totalClicks,
+      ctr: overallCTR,
+      variants,
+      poolCounts
     };
 
     let html = `
       <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-        <h2 style="color: #ff9900; border-bottom: 2px solid #ff9900; padding-bottom: 10px;">Daily A/B Testing Report</h2>
-        <p><strong>Date:</strong> ${sampleReport.date}</p>
-        <p><strong>Last 24 Hours:</strong> ${sampleReport.impressions.toLocaleString()} impressions, ${sampleReport.clicks} clicks (${((sampleReport.clicks/sampleReport.impressions)*100).toFixed(2)}% CTR)</p>
+        <h2 style="color: #ff9900; border-bottom: 2px solid #ff9900; padding-bottom: 10px;">A/B Testing Status Report</h2>
+        <p><strong>Date:</strong> ${realReport.date}</p>
+        <p><strong>Last 7 Days:</strong> ${realReport.impressions.toLocaleString()} impressions, ${realReport.clicks} clicks (${realReport.ctr}% CTR)</p>
 
-        <h3 style="color: #dc3545; margin-top: 20px;">🔻 Dropped Variants (${sampleReport.dropped.length})</h3>
-        <p style="color: #666; font-size: 14px;">These products performed below 50% of slot average CTR and have been removed from rotation.</p>
-        <ul style="background: #fff5f5; padding: 15px 30px; border-radius: 5px;">
+        <h3 style="color: #232f3e; margin-top: 20px;">📊 Active Variants Performance</h3>
+        <table style="width: 100%; border-collapse: collapse; background: #f8f9fa; border-radius: 5px; font-size: 14px;">
+          <tr style="background: #232f3e; color: white;">
+            <th style="padding: 10px; text-align: left;">Slot</th>
+            <th style="padding: 10px; text-align: left;">Product</th>
+            <th style="padding: 10px; text-align: center;">7-Day Impr</th>
+            <th style="padding: 10px; text-align: center;">Clicks</th>
+            <th style="padding: 10px; text-align: center;">CTR</th>
+            <th style="padding: 10px; text-align: center;">Weight</th>
+          </tr>
     `;
 
-    for (const d of sampleReport.dropped) {
-      html += `<li style="margin: 8px 0;"><strong>${d.slotName}:</strong> "${d.title}" - CTR: ${d.ctr}%</li>`;
+    for (const v of realReport.variants) {
+      const ctrColor = parseFloat(v.ctr) >= 2 ? '#28a745' : (parseFloat(v.ctr) < 1 ? '#dc3545' : '#666');
+      html += `
+          <tr>
+            <td style="padding: 8px; border-bottom: 1px solid #dee2e6;">${v.slotName}</td>
+            <td style="padding: 8px; border-bottom: 1px solid #dee2e6;">${v.title.substring(0, 30)}${v.title.length > 30 ? '...' : ''}</td>
+            <td style="padding: 8px; text-align: center; border-bottom: 1px solid #dee2e6;">${v.impressions}</td>
+            <td style="padding: 8px; text-align: center; border-bottom: 1px solid #dee2e6;">${v.clicks}</td>
+            <td style="padding: 8px; text-align: center; border-bottom: 1px solid #dee2e6; color: ${ctrColor}; font-weight: bold;">${v.ctr}%</td>
+            <td style="padding: 8px; text-align: center; border-bottom: 1px solid #dee2e6;">${v.weight}</td>
+          </tr>
+      `;
     }
 
     html += `
-        </ul>
-
-        <h3 style="color: #28a745; margin-top: 20px;">🔺 Promoted from Pool (${sampleReport.promoted.length})</h3>
-        <p style="color: #666; font-size: 14px;">These products were randomly selected from the pool to replace dropped variants.</p>
-        <ul style="background: #f0fff0; padding: 15px 30px; border-radius: 5px;">
-    `;
-
-    for (const p of sampleReport.promoted) {
-      html += `<li style="margin: 8px 0;"><strong>${p.slotName}:</strong> "${p.title}"</li>`;
-    }
-
-    html += `
-        </ul>
+        </table>
 
         <h3 style="color: #232f3e; margin-top: 20px;">📦 Pool Status</h3>
         <p style="color: #666; font-size: 14px;">Products waiting in the pool to be tested:</p>
@@ -91,7 +123,7 @@ async function testEmail(request, context) {
           </tr>
     `;
 
-    for (const [slot, count] of Object.entries(sampleReport.poolCounts)) {
+    for (const [slot, count] of Object.entries(realReport.poolCounts)) {
       const color = count === 0 ? '#dc3545' : '#28a745';
       html += `
           <tr>
@@ -109,8 +141,8 @@ async function testEmail(request, context) {
         </div>
 
         <p style="color: #999; font-size: 12px; margin-top: 20px; text-align: center;">
-          This is a TEST email from your AWS Cloud Architect A/B Testing System.<br>
-          Real emails will be sent daily at 6 AM UTC when changes occur.
+          AWS Cloud Architect A/B Testing System<br>
+          Automated emails sent daily at 6 AM UTC when changes occur.
         </p>
       </div>
     `;
@@ -118,7 +150,7 @@ async function testEmail(request, context) {
     const message = {
       senderAddress: SENDER_EMAIL,
       content: {
-        subject: "TEST: A/B Testing Update - 2 dropped, 2 promoted",
+        subject: `A/B Testing Report: ${realReport.impressions} impressions, ${realReport.ctr}% CTR`,
         html: html
       },
       recipients: {
