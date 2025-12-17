@@ -1324,10 +1324,19 @@ ul {
 
 .book-cover {
     background: linear-gradient(135deg, var(--secondary-color), #1a1a2e);
-    height: 150px;
+    height: 200px;
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 15px;
+}
+
+.book-cover img {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+    border-radius: 4px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
 
 .book-placeholder {
