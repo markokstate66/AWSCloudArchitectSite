@@ -9,22 +9,22 @@
           "author": "Ben Piper & David Clinton",
           "description": "The most comprehensive study guide for the SAA-C03 exam. Covers all exam objectives with hands-on labs and practice questions.",
           "amazonUrl": "https://www.amazon.com/Certified-Solutions-Architect-Study-Guide/dp/1119982626?tag=dreamscribe09-20",
-          "imageUrl": "https://m.media-amazon.com/images/I/51Gu8F59OgL._SY466_.jpg",
+          "imageUrl": "/images/books/saa-c03.jpg",
           "tags": ["Best Seller", "SAA-C03"]
         }
       ]
     },
     {
       "slotId": "slot-2",
-      "slotName": "SAP-C02 Professional Guide",
+      "slotName": "Kubernetes Guide",
       "variants": [
         {
-          "title": "AWS Certified Solutions Architect Professional Study Guide (SAP-C02)",
-          "author": "Ben Piper & David Clinton",
-          "description": "Advanced guide for the professional-level certification. Deep dives into complex architectural patterns and enterprise scenarios.",
-          "amazonUrl": "https://www.amazon.com/Certified-Solutions-Architect-Professional-Study/dp/1119951097?tag=dreamscribe09-20",
-          "imageUrl": "https://m.media-amazon.com/images/I/51DM+3CsxjL._SY466_.jpg",
-          "tags": ["Advanced", "SAP-C02"]
+          "title": "The Kubernetes Book",
+          "author": "Nigel Poulton",
+          "description": "The fastest way to get your head around Kubernetes. Perfect for architects building cloud-native container orchestration.",
+          "amazonUrl": "https://www.amazon.com/Kubernetes-Book-Nigel-Poulton/dp/1521823634?tag=dreamscribe09-20",
+          "imageUrl": "/images/books/sap-c02.jpg",
+          "tags": ["Kubernetes", "Containers"]
         }
       ]
     },
@@ -37,7 +37,7 @@
           "author": "Martin Kleppmann",
           "description": "The definitive guide to building reliable, scalable, and maintainable systems. Essential reading for any cloud architect.",
           "amazonUrl": "https://www.amazon.com/Designing-Data-Intensive-Applications-Reliable-Maintainable/dp/1449373321?tag=dreamscribe09-20",
-          "imageUrl": "https://m.media-amazon.com/images/I/51gP8mU5HEL._SY466_.jpg",
+          "imageUrl": "/images/books/ddia.jpg",
           "tags": ["Must Read", "Architecture"]
         }
       ]
@@ -51,7 +51,7 @@
           "author": "Gene Kim, Kevin Behr & George Spafford",
           "description": "A novel about IT, DevOps, and helping your business win. Understand the cultural and organizational aspects of cloud transformation.",
           "amazonUrl": "https://www.amazon.com/Phoenix-Project-DevOps-Helping-Business/dp/1942788290?tag=dreamscribe09-20",
-          "imageUrl": "https://m.media-amazon.com/images/I/51BY0CB3iyL._SY466_.jpg",
+          "imageUrl": "/images/books/phoenix-project.jpg",
           "tags": ["DevOps", "Culture"]
         }
       ]
@@ -65,7 +65,7 @@
           "author": "Cornelia Davis",
           "description": "Design patterns for building resilient, scalable cloud-native applications. Learn microservices, containers, and serverless patterns.",
           "amazonUrl": "https://www.amazon.com/Cloud-Native-Designing-change-tolerant-software/dp/1617294292?tag=dreamscribe09-20",
-          "imageUrl": "https://m.media-amazon.com/images/I/517dPwqQ8KL._SY466_.jpg",
+          "imageUrl": "/images/books/cloud-native.jpg",
           "tags": ["Patterns", "Cloud Native"]
         }
       ]
@@ -79,22 +79,22 @@
           "author": "Yevgeniy Brikman",
           "description": "Write infrastructure as code using Terraform. Essential for any cloud architect working with multi-cloud or AWS deployments.",
           "amazonUrl": "https://www.amazon.com/Terraform-Running-Writing-Infrastructure-Code/dp/1098116747?tag=dreamscribe09-20",
-          "imageUrl": "https://m.media-amazon.com/images/I/51Gbu+b3PjL._SY466_.jpg",
+          "imageUrl": "/images/books/terraform.jpg",
           "tags": ["IaC", "Terraform"]
         }
       ]
     },
     {
       "slotId": "slot-7",
-      "slotName": "AWS Security",
+      "slotName": "Clean Code",
       "variants": [
         {
-          "title": "AWS Security",
-          "author": "Dylan Shields",
-          "description": "Master AWS security services and best practices. Learn to secure your cloud infrastructure from the ground up.",
-          "amazonUrl": "https://www.amazon.com/AWS-Security-Dylan-Shields/dp/1617297003?tag=dreamscribe09-20",
-          "imageUrl": "https://m.media-amazon.com/images/I/41R7xO9desL._SY466_.jpg",
-          "tags": ["Security", "Best Practices"]
+          "title": "Clean Code: A Handbook of Agile Software Craftsmanship",
+          "author": "Robert C. Martin",
+          "description": "The classic guide to writing clean, maintainable code. Essential principles for any software professional.",
+          "amazonUrl": "https://www.amazon.com/Clean-Code-Handbook-Software-Craftsmanship/dp/0132350882?tag=dreamscribe09-20",
+          "imageUrl": "/images/books/aws-security.jpg",
+          "tags": ["Clean Code", "Best Practices"]
         }
       ]
     },
@@ -107,7 +107,7 @@
           "author": "Gene Kim, Jez Humble, Patrick Debois & John Willis",
           "description": "How to create world-class agility, reliability, and security in technology organizations. The companion to The Phoenix Project.",
           "amazonUrl": "https://www.amazon.com/DevOps-Handbook-World-Class-Reliability-Organizations/dp/1950508404?tag=dreamscribe09-20",
-          "imageUrl": "https://m.media-amazon.com/images/I/51GspNFDWIL._SY466_.jpg",
+          "imageUrl": "/images/books/devops-handbook.jpg",
           "tags": ["DevOps", "Essential"]
         }
       ]
