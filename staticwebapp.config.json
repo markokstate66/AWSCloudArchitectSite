@@ -6,19 +6,19 @@
     },
     {
       "route": "/admin.html",
-      "allowedRoles": ["authenticated"]
+      "allowedRoles": ["admin"]
     },
     {
       "route": "/api/stats",
-      "allowedRoles": ["authenticated"]
+      "allowedRoles": ["admin"]
     },
     {
       "route": "/api/seed",
-      "allowedRoles": ["authenticated"]
+      "allowedRoles": ["admin"]
     },
     {
       "route": "/api/clear",
-      "allowedRoles": ["authenticated"]
+      "allowedRoles": ["admin"]
     }
   ],
   "navigationFallback": {
