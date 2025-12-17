@@ -219,6 +219,23 @@ Then re-seed (new variants will be added alongside existing ones).
 | `/api/track/impression` | POST | Track product view |
 | `/api/track/click` | POST | Track affiliate click |
 | `/api/seed` | POST | Seed products (requires x-admin-key header) |
+| `/api/clear` | POST | Clear all products/variants/stats (requires x-admin-key header) |
+
+### Resetting Products
+
+To completely replace all products (e.g., update images):
+
+```bash
+# Clear everything
+curl -X POST "https://your-site.azurestaticapps.net/api/clear" \
+  -H "x-admin-key: your-secret-key"
+
+# Re-seed with new data
+curl -X POST "https://your-site.azurestaticapps.net/api/seed" \
+  -H "Content-Type: application/json" \
+  -H "x-admin-key: your-secret-key" \
+  -d @seed-data.json
+```
 
 ---
 
