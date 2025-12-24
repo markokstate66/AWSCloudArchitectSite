@@ -15,7 +15,7 @@
   ],
   "navigationFallback": {
     "rewrite": "/index.html",
-    "exclude": ["*.css", "*.js", "*.png", "*.jpg", "*.jpeg", "*.gif", "*.svg", "*.ico", "*.webp", "*.woff", "*.woff2", "/api/*", "/admin.html"]
+    "exclude": ["*.css", "*.js", "*.png", "*.jpg", "*.jpeg", "*.gif", "*.svg", "*.ico", "*.webp", "*.woff", "*.woff2", "*.xml", "*.txt", "/api/*", "/admin.html"]
   },
   "responseOverrides": {
     "401": {
@@ -39,6 +39,8 @@
     ".json": "application/json",
     ".css": "text/css",
     ".js": "application/javascript",
-    ".html": "text/html"
+    ".html": "text/html",
+    ".xml": "application/xml",
+    ".txt": "text/plain"
   }
 }
