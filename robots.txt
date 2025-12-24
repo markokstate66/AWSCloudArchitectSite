@@ -4,7 +4,7 @@ User-agent: *
 Allow: /
 
 # Sitemap location
-Sitemap: https://awscloudarchitect.com/sitemap.xml
+Sitemap: https://www.awscloudarchitect.com/sitemap.xml
 
 # Disallow admin and API paths
 Disallow: /admin.html
