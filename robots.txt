@@ -1,0 +1,11 @@
+# Robots.txt for awscloudarchitect.com
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://awscloudarchitect.com/sitemap.xml
+
+# Disallow admin and API paths
+Disallow: /admin.html
+Disallow: /api/
