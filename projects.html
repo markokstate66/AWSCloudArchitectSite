@@ -47,7 +47,14 @@
     <link rel="dns-prefetch" href="https://www.googletagmanager.com">
     <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
 
-    <link rel="stylesheet" href="styles.css">
+    <!-- Critical CSS for above-fold content -->
+    <style>
+    :root{--primary-color:#ff9900;--primary-dark:#ec7211;--secondary-color:#232f3e;--dark-bg:#1a1a2e;--light-bg:#f5f5f5;--text-color:#333;--text-white:#fff;--gradient-start:#232f3e;--gradient-end:#1a1a2e}*{margin:0;padding:0;box-sizing:border-box}body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen,Ubuntu,sans-serif;line-height:1.6;color:var(--text-color);background:var(--light-bg)}a{color:var(--primary-color);text-decoration:none}ul{list-style:none}.header{background:var(--secondary-color);position:fixed;width:100%;top:0;z-index:1000;box-shadow:0 2px 10px rgba(0,0,0,.3)}.nav-container{max-width:1200px;margin:0 auto;padding:0 20px;display:flex;justify-content:space-between;align-items:center;height:70px}.logo{display:flex;align-items:center;gap:10px;color:var(--text-white);font-size:1.3rem;font-weight:700}.logo-icon{color:var(--primary-color);font-size:1.8rem}.nav-links{display:flex;gap:30px}.nav-links a{color:var(--text-white);font-weight:500;padding:8px 0}.mobile-menu-btn{display:none}.hero{background:linear-gradient(135deg,var(--gradient-start) 0%,var(--gradient-end) 100%);padding:160px 20px 100px;text-align:center;color:var(--text-white);position:relative;overflow:hidden}.hero-content{position:relative;z-index:1;max-width:900px;margin:0 auto}.hero h1{font-size:3rem;font-weight:800;margin-bottom:20px;line-height:1.2}.highlight{color:var(--primary-color)}.hero-subtitle{font-size:1.3rem;color:rgba(255,255,255,.9);margin-bottom:40px;max-width:700px;margin-left:auto;margin-right:auto}@media(max-width:768px){.nav-links{display:none}.mobile-menu-btn{display:flex;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:5px}.mobile-menu-btn span{width:25px;height:3px;background:var(--text-white);border-radius:2px}.hero{padding:140px 20px 80px}.hero h1{font-size:2rem}}
+    </style>
+
+    <!-- Preload and async load full stylesheet -->
+    <link rel="preload" href="styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="styles.css"></noscript>
 
     <!-- Structured Data for SEO -->
     <script type="application/ld+json">
