@@ -308,7 +308,7 @@ ul {
 
 .tag {
     background: rgba(255, 153, 0, 0.2);
-    color: var(--primary-color);
+    color: #b45309;
     padding: 8px 16px;
     border-radius: 20px;
     font-size: 0.9rem;
