@@ -230,6 +230,94 @@
                     </div>
 
                     <div class="guide-section">
+                        <h2>Code Examples</h2>
+
+                        <h3>EC2 User Data Script</h3>
+                        <div class="code-block">
+                            <div class="code-header">
+                                <span class="code-label">user-data.sh</span>
+                                <span class="code-lang">BASH</span>
+                            </div>
+                            <pre><code>#!/bin/bash
+# Update system packages
+yum update -y
+
+# Install nginx
+amazon-linux-extras install nginx1 -y
+
+# Start and enable nginx
+systemctl start nginx
+systemctl enable nginx
+
+# Create a simple index page
+cat > /usr/share/nginx/html/index.html << 'EOF'
+<!DOCTYPE html>
+<html>
+<head><title>Welcome</title></head>
+<body><h1>Hello from EC2!</h1></body>
+</html>
+EOF</code></pre>
+                        </div>
+
+                        <h3>Security Group Configuration (AWS CLI)</h3>
+                        <div class="code-block">
+                            <div class="code-header">
+                                <span class="code-label">Terminal Commands</span>
+                                <span class="code-lang">BASH</span>
+                            </div>
+                            <pre><code># Create security group
+aws ec2 create-security-group \
+    --group-name web-server-sg \
+    --description "Web server security group"
+
+# Allow SSH (restrict to your IP in production)
+aws ec2 authorize-security-group-ingress \
+    --group-name web-server-sg \
+    --protocol tcp --port 22 \
+    --cidr 0.0.0.0/0
+
+# Allow HTTP
+aws ec2 authorize-security-group-ingress \
+    --group-name web-server-sg \
+    --protocol tcp --port 80 \
+    --cidr 0.0.0.0/0
+
+# Allow HTTPS
+aws ec2 authorize-security-group-ingress \
+    --group-name web-server-sg \
+    --protocol tcp --port 443 \
+    --cidr 0.0.0.0/0</code></pre>
+                        </div>
+
+                        <h3>Nginx Configuration</h3>
+                        <div class="code-block">
+                            <div class="code-header">
+                                <span class="code-label">/etc/nginx/conf.d/myapp.conf</span>
+                                <span class="code-lang">NGINX</span>
+                            </div>
+                            <pre><code>server {
+    listen 80;
+    server_name example.com www.example.com;
+
+    root /var/www/myapp;
+    index index.html;
+
+    location / {
+        try_files $uri $uri/ =404;
+    }
+
+    # Enable gzip compression
+    gzip on;
+    gzip_types text/plain text/css application/json application/javascript;
+
+    # Security headers
+    add_header X-Frame-Options "SAMEORIGIN" always;
+    add_header X-Content-Type-Options "nosniff" always;
+}</code></pre>
+                        </div>
+                    </div>
+
+                    <div class="guide-section">
                         <h2>What You'll Learn</h2>
                         <ul class="guide-list">
                             <li>EC2 instance launching and configuration</li>

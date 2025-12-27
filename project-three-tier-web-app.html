@@ -243,6 +243,101 @@
                     </div>
 
                     <div class="guide-section">
+                        <h2>Code Examples</h2>
+
+                        <h3>VPC CloudFormation Template</h3>
+                        <div class="code-block">
+                            <div class="code-header">
+                                <span class="code-label">vpc.yaml</span>
+                                <span class="code-lang">YAML</span>
+                            </div>
+                            <pre><code>AWSTemplateFormatVersion: '2010-09-09'
+Resources:
+  VPC:
+    Type: AWS::EC2::VPC
+    Properties:
+      CidrBlock: 10.0.0.0/16
+      EnableDnsHostnames: true
+      Tags:
+        - Key: Name
+          Value: three-tier-vpc
+
+  PublicSubnet1:
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId: !Ref VPC
+      CidrBlock: 10.0.1.0/24
+      AvailabilityZone: !Select [0, !GetAZs '']
+      MapPublicIpOnLaunch: true
+
+  PrivateSubnet1:
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId: !Ref VPC
+      CidrBlock: 10.0.10.0/24
+      AvailabilityZone: !Select [0, !GetAZs '']</code></pre>
+                        </div>
+
+                        <h3>Auto Scaling Group Configuration</h3>
+                        <div class="code-block">
+                            <div class="code-header">
+                                <span class="code-label">asg.yaml</span>
+                                <span class="code-lang">YAML</span>
+                            </div>
+                            <pre><code>AutoScalingGroup:
+  Type: AWS::AutoScaling::AutoScalingGroup
+  Properties:
+    LaunchTemplate:
+      LaunchTemplateId: !Ref LaunchTemplate
+      Version: !GetAtt LaunchTemplate.LatestVersionNumber
+    MinSize: 2
+    MaxSize: 4
+    DesiredCapacity: 2
+    VPCZoneIdentifier:
+      - !Ref PrivateSubnet1
+      - !Ref PrivateSubnet2
+    TargetGroupARNs:
+      - !Ref TargetGroup
+    HealthCheckType: ELB
+    HealthCheckGracePeriod: 300
+
+ScalingPolicy:
+  Type: AWS::AutoScaling::ScalingPolicy
+  Properties:
+    AutoScalingGroupName: !Ref AutoScalingGroup
+    PolicyType: TargetTrackingScaling
+    TargetTrackingConfiguration:
+      PredefinedMetricSpecification:
+        PredefinedMetricType: ASGAverageCPUUtilization
+      TargetValue: 70</code></pre>
+                        </div>
+
+                        <h3>RDS Multi-AZ Configuration</h3>
+                        <div class="code-block">
+                            <div class="code-header">
+                                <span class="code-label">rds.yaml</span>
+                                <span class="code-lang">YAML</span>
+                            </div>
+                            <pre><code>RDSInstance:
+  Type: AWS::RDS::DBInstance
+  Properties:
+    DBInstanceIdentifier: myapp-db
+    DBInstanceClass: db.t3.micro
+    Engine: mysql
+    EngineVersion: '8.0'
+    MasterUsername: admin
+    MasterUserPassword: !Ref DBPassword
+    AllocatedStorage: 20
+    MultiAZ: true
+    DBSubnetGroupName: !Ref DBSubnetGroup
+    VPCSecurityGroups:
+      - !Ref DBSecurityGroup
+    BackupRetentionPeriod: 7
+    StorageEncrypted: true</code></pre>
+                        </div>
+                    </div>
+
+                    <div class="guide-section">
                         <h2>What You'll Learn</h2>
                         <ul class="guide-list">
                             <li>Application Load Balancer configuration and health checks</li>

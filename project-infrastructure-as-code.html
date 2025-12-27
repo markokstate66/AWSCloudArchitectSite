@@ -242,6 +242,185 @@
                     </div>
 
                     <div class="guide-section">
+                        <h2>Code Examples</h2>
+
+                        <h3>CloudFormation VPC Template</h3>
+                        <div class="code-block">
+                            <div class="code-header">
+                                <span class="code-label">vpc-template.yaml</span>
+                                <span class="code-lang">YAML</span>
+                            </div>
+                            <pre><code>AWSTemplateFormatVersion: '2010-09-09'
+Description: VPC with public and private subnets
+
+Parameters:
+  VpcCidr:
+    Type: String
+    Default: 10.0.0.0/16
+
+Resources:
+  VPC:
+    Type: AWS::EC2::VPC
+    Properties:
+      CidrBlock: !Ref VpcCidr
+      EnableDnsHostnames: true
+      Tags:
+        - Key: Name
+          Value: !Sub ${AWS::StackName}-vpc
+
+  PublicSubnet:
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId: !Ref VPC
+      CidrBlock: !Select [0, !Cidr [!Ref VpcCidr, 4, 8]]
+      AvailabilityZone: !Select [0, !GetAZs '']
+      MapPublicIpOnLaunch: true
+
+  PrivateSubnet:
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId: !Ref VPC
+      CidrBlock: !Select [1, !Cidr [!Ref VpcCidr, 4, 8]]
+      AvailabilityZone: !Select [0, !GetAZs '']
+
+  InternetGateway:
+    Type: AWS::EC2::InternetGateway
+
+  VPCGatewayAttachment:
+    Type: AWS::EC2::VPCGatewayAttachment
+    Properties:
+      VpcId: !Ref VPC
+      InternetGatewayId: !Ref InternetGateway
+
+Outputs:
+  VpcId:
+    Value: !Ref VPC
+    Export:
+      Name: !Sub ${AWS::StackName}-VpcId</code></pre>
+                        </div>
+
+                        <h3>Terraform AWS Configuration</h3>
+                        <div class="code-block">
+                            <div class="code-header">
+                                <span class="code-label">main.tf</span>
+                                <span class="code-lang">HCL</span>
+                            </div>
+                            <pre><code>terraform {
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 5.0"
+    }
+  }
+  backend "s3" {
+    bucket = "my-terraform-state"
+    key    = "vpc/terraform.tfstate"
+    region = "us-east-1"
+  }
+}
+
+provider "aws" {
+  region = var.aws_region
+}
+
+resource "aws_vpc" "main" {
+  cidr_block           = var.vpc_cidr
+  enable_dns_hostnames = true
+
+  tags = {
+    Name = "${var.project_name}-vpc"
+  }
+}
+
+resource "aws_subnet" "public" {
+  count             = length(var.availability_zones)
+  vpc_id            = aws_vpc.main.id
+  cidr_block        = cidrsubnet(var.vpc_cidr, 4, count.index)
+  availability_zone = var.availability_zones[count.index]
+
+  tags = {
+    Name = "${var.project_name}-public-${count.index + 1}"
+  }
+}
+
+resource "aws_internet_gateway" "main" {
+  vpc_id = aws_vpc.main.id
+
+  tags = {
+    Name = "${var.project_name}-igw"
+  }
+}</code></pre>
+                        </div>
+
+                        <h3>AWS CDK (TypeScript)</h3>
+                        <div class="code-block">
+                            <div class="code-header">
+                                <span class="code-label">lib/vpc-stack.ts</span>
+                                <span class="code-lang">TYPESCRIPT</span>
+                            </div>
+                            <pre><code>import * as cdk from 'aws-cdk-lib';
+import * as ec2 from 'aws-cdk-lib/aws-ec2';
+
+export class VpcStack extends cdk.Stack {
+  public readonly vpc: ec2.Vpc;
+
+  constructor(scope: cdk.App, id: string, props?: cdk.StackProps) {
+    super(scope, id, props);
+
+    this.vpc = new ec2.Vpc(this, 'MainVpc', {
+      maxAzs: 2,
+      subnetConfiguration: [
+        {
+          name: 'Public',
+          subnetType: ec2.SubnetType.PUBLIC,
+          cidrMask: 24,
+        },
+        {
+          name: 'Private',
+          subnetType: ec2.SubnetType.PRIVATE_WITH_EGRESS,
+          cidrMask: 24,
+        },
+      ],
+    });
+
+    new cdk.CfnOutput(this, 'VpcId', {
+      value: this.vpc.vpcId,
+    });
+  }
+}</code></pre>
+                        </div>
+
+                        <h3>CLI Commands</h3>
+                        <div class="code-block">
+                            <div class="code-header">
+                                <span class="code-label">Terminal Commands</span>
+                                <span class="code-lang">BASH</span>
+                            </div>
+                            <pre><code># CloudFormation
+aws cloudformation deploy \
+    --template-file vpc-template.yaml \
+    --stack-name my-vpc-stack \
+    --parameter-overrides VpcCidr=10.0.0.0/16
+
+# View change set before applying
+aws cloudformation create-change-set \
+    --stack-name my-vpc-stack \
+    --change-set-name my-changes \
+    --template-body file://vpc-template.yaml
+
+# Terraform
+terraform init
+terraform plan -out=tfplan
+terraform apply tfplan
+
+# CDK
+cdk bootstrap
+cdk diff
+cdk deploy</code></pre>
+                        </div>
+                    </div>
+
+                    <div class="guide-section">
                         <h2>What You'll Learn</h2>
                         <ul class="guide-list">
                             <li>Infrastructure as Code principles and benefits</li>

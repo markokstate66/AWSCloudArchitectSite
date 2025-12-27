@@ -231,6 +231,126 @@
                     </div>
 
                     <div class="guide-section">
+                        <h2>Code Examples</h2>
+
+                        <h3>Lambda Function (Python)</h3>
+                        <div class="code-block">
+                            <div class="code-header">
+                                <span class="code-label">lambda_function.py</span>
+                                <span class="code-lang">PYTHON</span>
+                            </div>
+                            <pre><code>import json
+import boto3
+import os
+
+ses = boto3.client('ses')
+
+def lambda_handler(event, context):
+    try:
+        body = json.loads(event['body'])
+        name = body['name']
+        email = body['email']
+        message = body['message']
+
+        # Send email via SES
+        ses.send_email(
+            Source=os.environ['SENDER_EMAIL'],
+            Destination={
+                'ToAddresses': [os.environ['RECIPIENT_EMAIL']]
+            },
+            Message={
+                'Subject': {'Data': f'Contact Form: {name}'},
+                'Body': {
+                    'Text': {'Data': f'From: {name} ({email})\n\n{message}'}
+                }
+            }
+        )
+
+        return {
+            'statusCode': 200,
+            'headers': {
+                'Access-Control-Allow-Origin': '*',
+                'Content-Type': 'application/json'
+            },
+            'body': json.dumps({'message': 'Email sent successfully'})
+        }
+    except Exception as e:
+        return {
+            'statusCode': 500,
+            'headers': {'Access-Control-Allow-Origin': '*'},
+            'body': json.dumps({'error': str(e)})
+        }</code></pre>
+                        </div>
+
+                        <h3>Frontend JavaScript</h3>
+                        <div class="code-block">
+                            <div class="code-header">
+                                <span class="code-label">contact-form.js</span>
+                                <span class="code-lang">JAVASCRIPT</span>
+                            </div>
+                            <pre><code>const form = document.getElementById('contact-form');
+const API_URL = 'https://abc123.execute-api.us-east-1.amazonaws.com/prod/contact';
+
+form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const data = {
+        name: document.getElementById('name').value,
+        email: document.getElementById('email').value,
+        message: document.getElementById('message').value
+    };
+
+    try {
+        const response = await fetch(API_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data)
+        });
+
+        if (response.ok) {
+            alert('Message sent successfully!');
+            form.reset();
+        } else {
+            throw new Error('Failed to send message');
+        }
+    } catch (error) {
+        alert('Error: ' + error.message);
+    }
+});</code></pre>
+                        </div>
+
+                        <h3>IAM Policy for Lambda</h3>
+                        <div class="code-block">
+                            <div class="code-header">
+                                <span class="code-label">lambda-ses-policy.json</span>
+                                <span class="code-lang">JSON</span>
+                            </div>
+                            <pre><code>{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "ses:SendEmail",
+                "ses:SendRawEmail"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "logs:CreateLogGroup",
+                "logs:CreateLogStream",
+                "logs:PutLogEvents"
+            ],
+            "Resource": "arn:aws:logs:*:*:*"
+        }
+    ]
+}</code></pre>
+                        </div>
+                    </div>
+
+                    <div class="guide-section">
                         <h2>What You'll Learn</h2>
                         <ul class="guide-list">
                             <li>API Gateway REST API creation and configuration</li>

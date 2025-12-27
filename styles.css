@@ -1887,3 +1887,81 @@ ul {
         flex-direction: column;
     }
 }
+
+/* Code Snippet Styles */
+.code-block {
+    background: #1e1e1e;
+    border-radius: 8px;
+    margin: 20px 0;
+    overflow: hidden;
+}
+
+.code-header {
+    background: #2d2d2d;
+    padding: 10px 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #3d3d3d;
+}
+
+.code-label {
+    color: #888;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.code-lang {
+    background: var(--primary-color);
+    color: var(--secondary-color);
+    padding: 3px 10px;
+    border-radius: 4px;
+    font-size: 0.7rem;
+    font-weight: 700;
+}
+
+.code-block pre {
+    margin: 0;
+    padding: 20px;
+    overflow-x: auto;
+}
+
+.code-block code {
+    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas', monospace;
+    font-size: 0.85rem;
+    line-height: 1.6;
+    color: #d4d4d4;
+}
+
+/* Syntax highlighting colors */
+.code-block .comment { color: #6a9955; }
+.code-block .keyword { color: #569cd6; }
+.code-block .string { color: #ce9178; }
+.code-block .function { color: #dcdcaa; }
+.code-block .variable { color: #9cdcfe; }
+.code-block .number { color: #b5cea8; }
+
+.code-inline {
+    background: rgba(255, 153, 0, 0.15);
+    color: var(--primary-dark);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas', monospace;
+    font-size: 0.85em;
+}
+
+.guide-section h3 {
+    font-size: 1.1rem;
+    color: var(--secondary-color);
+    margin: 25px 0 15px 0;
+    padding-top: 15px;
+    border-top: 1px solid var(--border-color);
+}
+
+.guide-section h3:first-of-type {
+    margin-top: 0;
+    padding-top: 0;
+    border-top: none;
+}

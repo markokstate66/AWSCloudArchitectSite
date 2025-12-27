@@ -235,6 +235,131 @@
                     </div>
 
                     <div class="guide-section">
+                        <h2>Code Examples</h2>
+
+                        <h3>CodeBuild buildspec.yml</h3>
+                        <div class="code-block">
+                            <div class="code-header">
+                                <span class="code-label">buildspec.yml</span>
+                                <span class="code-lang">YAML</span>
+                            </div>
+                            <pre><code>version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: 18
+    commands:
+      - npm install
+  pre_build:
+    commands:
+      - echo "Running tests..."
+      - npm test
+  build:
+    commands:
+      - echo "Building application..."
+      - npm run build
+  post_build:
+    commands:
+      - echo "Build completed on $(date)"
+
+artifacts:
+  files:
+    - '**/*'
+  base-directory: dist
+
+cache:
+  paths:
+    - node_modules/**/*</code></pre>
+                        </div>
+
+                        <h3>CodeDeploy appspec.yml</h3>
+                        <div class="code-block">
+                            <div class="code-header">
+                                <span class="code-label">appspec.yml</span>
+                                <span class="code-lang">YAML</span>
+                            </div>
+                            <pre><code>version: 0.0
+os: linux
+
+files:
+  - source: /
+    destination: /var/www/myapp
+
+permissions:
+  - object: /var/www/myapp
+    owner: www-data
+    group: www-data
+
+hooks:
+  BeforeInstall:
+    - location: scripts/before_install.sh
+      timeout: 300
+      runas: root
+  AfterInstall:
+    - location: scripts/after_install.sh
+      timeout: 300
+      runas: root
+  ApplicationStart:
+    - location: scripts/start_server.sh
+      timeout: 300
+      runas: root
+  ValidateService:
+    - location: scripts/validate.sh
+      timeout: 300</code></pre>
+                        </div>
+
+                        <h3>Deployment Scripts</h3>
+                        <div class="code-block">
+                            <div class="code-header">
+                                <span class="code-label">scripts/after_install.sh</span>
+                                <span class="code-lang">BASH</span>
+                            </div>
+                            <pre><code>#!/bin/bash
+set -e
+
+# Navigate to app directory
+cd /var/www/myapp
+
+# Install dependencies
+npm install --production
+
+# Set correct permissions
+chown -R www-data:www-data /var/www/myapp
+
+echo "After install completed"</code></pre>
+                        </div>
+
+                        <h3>Pipeline Creation (AWS CLI)</h3>
+                        <div class="code-block">
+                            <div class="code-header">
+                                <span class="code-label">Terminal Commands</span>
+                                <span class="code-lang">BASH</span>
+                            </div>
+                            <pre><code># Create CodeBuild project
+aws codebuild create-project \
+    --name my-build-project \
+    --source type=GITHUB,location=https://github.com/user/repo \
+    --artifacts type=S3,location=my-artifact-bucket \
+    --environment type=LINUX_CONTAINER,image=aws/codebuild/amazonlinux2-x86_64-standard:4.0,computeType=BUILD_GENERAL1_SMALL \
+    --service-role arn:aws:iam::123456789:role/CodeBuildRole
+
+# Create CodeDeploy application
+aws deploy create-application \
+    --application-name my-app \
+    --compute-platform Server
+
+# Create deployment group
+aws deploy create-deployment-group \
+    --application-name my-app \
+    --deployment-group-name production \
+    --deployment-config-name CodeDeployDefault.OneAtATime \
+    --ec2-tag-filters Key=Environment,Value=Production,Type=KEY_AND_VALUE \
+    --service-role-arn arn:aws:iam::123456789:role/CodeDeployRole</code></pre>
+                        </div>
+                    </div>
+
+                    <div class="guide-section">
                         <h2>What You'll Learn</h2>
                         <ul class="guide-list">
                             <li>Source control integration with AWS services</li>
