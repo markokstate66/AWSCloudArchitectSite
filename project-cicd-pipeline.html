@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Build a CI/CD pipeline on AWS using CodePipeline, CodeBuild, and CodeDeploy. Automate your deployments.">
+    <meta name="keywords" content="AWS CI/CD, CodePipeline tutorial, CodeBuild, CodeDeploy, automated deployment AWS">
+    <meta name="author" content="AWS Cloud Architect Guide">
+    <meta name="robots" content="index, follow">
+
+    <meta name="google-site-verification" content="S5Ea49iR485VLGQdZrR9g5bwazOFpVs8SFOiOPckRaY">
+    <meta name="msvalidate.01" content="E4792860CAB72733FACE91C7EE52BB14">
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-VBQ33BLD4E"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-VBQ33BLD4E');
+    </script>
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="CI/CD Pipeline on AWS | Project Guide">
+    <meta property="og:description" content="Build a CI/CD pipeline on AWS using CodePipeline.">
+    <meta property="og:url" content="https://www.awscloudarchitect.com/project-cicd-pipeline.html">
+
+    <title>CI/CD Pipeline on AWS | Intermediate Project Guide</title>
+    <link rel="canonical" href="https://www.awscloudarchitect.com/project-cicd-pipeline.html">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+    <link rel="preconnect" href="https://www.googletagmanager.com">
+    <link rel="preconnect" href="https://pagead2.googlesyndication.com" crossorigin>
+    <link rel="stylesheet" href="styles.css">
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6676281664229738" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header class="header">
+        <nav class="nav-container">
+            <div class="logo">
+                <a href="index.html" style="display: flex; align-items: center; gap: 10px; color: inherit; text-decoration: none;">
+                    <span class="logo-icon">&#9729;</span>
+                    <span class="logo-text">AWS Cloud Architect Guide</span>
+                </a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html#roadmap">Roadmap</a></li>
+                <li><a href="index.html#certifications">Certifications</a></li>
+                <li><a href="interview-prep.html">Interview Prep</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="resources.html">Resources</a></li>
+                <li><a href="tools.html">Tools</a></li>
+            </ul>
+            <button class="mobile-menu-btn" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero" style="padding: 140px 20px 60px;">
+            <div class="hero-content">
+                <span class="project-level level-intermediate" style="margin-bottom: 20px; display: inline-block;">Intermediate</span>
+                <h1>CI/CD <span class="highlight">Pipeline</span></h1>
+                <p class="hero-subtitle">Automate your application deployments with CodePipeline, CodeBuild, and CodeDeploy</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <div class="project-guide">
+                    <div class="guide-overview">
+                        <h2>Project Overview</h2>
+                        <p>Create an automated deployment pipeline that builds, tests, and deploys your application whenever you push code. Essential for modern DevOps practices.</p>
+
+                        <div class="guide-meta">
+                            <div class="meta-item">
+                                <strong>Difficulty:</strong> Intermediate
+                            </div>
+                            <div class="meta-item">
+                                <strong>AWS Services:</strong> CodePipeline, CodeBuild, CodeDeploy, ECR
+                            </div>
+                            <div class="meta-item">
+                                <strong>Cost:</strong> ~$5-15/month for light usage
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="guide-section">
+                        <h2>Prerequisites</h2>
+                        <ul class="guide-list">
+                            <li>GitHub or CodeCommit repository with application code</li>
+                            <li>EC2 instances or ECS cluster for deployment</li>
+                            <li>Basic understanding of build processes</li>
+                            <li>Familiarity with YAML configuration</li>
+                        </ul>
+                    </div>
+
+                    <div class="guide-section">
+                        <h2>Architecture</h2>
+                        <div class="architecture-diagram">
+                            <p>GitHub/CodeCommit &rarr; CodePipeline &rarr; CodeBuild &rarr; CodeDeploy &rarr; EC2/ECS</p>
+                            <p style="margin-top: 10px; font-size: 0.9rem; color: var(--text-light);">Optional: ECR for container images, S3 for artifacts</p>
+                        </div>
+                    </div>
+
+                    <div class="guide-section">
+                        <h2>Step-by-Step Instructions</h2>
+
+                        <div class="guide-step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">
+                                <h3>Prepare Your Repository</h3>
+                                <ul class="guide-list">
+                                    <li>Store your code in GitHub or AWS CodeCommit</li>
+                                    <li>Create a buildspec.yml file in the root directory</li>
+                                    <li>Define build phases: install, pre_build, build, post_build</li>
+                                    <li>Specify artifacts to pass to deployment stage</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="guide-step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">
+                                <h3>Create CodeBuild Project</h3>
+                                <ul class="guide-list">
+                                    <li>Go to CodeBuild and create a new project</li>
+                                    <li>Connect to your source repository</li>
+                                    <li>Select a managed image (e.g., Amazon Linux 2, Node.js)</li>
+                                    <li>Configure environment variables for sensitive values</li>
+                                    <li>Enable build caching to speed up subsequent builds</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="guide-step">
+                            <div class="step-number">3</div>
+                            <div class="step-content">
+                                <h3>Create AppSpec File for CodeDeploy</h3>
+                                <ul class="guide-list">
+                                    <li>Create appspec.yml in your repository root</li>
+                                    <li>Define file mappings (source to destination)</li>
+                                    <li>Add lifecycle hooks: BeforeInstall, AfterInstall, ApplicationStart</li>
+                                    <li>Create deployment scripts in a scripts/ folder</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="guide-step">
+                            <div class="step-number">4</div>
+                            <div class="step-content">
+                                <h3>Set Up CodeDeploy</h3>
+                                <ul class="guide-list">
+                                    <li>Install CodeDeploy agent on target EC2 instances</li>
+                                    <li>Create a CodeDeploy application</li>
+                                    <li>Create a deployment group targeting your instances</li>
+                                    <li>Choose deployment type (in-place or blue/green)</li>
+                                    <li>Configure rollback settings</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="guide-step">
+                            <div class="step-number">5</div>
+                            <div class="step-content">
+                                <h3>Create CodePipeline</h3>
+                                <ul class="guide-list">
+                                    <li>Create a new pipeline in CodePipeline</li>
+                                    <li>Add Source stage (GitHub or CodeCommit)</li>
+                                    <li>Add Build stage (CodeBuild project)</li>
+                                    <li>Add Deploy stage (CodeDeploy application)</li>
+                                    <li>Optionally add manual approval before production</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="guide-step">
+                            <div class="step-number">6</div>
+                            <div class="step-content">
+                                <h3>Test the Pipeline</h3>
+                                <ul class="guide-list">
+                                    <li>Push a code change to trigger the pipeline</li>
+                                    <li>Monitor each stage in the CodePipeline console</li>
+                                    <li>Review build logs in CodeBuild</li>
+                                    <li>Verify deployment succeeded on target instances</li>
+                                    <li>Test rollback by intentionally failing a deployment</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="guide-section">
+                        <h2>Tips</h2>
+                        <div class="tips-box">
+                            <ul class="guide-list">
+                                <li><strong>Use Parameter Store for secrets</strong> - Store database passwords, API keys securely and reference in buildspec</li>
+                                <li><strong>Enable build caching</strong> - Cache dependencies to significantly speed up builds</li>
+                                <li><strong>Add notifications</strong> - Use SNS to get notified on pipeline failures</li>
+                                <li><strong>Use blue/green deployments</strong> - Safer deployments with instant rollback capability</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="guide-section">
+                        <h2>What You'll Learn</h2>
+                        <ul class="guide-list">
+                            <li>Source control integration with AWS services</li>
+                            <li>Build automation with CodeBuild and buildspec.yml</li>
+                            <li>Deployment strategies (rolling, blue/green)</li>
+                            <li>Container image management with ECR</li>
+                            <li>Pipeline orchestration and stage management</li>
+                        </ul>
+                    </div>
+
+                    <div class="guide-navigation">
+                        <a href="project-three-tier-web-app.html" class="btn-secondary">&larr; Previous Project</a>
+                        <a href="project-serverless-rest-api.html" class="btn-primary">Next Project &rarr;</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>AWS Cloud Architect Guide</h4>
+                    <p>Your roadmap to a successful career in cloud architecture.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html#roadmap">Roadmap</a></li>
+                        <li><a href="interview-prep.html">Interview Prep</a></li>
+                        <li><a href="projects.html">Projects</a></li>
+                        <li><a href="resources.html">Resources</a></li>
+                        <li><a href="tools.html">Tools</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Official AWS Links</h4>
+                    <ul>
+                        <li><a href="https://aws.amazon.com/certification/" target="_blank" rel="noopener">AWS Certification</a></li>
+                        <li><a href="https://aws.amazon.com/training/" target="_blank" rel="noopener">AWS Training</a></li>
+                        <li><a href="https://aws.amazon.com/architecture/" target="_blank" rel="noopener">AWS Architecture Center</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="about.html">About</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 AWS Cloud Architect Guide. Not affiliated with Amazon Web Services.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js" defer></script>
+</body>
+</html>

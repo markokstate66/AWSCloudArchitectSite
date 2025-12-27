@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Deploy a web application on AWS EC2 with proper VPC networking and security groups. Step-by-step beginner guide.">
+    <meta name="keywords" content="AWS EC2 web server, EC2 tutorial, VPC setup, security groups AWS">
+    <meta name="author" content="AWS Cloud Architect Guide">
+    <meta name="robots" content="index, follow">
+
+    <meta name="google-site-verification" content="S5Ea49iR485VLGQdZrR9g5bwazOFpVs8SFOiOPckRaY">
+    <meta name="msvalidate.01" content="E4792860CAB72733FACE91C7EE52BB14">
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-VBQ33BLD4E"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-VBQ33BLD4E');
+    </script>
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="EC2 Web Server on AWS | Project Guide">
+    <meta property="og:description" content="Deploy a web application on AWS EC2 with proper networking.">
+    <meta property="og:url" content="https://www.awscloudarchitect.com/project-ec2-web-server.html">
+
+    <title>EC2 Web Server on AWS | Beginner Project Guide</title>
+    <link rel="canonical" href="https://www.awscloudarchitect.com/project-ec2-web-server.html">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+    <link rel="preconnect" href="https://www.googletagmanager.com">
+    <link rel="preconnect" href="https://pagead2.googlesyndication.com" crossorigin>
+    <link rel="stylesheet" href="styles.css">
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6676281664229738" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header class="header">
+        <nav class="nav-container">
+            <div class="logo">
+                <a href="index.html" style="display: flex; align-items: center; gap: 10px; color: inherit; text-decoration: none;">
+                    <span class="logo-icon">&#9729;</span>
+                    <span class="logo-text">AWS Cloud Architect Guide</span>
+                </a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html#roadmap">Roadmap</a></li>
+                <li><a href="index.html#certifications">Certifications</a></li>
+                <li><a href="interview-prep.html">Interview Prep</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="resources.html">Resources</a></li>
+                <li><a href="tools.html">Tools</a></li>
+            </ul>
+            <button class="mobile-menu-btn" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero" style="padding: 140px 20px 60px;">
+            <div class="hero-content">
+                <span class="project-level level-beginner" style="margin-bottom: 20px; display: inline-block;">Beginner</span>
+                <h1>EC2 <span class="highlight">Web Server</span></h1>
+                <p class="hero-subtitle">Deploy a web application on EC2 with proper networking and security</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <div class="project-guide">
+                    <div class="guide-overview">
+                        <h2>Project Overview</h2>
+                        <p>Launch an EC2 instance, configure networking and security groups, and deploy a web application. This foundational project teaches you core AWS compute concepts.</p>
+
+                        <div class="guide-meta">
+                            <div class="meta-item">
+                                <strong>Difficulty:</strong> Beginner
+                            </div>
+                            <div class="meta-item">
+                                <strong>AWS Services:</strong> EC2, VPC, Security Groups, Elastic IP
+                            </div>
+                            <div class="meta-item">
+                                <strong>Cost:</strong> Free Tier eligible (t2.micro/t3.micro)
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="guide-section">
+                        <h2>Prerequisites</h2>
+                        <ul class="guide-list">
+                            <li>AWS account (Free Tier)</li>
+                            <li>Basic Linux command line knowledge</li>
+                            <li>SSH client (Terminal on Mac/Linux, PuTTY on Windows)</li>
+                            <li>Web application to deploy (or use sample app)</li>
+                        </ul>
+                    </div>
+
+                    <div class="guide-section">
+                        <h2>Architecture</h2>
+                        <div class="architecture-diagram">
+                            <p>Internet &rarr; Security Group &rarr; EC2 Instance (Web Server)</p>
+                            <p style="margin-top: 10px; font-size: 0.9rem; color: var(--text-light);">Elastic IP for static public IP address</p>
+                        </div>
+                    </div>
+
+                    <div class="guide-section">
+                        <h2>Step-by-Step Instructions</h2>
+
+                        <div class="guide-step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">
+                                <h3>Launch an EC2 Instance</h3>
+                                <ul class="guide-list">
+                                    <li>Go to EC2 in the AWS Console</li>
+                                    <li>Click "Launch instance"</li>
+                                    <li>Choose Amazon Linux 2023 or Ubuntu 22.04 LTS</li>
+                                    <li>Select t2.micro (Free Tier eligible)</li>
+                                    <li>Create a new key pair and download the .pem file</li>
+                                    <li>Keep it safe - you can't download it again!</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="guide-step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">
+                                <h3>Configure Security Group</h3>
+                                <ul class="guide-list">
+                                    <li>Create a new security group during launch</li>
+                                    <li>Allow SSH (port 22) from your IP only</li>
+                                    <li>Allow HTTP (port 80) from anywhere (0.0.0.0/0)</li>
+                                    <li>Allow HTTPS (port 443) from anywhere (optional)</li>
+                                    <li>Name it descriptively (e.g., "web-server-sg")</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="guide-step">
+                            <div class="step-number">3</div>
+                            <div class="step-content">
+                                <h3>Connect via SSH</h3>
+                                <ul class="guide-list">
+                                    <li>Set permissions: chmod 400 your-key.pem</li>
+                                    <li>Connect: ssh -i your-key.pem ec2-user@[public-ip]</li>
+                                    <li>For Ubuntu, use "ubuntu" instead of "ec2-user"</li>
+                                    <li>Accept the fingerprint on first connection</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="guide-step">
+                            <div class="step-number">4</div>
+                            <div class="step-content">
+                                <h3>Install Web Server</h3>
+                                <ul class="guide-list">
+                                    <li>Update packages: sudo yum update -y (or apt update)</li>
+                                    <li>Install nginx: sudo yum install nginx -y</li>
+                                    <li>Start nginx: sudo systemctl start nginx</li>
+                                    <li>Enable on boot: sudo systemctl enable nginx</li>
+                                    <li>Verify: visit http://[public-ip] in browser</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="guide-step">
+                            <div class="step-number">5</div>
+                            <div class="step-content">
+                                <h3>Deploy Your Application</h3>
+                                <ul class="guide-list">
+                                    <li>Upload files via SCP or clone from Git</li>
+                                    <li>Place files in /usr/share/nginx/html/</li>
+                                    <li>Configure nginx if needed for your app</li>
+                                    <li>Restart nginx after changes</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="guide-step">
+                            <div class="step-number">6</div>
+                            <div class="step-content">
+                                <h3>Allocate Elastic IP</h3>
+                                <ul class="guide-list">
+                                    <li>Go to EC2 > Elastic IPs</li>
+                                    <li>Allocate a new Elastic IP</li>
+                                    <li>Associate it with your instance</li>
+                                    <li>Your server now has a permanent IP</li>
+                                    <li>Note: Elastic IPs are free when associated</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="guide-section">
+                        <h2>Tips</h2>
+                        <div class="tips-box">
+                            <ul class="guide-list">
+                                <li><strong>Use an IAM role instead of storing credentials</strong> - Attach a role to your instance for AWS API access</li>
+                                <li><strong>Enable CloudWatch monitoring</strong> - Basic monitoring is free; detailed monitoring is recommended for production</li>
+                                <li><strong>Set up automatic security updates</strong> - Use yum-cron or unattended-upgrades</li>
+                                <li><strong>Stop instances when not in use</strong> - You're billed for running instances</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="guide-section">
+                        <h2>What You'll Learn</h2>
+                        <ul class="guide-list">
+                            <li>EC2 instance launching and configuration</li>
+                            <li>VPC and subnet fundamentals</li>
+                            <li>Security group rules and best practices</li>
+                            <li>SSH key management and secure access</li>
+                            <li>Basic Linux server administration</li>
+                        </ul>
+                    </div>
+
+                    <div class="guide-navigation">
+                        <a href="project-serverless-contact-form.html" class="btn-secondary">&larr; Previous Project</a>
+                        <a href="project-three-tier-web-app.html" class="btn-primary">Next Project &rarr;</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>AWS Cloud Architect Guide</h4>
+                    <p>Your roadmap to a successful career in cloud architecture.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html#roadmap">Roadmap</a></li>
+                        <li><a href="interview-prep.html">Interview Prep</a></li>
+                        <li><a href="projects.html">Projects</a></li>
+                        <li><a href="resources.html">Resources</a></li>
+                        <li><a href="tools.html">Tools</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Official AWS Links</h4>
+                    <ul>
+                        <li><a href="https://aws.amazon.com/certification/" target="_blank" rel="noopener">AWS Certification</a></li>
+                        <li><a href="https://aws.amazon.com/training/" target="_blank" rel="noopener">AWS Training</a></li>
+                        <li><a href="https://aws.amazon.com/architecture/" target="_blank" rel="noopener">AWS Architecture Center</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="about.html">About</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 AWS Cloud Architect Guide. Not affiliated with Amazon Web Services.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js" defer></script>
+</body>
+</html>

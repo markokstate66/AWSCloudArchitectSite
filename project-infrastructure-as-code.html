@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Learn Infrastructure as Code with AWS CloudFormation and Terraform. Deploy and manage AWS resources programmatically.">
+    <meta name="keywords" content="AWS CloudFormation, Terraform AWS, Infrastructure as Code, IaC tutorial, CDK">
+    <meta name="author" content="AWS Cloud Architect Guide">
+    <meta name="robots" content="index, follow">
+
+    <meta name="google-site-verification" content="S5Ea49iR485VLGQdZrR9g5bwazOFpVs8SFOiOPckRaY">
+    <meta name="msvalidate.01" content="E4792860CAB72733FACE91C7EE52BB14">
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-VBQ33BLD4E"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-VBQ33BLD4E');
+    </script>
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Infrastructure as Code on AWS | Project Guide">
+    <meta property="og:description" content="Learn Infrastructure as Code with CloudFormation and Terraform.">
+    <meta property="og:url" content="https://www.awscloudarchitect.com/project-infrastructure-as-code.html">
+
+    <title>Infrastructure as Code on AWS | Intermediate Project Guide</title>
+    <link rel="canonical" href="https://www.awscloudarchitect.com/project-infrastructure-as-code.html">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+    <link rel="preconnect" href="https://www.googletagmanager.com">
+    <link rel="preconnect" href="https://pagead2.googlesyndication.com" crossorigin>
+    <link rel="stylesheet" href="styles.css">
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6676281664229738" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header class="header">
+        <nav class="nav-container">
+            <div class="logo">
+                <a href="index.html" style="display: flex; align-items: center; gap: 10px; color: inherit; text-decoration: none;">
+                    <span class="logo-icon">&#9729;</span>
+                    <span class="logo-text">AWS Cloud Architect Guide</span>
+                </a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html#roadmap">Roadmap</a></li>
+                <li><a href="index.html#certifications">Certifications</a></li>
+                <li><a href="interview-prep.html">Interview Prep</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="resources.html">Resources</a></li>
+                <li><a href="tools.html">Tools</a></li>
+            </ul>
+            <button class="mobile-menu-btn" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero" style="padding: 140px 20px 60px;">
+            <div class="hero-content">
+                <span class="project-level level-intermediate" style="margin-bottom: 20px; display: inline-block;">Intermediate</span>
+                <h1>Infrastructure as <span class="highlight">Code</span></h1>
+                <p class="hero-subtitle">Deploy and manage AWS infrastructure using CloudFormation or Terraform</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <div class="project-guide">
+                    <div class="guide-overview">
+                        <h2>Project Overview</h2>
+                        <p>Define your entire infrastructure in code, enabling version control, reproducibility, and automated deployments. A critical skill for any cloud architect.</p>
+
+                        <div class="guide-meta">
+                            <div class="meta-item">
+                                <strong>Difficulty:</strong> Intermediate
+                            </div>
+                            <div class="meta-item">
+                                <strong>AWS Services:</strong> CloudFormation, CDK, S3, IAM
+                            </div>
+                            <div class="meta-item">
+                                <strong>Cost:</strong> Free (CloudFormation is free, you pay for resources)
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="guide-section">
+                        <h2>Prerequisites</h2>
+                        <ul class="guide-list">
+                            <li>Familiarity with AWS services (VPC, EC2, etc.)</li>
+                            <li>YAML or JSON knowledge</li>
+                            <li>AWS CLI installed and configured</li>
+                            <li>Basic programming knowledge for CDK (optional)</li>
+                        </ul>
+                    </div>
+
+                    <div class="guide-section">
+                        <h2>Choose Your Tool</h2>
+                        <div class="architecture-diagram">
+                            <p><strong>CloudFormation:</strong> AWS native, YAML/JSON, deep AWS integration</p>
+                            <p><strong>Terraform:</strong> Multi-cloud, HCL syntax, strong community</p>
+                            <p><strong>CDK:</strong> Use programming languages (Python, TypeScript), generates CloudFormation</p>
+                        </div>
+                    </div>
+
+                    <div class="guide-section">
+                        <h2>Step-by-Step Instructions</h2>
+
+                        <div class="guide-step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">
+                                <h3>Start with a Simple Template</h3>
+                                <ul class="guide-list">
+                                    <li>Create a template that deploys a single S3 bucket</li>
+                                    <li>Define the AWSTemplateFormatVersion and Description</li>
+                                    <li>Add a Resources section with your S3 bucket</li>
+                                    <li>Deploy using AWS Console or CLI</li>
+                                    <li>Verify the resource was created</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="guide-step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">
+                                <h3>Add Parameters and Outputs</h3>
+                                <ul class="guide-list">
+                                    <li>Add Parameters section for customizable values</li>
+                                    <li>Use parameter types (String, Number, AWS::SSM::Parameter::Value)</li>
+                                    <li>Define Outputs to expose resource IDs and ARNs</li>
+                                    <li>Export outputs for cross-stack references</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="guide-step">
+                            <div class="step-number">3</div>
+                            <div class="step-content">
+                                <h3>Build a VPC Template</h3>
+                                <ul class="guide-list">
+                                    <li>Define VPC with CIDR block</li>
+                                    <li>Create public and private subnets</li>
+                                    <li>Add Internet Gateway and NAT Gateway</li>
+                                    <li>Configure route tables</li>
+                                    <li>Use intrinsic functions: !Ref, !Sub, !GetAtt</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="guide-step">
+                            <div class="step-number">4</div>
+                            <div class="step-content">
+                                <h3>Add Compute and Database Resources</h3>
+                                <ul class="guide-list">
+                                    <li>Add EC2 instances or Lambda functions</li>
+                                    <li>Define security groups with proper ingress/egress</li>
+                                    <li>Add RDS or DynamoDB resources</li>
+                                    <li>Use DependsOn for resource ordering</li>
+                                    <li>Add Conditions for environment-specific resources</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="guide-step">
+                            <div class="step-number">5</div>
+                            <div class="step-content">
+                                <h3>Implement Nested Stacks or Modules</h3>
+                                <ul class="guide-list">
+                                    <li>Break large templates into nested stacks</li>
+                                    <li>Store child templates in S3</li>
+                                    <li>Pass parameters between stacks</li>
+                                    <li>Import outputs from other stacks</li>
+                                    <li>Create reusable modules for common patterns</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="guide-step">
+                            <div class="step-number">6</div>
+                            <div class="step-content">
+                                <h3>Set Up CI/CD for Infrastructure</h3>
+                                <ul class="guide-list">
+                                    <li>Store templates in Git repository</li>
+                                    <li>Use CloudFormation change sets for previewing changes</li>
+                                    <li>Create a CodePipeline for automated deployments</li>
+                                    <li>Add testing and validation stages</li>
+                                    <li>Implement drift detection</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="guide-section">
+                        <h2>Tips</h2>
+                        <div class="tips-box">
+                            <ul class="guide-list">
+                                <li><strong>Use nested stacks/modules for reusability</strong> - Create reusable components for common patterns</li>
+                                <li><strong>Store state remotely (Terraform)</strong> - Use S3 + DynamoDB for team collaboration</li>
+                                <li><strong>Always use change sets</strong> - Preview changes before applying to avoid surprises</li>
+                                <li><strong>Enable termination protection</strong> - Prevent accidental deletion of production stacks</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="guide-section">
+                        <h2>What You'll Learn</h2>
+                        <ul class="guide-list">
+                            <li>Infrastructure as Code principles and benefits</li>
+                            <li>CloudFormation template authoring and best practices</li>
+                            <li>Stack management, updates, and rollbacks</li>
+                            <li>Cross-stack references and nested stacks</li>
+                            <li>Drift detection and remediation</li>
+                        </ul>
+                    </div>
+
+                    <div class="guide-navigation">
+                        <a href="project-serverless-rest-api.html" class="btn-secondary">&larr; Previous Project</a>
+                        <a href="project-multi-region-active-active.html" class="btn-primary">Next Project &rarr;</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>AWS Cloud Architect Guide</h4>
+                    <p>Your roadmap to a successful career in cloud architecture.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html#roadmap">Roadmap</a></li>
+                        <li><a href="interview-prep.html">Interview Prep</a></li>
+                        <li><a href="projects.html">Projects</a></li>
+                        <li><a href="resources.html">Resources</a></li>
+                        <li><a href="tools.html">Tools</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Official AWS Links</h4>
+                    <ul>
+                        <li><a href="https://aws.amazon.com/certification/" target="_blank" rel="noopener">AWS Certification</a></li>
+                        <li><a href="https://aws.amazon.com/training/" target="_blank" rel="noopener">AWS Training</a></li>
+                        <li><a href="https://aws.amazon.com/architecture/" target="_blank" rel="noopener">AWS Architecture Center</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="about.html">About</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 AWS Cloud Architect Guide. Not affiliated with Amazon Web Services.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js" defer></script>
+</body>
+</html>

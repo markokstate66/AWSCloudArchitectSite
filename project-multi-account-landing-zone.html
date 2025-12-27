@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Set up an enterprise-grade AWS multi-account landing zone with Control Tower, Organizations, and SSO. Governance at scale.">
+    <meta name="keywords" content="AWS Control Tower, AWS Organizations, multi-account AWS, landing zone, AWS SSO, SCPs">
+    <meta name="author" content="AWS Cloud Architect Guide">
+    <meta name="robots" content="index, follow">
+
+    <meta name="google-site-verification" content="S5Ea49iR485VLGQdZrR9g5bwazOFpVs8SFOiOPckRaY">
+    <meta name="msvalidate.01" content="E4792860CAB72733FACE91C7EE52BB14">
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-VBQ33BLD4E"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-VBQ33BLD4E');
+    </script>
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Multi-Account Landing Zone on AWS | Project Guide">
+    <meta property="og:description" content="Set up an enterprise-grade AWS multi-account landing zone.">
+    <meta property="og:url" content="https://www.awscloudarchitect.com/project-multi-account-landing-zone.html">
+
+    <title>Multi-Account Landing Zone on AWS | Advanced Project Guide</title>
+    <link rel="canonical" href="https://www.awscloudarchitect.com/project-multi-account-landing-zone.html">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+    <link rel="preconnect" href="https://www.googletagmanager.com">
+    <link rel="preconnect" href="https://pagead2.googlesyndication.com" crossorigin>
+    <link rel="stylesheet" href="styles.css">
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6676281664229738" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header class="header">
+        <nav class="nav-container">
+            <div class="logo">
+                <a href="index.html" style="display: flex; align-items: center; gap: 10px; color: inherit; text-decoration: none;">
+                    <span class="logo-icon">&#9729;</span>
+                    <span class="logo-text">AWS Cloud Architect Guide</span>
+                </a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html#roadmap">Roadmap</a></li>
+                <li><a href="index.html#certifications">Certifications</a></li>
+                <li><a href="interview-prep.html">Interview Prep</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="resources.html">Resources</a></li>
+                <li><a href="tools.html">Tools</a></li>
+            </ul>
+            <button class="mobile-menu-btn" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero" style="padding: 140px 20px 60px;">
+            <div class="hero-content">
+                <span class="project-level level-advanced" style="margin-bottom: 20px; display: inline-block;">Advanced</span>
+                <h1>Multi-Account <span class="highlight">Landing Zone</span></h1>
+                <p class="hero-subtitle">Set up enterprise-grade AWS organization with governance and security guardrails</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <div class="project-guide">
+                    <div class="guide-overview">
+                        <h2>Project Overview</h2>
+                        <p>Create a scalable, secure AWS multi-account structure using Control Tower, Organizations, and IAM Identity Center. Essential for enterprise environments.</p>
+
+                        <div class="guide-meta">
+                            <div class="meta-item">
+                                <strong>Difficulty:</strong> Advanced
+                            </div>
+                            <div class="meta-item">
+                                <strong>AWS Services:</strong> Organizations, Control Tower, IAM Identity Center, Service Catalog
+                            </div>
+                            <div class="meta-item">
+                                <strong>Cost:</strong> ~$10-50/month (mostly free tier)
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="guide-section">
+                        <h2>Prerequisites</h2>
+                        <ul class="guide-list">
+                            <li>Understanding of IAM and permissions</li>
+                            <li>Experience managing AWS accounts</li>
+                            <li>Knowledge of compliance and security concepts</li>
+                            <li>A "fresh" AWS account as management account</li>
+                        </ul>
+                    </div>
+
+                    <div class="guide-section">
+                        <h2>Architecture</h2>
+                        <div class="architecture-diagram">
+                            <p>Management Account &rarr; Organizations &rarr; OUs (Security, Workloads, Sandbox)</p>
+                            <p style="margin-top: 10px; font-size: 0.9rem; color: var(--text-light);">IAM Identity Center for centralized access, SCPs for guardrails</p>
+                        </div>
+                    </div>
+
+                    <div class="guide-section">
+                        <h2>Step-by-Step Instructions</h2>
+
+                        <div class="guide-step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">
+                                <h3>Enable AWS Organizations</h3>
+                                <ul class="guide-list">
+                                    <li>Use a clean AWS account as management account</li>
+                                    <li>Enable AWS Organizations</li>
+                                    <li>Enable all features (not just consolidated billing)</li>
+                                    <li>This account should NOT run workloads</li>
+                                    <li>Secure with strong MFA and limited access</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="guide-step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">
+                                <h3>Set Up AWS Control Tower</h3>
+                                <ul class="guide-list">
+                                    <li>Launch Control Tower from the console</li>
+                                    <li>Configure home region and governed regions</li>
+                                    <li>Let Control Tower create Log Archive and Audit accounts</li>
+                                    <li>Wait for setup to complete (~1 hour)</li>
+                                    <li>Review created resources and baseline guardrails</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="guide-step">
+                            <div class="step-number">3</div>
+                            <div class="step-content">
+                                <h3>Design Organizational Unit Structure</h3>
+                                <ul class="guide-list">
+                                    <li>Create Security OU (shared security services)</li>
+                                    <li>Create Infrastructure OU (networking, shared services)</li>
+                                    <li>Create Workloads OU (production accounts)</li>
+                                    <li>Create Sandbox OU (development, experimentation)</li>
+                                    <li>Consider nested OUs for larger organizations</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="guide-step">
+                            <div class="step-number">4</div>
+                            <div class="step-content">
+                                <h3>Configure Service Control Policies</h3>
+                                <ul class="guide-list">
+                                    <li>Create SCPs to enforce security guardrails</li>
+                                    <li>Deny actions: disabling CloudTrail, deleting VPC flow logs</li>
+                                    <li>Restrict regions for compliance requirements</li>
+                                    <li>Prevent leaving the organization</li>
+                                    <li>Apply SCPs to appropriate OUs</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="guide-step">
+                            <div class="step-number">5</div>
+                            <div class="step-content">
+                                <h3>Set Up IAM Identity Center</h3>
+                                <ul class="guide-list">
+                                    <li>Enable IAM Identity Center (formerly AWS SSO)</li>
+                                    <li>Configure identity source (built-in, AD, external IdP)</li>
+                                    <li>Create permission sets for different roles</li>
+                                    <li>Assign users/groups to accounts</li>
+                                    <li>Users get single sign-on to all assigned accounts</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="guide-step">
+                            <div class="step-number">6</div>
+                            <div class="step-content">
+                                <h3>Implement Account Vending</h3>
+                                <ul class="guide-list">
+                                    <li>Use Account Factory in Control Tower</li>
+                                    <li>Or create Service Catalog products</li>
+                                    <li>Standardize account provisioning</li>
+                                    <li>Include baseline configurations (VPC, security)</li>
+                                    <li>Automate with Account Factory for Terraform (AFT)</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="guide-section">
+                        <h2>Tips</h2>
+                        <div class="tips-box">
+                            <ul class="guide-list">
+                                <li><strong>Use AWS SSO for centralized access</strong> - Single portal for all accounts, no need for separate IAM users</li>
+                                <li><strong>Implement tag policies</strong> - Enforce consistent tagging for cost allocation</li>
+                                <li><strong>Centralize logging in Log Archive account</strong> - CloudTrail, Config, and VPC flow logs</li>
+                                <li><strong>Start with preventive guardrails</strong> - Easier than detecting and fixing violations later</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="guide-section">
+                        <h2>What You'll Learn</h2>
+                        <ul class="guide-list">
+                            <li>AWS Organizations structure and management</li>
+                            <li>Service Control Policies (SCPs) for governance</li>
+                            <li>Centralized logging and security monitoring</li>
+                            <li>Account vending automation with Account Factory</li>
+                            <li>IAM Identity Center for federated access</li>
+                        </ul>
+                    </div>
+
+                    <div class="guide-navigation">
+                        <a href="project-realtime-data-pipeline.html" class="btn-secondary">&larr; Previous Project</a>
+                        <a href="projects.html" class="btn-primary">Back to All Projects</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>AWS Cloud Architect Guide</h4>
+                    <p>Your roadmap to a successful career in cloud architecture.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html#roadmap">Roadmap</a></li>
+                        <li><a href="interview-prep.html">Interview Prep</a></li>
+                        <li><a href="projects.html">Projects</a></li>
+                        <li><a href="resources.html">Resources</a></li>
+                        <li><a href="tools.html">Tools</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Official AWS Links</h4>
+                    <ul>
+                        <li><a href="https://aws.amazon.com/certification/" target="_blank" rel="noopener">AWS Certification</a></li>
+                        <li><a href="https://aws.amazon.com/training/" target="_blank" rel="noopener">AWS Training</a></li>
+                        <li><a href="https://aws.amazon.com/architecture/" target="_blank" rel="noopener">AWS Architecture Center</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="about.html">About</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 AWS Cloud Architect Guide. Not affiliated with Amazon Web Services.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js" defer></script>
+</body>
+</html>

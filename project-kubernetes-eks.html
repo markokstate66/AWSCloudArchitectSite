@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Deploy a production-grade Kubernetes cluster on AWS EKS. Learn cluster setup, deployments, and best practices.">
+    <meta name="keywords" content="AWS EKS, Kubernetes AWS, EKS tutorial, container orchestration, kubectl">
+    <meta name="author" content="AWS Cloud Architect Guide">
+    <meta name="robots" content="index, follow">
+
+    <meta name="google-site-verification" content="S5Ea49iR485VLGQdZrR9g5bwazOFpVs8SFOiOPckRaY">
+    <meta name="msvalidate.01" content="E4792860CAB72733FACE91C7EE52BB14">
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-VBQ33BLD4E"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-VBQ33BLD4E');
+    </script>
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Kubernetes on EKS | Project Guide">
+    <meta property="og:description" content="Deploy a production-grade Kubernetes cluster on AWS EKS.">
+    <meta property="og:url" content="https://www.awscloudarchitect.com/project-kubernetes-eks.html">
+
+    <title>Kubernetes on AWS EKS | Advanced Project Guide</title>
+    <link rel="canonical" href="https://www.awscloudarchitect.com/project-kubernetes-eks.html">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+    <link rel="preconnect" href="https://www.googletagmanager.com">
+    <link rel="preconnect" href="https://pagead2.googlesyndication.com" crossorigin>
+    <link rel="stylesheet" href="styles.css">
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6676281664229738" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header class="header">
+        <nav class="nav-container">
+            <div class="logo">
+                <a href="index.html" style="display: flex; align-items: center; gap: 10px; color: inherit; text-decoration: none;">
+                    <span class="logo-icon">&#9729;</span>
+                    <span class="logo-text">AWS Cloud Architect Guide</span>
+                </a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html#roadmap">Roadmap</a></li>
+                <li><a href="index.html#certifications">Certifications</a></li>
+                <li><a href="interview-prep.html">Interview Prep</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="resources.html">Resources</a></li>
+                <li><a href="tools.html">Tools</a></li>
+            </ul>
+            <button class="mobile-menu-btn" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero" style="padding: 140px 20px 60px;">
+            <div class="hero-content">
+                <span class="project-level level-advanced" style="margin-bottom: 20px; display: inline-block;">Advanced</span>
+                <h1>Kubernetes on <span class="highlight">EKS</span></h1>
+                <p class="hero-subtitle">Deploy a production-grade Kubernetes cluster with managed node groups</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <div class="project-guide">
+                    <div class="guide-overview">
+                        <h2>Project Overview</h2>
+                        <p>Set up an Amazon EKS cluster, deploy containerized applications, configure ingress, and implement auto-scaling. Essential for modern microservices architectures.</p>
+
+                        <div class="guide-meta">
+                            <div class="meta-item">
+                                <strong>Difficulty:</strong> Advanced
+                            </div>
+                            <div class="meta-item">
+                                <strong>AWS Services:</strong> EKS, ECR, ALB Ingress Controller, Secrets Manager
+                            </div>
+                            <div class="meta-item">
+                                <strong>Cost:</strong> ~$75-150/month (EKS cluster + nodes)
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="guide-section">
+                        <h2>Prerequisites</h2>
+                        <ul class="guide-list">
+                            <li>Docker fundamentals and container experience</li>
+                            <li>Basic Kubernetes concepts (pods, services, deployments)</li>
+                            <li>kubectl and eksctl installed locally</li>
+                            <li>AWS CLI configured with appropriate permissions</li>
+                        </ul>
+                    </div>
+
+                    <div class="guide-section">
+                        <h2>Architecture</h2>
+                        <div class="architecture-diagram">
+                            <p>Internet &rarr; ALB Ingress &rarr; EKS Cluster &rarr; Managed Node Groups</p>
+                            <p style="margin-top: 10px; font-size: 0.9rem; color: var(--text-light);">ECR for container images, Secrets Manager for sensitive data</p>
+                        </div>
+                    </div>
+
+                    <div class="guide-section">
+                        <h2>Step-by-Step Instructions</h2>
+
+                        <div class="guide-step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">
+                                <h3>Create EKS Cluster</h3>
+                                <ul class="guide-list">
+                                    <li>Use eksctl to create cluster: eksctl create cluster</li>
+                                    <li>Or use AWS Console/Terraform for more control</li>
+                                    <li>Configure VPC with public and private subnets</li>
+                                    <li>Create managed node group with appropriate instance types</li>
+                                    <li>Wait for cluster to be ready (~15-20 minutes)</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="guide-step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">
+                                <h3>Configure kubectl Access</h3>
+                                <ul class="guide-list">
+                                    <li>Update kubeconfig: aws eks update-kubeconfig --name cluster-name</li>
+                                    <li>Verify connection: kubectl get nodes</li>
+                                    <li>Configure aws-auth ConfigMap for additional users</li>
+                                    <li>Set up RBAC for team access</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="guide-step">
+                            <div class="step-number">3</div>
+                            <div class="step-content">
+                                <h3>Deploy Your Application</h3>
+                                <ul class="guide-list">
+                                    <li>Push container image to ECR</li>
+                                    <li>Create Kubernetes Deployment manifest</li>
+                                    <li>Create Service to expose the deployment</li>
+                                    <li>Apply manifests: kubectl apply -f deployment.yaml</li>
+                                    <li>Verify pods are running: kubectl get pods</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="guide-step">
+                            <div class="step-number">4</div>
+                            <div class="step-content">
+                                <h3>Set Up ALB Ingress Controller</h3>
+                                <ul class="guide-list">
+                                    <li>Install AWS Load Balancer Controller</li>
+                                    <li>Create IAM OIDC provider for the cluster</li>
+                                    <li>Create service account with appropriate IAM role</li>
+                                    <li>Deploy the controller using Helm</li>
+                                    <li>Create Ingress resource for your service</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="guide-step">
+                            <div class="step-number">5</div>
+                            <div class="step-content">
+                                <h3>Implement Auto Scaling</h3>
+                                <ul class="guide-list">
+                                    <li>Deploy Metrics Server for resource metrics</li>
+                                    <li>Create Horizontal Pod Autoscaler (HPA)</li>
+                                    <li>Configure based on CPU or custom metrics</li>
+                                    <li>Set up Cluster Autoscaler for node scaling</li>
+                                    <li>Test scaling by generating load</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="guide-step">
+                            <div class="step-number">6</div>
+                            <div class="step-content">
+                                <h3>Configure Logging and Monitoring</h3>
+                                <ul class="guide-list">
+                                    <li>Enable Control Plane logging to CloudWatch</li>
+                                    <li>Deploy CloudWatch Container Insights</li>
+                                    <li>Set up Fluent Bit for application logs</li>
+                                    <li>Create CloudWatch dashboards and alarms</li>
+                                    <li>Consider Prometheus/Grafana for advanced monitoring</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="guide-section">
+                        <h2>Tips</h2>
+                        <div class="tips-box">
+                            <ul class="guide-list">
+                                <li><strong>Use Fargate profiles for serverless pods</strong> - No node management for specific workloads</li>
+                                <li><strong>Implement pod security policies</strong> - Enforce security best practices for pods</li>
+                                <li><strong>Use namespaces for isolation</strong> - Separate environments and teams</li>
+                                <li><strong>Consider GitOps with ArgoCD or Flux</strong> - Declarative, version-controlled deployments</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="guide-section">
+                        <h2>What You'll Learn</h2>
+                        <ul class="guide-list">
+                            <li>EKS cluster provisioning and management</li>
+                            <li>Kubernetes networking on AWS (VPC CNI)</li>
+                            <li>Pod autoscaling (HPA/VPA) and cluster autoscaling</li>
+                            <li>AWS Load Balancer Controller and Ingress</li>
+                            <li>Container Insights for monitoring and logging</li>
+                        </ul>
+                    </div>
+
+                    <div class="guide-navigation">
+                        <a href="project-multi-region-active-active.html" class="btn-secondary">&larr; Previous Project</a>
+                        <a href="project-realtime-data-pipeline.html" class="btn-primary">Next Project &rarr;</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>AWS Cloud Architect Guide</h4>
+                    <p>Your roadmap to a successful career in cloud architecture.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html#roadmap">Roadmap</a></li>
+                        <li><a href="interview-prep.html">Interview Prep</a></li>
+                        <li><a href="projects.html">Projects</a></li>
+                        <li><a href="resources.html">Resources</a></li>
+                        <li><a href="tools.html">Tools</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Official AWS Links</h4>
+                    <ul>
+                        <li><a href="https://aws.amazon.com/certification/" target="_blank" rel="noopener">AWS Certification</a></li>
+                        <li><a href="https://aws.amazon.com/training/" target="_blank" rel="noopener">AWS Training</a></li>
+                        <li><a href="https://aws.amazon.com/architecture/" target="_blank" rel="noopener">AWS Architecture Center</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="about.html">About</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 AWS Cloud Architect Guide. Not affiliated with Amazon Web Services.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js" defer></script>
+</body>
+</html>

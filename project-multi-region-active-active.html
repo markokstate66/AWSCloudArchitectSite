@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Build a multi-region active-active architecture on AWS with Global Accelerator, DynamoDB Global Tables, and Route 53.">
+    <meta name="keywords" content="AWS multi-region, active-active architecture, Global Accelerator, DynamoDB Global Tables, disaster recovery">
+    <meta name="author" content="AWS Cloud Architect Guide">
+    <meta name="robots" content="index, follow">
+
+    <meta name="google-site-verification" content="S5Ea49iR485VLGQdZrR9g5bwazOFpVs8SFOiOPckRaY">
+    <meta name="msvalidate.01" content="E4792860CAB72733FACE91C7EE52BB14">
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-VBQ33BLD4E"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-VBQ33BLD4E');
+    </script>
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Multi-Region Active-Active on AWS | Project Guide">
+    <meta property="og:description" content="Build a globally distributed application with failover capabilities.">
+    <meta property="og:url" content="https://www.awscloudarchitect.com/project-multi-region-active-active.html">
+
+    <title>Multi-Region Active-Active on AWS | Advanced Project Guide</title>
+    <link rel="canonical" href="https://www.awscloudarchitect.com/project-multi-region-active-active.html">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+    <link rel="preconnect" href="https://www.googletagmanager.com">
+    <link rel="preconnect" href="https://pagead2.googlesyndication.com" crossorigin>
+    <link rel="stylesheet" href="styles.css">
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6676281664229738" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header class="header">
+        <nav class="nav-container">
+            <div class="logo">
+                <a href="index.html" style="display: flex; align-items: center; gap: 10px; color: inherit; text-decoration: none;">
+                    <span class="logo-icon">&#9729;</span>
+                    <span class="logo-text">AWS Cloud Architect Guide</span>
+                </a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html#roadmap">Roadmap</a></li>
+                <li><a href="index.html#certifications">Certifications</a></li>
+                <li><a href="interview-prep.html">Interview Prep</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="resources.html">Resources</a></li>
+                <li><a href="tools.html">Tools</a></li>
+            </ul>
+            <button class="mobile-menu-btn" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero" style="padding: 140px 20px 60px;">
+            <div class="hero-content">
+                <span class="project-level level-advanced" style="margin-bottom: 20px; display: inline-block;">Advanced</span>
+                <h1>Multi-Region <span class="highlight">Active-Active</span></h1>
+                <p class="hero-subtitle">Build a globally distributed application with automatic failover</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <div class="project-guide">
+                    <div class="guide-overview">
+                        <h2>Project Overview</h2>
+                        <p>Design and deploy an application that runs simultaneously in multiple AWS regions, providing low latency for global users and resilience against regional failures.</p>
+
+                        <div class="guide-meta">
+                            <div class="meta-item">
+                                <strong>Difficulty:</strong> Advanced
+                            </div>
+                            <div class="meta-item">
+                                <strong>AWS Services:</strong> Route 53, Global Accelerator, Aurora Global, DynamoDB Global Tables
+                            </div>
+                            <div class="meta-item">
+                                <strong>Cost:</strong> ~$200-500/month (tear down after learning)
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="guide-section">
+                        <h2>Prerequisites</h2>
+                        <ul class="guide-list">
+                            <li>Completed Three-Tier Web Application project</li>
+                            <li>Strong understanding of VPC networking</li>
+                            <li>Experience with RDS or DynamoDB</li>
+                            <li>Infrastructure as Code skills</li>
+                        </ul>
+                    </div>
+
+                    <div class="guide-section">
+                        <h2>Architecture</h2>
+                        <div class="architecture-diagram">
+                            <p>Users &rarr; Global Accelerator/Route 53 &rarr; Region A + Region B (Active-Active)</p>
+                            <p style="margin-top: 10px; font-size: 0.9rem; color: var(--text-light);">DynamoDB Global Tables for bi-directional data replication</p>
+                        </div>
+                    </div>
+
+                    <div class="guide-section">
+                        <h2>Step-by-Step Instructions</h2>
+
+                        <div class="guide-step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">
+                                <h3>Deploy Application in Primary Region</h3>
+                                <ul class="guide-list">
+                                    <li>Deploy your three-tier application in us-east-1</li>
+                                    <li>Use Infrastructure as Code for reproducibility</li>
+                                    <li>Ensure all resources are tagged for cost tracking</li>
+                                    <li>Document all configurations and dependencies</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="guide-step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">
+                                <h3>Set Up DynamoDB Global Tables</h3>
+                                <ul class="guide-list">
+                                    <li>Convert your DynamoDB table to a Global Table</li>
+                                    <li>Add replica in secondary region (e.g., eu-west-1)</li>
+                                    <li>Understand eventual consistency implications</li>
+                                    <li>Plan for conflict resolution (last writer wins)</li>
+                                    <li>Monitor replication lag with CloudWatch</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="guide-step">
+                            <div class="step-number">3</div>
+                            <div class="step-content">
+                                <h3>Deploy Application in Secondary Region</h3>
+                                <ul class="guide-list">
+                                    <li>Run same IaC template in eu-west-1</li>
+                                    <li>Update configuration to use local DynamoDB replica</li>
+                                    <li>Ensure identical AMIs or container images</li>
+                                    <li>Verify application functions independently</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="guide-step">
+                            <div class="step-number">4</div>
+                            <div class="step-content">
+                                <h3>Configure Global Traffic Management</h3>
+                                <ul class="guide-list">
+                                    <li>Option A: Create AWS Global Accelerator</li>
+                                    <li>Option B: Use Route 53 latency-based routing</li>
+                                    <li>Add endpoints from both regions</li>
+                                    <li>Configure health checks for automatic failover</li>
+                                    <li>Set appropriate TTLs for DNS records</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="guide-step">
+                            <div class="step-number">5</div>
+                            <div class="step-content">
+                                <h3>Implement Health Checks and Failover</h3>
+                                <ul class="guide-list">
+                                    <li>Create Route 53 health checks for each region</li>
+                                    <li>Configure CloudWatch alarms for health metrics</li>
+                                    <li>Set up SNS notifications for failover events</li>
+                                    <li>Define recovery procedures and runbooks</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="guide-step">
+                            <div class="step-number">6</div>
+                            <div class="step-content">
+                                <h3>Test Failover Scenarios</h3>
+                                <ul class="guide-list">
+                                    <li>Simulate regional failure by stopping services</li>
+                                    <li>Verify traffic automatically routes to healthy region</li>
+                                    <li>Test data consistency after failover</li>
+                                    <li>Measure Recovery Time Objective (RTO)</li>
+                                    <li>Document findings and optimize</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="guide-section">
+                        <h2>Tips</h2>
+                        <div class="tips-box">
+                            <ul class="guide-list">
+                                <li><strong>Use eventual consistency patterns</strong> - Design your application to handle temporary data inconsistencies</li>
+                                <li><strong>Monitor replication lag</strong> - Set up CloudWatch alarms for Global Tables replication metrics</li>
+                                <li><strong>Test regularly</strong> - Run game days to practice failover procedures</li>
+                                <li><strong>Consider data locality regulations</strong> - Some data may need to stay in specific regions</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="guide-section">
+                        <h2>What You'll Learn</h2>
+                        <ul class="guide-list">
+                            <li>Multi-region architecture design patterns</li>
+                            <li>Global traffic management with Route 53 and Global Accelerator</li>
+                            <li>Data replication strategies and consistency models</li>
+                            <li>Conflict resolution patterns for distributed writes</li>
+                            <li>Failover automation and disaster recovery testing</li>
+                        </ul>
+                    </div>
+
+                    <div class="guide-navigation">
+                        <a href="project-infrastructure-as-code.html" class="btn-secondary">&larr; Previous Project</a>
+                        <a href="project-kubernetes-eks.html" class="btn-primary">Next Project &rarr;</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>AWS Cloud Architect Guide</h4>
+                    <p>Your roadmap to a successful career in cloud architecture.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html#roadmap">Roadmap</a></li>
+                        <li><a href="interview-prep.html">Interview Prep</a></li>
+                        <li><a href="projects.html">Projects</a></li>
+                        <li><a href="resources.html">Resources</a></li>
+                        <li><a href="tools.html">Tools</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Official AWS Links</h4>
+                    <ul>
+                        <li><a href="https://aws.amazon.com/certification/" target="_blank" rel="noopener">AWS Certification</a></li>
+                        <li><a href="https://aws.amazon.com/training/" target="_blank" rel="noopener">AWS Training</a></li>
+                        <li><a href="https://aws.amazon.com/architecture/" target="_blank" rel="noopener">AWS Architecture Center</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="about.html">About</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 AWS Cloud Architect Guide. Not affiliated with Amazon Web Services.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js" defer></script>
+</body>
+</html>

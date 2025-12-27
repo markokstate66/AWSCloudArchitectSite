@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Build a serverless contact form using AWS API Gateway, Lambda, and SES. Beginner-friendly step-by-step guide.">
+    <meta name="keywords" content="AWS Lambda contact form, serverless form, API Gateway tutorial, AWS SES email">
+    <meta name="author" content="AWS Cloud Architect Guide">
+    <meta name="robots" content="index, follow">
+
+    <meta name="google-site-verification" content="S5Ea49iR485VLGQdZrR9g5bwazOFpVs8SFOiOPckRaY">
+    <meta name="msvalidate.01" content="E4792860CAB72733FACE91C7EE52BB14">
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-VBQ33BLD4E"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-VBQ33BLD4E');
+    </script>
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Serverless Contact Form on AWS | Project Guide">
+    <meta property="og:description" content="Build a serverless contact form using AWS API Gateway, Lambda, and SES.">
+    <meta property="og:url" content="https://www.awscloudarchitect.com/project-serverless-contact-form.html">
+
+    <title>Serverless Contact Form on AWS | Beginner Project Guide</title>
+    <link rel="canonical" href="https://www.awscloudarchitect.com/project-serverless-contact-form.html">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+    <link rel="preconnect" href="https://www.googletagmanager.com">
+    <link rel="preconnect" href="https://pagead2.googlesyndication.com" crossorigin>
+    <link rel="stylesheet" href="styles.css">
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6676281664229738" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header class="header">
+        <nav class="nav-container">
+            <div class="logo">
+                <a href="index.html" style="display: flex; align-items: center; gap: 10px; color: inherit; text-decoration: none;">
+                    <span class="logo-icon">&#9729;</span>
+                    <span class="logo-text">AWS Cloud Architect Guide</span>
+                </a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html#roadmap">Roadmap</a></li>
+                <li><a href="index.html#certifications">Certifications</a></li>
+                <li><a href="interview-prep.html">Interview Prep</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="resources.html">Resources</a></li>
+                <li><a href="tools.html">Tools</a></li>
+            </ul>
+            <button class="mobile-menu-btn" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero" style="padding: 140px 20px 60px;">
+            <div class="hero-content">
+                <span class="project-level level-beginner" style="margin-bottom: 20px; display: inline-block;">Beginner</span>
+                <h1>Serverless <span class="highlight">Contact Form</span></h1>
+                <p class="hero-subtitle">Build a contact form that sends emails using API Gateway, Lambda, and SES</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <div class="project-guide">
+                    <div class="guide-overview">
+                        <h2>Project Overview</h2>
+                        <p>Create a fully serverless contact form that processes submissions and sends email notifications. No servers to manage, and you only pay for what you use.</p>
+
+                        <div class="guide-meta">
+                            <div class="meta-item">
+                                <strong>Difficulty:</strong> Beginner
+                            </div>
+                            <div class="meta-item">
+                                <strong>AWS Services:</strong> API Gateway, Lambda, SES, DynamoDB
+                            </div>
+                            <div class="meta-item">
+                                <strong>Cost:</strong> Free Tier eligible
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="guide-section">
+                        <h2>Prerequisites</h2>
+                        <ul class="guide-list">
+                            <li>AWS account (Free Tier)</li>
+                            <li>Basic JavaScript/Python knowledge</li>
+                            <li>A verified email address for SES</li>
+                            <li>HTML form on your website</li>
+                        </ul>
+                    </div>
+
+                    <div class="guide-section">
+                        <h2>Architecture</h2>
+                        <div class="architecture-diagram">
+                            <p>Website Form &rarr; API Gateway &rarr; Lambda &rarr; SES (Email)</p>
+                            <p style="margin-top: 10px; font-size: 0.9rem; color: var(--text-light);">Optional: Store submissions in DynamoDB for backup</p>
+                        </div>
+                    </div>
+
+                    <div class="guide-section">
+                        <h2>Step-by-Step Instructions</h2>
+
+                        <div class="guide-step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">
+                                <h3>Verify Email in SES</h3>
+                                <ul class="guide-list">
+                                    <li>Go to Amazon SES in the AWS Console</li>
+                                    <li>Click "Verified identities" then "Create identity"</li>
+                                    <li>Choose "Email address" and enter your email</li>
+                                    <li>Check your inbox and click the verification link</li>
+                                    <li>Note: In sandbox mode, both sender and recipient must be verified</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="guide-step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">
+                                <h3>Create the Lambda Function</h3>
+                                <ul class="guide-list">
+                                    <li>Go to Lambda and click "Create function"</li>
+                                    <li>Choose "Author from scratch"</li>
+                                    <li>Name it "ContactFormHandler"</li>
+                                    <li>Select Python 3.12 or Node.js 20.x runtime</li>
+                                    <li>Create a new execution role with basic Lambda permissions</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="guide-step">
+                            <div class="step-number">3</div>
+                            <div class="step-content">
+                                <h3>Add Lambda Code</h3>
+                                <ul class="guide-list">
+                                    <li>Parse the incoming JSON body (name, email, message)</li>
+                                    <li>Validate required fields</li>
+                                    <li>Use boto3 (Python) or AWS SDK to send email via SES</li>
+                                    <li>Return appropriate response with CORS headers</li>
+                                    <li>Add error handling for failed sends</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="guide-step">
+                            <div class="step-number">4</div>
+                            <div class="step-content">
+                                <h3>Set Up API Gateway</h3>
+                                <ul class="guide-list">
+                                    <li>Go to API Gateway and create a REST API</li>
+                                    <li>Create a new resource called "/contact"</li>
+                                    <li>Add a POST method</li>
+                                    <li>Connect it to your Lambda function</li>
+                                    <li>Enable Lambda Proxy integration</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="guide-step">
+                            <div class="step-number">5</div>
+                            <div class="step-content">
+                                <h3>Configure CORS</h3>
+                                <ul class="guide-list">
+                                    <li>Select the /contact resource</li>
+                                    <li>Click "Enable CORS" from the Actions menu</li>
+                                    <li>Set allowed origin to your website domain</li>
+                                    <li>Enable for POST and OPTIONS methods</li>
+                                    <li>Deploy the API to a stage (e.g., "prod")</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="guide-step">
+                            <div class="step-number">6</div>
+                            <div class="step-content">
+                                <h3>Connect Your Frontend</h3>
+                                <ul class="guide-list">
+                                    <li>Copy the API Gateway invoke URL</li>
+                                    <li>Update your HTML form to submit via fetch/AJAX</li>
+                                    <li>Send POST request with JSON body</li>
+                                    <li>Handle success and error responses</li>
+                                    <li>Test the complete flow</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="guide-section">
+                        <h2>Tips</h2>
+                        <div class="tips-box">
+                            <ul class="guide-list">
+                                <li><strong>Use environment variables for email addresses</strong> - Don't hardcode emails in your Lambda code</li>
+                                <li><strong>Add input validation</strong> - Sanitize inputs to prevent injection attacks</li>
+                                <li><strong>Request SES production access</strong> - Submit a request to send to any email address</li>
+                                <li><strong>Add rate limiting</strong> - Use API Gateway throttling to prevent abuse</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="guide-section">
+                        <h2>What You'll Learn</h2>
+                        <ul class="guide-list">
+                            <li>API Gateway REST API creation and configuration</li>
+                            <li>Lambda function development and deployment</li>
+                            <li>Email sending with Amazon SES</li>
+                            <li>CORS configuration for cross-origin requests</li>
+                            <li>IAM roles and permissions for Lambda</li>
+                        </ul>
+                    </div>
+
+                    <div class="guide-navigation">
+                        <a href="project-static-website.html" class="btn-secondary">&larr; Previous Project</a>
+                        <a href="project-ec2-web-server.html" class="btn-primary">Next Project &rarr;</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>AWS Cloud Architect Guide</h4>
+                    <p>Your roadmap to a successful career in cloud architecture.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html#roadmap">Roadmap</a></li>
+                        <li><a href="interview-prep.html">Interview Prep</a></li>
+                        <li><a href="projects.html">Projects</a></li>
+                        <li><a href="resources.html">Resources</a></li>
+                        <li><a href="tools.html">Tools</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Official AWS Links</h4>
+                    <ul>
+                        <li><a href="https://aws.amazon.com/certification/" target="_blank" rel="noopener">AWS Certification</a></li>
+                        <li><a href="https://aws.amazon.com/training/" target="_blank" rel="noopener">AWS Training</a></li>
+                        <li><a href="https://aws.amazon.com/architecture/" target="_blank" rel="noopener">AWS Architecture Center</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="about.html">About</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 AWS Cloud Architect Guide. Not affiliated with Amazon Web Services.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js" defer></script>
+</body>
+</html>
