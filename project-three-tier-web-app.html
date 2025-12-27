@@ -101,8 +101,44 @@
                     <div class="guide-section">
                         <h2>Architecture</h2>
                         <div class="architecture-diagram">
-                            <p>Internet &rarr; ALB (Public Subnets) &rarr; EC2 ASG (Private Subnets) &rarr; RDS (Private Subnets)</p>
-                            <p style="margin-top: 10px; font-size: 0.9rem; color: var(--text-light);">NAT Gateway for outbound internet access from private subnets</p>
+                            <div class="arch-group">
+                                <div class="arch-group-label">Public Subnets (Multi-AZ)</div>
+                                <div class="arch-flow">
+                                    <div class="arch-component user">
+                                        <div class="arch-component-icon">&#127760;</div>
+                                        <div class="arch-component-name">Internet</div>
+                                    </div>
+                                    <span class="arch-arrow">&#8594;</span>
+                                    <div class="arch-component primary">
+                                        <div class="arch-component-icon">&#9878;</div>
+                                        <div class="arch-component-name">ALB</div>
+                                        <div class="arch-component-detail">Load Balancer</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="arch-arrow-down">&#8595;</div>
+                            <div class="arch-group">
+                                <div class="arch-group-label">Private Subnets (Multi-AZ)</div>
+                                <div class="arch-row">
+                                    <div class="arch-component compute">
+                                        <div class="arch-component-icon">&#128421;</div>
+                                        <div class="arch-component-name">EC2 ASG</div>
+                                        <div class="arch-component-detail">App Tier</div>
+                                    </div>
+                                    <span class="arch-arrow">&#8594;</span>
+                                    <div class="arch-component database">
+                                        <div class="arch-component-icon">&#128451;</div>
+                                        <div class="arch-component-name">RDS</div>
+                                        <div class="arch-component-detail">Multi-AZ</div>
+                                    </div>
+                                    <div class="arch-component database">
+                                        <div class="arch-component-icon">&#9889;</div>
+                                        <div class="arch-component-name">ElastiCache</div>
+                                        <div class="arch-component-detail">Caching</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="arch-note">NAT Gateway enables outbound internet access from private subnets</p>
                         </div>
                     </div>
 

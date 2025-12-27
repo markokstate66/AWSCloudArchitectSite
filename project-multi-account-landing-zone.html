@@ -101,8 +101,51 @@
                     <div class="guide-section">
                         <h2>Architecture</h2>
                         <div class="architecture-diagram">
-                            <p>Management Account &rarr; Organizations &rarr; OUs (Security, Workloads, Sandbox)</p>
-                            <p style="margin-top: 10px; font-size: 0.9rem; color: var(--text-light);">IAM Identity Center for centralized access, SCPs for guardrails</p>
+                            <div class="arch-vertical">
+                                <div class="arch-component primary">
+                                    <div class="arch-component-icon">&#127970;</div>
+                                    <div class="arch-component-name">Management Account</div>
+                                    <div class="arch-component-detail">Organizations + Control Tower</div>
+                                </div>
+                                <div class="arch-arrow-down">&#8595;</div>
+                                <div class="arch-row">
+                                    <div class="arch-component security">
+                                        <div class="arch-component-icon">&#128274;</div>
+                                        <div class="arch-component-name">IAM Identity Center</div>
+                                        <div class="arch-component-detail">SSO</div>
+                                    </div>
+                                    <div class="arch-component security">
+                                        <div class="arch-component-icon">&#128220;</div>
+                                        <div class="arch-component-name">SCPs</div>
+                                        <div class="arch-component-detail">Guardrails</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="arch-arrow-down">&#8595;</div>
+                            <div class="arch-row">
+                                <div class="arch-group">
+                                    <div class="arch-group-label">Security OU</div>
+                                    <div class="arch-component security">
+                                        <div class="arch-component-icon">&#128737;</div>
+                                        <div class="arch-component-name">Log Archive</div>
+                                    </div>
+                                </div>
+                                <div class="arch-group">
+                                    <div class="arch-group-label">Workloads OU</div>
+                                    <div class="arch-component compute">
+                                        <div class="arch-component-icon">&#128421;</div>
+                                        <div class="arch-component-name">Production</div>
+                                    </div>
+                                </div>
+                                <div class="arch-group">
+                                    <div class="arch-group-label">Sandbox OU</div>
+                                    <div class="arch-component user">
+                                        <div class="arch-component-icon">&#128187;</div>
+                                        <div class="arch-component-name">Development</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="arch-note">Account Factory automates new account provisioning</p>
                         </div>
                     </div>
 

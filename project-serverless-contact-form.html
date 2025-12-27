@@ -101,8 +101,32 @@
                     <div class="guide-section">
                         <h2>Architecture</h2>
                         <div class="architecture-diagram">
-                            <p>Website Form &rarr; API Gateway &rarr; Lambda &rarr; SES (Email)</p>
-                            <p style="margin-top: 10px; font-size: 0.9rem; color: var(--text-light);">Optional: Store submissions in DynamoDB for backup</p>
+                            <div class="arch-flow">
+                                <div class="arch-component user">
+                                    <div class="arch-component-icon">&#128196;</div>
+                                    <div class="arch-component-name">Web Form</div>
+                                    <div class="arch-component-detail">Frontend</div>
+                                </div>
+                                <span class="arch-arrow">&#8594;</span>
+                                <div class="arch-component primary">
+                                    <div class="arch-component-icon">&#128279;</div>
+                                    <div class="arch-component-name">API Gateway</div>
+                                    <div class="arch-component-detail">REST API</div>
+                                </div>
+                                <span class="arch-arrow">&#8594;</span>
+                                <div class="arch-component compute">
+                                    <div class="arch-component-icon">&#9889;</div>
+                                    <div class="arch-component-name">Lambda</div>
+                                    <div class="arch-component-detail">Process Form</div>
+                                </div>
+                                <span class="arch-arrow">&#8594;</span>
+                                <div class="arch-component primary">
+                                    <div class="arch-component-icon">&#9993;</div>
+                                    <div class="arch-component-name">SES</div>
+                                    <div class="arch-component-detail">Send Email</div>
+                                </div>
+                            </div>
+                            <p class="arch-note">Optional: Store submissions in DynamoDB for backup</p>
                         </div>
                     </div>
 

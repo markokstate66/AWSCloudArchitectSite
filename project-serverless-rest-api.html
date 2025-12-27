@@ -101,8 +101,38 @@
                     <div class="guide-section">
                         <h2>Architecture</h2>
                         <div class="architecture-diagram">
-                            <p>Client &rarr; API Gateway &rarr; Lambda Functions &rarr; DynamoDB</p>
-                            <p style="margin-top: 10px; font-size: 0.9rem; color: var(--text-light);">Cognito User Pool for authentication and authorization</p>
+                            <div class="arch-flow">
+                                <div class="arch-component user">
+                                    <div class="arch-component-icon">&#128241;</div>
+                                    <div class="arch-component-name">Client App</div>
+                                    <div class="arch-component-detail">Web/Mobile</div>
+                                </div>
+                                <span class="arch-arrow">&#8594;</span>
+                                <div class="arch-component security">
+                                    <div class="arch-component-icon">&#128274;</div>
+                                    <div class="arch-component-name">Cognito</div>
+                                    <div class="arch-component-detail">Auth</div>
+                                </div>
+                                <span class="arch-arrow">&#8594;</span>
+                                <div class="arch-component primary">
+                                    <div class="arch-component-icon">&#128279;</div>
+                                    <div class="arch-component-name">API Gateway</div>
+                                    <div class="arch-component-detail">REST API</div>
+                                </div>
+                                <span class="arch-arrow">&#8594;</span>
+                                <div class="arch-component compute">
+                                    <div class="arch-component-icon">&#9889;</div>
+                                    <div class="arch-component-name">Lambda</div>
+                                    <div class="arch-component-detail">CRUD</div>
+                                </div>
+                                <span class="arch-arrow">&#8594;</span>
+                                <div class="arch-component database">
+                                    <div class="arch-component-icon">&#128451;</div>
+                                    <div class="arch-component-name">DynamoDB</div>
+                                    <div class="arch-component-detail">NoSQL</div>
+                                </div>
+                            </div>
+                            <p class="arch-note">Fully serverless - pay only for what you use</p>
                         </div>
                     </div>
 

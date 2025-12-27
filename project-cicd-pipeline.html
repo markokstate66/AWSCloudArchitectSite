@@ -101,8 +101,38 @@
                     <div class="guide-section">
                         <h2>Architecture</h2>
                         <div class="architecture-diagram">
-                            <p>GitHub/CodeCommit &rarr; CodePipeline &rarr; CodeBuild &rarr; CodeDeploy &rarr; EC2/ECS</p>
-                            <p style="margin-top: 10px; font-size: 0.9rem; color: var(--text-light);">Optional: ECR for container images, S3 for artifacts</p>
+                            <div class="arch-flow">
+                                <div class="arch-component user">
+                                    <div class="arch-component-icon">&#128187;</div>
+                                    <div class="arch-component-name">GitHub</div>
+                                    <div class="arch-component-detail">Source</div>
+                                </div>
+                                <span class="arch-arrow">&#8594;</span>
+                                <div class="arch-component primary">
+                                    <div class="arch-component-icon">&#9881;</div>
+                                    <div class="arch-component-name">CodePipeline</div>
+                                    <div class="arch-component-detail">Orchestration</div>
+                                </div>
+                                <span class="arch-arrow">&#8594;</span>
+                                <div class="arch-component compute">
+                                    <div class="arch-component-icon">&#128295;</div>
+                                    <div class="arch-component-name">CodeBuild</div>
+                                    <div class="arch-component-detail">Build & Test</div>
+                                </div>
+                                <span class="arch-arrow">&#8594;</span>
+                                <div class="arch-component primary">
+                                    <div class="arch-component-icon">&#128640;</div>
+                                    <div class="arch-component-name">CodeDeploy</div>
+                                    <div class="arch-component-detail">Deploy</div>
+                                </div>
+                                <span class="arch-arrow">&#8594;</span>
+                                <div class="arch-component compute">
+                                    <div class="arch-component-icon">&#128421;</div>
+                                    <div class="arch-component-name">EC2/ECS</div>
+                                    <div class="arch-component-detail">Target</div>
+                                </div>
+                            </div>
+                            <p class="arch-note">ECR stores container images, S3 stores build artifacts</p>
                         </div>
                     </div>
 

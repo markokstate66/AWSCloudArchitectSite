@@ -101,8 +101,46 @@
                     <div class="guide-section">
                         <h2>Architecture</h2>
                         <div class="architecture-diagram">
-                            <p>Data Sources &rarr; Kinesis Data Streams &rarr; Lambda/Firehose &rarr; S3/OpenSearch</p>
-                            <p style="margin-top: 10px; font-size: 0.9rem; color: var(--text-light);">QuickSight or Kibana for visualization and dashboards</p>
+                            <div class="arch-flow">
+                                <div class="arch-component user">
+                                    <div class="arch-component-icon">&#128225;</div>
+                                    <div class="arch-component-name">Data Sources</div>
+                                    <div class="arch-component-detail">IoT/Apps/Logs</div>
+                                </div>
+                                <span class="arch-arrow">&#8594;</span>
+                                <div class="arch-component primary">
+                                    <div class="arch-component-icon">&#127754;</div>
+                                    <div class="arch-component-name">Kinesis</div>
+                                    <div class="arch-component-detail">Data Streams</div>
+                                </div>
+                                <span class="arch-arrow">&#8594;</span>
+                                <div class="arch-vertical">
+                                    <div class="arch-component compute">
+                                        <div class="arch-component-icon">&#9889;</div>
+                                        <div class="arch-component-name">Lambda</div>
+                                        <div class="arch-component-detail">Transform</div>
+                                    </div>
+                                    <div class="arch-component primary">
+                                        <div class="arch-component-icon">&#128293;</div>
+                                        <div class="arch-component-name">Firehose</div>
+                                        <div class="arch-component-detail">Delivery</div>
+                                    </div>
+                                </div>
+                                <span class="arch-arrow">&#8594;</span>
+                                <div class="arch-vertical">
+                                    <div class="arch-component storage">
+                                        <div class="arch-component-icon">&#128230;</div>
+                                        <div class="arch-component-name">S3</div>
+                                        <div class="arch-component-detail">Data Lake</div>
+                                    </div>
+                                    <div class="arch-component database">
+                                        <div class="arch-component-icon">&#128269;</div>
+                                        <div class="arch-component-name">OpenSearch</div>
+                                        <div class="arch-component-detail">Analytics</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="arch-note">QuickSight or Kibana for visualization and dashboards</p>
                         </div>
                     </div>
 

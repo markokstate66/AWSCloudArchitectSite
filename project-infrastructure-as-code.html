@@ -101,9 +101,44 @@
                     <div class="guide-section">
                         <h2>Choose Your Tool</h2>
                         <div class="architecture-diagram">
-                            <p><strong>CloudFormation:</strong> AWS native, YAML/JSON, deep AWS integration</p>
-                            <p><strong>Terraform:</strong> Multi-cloud, HCL syntax, strong community</p>
-                            <p><strong>CDK:</strong> Use programming languages (Python, TypeScript), generates CloudFormation</p>
+                            <div class="arch-row">
+                                <div class="arch-component primary">
+                                    <div class="arch-component-icon">&#128220;</div>
+                                    <div class="arch-component-name">CloudFormation</div>
+                                    <div class="arch-component-detail">AWS Native</div>
+                                </div>
+                                <div class="arch-component storage">
+                                    <div class="arch-component-icon">&#127759;</div>
+                                    <div class="arch-component-name">Terraform</div>
+                                    <div class="arch-component-detail">Multi-Cloud</div>
+                                </div>
+                                <div class="arch-component compute">
+                                    <div class="arch-component-icon">&#128187;</div>
+                                    <div class="arch-component-name">CDK</div>
+                                    <div class="arch-component-detail">Code-First</div>
+                                </div>
+                            </div>
+                            <div class="arch-arrow-down">&#8595;</div>
+                            <div class="arch-flow">
+                                <div class="arch-component user">
+                                    <div class="arch-component-icon">&#128221;</div>
+                                    <div class="arch-component-name">Template</div>
+                                    <div class="arch-component-detail">YAML/HCL</div>
+                                </div>
+                                <span class="arch-arrow">&#8594;</span>
+                                <div class="arch-component primary">
+                                    <div class="arch-component-icon">&#9881;</div>
+                                    <div class="arch-component-name">Deploy</div>
+                                    <div class="arch-component-detail">Stack/Apply</div>
+                                </div>
+                                <span class="arch-arrow">&#8594;</span>
+                                <div class="arch-component database">
+                                    <div class="arch-component-icon">&#9729;</div>
+                                    <div class="arch-component-name">AWS Resources</div>
+                                    <div class="arch-component-detail">VPC, EC2, RDS...</div>
+                                </div>
+                            </div>
+                            <p class="arch-note">Version control your infrastructure like application code</p>
                         </div>
                     </div>
 

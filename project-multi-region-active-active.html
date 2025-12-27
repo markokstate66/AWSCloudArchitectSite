@@ -101,8 +101,52 @@
                     <div class="guide-section">
                         <h2>Architecture</h2>
                         <div class="architecture-diagram">
-                            <p>Users &rarr; Global Accelerator/Route 53 &rarr; Region A + Region B (Active-Active)</p>
-                            <p style="margin-top: 10px; font-size: 0.9rem; color: var(--text-light);">DynamoDB Global Tables for bi-directional data replication</p>
+                            <div class="arch-vertical">
+                                <div class="arch-component user">
+                                    <div class="arch-component-icon">&#127760;</div>
+                                    <div class="arch-component-name">Global Users</div>
+                                </div>
+                                <div class="arch-arrow-down">&#8595;</div>
+                                <div class="arch-component primary">
+                                    <div class="arch-component-icon">&#127757;</div>
+                                    <div class="arch-component-name">Global Accelerator</div>
+                                    <div class="arch-component-detail">Anycast IP</div>
+                                </div>
+                            </div>
+                            <div class="arch-arrow-down">&#8595;</div>
+                            <div class="arch-row">
+                                <div class="arch-group">
+                                    <div class="arch-group-label">Region A (us-east-1)</div>
+                                    <div class="arch-vertical">
+                                        <div class="arch-component compute">
+                                            <div class="arch-component-icon">&#128421;</div>
+                                            <div class="arch-component-name">App Stack</div>
+                                        </div>
+                                        <div class="arch-component database">
+                                            <div class="arch-component-icon">&#128451;</div>
+                                            <div class="arch-component-name">DynamoDB</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="arch-component primary" style="padding: 8px;">
+                                    <div class="arch-component-icon">&#8596;</div>
+                                    <div class="arch-component-name">Replication</div>
+                                </div>
+                                <div class="arch-group">
+                                    <div class="arch-group-label">Region B (eu-west-1)</div>
+                                    <div class="arch-vertical">
+                                        <div class="arch-component compute">
+                                            <div class="arch-component-icon">&#128421;</div>
+                                            <div class="arch-component-name">App Stack</div>
+                                        </div>
+                                        <div class="arch-component database">
+                                            <div class="arch-component-icon">&#128451;</div>
+                                            <div class="arch-component-name">DynamoDB</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="arch-note">Global Tables provide automatic bi-directional replication</p>
                         </div>
                     </div>
 

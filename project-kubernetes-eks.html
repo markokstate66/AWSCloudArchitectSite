@@ -101,8 +101,47 @@
                     <div class="guide-section">
                         <h2>Architecture</h2>
                         <div class="architecture-diagram">
-                            <p>Internet &rarr; ALB Ingress &rarr; EKS Cluster &rarr; Managed Node Groups</p>
-                            <p style="margin-top: 10px; font-size: 0.9rem; color: var(--text-light);">ECR for container images, Secrets Manager for sensitive data</p>
+                            <div class="arch-flow">
+                                <div class="arch-component user">
+                                    <div class="arch-component-icon">&#127760;</div>
+                                    <div class="arch-component-name">Internet</div>
+                                </div>
+                                <span class="arch-arrow">&#8594;</span>
+                                <div class="arch-component primary">
+                                    <div class="arch-component-icon">&#9878;</div>
+                                    <div class="arch-component-name">ALB Ingress</div>
+                                    <div class="arch-component-detail">Controller</div>
+                                </div>
+                                <span class="arch-arrow">&#8594;</span>
+                                <div class="arch-group">
+                                    <div class="arch-group-label">EKS Cluster</div>
+                                    <div class="arch-row">
+                                        <div class="arch-component compute">
+                                            <div class="arch-component-icon">&#9096;</div>
+                                            <div class="arch-component-name">Pods</div>
+                                            <div class="arch-component-detail">Containers</div>
+                                        </div>
+                                        <div class="arch-component compute">
+                                            <div class="arch-component-icon">&#128421;</div>
+                                            <div class="arch-component-name">Node Group</div>
+                                            <div class="arch-component-detail">Managed</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="arch-row" style="margin-top: 15px;">
+                                <div class="arch-component storage">
+                                    <div class="arch-component-icon">&#128230;</div>
+                                    <div class="arch-component-name">ECR</div>
+                                    <div class="arch-component-detail">Images</div>
+                                </div>
+                                <div class="arch-component security">
+                                    <div class="arch-component-icon">&#128272;</div>
+                                    <div class="arch-component-name">Secrets Mgr</div>
+                                    <div class="arch-component-detail">Secrets</div>
+                                </div>
+                            </div>
+                            <p class="arch-note">Container Insights provides monitoring and logging</p>
                         </div>
                     </div>
 

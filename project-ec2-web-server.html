@@ -101,8 +101,32 @@
                     <div class="guide-section">
                         <h2>Architecture</h2>
                         <div class="architecture-diagram">
-                            <p>Internet &rarr; Security Group &rarr; EC2 Instance (Web Server)</p>
-                            <p style="margin-top: 10px; font-size: 0.9rem; color: var(--text-light);">Elastic IP for static public IP address</p>
+                            <div class="arch-flow">
+                                <div class="arch-component user">
+                                    <div class="arch-component-icon">&#127760;</div>
+                                    <div class="arch-component-name">Internet</div>
+                                    <div class="arch-component-detail">HTTP/HTTPS</div>
+                                </div>
+                                <span class="arch-arrow">&#8594;</span>
+                                <div class="arch-component security">
+                                    <div class="arch-component-icon">&#128737;</div>
+                                    <div class="arch-component-name">Security Group</div>
+                                    <div class="arch-component-detail">Ports 22, 80, 443</div>
+                                </div>
+                                <span class="arch-arrow">&#8594;</span>
+                                <div class="arch-component compute">
+                                    <div class="arch-component-icon">&#128421;</div>
+                                    <div class="arch-component-name">EC2 Instance</div>
+                                    <div class="arch-component-detail">Web Server</div>
+                                </div>
+                                <span class="arch-arrow">&#8592;</span>
+                                <div class="arch-component primary">
+                                    <div class="arch-component-icon">&#127991;</div>
+                                    <div class="arch-component-name">Elastic IP</div>
+                                    <div class="arch-component-detail">Static IP</div>
+                                </div>
+                            </div>
+                            <p class="arch-note">VPC provides network isolation and security</p>
                         </div>
                     </div>
 

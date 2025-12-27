@@ -1748,3 +1748,142 @@ ul {
         text-align: center;
     }
 }
+
+/* Architecture Diagram Styles */
+.architecture-diagram {
+    background: linear-gradient(135deg, var(--secondary-color), var(--dark-bg));
+    color: var(--text-white);
+    padding: 30px;
+    border-radius: 12px;
+    overflow-x: auto;
+}
+
+.arch-flow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    padding: 10px 0;
+}
+
+.arch-component {
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid var(--primary-color);
+    border-radius: 8px;
+    padding: 12px 18px;
+    text-align: center;
+    min-width: 100px;
+    backdrop-filter: blur(5px);
+}
+
+.arch-component.user {
+    background: rgba(16, 185, 129, 0.2);
+    border-color: #10b981;
+}
+
+.arch-component.primary {
+    background: rgba(255, 153, 0, 0.2);
+    border-color: var(--primary-color);
+}
+
+.arch-component.storage {
+    background: rgba(59, 130, 246, 0.2);
+    border-color: #3b82f6;
+}
+
+.arch-component.database {
+    background: rgba(139, 92, 246, 0.2);
+    border-color: #8b5cf6;
+}
+
+.arch-component.compute {
+    background: rgba(236, 72, 153, 0.2);
+    border-color: #ec4899;
+}
+
+.arch-component.security {
+    background: rgba(239, 68, 68, 0.2);
+    border-color: #ef4444;
+}
+
+.arch-component-icon {
+    font-size: 1.5rem;
+    margin-bottom: 5px;
+}
+
+.arch-component-name {
+    font-weight: 600;
+    font-size: 0.85rem;
+}
+
+.arch-component-detail {
+    font-size: 0.7rem;
+    opacity: 0.8;
+    margin-top: 3px;
+}
+
+.arch-arrow {
+    color: var(--primary-color);
+    font-size: 1.4rem;
+    font-weight: bold;
+}
+
+.arch-group {
+    border: 2px dashed rgba(255, 255, 255, 0.3);
+    border-radius: 12px;
+    padding: 15px;
+    margin: 10px 0;
+}
+
+.arch-group-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    opacity: 0.7;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.arch-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin: 8px 0;
+    flex-wrap: wrap;
+}
+
+.arch-vertical {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.arch-arrow-down {
+    color: var(--primary-color);
+    font-size: 1.2rem;
+}
+
+.arch-note {
+    font-size: 0.8rem;
+    opacity: 0.7;
+    text-align: center;
+    margin-top: 15px;
+    font-style: italic;
+}
+
+@media (max-width: 768px) {
+    .arch-flow {
+        flex-direction: column;
+    }
+
+    .arch-arrow {
+        transform: rotate(90deg);
+    }
+
+    .arch-row {
+        flex-direction: column;
+    }
+}

@@ -100,8 +100,32 @@
                     <div class="guide-section">
                         <h2>Architecture</h2>
                         <div class="architecture-diagram">
-                            <p>User &rarr; CloudFront (CDN) &rarr; S3 Bucket (Static Files)</p>
-                            <p style="margin-top: 10px; font-size: 0.9rem; color: var(--text-light);">Optional: Route 53 for DNS + ACM for SSL certificate</p>
+                            <div class="arch-flow">
+                                <div class="arch-component user">
+                                    <div class="arch-component-icon">&#128100;</div>
+                                    <div class="arch-component-name">Users</div>
+                                    <div class="arch-component-detail">Global</div>
+                                </div>
+                                <span class="arch-arrow">&#8594;</span>
+                                <div class="arch-component primary">
+                                    <div class="arch-component-icon">&#9729;</div>
+                                    <div class="arch-component-name">Route 53</div>
+                                    <div class="arch-component-detail">DNS</div>
+                                </div>
+                                <span class="arch-arrow">&#8594;</span>
+                                <div class="arch-component primary">
+                                    <div class="arch-component-icon">&#127760;</div>
+                                    <div class="arch-component-name">CloudFront</div>
+                                    <div class="arch-component-detail">CDN + SSL</div>
+                                </div>
+                                <span class="arch-arrow">&#8594;</span>
+                                <div class="arch-component storage">
+                                    <div class="arch-component-icon">&#128230;</div>
+                                    <div class="arch-component-name">S3 Bucket</div>
+                                    <div class="arch-component-detail">Static Files</div>
+                                </div>
+                            </div>
+                            <p class="arch-note">ACM provides free SSL certificates for HTTPS</p>
                         </div>
                     </div>
 
