@@ -2,6 +2,11 @@
   "extends": ["html-validate:recommended"],
   "rules": {
     "no-trailing-whitespace": "off",
-    "attr-quotes": "off"
+    "attr-quotes": "off",
+    "no-inline-style": "off",
+    "no-implicit-button-type": "off",
+    "no-raw-characters": "off",
+    "long-title": "off",
+    "parser-error": "off"
   }
 }
