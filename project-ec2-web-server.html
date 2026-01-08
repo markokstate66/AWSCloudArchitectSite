@@ -250,12 +250,12 @@ systemctl start nginx
 systemctl enable nginx
 
 # Create a simple index page
-cat > /usr/share/nginx/html/index.html << 'EOF'
-<!DOCTYPE html>
-<html>
-<head><title>Welcome</title></head>
-<body><h1>Hello from EC2!</h1></body>
-</html>
+cat &gt; /usr/share/nginx/html/index.html &lt;&lt; 'EOF'
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;&lt;title&gt;Welcome&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;&lt;h1&gt;Hello from EC2!&lt;/h1&gt;&lt;/body&gt;
+&lt;/html&gt;
 EOF</code></pre>
                         </div>
 
