@@ -67,10 +67,11 @@
     if (!b) return;
     var box = b.closest('.code-block'), pre = box && box.querySelector('pre');
     if (!pre || !navigator.clipboard) return;
+    var say = function (t, l) { b.textContent = t; b.setAttribute('aria-label', l); };
     navigator.clipboard.writeText(pre.innerText).then(function () {
-      b.textContent = 'Copied';
+      say('Copied', 'Code copied to clipboard');
       b.classList.add('is-done');
-      setTimeout(function () { b.textContent = 'Copy'; b.classList.remove('is-done'); }, 1500);
+      setTimeout(function () { say('Copy', 'Copy code'); b.classList.remove('is-done'); }, 1800);
     }, function () { /* clipboard denied: leave the label alone */ });
   });
 })();

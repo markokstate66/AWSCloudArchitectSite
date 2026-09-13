@@ -380,7 +380,8 @@ a:hover { color: var(--accent-strong); text-decoration-thickness: 2px; }
 .arch-row { flex-flow: row wrap; justify-content: center; }
 .arch-row > :not(.arch-arrow) { flex: 1 1 7.5rem; }
 .arch-component {
-  display: grid; grid-template-columns: auto minmax(0, 1fr); align-items: center; gap: 0 .45rem;
+  display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 0 .45rem;
+  align-items: center; align-content: center;
   padding: var(--sp-2) var(--sp-3); border: 1px solid var(--navy-line); background: var(--navy-2);
   border-left: 3px solid var(--role, var(--on-navy-2)); border-radius: var(--radius-sm);
 }
