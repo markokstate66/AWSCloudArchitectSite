@@ -8,22 +8,22 @@ the owner creates the units (HUMAN_TODO B4) and fills `docs/AD_UNITS.json`. The 
 
 | Position id | Page type | Where (DOM anchor) | Format | Reserved height (`--ad-h`) mobile / desktop | Never above the fold because |
 |-------------|-----------|--------------------|--------|------------------------------------------------|-------------------------------|
-| `article-mid-1` | project (11) | after the "Architecture" section, before "Step-by-Step Instructions" | responsive display (`data-ad-format="auto"`, `data-full-width-responsive="true"`) | 280 / 250 | preceded by page header + key facts + prerequisites + diagram (≥ 1,400 px at 390) |
+| `article-mid-1` | project (11) | after the "Architecture" section, before "Step-by-Step Instructions" | responsive display (`data-ad-format="auto"`, `data-full-width-responsive="true"`) | 280 / 250 (article wells are 624 px wide at 1440, so the 728×90 tier applies, not 970×250) | preceded by page header + key facts + prerequisites + diagram (≥ 1,400 px at 390) |
 | `article-mid-2` | project (11) | after "Tips", before "Code Examples" | responsive display | 280 / 250 | deep in the article |
-| `article-end` | project (11) | after "Next Steps", before prev/next navigation | responsive display | 280 / 250 | end of article |
-| `listing-mid` | projects, resources, interview-prep | between level groups / after book grid / after 3rd category | responsive display | 280 / 250 | after the first full section (≥ 1,000 px) |
+| `article-end` | project (11) | after the last section ("What You'll Learn", the 6th `.guide-section`), before prev/next navigation | responsive display | 280 / 250 | end of article |
+| `listing-mid` | projects, resources, interview-prep | after the first `.project-grid` / after `.books-grid` / after the first `.interview-grid` (implemented in harness/apply-ads.js) | responsive display | 280 / 250 | after the first full section (≥ 1,000 px) |
 | `home-mid` | index | between "AWS Certification Path" and "Best AWS Learning Resources" | responsive display | 280 / 250 | fourth section |
 
 No units on about, contact, privacy, 404, tools (calculator page: avoid ad next to form controls).
 Auto ads stay on and fill the gaps; **anchor on, vignettes off, side rails off** (human sets this).
 
 ## Corrections from the Wave 2 monetization critic (2026-09-13)
-- Anchor wells on **section order** inside `.project-guide` (1st/3rd/5th `.guide-section` boundaries), not on ids:
+- Anchor wells on **section order** inside `.project-guide` (after the **2nd / 4th / 6th** `.guide-section`: Architecture / Tips / What You'll Learn), not on ids:
   project-infrastructure-as-code.html has no `#architecture` (its h2 is "Choose Your Tool").
 - `listing-mid` on interview-prep.html goes **after `.interview-grid`**, not after the 3rd category (grid children).
 - `home-mid` must sit **inside a `.container`**: index sections are direct children of `<main>` (no gutter),
   so the well would render full-bleed at 390.
-- `.ad-well` needs `width: 100%` inside grid/flex parents (rendered 123 px wide in round 1). NOT fixed in Wave 1 r2 (only max-width landed; verified 122.6 px inside `.project-guide` by the r2 critic). Owned by Wave 3 ad-presentation, together with the inline `.ad-well-label` span (must be `display:block`) and an integrity rule keyed on `.ad-well`, not only `ins.adsbygoogle`.
+- `.ad-well` `width: 100%` + `margin-inline: 0` + `grid-column: 1`: DONE (commits 93426da, cff105e). Measured 342 / 664 / 624 px inside `.project-guide` at 390 / 1024 / 1440 (the article well is now the prose column, 152→776, not 970 px), 342 / 960 / 970 inside a `.container`. `.ad-well-label` is `display:block`. The gate records wells at their own top edge (`AD_WELL_WITHOUT_POSITION`, `NO_AD_ABOVE_FOLD`).
 - Auto ads **side rails must stay OFF**: 32/72/152 px clearance to the sticky "On this page" rail at 1024/1280/1440.
 - Never inject between the key-facts strip and the chip row (that is above the fold on desktop): the first
   article well sits after the Architecture section, as planned.
@@ -67,3 +67,10 @@ Lab: CLS with ads blocked stays the budget number; the harness placeholder paint
 screenshots show reservations. Field: Search Console CWV + AdSense Active View, per HUMAN_TODO C,
 compared against the 28-day pre-launch window; rollback trigger on Page RPM −25% for 7 days or
 any CWV group leaving "Good".
+
+## Auto ads: areas to exclude (set in AdSense → Auto ads → Excluded areas; human)
+- The key-facts strip → chip row seam on project pages (docY ≈ 430–500 at 390): injecting there lands above the fold on desktop and between two navigation blocks.
+- Inside `.architecture-diagram`, `.code-block` and the "On this page" rail (`.guide-aside`).
+- Between the contact form fields (contact.html) and inside the two calculator forms (tools.html).
+- The 404 page (never served today; keep it excluded once the soft-404 fix lands).
+Everything else (section seams ≥ 48 px, listing grids, end of article) is open to Auto ads.
