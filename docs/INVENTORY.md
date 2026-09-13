@@ -56,7 +56,7 @@ by hand in every page (index nav links are `#anchors`, all other pages use `inde
 - Consent/CMP: **none** (no `gtag('consent')`, no `googlefc`, no Funding Choices script).
 - Analytics: GA4 `G-VBQ33BLD4E` via gtag.js on the same 19 pages; no consent mode.
 - Legacy `.ad-container/.ad-placeholder/.ad-banner/.ad-rectangle` CSS exists but is unused.
-- **Ad baseline (human-captured):** _pending — see HUMAN_TODO B1._
+- **Ad settings (owner, 2026-09-13):** Auto ads ON; anchor ON; vignette OFF; side rails OFF. Manual units: 5 positions / 37 wells live since 2026-09-13 (docs/AD_UNITS.json). Pre-facelift Auto-ads format/ad-load settings were not recorded before the change.
 - **Field data (human-captured):** _pending — see HUMAN_TODO B3 (PSI API quota 429 on 2026-09-13)._
 
 ## 5. Lighthouse baseline (mobile, simulated throttling, ads + analytics blocked at the network layer)

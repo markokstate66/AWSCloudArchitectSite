@@ -211,5 +211,13 @@
     "sourceEdits": 75,
     "gateApprovals": 85,
     "unexplainedDiffs": 0
+  },
+  "autoAds": {
+    "set": "2026-09-13",
+    "autoAds": "on",
+    "anchor": "on",
+    "vignette": "off",
+    "sideRails": "off",
+    "excludedAreas": "pending (docs/AD_PLAN.md list)"
   }
 }

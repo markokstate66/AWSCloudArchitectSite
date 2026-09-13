@@ -97,13 +97,10 @@ Well-Architected Tool". Six text approvals recorded in docs/APPROVALS.json; gate
 
 ## B. AdSense / consent (only you can see or change these)
 
-### B1. Record the Auto ads settings and injected slots (needed as the ad baseline)
-In AdSense → Ads → By site → awscloudarchitect.com, record: Auto ads on/off, which formats are
-enabled (in-page, anchor, vignette, side rails, multiplex), the ad load slider, and any
-excluded pages/areas. Then, in a normal browser (not automation), load one page of each type
-(home, project, listing, static) on a phone and on desktop, scroll to the bottom, and note how
-many ads were injected and roughly where. Put the results in `docs/INVENTORY.md` under
-"Ad baseline (human-captured)". Agents block ad hosts and cannot see this.
+### B1. Auto ads settings — SET 2026-09-13 (owner): Auto ads on, anchor on, vignette off, side rails off.
+Still useful when convenient: the excluded areas from docs/AD_PLAN.md, and one normal-browser look at
+a project page and the home page on a phone after a day of fill to note where Auto ads inject
+relative to the five manual wells.
 
 ### B2. Consent: no CMP, no Consent Mode v2, GA4 on 19 pages
 There is no `gtag('consent', ...)` default, no Funding Choices / `googlefc` script, and the
@@ -128,8 +125,7 @@ You created four units (display 4265688185, in-feed 1914857011, in-article 12863
 8973246072); they are placed at the five AD_PLAN positions (mapping in docs/AD_PLAN.md), 37 wells on
 15 pages, gate clean. Two follow-ups for you:
 1. Second display unit (9084926712) received and placed at home-mid on 2026-09-13 — every position now has its own unit.
-2. **Auto ads settings** still yours: anchor on, vignette off, side rails off, plus the excluded areas
-   listed in docs/AD_PLAN.md. And after one week of real fill, send the rendered heights per position
+2. Auto ads settings done 2026-09-13. Excluded areas (docs/AD_PLAN.md) still worth adding. And after one week of real fill, send the rendered heights per position
    (mobile/desktop) so the `--ad-h` reservations stop being guesses.
 
 ## C. Post-launch watch plan (you run it; agents cannot see AdSense or GSC)
