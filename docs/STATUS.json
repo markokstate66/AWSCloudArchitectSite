@@ -5,7 +5,7 @@
   "areas": {
     "design-system": {
       "wave": 1,
-      "status": "FAILED_R1",
+      "status": "ROUND_2_BUILDING",
       "round": 1,
       "scores": {
         "r1": {
@@ -22,7 +22,7 @@
     },
     "layout-shell": {
       "wave": 1,
-      "status": "FAILED_R1",
+      "status": "ROUND_2_BUILDING",
       "round": 1,
       "scores": {
         "r1": {
@@ -39,31 +39,35 @@
     },
     "article-template": {
       "wave": 2,
-      "status": "PENDING",
-      "round": 0,
+      "status": "IN_GAUNTLET",
+      "round": 1,
       "scores": {},
-      "openIssues": []
+      "openIssues": [],
+      "builderReport": "docs/rounds/article-template-r1-builder.md"
     },
     "code-and-diagrams": {
       "wave": 2,
-      "status": "PENDING",
-      "round": 0,
+      "status": "IN_GAUNTLET",
+      "round": 1,
       "scores": {},
-      "openIssues": []
+      "openIssues": [],
+      "builderReport": "docs/rounds/code-and-diagrams-r1-builder.md"
     },
     "listing-pages": {
       "wave": 2,
-      "status": "PENDING",
-      "round": 0,
+      "status": "IN_GAUNTLET",
+      "round": 1,
       "scores": {},
-      "openIssues": []
+      "openIssues": [],
+      "builderReport": "docs/rounds/listing-pages-r1-builder.md"
     },
     "static-pages": {
       "wave": 2,
-      "status": "PENDING",
-      "round": 0,
+      "status": "IN_GAUNTLET",
+      "round": 1,
       "scores": {},
-      "openIssues": []
+      "openIssues": [],
+      "builderReport": "docs/rounds/static-pages-r1-builder.md"
     },
     "ad-presentation": {
       "wave": 3,
@@ -88,5 +92,6 @@
   "notes": [
     "Wave 1 built by one builder for both areas (cohesion); critics running round 1",
     "Integrator: skip link added after gate fix (fragment-only hrefs ignored); pre-block exact text added to gate; HTML re-indented 4->2 spaces outside <pre> (68 KB headroom)"
-  ]
+  ],
+  "weightBudget": "gzip per page vs f1ec399 via harness/weight.js; FAIL on 19 pages after Wave 2 (+3.2..4.6 KB gz); CSS consolidation assigned to Wave 1 r2; residual to be signed off (HUMAN_TODO)"
 }
