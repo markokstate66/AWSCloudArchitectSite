@@ -59,6 +59,21 @@ that and nothing else. An agent will then make the edits and the gate will verif
 `git grep` for storage keys, ACS connection strings, AWS keys and private keys: nothing. A
 `.gitignore` net for those shapes was added (`local.settings.json`, `*.pem`, `.env*`, etc.).
 
+### A5. Five "Learn More" links block Lighthouse SEO 100 on index.html and tools.html
+Lighthouse's link-text audit flags generic anchor text. The text is frozen, so the facelift
+cannot fix it. Proposed exact substitutions (paste into docs/APPROVALS.json with your name/date):
+```json
+[
+ {"page":"index.html","field":"text","from":"$100 USD Learn More","to":"$100 USD Cloud Practitioner exam details","approvedBy":"","date":""},
+ {"page":"index.html","field":"text","from":"$150 USD Learn More","to":"$150 USD Solutions Architect Associate exam details","approvedBy":"","date":""},
+ {"page":"index.html","field":"text","from":"180-minute exam $300 USD Learn More","to":"180-minute exam $300 USD Solutions Architect Professional exam details","approvedBy":"","date":""},
+ {"page":"index.html","field":"text","from":"170-minute exam $300 USD Learn More","to":"170-minute exam $300 USD Security Specialty exam details","approvedBy":"","date":""}
+]
+```
+(tools.html has one more "Learn More"; the exact context string will be added to the approval
+block once the listing-pages round is done, so that the substitution is unique on that page.)
+The headings field would also change ("Learn More" is link text, not a heading, so only `text`).
+
 ## B. AdSense / consent (only you can see or change these)
 
 ### B1. Record the Auto ads settings and injected slots (needed as the ad baseline)
