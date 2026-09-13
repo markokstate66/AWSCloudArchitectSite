@@ -49,16 +49,16 @@ function header(page, home) {
   }).join('');
   const mark = `${MARK}<span class="logo-text">AWS Cloud Architect Guide</span>`;
   const brand = home
-    ? `            <span class="brand">${mark}</span>`
-    : `            <a class="brand" href="index.html">${mark}</a>`;
+    ? `      <span class="brand">${mark}</span>`
+    : `      <a class="brand" href="index.html">${mark}</a>`;
   return [
-    '    <header class="site-header">',
-    '        <nav class="site-header-inner" aria-label="Main">',
+    '  <header class="site-header">',
+    '    <nav class="site-header-inner" aria-label="Main">',
     brand,
-    `            <ul class="site-nav" id="site-nav">${links}</ul>`,
-    '            <button class="nav-toggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="site-nav"><span></span><span></span><span></span></button>',
-    '        </nav>',
-    '    </header>',
+    `      <ul class="site-nav" id="site-nav">${links}</ul>`,
+    '      <button class="nav-toggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="site-nav"><span></span><span></span><span></span></button>',
+    '    </nav>',
+    '  </header>',
     '',
   ].join('\n');
 }
@@ -68,9 +68,9 @@ function breadcrumb(trail, title) {
     .concat(trail.map(([label, href]) => `<li><a href="${href}">${label}</a></li>`))
     .concat([`<li><span aria-current="page">${title}</span></li>`]).join('');
   return [
-    '    <nav class="breadcrumbs" aria-label="Breadcrumb" data-ui>',
-    `        <ol class="container">${crumbs}</ol>`,
-    '    </nav>',
+    '  <nav class="breadcrumbs" aria-label="Breadcrumb" data-ui>',
+    `    <ol class="container">${crumbs}</ol>`,
+    '  </nav>',
     '',
   ].join('\n');
 }
@@ -103,7 +103,7 @@ for (const page of Object.keys(PAGES).sort()) {
 
   // 3. shell: skip link (first focusable; integrity.js ignores fragment-only hrefs) + header
   s = s.replace(/[ \t]*<a class="skip-link"[^>]*>[\s\S]*?<\/a>\n/, '');
-  s = s.replace(/(<body[^>]*>\n)/, '$1    <a class="skip-link" href="#main" data-ui>Skip to content</a>\n');
+  s = s.replace(/(<body[^>]*>\n)/, '$1  <a class="skip-link" href="#main" data-ui>Skip to content</a>\n');
   const hdr = /[ \t]*<header class="(?:header|site-header)">[\s\S]*?<\/header>\n\n?/;
   if (hdr.test(s)) s = s.replace(hdr, header(page, home));
 
@@ -124,11 +124,11 @@ for (const page of Object.keys(PAGES).sort()) {
     // function form: the hero text contains "$150K+", which a string replacement
     // would read as a capture-group reference.
     s = s.replace(heroRe, () => [
-      `        <section class="${cls}">`,
-      '            <div class="container">',
+      `    <section class="${cls}">`,
+      '      <div class="container">',
       inner,
-      '            </div>',
-      '        </section>',
+      '      </div>',
+      '    </section>',
     ].join('\n'));
   }
 
