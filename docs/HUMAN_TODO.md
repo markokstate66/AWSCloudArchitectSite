@@ -133,14 +133,15 @@ number is field data. PageSpeed Insights' keyless API quota was exhausted on 202
 screenshot the 28-day status and the URL groups, and paste the numbers into
 `docs/INVENTORY.md` under "Field data (human-captured)". Do the same the week after launch.
 
-### B4. Phase 2 — manual ad units (when the facelift passes)
-The AdSense Management API cannot create units for this account type (`adunits.create` → 403),
-and in-feed layout keys are only visible in the UI. When asked, create these display units and
-paste the `data-ad-slot` ids into `docs/AD_UNITS.json`: `article-mid-1`, `article-mid-2`,
-`article-end`, `listing-mid`, `home-mid`. One unit per position so each earns separately in
-reports. Set Auto ads: **anchor on, vignette off**, in-page on, side rails off on this domain.
-Reservations in the ad wrappers are guesses until you have seen them with real fill; report
-back the real filled sizes per position on mobile and desktop after one week.
+### B4. Phase 2 — manual ad units: PLACED in the branch on 2026-09-13
+You created four units (display 4265688185, in-feed 1914857011, in-article 1286327745, multiplex
+8973246072); they are placed at the five AD_PLAN positions (mapping in docs/AD_PLAN.md), 37 wells on
+15 pages, gate clean. Two follow-ups for you:
+1. **Create one more display unit** (e.g. "awsca home-mid") and paste its slot id so home-mid stops
+   sharing the display unit with article-mid-2 — until then those two positions report as one line.
+2. **Auto ads settings** still yours: anchor on, vignette off, side rails off, plus the excluded areas
+   listed in docs/AD_PLAN.md. And after one week of real fill, send the rendered heights per position
+   (mobile/desktop) so the `--ad-h` reservations stop being guesses.
 
 ## C. Post-launch watch plan (you run it; agents cannot see AdSense or GSC)
 
@@ -164,7 +165,7 @@ Measured with `node harness/weight.js` (gzip, the way Azure SWA serves text), re
 
 | Page type | gzip now vs baseline | Where it comes from |
 |-----------|----------------------|---------------------|
-| project guides (11) | about +2.45 KB (e.g. 14.3 KB vs 11.9 KB) | styles.css +1.9 KB (new design system replaces a 6 KB sheet that gzipped unusually well), script.js +0.3 KB (copy buttons, keyboard-accessible pre/FAQ/drawer), page HTML +0.23 KB (heading ids, "On this page" rail, key-facts list, skip link, breadcrumb) |
+| project guides (11) | about +4.2 KB with the three ad wells (+2.45 KB before units; e.g. 15.2 KB vs 11.0 KB) | styles.css +1.9 KB (new design system replaces a 6 KB sheet that gzipped unusually well), script.js +0.3 KB (copy buttons, keyboard-accessible pre/FAQ/drawer), page HTML +0.23 KB (heading ids, "On this page" rail, key-facts list, skip link, breadcrumb) |
 | listing pages | about +1.3 KB | same shared CSS/JS; HTML is at or below baseline |
 | static pages | +1.2–1.6 KB | same |
 | home | +1.0 KB | same |

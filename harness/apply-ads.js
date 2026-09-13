@@ -1,6 +1,8 @@
 // Places manual ad units per docs/AD_PLAN.md ONLY when docs/AD_UNITS.json holds real slot ids.
 //   node harness/apply-ads.js --check   report what would be placed / why not
 //   node harness/apply-ads.js           apply (idempotent: existing .ad-well[data-position] blocks are replaced)
+// docs/AD_UNITS.json: { "<position>": "<slot>" | { "slot": "...", "format": "auto|fluid|autorelaxed",
+//   "layout": "in-article", "layoutKey": "-6t+ed+2i-1n-4w", "height": 280 } }
 // Without slot ids this script places nothing: an empty reserved well in production would be a void.
 // After placing units, every page's unit count needs an "adCount" approval in docs/APPROVALS.json.
 const fs = require('fs');
@@ -9,13 +11,22 @@ const ROOT = path.resolve(__dirname, '..');
 const CHECK = process.argv.includes('--check');
 const PUB = 'ca-pub-6676281664229738';
 const unitsFile = path.join(ROOT, 'docs', 'AD_UNITS.json');
-const units = fs.existsSync(unitsFile) ? JSON.parse(fs.readFileSync(unitsFile, 'utf8')) : {};
+const rawUnits = fs.existsSync(unitsFile) ? JSON.parse(fs.readFileSync(unitsFile, 'utf8')) : {};
+const units = Object.fromEntries(Object.entries(rawUnits).filter(([k]) => !k.startsWith('_')).map(([k, v]) => [k, typeof v === 'string' ? { slot: v } : v]));
 
-function well(position, slot, h) {
+function insTag(u) {
+  const a = [`class="adsbygoogle"`, `style="display:block${u.layout === 'in-article' ? ';text-align:center' : ''}"`, `data-ad-client="${PUB}"`, `data-ad-slot="${u.slot}"`];
+  if (u.layout) a.push(`data-ad-layout="${u.layout}"`);
+  if (u.layoutKey) a.push(`data-ad-layout-key="${u.layoutKey}"`);
+  a.push(`data-ad-format="${u.format || 'auto'}"`);
+  if (!u.format || u.format === 'auto') a.push(`data-full-width-responsive="true"`);
+  return `<ins ${a.join(' ')}></ins>`;
+}
+function well(position, u) {
   return [
-    `<div class="ad-well" data-position="${position}" style="--ad-h:${h}px">`,
+    `<div class="ad-well" data-position="${position}" style="--ad-h:${u.height || 280}px">`,
     `  <span class="ad-well-label" data-ui>Advertisement</span>`,
-    `  <div class="ad-well-slot"><ins class="adsbygoogle" style="display:block" data-ad-client="${PUB}" data-ad-slot="${slot}" data-ad-format="auto" data-full-width-responsive="true"></ins></div>`,
+    `  <div class="ad-well-slot">${insTag(u)}</div>`,
     `</div>`,
     `<script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>`,
   ].join('\n');
@@ -33,15 +44,15 @@ const PLAN = {
 };
 const NL = '\n';
 function indentOf(html, idx) { return (html.slice(html.lastIndexOf(NL, idx) + 1, idx).match(/^ */) || [''])[0]; }
-function closeOf(html, openIdx) { // index just after the matching </div> of the <div> at openIdx
+function closeOf(html, openIdx) {
   let depth = 0; const tag = /<\/?div\b[^>]*>/g; tag.lastIndex = openIdx; let t;
   while ((t = tag.exec(html))) { depth += t[0].startsWith('</') ? -1 : 1; if (depth === 0) return t.index + t[0].length; }
   return -1;
 }
-function insertAfter(html, openIdx, block, extraIndent) {
+function insertAfter(html, openIdx, block) {
   const pos = closeOf(html, openIdx); if (pos < 0) return null;
   const eol = html.indexOf(NL, pos); const cut = eol < 0 ? pos : eol + 1;
-  const ind = indentOf(html, openIdx) + (extraIndent || '');
+  const ind = indentOf(html, openIdx);
   return html.slice(0, cut) + block.split(NL).map(l => ind + l).join(NL) + NL + html.slice(cut);
 }
 function insertAfterNthSection(html, n, block) {
@@ -59,24 +70,24 @@ function insertBeforeSection(html, id, block) {
   const wrapped = ['<div class="container">', ...block.split(NL).map(l => '  ' + l), '</div>'].map(l => ind + l).join(NL) + NL;
   return html.slice(0, lineStart) + wrapped + html.slice(lineStart);
 }
-// Strip previously placed wells (with or without the home-mid container wrapper) so the script is idempotent.
 const STRIP = /(?: *<div class="container">\n)? *<div class="ad-well" data-position="[^"]+"[\s\S]*?<\/div>\n *<script>\(adsbygoogle=window\.adsbygoogle\|\|\[\]\)\.push\(\{\}\);<\/script>\n(?: *<\/div>\n)?/g;
 const pages = fs.readdirSync(ROOT).filter(f => f.endsWith('.html') && !/^(admin|404)\.html$/.test(f));
-let placed = 0; const skipped = [];
+let placed = 0; const skipped = []; const perPage = {};
 for (const page of pages) {
   let html = fs.readFileSync(path.join(ROOT, page), 'utf8').replace(STRIP, '');
   const before = html;
   for (const [pos, rule] of Object.entries(PLAN)) {
     if (!rule.pages(page)) continue;
-    const slot = units[pos];
-    if (!slot || !/^\d{6,}$/.test(String(slot))) { skipped.push(`${page}: ${pos} (no slot id in docs/AD_UNITS.json)`); continue; }
-    const blk = well(pos, slot, 280);
+    const u = units[pos];
+    if (!u || !/^\d{6,}$/.test(String(u.slot))) { skipped.push(`${page}: ${pos} (no slot id in docs/AD_UNITS.json)`); continue; }
+    const blk = well(pos, u);
     const next = rule.after ? insertAfterNthSection(html, rule.after, blk) : rule.afterClose ? insertAfterFirstClass(html, rule.afterClose[page], blk) : insertBeforeSection(html, rule.beforeSection, blk);
     if (!next) { skipped.push(`${page}: ${pos} (anchor not found)`); continue; }
-    html = next; placed++;
+    html = next; placed++; perPage[page] = (perPage[page] || 0) + 1;
   }
   if (!CHECK && html !== before) fs.writeFileSync(path.join(ROOT, page), html);
 }
-console.log(`${CHECK ? 'would place' : 'placed'} ${placed} units; skipped ${skipped.length}`);
+console.log(`${CHECK ? 'would place' : 'placed'} ${placed} units on ${Object.keys(perPage).length} pages; skipped ${skipped.length}`);
 for (const s of skipped.slice(0, 5)) console.log('  ' + s);
 if (skipped.length > 5) console.log(`  ... ${skipped.length - 5} more`);
+if (process.argv.includes('--approvals')) console.log(JSON.stringify(Object.entries(perPage).map(([page, n]) => ({ page, field: 'adCount', from: '0', to: String(n), approvedBy: '', date: '' })), null, 1));

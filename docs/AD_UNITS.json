@@ -1,0 +1,8 @@
+{
+  "_note": "Created by the owner in AdSense on 2026-09-13 (one unit per format). Mapping to AD_PLAN positions by fit; article-mid-2 and home-mid share the display unit until a second display unit exists.",
+  "article-mid-1": { "slot": "1286327745", "format": "fluid", "layout": "in-article", "height": 280 },
+  "article-mid-2": { "slot": "4265688185", "format": "auto", "height": 280 },
+  "article-end":   { "slot": "8973246072", "format": "autorelaxed", "height": 280 },
+  "listing-mid":   { "slot": "1914857011", "format": "fluid", "layoutKey": "-6t+ed+2i-1n-4w", "height": 280 },
+  "home-mid":      { "slot": "4265688185", "format": "auto", "height": 280 }
+}

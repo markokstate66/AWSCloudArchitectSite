@@ -1,1 +1,122 @@
-[]
+[
+  {
+    "page": "index.html",
+    "field": "adCount",
+    "from": "0",
+    "to": "1",
+    "approvedBy": "mark@aerocoders.com (chat 2026-09-13: supplied the four AdSense units and asked to place them)",
+    "date": "2026-09-13"
+  },
+  {
+    "page": "projects.html",
+    "field": "adCount",
+    "from": "0",
+    "to": "1",
+    "approvedBy": "mark@aerocoders.com (chat 2026-09-13: supplied the four AdSense units and asked to place them)",
+    "date": "2026-09-13"
+  },
+  {
+    "page": "resources.html",
+    "field": "adCount",
+    "from": "0",
+    "to": "1",
+    "approvedBy": "mark@aerocoders.com (chat 2026-09-13: supplied the four AdSense units and asked to place them)",
+    "date": "2026-09-13"
+  },
+  {
+    "page": "interview-prep.html",
+    "field": "adCount",
+    "from": "0",
+    "to": "1",
+    "approvedBy": "mark@aerocoders.com (chat 2026-09-13: supplied the four AdSense units and asked to place them)",
+    "date": "2026-09-13"
+  },
+  {
+    "page": "project-static-website.html",
+    "field": "adCount",
+    "from": "0",
+    "to": "3",
+    "approvedBy": "mark@aerocoders.com (chat 2026-09-13: supplied the four AdSense units and asked to place them)",
+    "date": "2026-09-13"
+  },
+  {
+    "page": "project-serverless-contact-form.html",
+    "field": "adCount",
+    "from": "0",
+    "to": "3",
+    "approvedBy": "mark@aerocoders.com (chat 2026-09-13: supplied the four AdSense units and asked to place them)",
+    "date": "2026-09-13"
+  },
+  {
+    "page": "project-ec2-web-server.html",
+    "field": "adCount",
+    "from": "0",
+    "to": "3",
+    "approvedBy": "mark@aerocoders.com (chat 2026-09-13: supplied the four AdSense units and asked to place them)",
+    "date": "2026-09-13"
+  },
+  {
+    "page": "project-three-tier-web-app.html",
+    "field": "adCount",
+    "from": "0",
+    "to": "3",
+    "approvedBy": "mark@aerocoders.com (chat 2026-09-13: supplied the four AdSense units and asked to place them)",
+    "date": "2026-09-13"
+  },
+  {
+    "page": "project-cicd-pipeline.html",
+    "field": "adCount",
+    "from": "0",
+    "to": "3",
+    "approvedBy": "mark@aerocoders.com (chat 2026-09-13: supplied the four AdSense units and asked to place them)",
+    "date": "2026-09-13"
+  },
+  {
+    "page": "project-serverless-rest-api.html",
+    "field": "adCount",
+    "from": "0",
+    "to": "3",
+    "approvedBy": "mark@aerocoders.com (chat 2026-09-13: supplied the four AdSense units and asked to place them)",
+    "date": "2026-09-13"
+  },
+  {
+    "page": "project-infrastructure-as-code.html",
+    "field": "adCount",
+    "from": "0",
+    "to": "3",
+    "approvedBy": "mark@aerocoders.com (chat 2026-09-13: supplied the four AdSense units and asked to place them)",
+    "date": "2026-09-13"
+  },
+  {
+    "page": "project-multi-region-active-active.html",
+    "field": "adCount",
+    "from": "0",
+    "to": "3",
+    "approvedBy": "mark@aerocoders.com (chat 2026-09-13: supplied the four AdSense units and asked to place them)",
+    "date": "2026-09-13"
+  },
+  {
+    "page": "project-kubernetes-eks.html",
+    "field": "adCount",
+    "from": "0",
+    "to": "3",
+    "approvedBy": "mark@aerocoders.com (chat 2026-09-13: supplied the four AdSense units and asked to place them)",
+    "date": "2026-09-13"
+  },
+  {
+    "page": "project-realtime-data-pipeline.html",
+    "field": "adCount",
+    "from": "0",
+    "to": "3",
+    "approvedBy": "mark@aerocoders.com (chat 2026-09-13: supplied the four AdSense units and asked to place them)",
+    "date": "2026-09-13"
+  },
+  {
+    "page": "project-multi-account-landing-zone.html",
+    "field": "adCount",
+    "from": "0",
+    "to": "3",
+    "approvedBy": "mark@aerocoders.com (chat 2026-09-13: supplied the four AdSense units and asked to place them)",
+    "date": "2026-09-13"
+  }
+]

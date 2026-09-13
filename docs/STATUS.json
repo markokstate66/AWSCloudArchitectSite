@@ -138,7 +138,7 @@
     },
     "ad-presentation": {
       "wave": 3,
-      "status": "PASS (layout; units human-gated: HUMAN_TODO B4)",
+      "status": "PASS + UNITS PLACED (37 wells / 15 pages, 4 AdSense units, 15 adCount approvals); Auto ads settings + a 2nd display unit remain with the owner",
       "round": 0,
       "scores": {},
       "openIssues": []

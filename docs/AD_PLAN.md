@@ -1,8 +1,21 @@
 # AD_PLAN — Phase 2 monetization footing (layout ready, units human-gated)
 
-Status 2026-09-13: **no ad unit exists on the site** (Auto ads only). Nothing below is live until
-the owner creates the units (HUMAN_TODO B4) and fills `docs/AD_UNITS.json`. The wrapper CSS
-(`.ad-well`) shipped in Wave 1; the placement script and showcase ship in Wave 3.
+Status 2026-09-13 (evening): **units placed in the branch** from the four AdSense units the owner
+created (one per format), mapped by fit — see `docs/AD_UNITS.json`:
+
+| Position | Unit (slot) | Format |
+|---|---|---|
+| article-mid-1 | 1286327745 | in-article (fluid) |
+| article-mid-2 | 4265688185 | display (responsive) |
+| article-end | 8973246072 | multiplex (autorelaxed) |
+| listing-mid | 1914857011 | in-feed (fluid, layout key -6t+ed+2i-1n-4w) |
+| home-mid | 4265688185 | display — **shared with article-mid-2** until a second display unit exists (reports merge those two positions) |
+
+37 wells on 15 pages, all below the fold at 390 and 1440 (gate: `NO_AD_ABOVE_FOLD` clean), widths
+342 / 624 px (phone / desktop article), 15 `adCount` approvals in `docs/APPROVALS.json`.
+The `--ad-h: 280px` reservation is a guess for every format until seen with real fill; the multiplex
+unit at article-end will likely render taller and grow the well (below the fold, at the article's
+end, so the shift only moves the pagination and footer).
 
 ## Positions (one unit per position, one AdSense unit ID each, so reports separate them)
 
