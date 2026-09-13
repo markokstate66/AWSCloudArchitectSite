@@ -177,12 +177,15 @@ which changes the frozen image markup and the A/B renderer. **Decide:** accept 2
 this one page (real-user LCP on a fast connection is far below this simulation), or approve an
 "images" change so the covers are inserted by script after first paint.
 
-### B5. One automation slip to know about (2026-09-13)
-During the last integrator check a Playwright test loaded one project page from the local server
-(127.0.0.1:4173) once WITHOUT the harness ad-block route, so the browser requested the AdSense loader
-and GA tag from Google for a localhost origin. No ad can serve to a non-registered origin, nothing was
-clicked, and the test was corrected and re-run with the block. Worth knowing if you ever see a stray
-localhost hit in GA4 realtime; no action needed in AdSense.
+### B5. Automation slip to know about (2026-09-13)
+A scan of the agents' throwaway scripts found six that loaded pages from the local server
+(127.0.0.1:4173) without the harness ad-block route, so on those runs the browser requested the
+AdSense loader and GA tag from Google for a localhost origin. No ad can serve to an origin that is not
+registered to the account, nothing was ever clicked, and all shipped harness tools block at the route
+layer. Hardening added: the local server now injects a CSP meta into every HTML response that forbids
+third-party scripts, so a forgotten route block can no longer execute the loaders (verified: 0 external
+requests on an unblocked load). If you see stray localhost hits in GA4 realtime for 2026-09-13, that is
+what they were; no action needed in AdSense.
 
 ## E. Launch steps (agents do not deploy)
 

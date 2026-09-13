@@ -12,9 +12,14 @@ const ROOT = path.resolve(__dirname, '..');
 const PORT = Number(process.env.PORT || 4173);
 const MIME = { '.html': 'text/html; charset=utf-8', '.css': 'text/css', '.js': 'application/javascript', '.json': 'application/json', '.svg': 'image/svg+xml', '.png': 'image/png', '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg', '.webp': 'image/webp', '.txt': 'text/plain', '.xml': 'application/xml', '.ico': 'image/x-icon', '.woff2': 'font/woff2', '.woff': 'font/woff' };
 
+// Defence in depth: every locally served HTML page gets a CSP meta that forbids third-party scripts,
+// so even a throwaway script that forgets the Playwright ad-block route can never execute the
+// AdSense/GA loaders (the <script> tags stay in the DOM for the integrity gate; they just do not run).
+const LOCAL_CSP = `<meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline'; connect-src 'self'; frame-src 'none'">`;
 function send(res, status, file) {
   const ext = path.extname(file).toLowerCase();
   res.writeHead(status, { 'Content-Type': MIME[ext] || 'application/octet-stream', 'Cache-Control': 'no-store' });
+  if (ext === '.html') { const html = fs.readFileSync(file, 'utf8').replace(/<head>/i, '<head>' + LOCAL_CSP); return res.end(html); }
   fs.createReadStream(file).pipe(res);
 }
 
