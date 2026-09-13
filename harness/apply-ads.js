@@ -22,37 +22,57 @@ function well(position, slot, h) {
 }
 // Project pages have six .guide-section blocks: 1 Prerequisites, 2 Architecture, 3 Steps, 4 Tips,
 // 5 Code Examples, 6 What You'll Learn. Wells go after 2 (mid-1), 4 (mid-2) and 6 (end, before the nav).
+// listing-mid: after the first card grid on each listing page. home-mid: before #resources on index,
+// wrapped in a .container because index sections are direct children of <main> (no gutter).
 const PLAN = {
   'article-mid-1': { pages: p => /^project-/.test(p), after: 2 },
   'article-mid-2': { pages: p => /^project-/.test(p), after: 4 },
   'article-end':   { pages: p => /^project-/.test(p), after: 6 },
+  'listing-mid':   { pages: p => /^(projects|resources|interview-prep)\.html$/.test(p), afterClose: { 'projects.html': 'project-grid', 'resources.html': 'books-grid', 'interview-prep.html': 'interview-grid' } },
+  'home-mid':      { pages: p => p === 'index.html', beforeSection: 'resources' },
 };
-// Find the nth <div class="guide-section"> and its matching </div> by depth counting (indentation-agnostic).
+const NL = '\n';
+function indentOf(html, idx) { return (html.slice(html.lastIndexOf(NL, idx) + 1, idx).match(/^ */) || [''])[0]; }
+function closeOf(html, openIdx) { // index just after the matching </div> of the <div> at openIdx
+  let depth = 0; const tag = /<\/?div\b[^>]*>/g; tag.lastIndex = openIdx; let t;
+  while ((t = tag.exec(html))) { depth += t[0].startsWith('</') ? -1 : 1; if (depth === 0) return t.index + t[0].length; }
+  return -1;
+}
+function insertAfter(html, openIdx, block, extraIndent) {
+  const pos = closeOf(html, openIdx); if (pos < 0) return null;
+  const eol = html.indexOf(NL, pos); const cut = eol < 0 ? pos : eol + 1;
+  const ind = indentOf(html, openIdx) + (extraIndent || '');
+  return html.slice(0, cut) + block.split(NL).map(l => ind + l).join(NL) + NL + html.slice(cut);
+}
 function insertAfterNthSection(html, n, block) {
   const re = /<div class="guide-section"[^>]*>/g; let m, i = 0;
-  while ((m = re.exec(html))) {
-    i++; if (i !== n) continue;
-    let depth = 0, pos = -1; const tag = /<\/?div\b[^>]*>/g; tag.lastIndex = m.index;
-    let t; while ((t = tag.exec(html))) { depth += t[0].startsWith('</') ? -1 : 1; if (depth === 0) { pos = t.index + t[0].length; break; } }
-    if (pos < 0) return null;
-    const eol = html.indexOf('\n', pos); const cut = eol < 0 ? pos : eol + 1;
-    const indent = (html.slice(html.lastIndexOf('\n', m.index) + 1, m.index).match(/^ */) || [''])[0];
-    return html.slice(0, cut) + block.split('\n').map(l => indent + l).join('\n') + '\n' + html.slice(cut);
-  }
+  while ((m = re.exec(html))) { i++; if (i === n) return insertAfter(html, m.index, block); }
   return null;
 }
-const STRIP = / *<div class="ad-well" data-position="[^"]+"[\s\S]*?<\/div>\n *<script>\(adsbygoogle=window\.adsbygoogle\|\|\[\]\)\.push\(\{\}\);<\/script>\n/g;
+function insertAfterFirstClass(html, cls, block) {
+  const m = new RegExp('<div class="' + cls + '"[^>]*>').exec(html); if (!m) return null;
+  return insertAfter(html, m.index, block);
+}
+function insertBeforeSection(html, id, block) {
+  const m = new RegExp('<section[^>]*id="' + id + '"[^>]*>').exec(html); if (!m) return null;
+  const lineStart = html.lastIndexOf(NL, m.index) + 1; const ind = indentOf(html, m.index);
+  const wrapped = ['<div class="container">', ...block.split(NL).map(l => '  ' + l), '</div>'].map(l => ind + l).join(NL) + NL;
+  return html.slice(0, lineStart) + wrapped + html.slice(lineStart);
+}
+// Strip previously placed wells (with or without the home-mid container wrapper) so the script is idempotent.
+const STRIP = /(?: *<div class="container">\n)? *<div class="ad-well" data-position="[^"]+"[\s\S]*?<\/div>\n *<script>\(adsbygoogle=window\.adsbygoogle\|\|\[\]\)\.push\(\{\}\);<\/script>\n(?: *<\/div>\n)?/g;
 const pages = fs.readdirSync(ROOT).filter(f => f.endsWith('.html') && !/^(admin|404)\.html$/.test(f));
 let placed = 0; const skipped = [];
 for (const page of pages) {
-  let html = fs.readFileSync(path.join(ROOT, page), 'utf8').replace(STRIP, ''); // idempotent
+  let html = fs.readFileSync(path.join(ROOT, page), 'utf8').replace(STRIP, '');
   const before = html;
   for (const [pos, rule] of Object.entries(PLAN)) {
     if (!rule.pages(page)) continue;
     const slot = units[pos];
     if (!slot || !/^\d{6,}$/.test(String(slot))) { skipped.push(`${page}: ${pos} (no slot id in docs/AD_UNITS.json)`); continue; }
-    const next = insertAfterNthSection(html, rule.after, well(pos, slot, 280));
-    if (!next) { skipped.push(`${page}: ${pos} (anchor section not found)`); continue; }
+    const blk = well(pos, slot, 280);
+    const next = rule.after ? insertAfterNthSection(html, rule.after, blk) : rule.afterClose ? insertAfterFirstClass(html, rule.afterClose[page], blk) : insertBeforeSection(html, rule.beforeSection, blk);
+    if (!next) { skipped.push(`${page}: ${pos} (anchor not found)`); continue; }
     html = next; placed++;
   }
   if (!CHECK && html !== before) fs.writeFileSync(path.join(ROOT, page), html);
