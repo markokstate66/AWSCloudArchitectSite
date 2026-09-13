@@ -23,7 +23,7 @@ Auto ads stay on and fill the gaps; **anchor on, vignettes off, side rails off**
 - `listing-mid` on interview-prep.html goes **after `.interview-grid`**, not after the 3rd category (grid children).
 - `home-mid` must sit **inside a `.container`**: index sections are direct children of `<main>` (no gutter),
   so the well would render full-bleed at 390.
-- `.ad-well` needs `width: 100%` inside grid/flex parents (rendered 123 px wide in round 1); fixed in Wave 1 r2.
+- `.ad-well` needs `width: 100%` inside grid/flex parents (rendered 123 px wide in round 1). NOT fixed in Wave 1 r2 (only max-width landed; verified 122.6 px inside `.project-guide` by the r2 critic). Owned by Wave 3 ad-presentation, together with the inline `.ad-well-label` span (must be `display:block`) and an integrity rule keyed on `.ad-well`, not only `ins.adsbygoogle`.
 - Auto ads **side rails must stay OFF**: 32/72/152 px clearance to the sticky "On this page" rail at 1024/1280/1440.
 - Never inject between the key-facts strip and the chip row (that is above the fold on desktop): the first
   article well sits after the Architecture section, as planned.
