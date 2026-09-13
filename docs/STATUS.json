@@ -93,7 +93,7 @@
     },
     "listing-pages": {
       "wave": 2,
-      "status": "FAIL_R2_CD_8.4",
+      "status": "PASS_FINAL",
       "round": 2,
       "scores": {
         "r1": {
@@ -105,6 +105,9 @@
           "creativeDirector": 8.4,
           "reader": 8.7,
           "monetizationSeo": 8.6
+        },
+        "final": {
+          "creativeDirector": 8.6
         }
       },
       "openIssues": [
@@ -135,16 +138,22 @@
     },
     "ad-presentation": {
       "wave": 3,
-      "status": "POLISH_R1_BUILDING (wrapper CSS done; JS collapse in polish; units human-gated)",
+      "status": "LAYOUT_PASS (wrapper, collapse JS proven 4 states, placement script 5 positions); units human-gated",
       "round": 0,
       "scores": {},
       "openIssues": []
     },
     "whole-site": {
       "wave": 3,
-      "status": "POLISH_R1_BUILDING",
-      "round": 0,
-      "scores": {},
+      "status": "POLISH_R2_BUILDING",
+      "round": 2,
+      "scores": {
+        "final_r1": {
+          "creativeDirector": 8.4,
+          "monetizationSeo": 8.8,
+          "reader": "pending"
+        }
+      },
       "openIssues": []
     }
   },
@@ -157,5 +166,20 @@
     "Wave 1 built by one builder for both areas (cohesion); critics running round 1",
     "Integrator: skip link added after gate fix (fragment-only hrefs ignored); pre-block exact text added to gate; HTML re-indented 4->2 spaces outside <pre> (68 KB headroom)"
   ],
-  "weightBudget": "gzip per page vs f1ec399 (harness/weight.js). After Wave 1 r2 consolidation: styles.css 7,995 gz (ref 6,078); residual +0.3..+2.5 KB gz per page from real features (skip link, breadcrumbs, TOC rail, copy buttons, key-facts markup, script.js). Sign-off item in HUMAN_TODO D1."
+  "weightBudget": "gzip per page vs f1ec399 (harness/weight.js). After Wave 1 r2 consolidation: styles.css 7,995 gz (ref 6,078); residual +0.3..+2.5 KB gz per page from real features (skip link, breadcrumbs, TOC rail, copy buttons, key-facts markup, script.js). Sign-off item in HUMAN_TODO D1.",
+  "blindAB": {
+    "pairs": 21,
+    "judges": 2,
+    "newWins": 42,
+    "oldWins": 0,
+    "meanNew": [
+      8.36,
+      8.39
+    ],
+    "meanOld": [
+      5.92,
+      5.62
+    ],
+    "tally": "docs/rounds/final-ab-tally.md"
+  }
 }
