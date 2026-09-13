@@ -17,6 +17,17 @@ the owner creates the units (HUMAN_TODO B4) and fills `docs/AD_UNITS.json`. The 
 No units on about, contact, privacy, 404, tools (calculator page: avoid ad next to form controls).
 Auto ads stay on and fill the gaps; **anchor on, vignettes off, side rails off** (human sets this).
 
+## Corrections from the Wave 2 monetization critic (2026-09-13)
+- Anchor wells on **section order** inside `.project-guide` (1st/3rd/5th `.guide-section` boundaries), not on ids:
+  project-infrastructure-as-code.html has no `#architecture` (its h2 is "Choose Your Tool").
+- `listing-mid` on interview-prep.html goes **after `.interview-grid`**, not after the 3rd category (grid children).
+- `home-mid` must sit **inside a `.container`**: index sections are direct children of `<main>` (no gutter),
+  so the well would render full-bleed at 390.
+- `.ad-well` needs `width: 100%` inside grid/flex parents (rendered 123 px wide in round 1); fixed in Wave 1 r2.
+- Auto ads **side rails must stay OFF**: 32/72/152 px clearance to the sticky "On this page" rail at 1024/1280/1440.
+- Never inject between the key-facts strip and the chip row (that is above the fold on desktop): the first
+  article well sits after the Architecture section, as planned.
+
 ## Wrapper contract (already in styles.css `[ad-presentation]`)
 
 ```html

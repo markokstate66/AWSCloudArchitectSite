@@ -74,6 +74,20 @@ cannot fix it. Proposed exact substitutions (paste into docs/APPROVALS.json with
 block once the listing-pages round is done, so that the substitution is unique on that page.)
 The headings field would also change ("Learn More" is link text, not a heading, so only `text`).
 
+### A6. Found by the Wave 2 critics (content/commercial — need your call)
+1. **resources.html has 13 affiliate/partner links and no affiliate disclosure on the page** (the
+   disclosure lives only on about.html and privacy.html). AdSense/FTC-wise the disclosure should be
+   on the page with the links. Adding a sentence is new content: propose exact text for an approval,
+   e.g. field "text", from: "Recommended AWS Books" to: "Recommended AWS Books As an Amazon Associate we earn from qualifying purchases." (context string must be unique; the builder will confirm the exact substring).
+2. **Affiliate links carry only rel="noopener".** Google asks for rel="sponsored" on paid/affiliate
+   links (8 Amazon ?tag= links, 5 Pluralsight). This is a link-attribute change, not a URL change;
+   say yes/no and an agent applies it site-wide.
+3. **images/books/sap-c02.jpg is a photo of *The Kubernetes Book*** while its alt text says it is the
+   SAP-C02 study guide (and the linked ASIN 1119951097 404s — CONTENT_AUDIT). Needs a new image
+   (same filename keeps the gate green) and the link fix from the audit block.
+4. **Soft 404s (A2) matter more than first written:** every unknown URL is a 200 copy of the home
+   page *with the AdSense loader on it*. The redesigned 404.html is never served.
+
 ## B. AdSense / consent (only you can see or change these)
 
 ### B1. Record the Auto ads settings and injected slots (needed as the ad baseline)
