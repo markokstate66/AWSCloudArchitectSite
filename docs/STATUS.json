@@ -190,15 +190,14 @@
   "finalGate": {
     "integrity": "PASS (21 pages identical to f1ec399 content/meta/links/JSON-LD/pre)",
     "crawl": "21/21 URLs identical (docs/rounds/final-monetization-seo.md)",
-    "lighthouseMobile": "perf 99-100, a11y 100, BP 100, SEO 100 (index/tools 92: frozen Learn More text)",
+    "lighthouseMobile": "perf 99-100, a11y 100, BP 100, SEO 100 (Learn More text approved 2026-09-13)",
     "cls": 0,
     "console": 0,
     "axe": 0,
     "blindAB": "42/42 new wins",
     "exceptions": [
       "HUMAN_TODO D1 gzip weight +0.3..2.5 KB/page",
-      "HUMAN_TODO D2 resources.html LCP 2.1 s lab",
-      "HUMAN_TODO A5 Learn More link text (SEO 92 on 2 pages)"
+      "HUMAN_TODO D2 resources.html LCP 2.1 s lab"
     ]
   },
   "launched": {

@@ -883,5 +883,53 @@
     "source": "https://aws.amazon.com/blogs/aws-cloud-financial-management/changes-to-aws-billing-cost-management-and-account-consoles-permissions/",
     "approvedBy": "mark@aerocoders.com (chat 2026-09-13: 'apply the content corrections from the audit')",
     "date": "2026-09-13"
+  },
+  {
+    "page": "index.html",
+    "field": "text",
+    "from": "$100 USD Learn More",
+    "to": "$100 USD Cloud Practitioner exam details",
+    "approvedBy": "mark@aerocoders.com (chat 2026-09-13: \"apply the Learn More link text and affiliate disclosure\")",
+    "date": "2026-09-13"
+  },
+  {
+    "page": "index.html",
+    "field": "text",
+    "from": "$150 USD Learn More",
+    "to": "$150 USD Solutions Architect Associate exam details",
+    "approvedBy": "mark@aerocoders.com (chat 2026-09-13: \"apply the Learn More link text and affiliate disclosure\")",
+    "date": "2026-09-13"
+  },
+  {
+    "page": "index.html",
+    "field": "text",
+    "from": "180-minute exam $300 USD Learn More",
+    "to": "180-minute exam $300 USD Solutions Architect Professional exam details",
+    "approvedBy": "mark@aerocoders.com (chat 2026-09-13: \"apply the Learn More link text and affiliate disclosure\")",
+    "date": "2026-09-13"
+  },
+  {
+    "page": "index.html",
+    "field": "text",
+    "from": "170-minute exam $300 USD Learn More",
+    "to": "170-minute exam $300 USD Security Specialty exam details",
+    "approvedBy": "mark@aerocoders.com (chat 2026-09-13: \"apply the Learn More link text and affiliate disclosure\")",
+    "date": "2026-09-13"
+  },
+  {
+    "page": "tools.html",
+    "field": "text",
+    "from": "Learn More",
+    "to": "Open the AWS Well-Architected Tool",
+    "approvedBy": "mark@aerocoders.com (chat 2026-09-13: \"apply the Learn More link text and affiliate disclosure\")",
+    "date": "2026-09-13"
+  },
+  {
+    "page": "resources.html",
+    "field": "text",
+    "from": "Essential reading for aspiring and experienced cloud architects",
+    "to": "Essential reading for aspiring and experienced cloud architects As an Amazon Associate, we earn from qualifying purchases.",
+    "approvedBy": "mark@aerocoders.com (chat 2026-09-13: \"apply the Learn More link text and affiliate disclosure\")",
+    "date": "2026-09-13"
   }
 ]

@@ -458,6 +458,8 @@ html.nav-open .to-top { display: none; }
   .interview-grid { gap: var(--sp-7); }
 }
 
+.affiliate-note { margin-top: calc(-1 * var(--sp-4)); font-size: var(--fs--1); color: var(--ink-3); }
+
 /* ==== [static-pages] ==== */
 .prose > h2 { margin: var(--sp-6) 0 var(--sp-3); padding-top: var(--sp-4); border-top: 1px solid var(--line); font-size: var(--fs-2); }
 .prose > h2:first-child { margin-top: 0; padding-top: 0; border-top: 0; }
