@@ -89,9 +89,8 @@ Well-Architected Tool". Six text approvals recorded in docs/APPROVALS.json; gate
 2. **rel="sponsored" added on 2026-09-13** to the 8 Amazon `?tag=` affiliate links (resources.html).
    The Pluralsight links carry no tracking parameter, so they were left as editorial links; if they
    are in fact a paid partnership, say so and they get the same attribute.
-3. **images/books/sap-c02.jpg is a photo of *The Kubernetes Book*** while its alt text says it is the
-   SAP-C02 study guide (and the linked ASIN 1119951097 404s — CONTENT_AUDIT). Needs a new image
-   (same filename keeps the gate green) and the link fix from the audit block.
+3. Book covers — RESOLVED 2026-09-13: the whole list was rebuilt from docs/BOOKS_RESEARCH.json (24 researched, 20 cover-verified via Open Library / O'Reilly; covers stored as images/books/<isbn10>.jpg). The mismatched sap-c02.jpg is no longer referenced.
+
 4. **Soft 404s (A2) matter more than first written:** every unknown URL is a 200 copy of the home
    page *with the AdSense loader on it*. The redesigned 404.html is never served.
 
@@ -207,3 +206,18 @@ The facelift is on the local branch `facelift` (never pushed). Before launch:
 6. Phase 2 (manual ad units): create the five units (B4), write ids to `docs/AD_UNITS.json`, run
    `node harness/apply-ads.js --check` then without `--check`, add `adCount` approvals for the 15
    pages, run the gate, review, merge. Set Auto ads to anchor on / vignettes off / side rails off.
+
+## F. Book rotation (set up 2026-09-13)
+- Static fallback: 8 cards (rank-1 per slot). Live: 16 active variants (2 per slot) + 4 pool items,
+  seeded via the API. Each page load picks a weighted-random variant per slot (abtest.js), so readers
+  already see rotation.
+- Daily pruning: `.github/workflows/ab-daily-analysis.yml` calls `POST /api/analyze` at 06:00 UTC
+  (SWA managed functions cannot run timer triggers, so the old timer never fired). After
+  AB_MIN_DAYS=7 and AB_MIN_IMPRESSIONS=50 it drops variants below 50% of the slot's CTR and promotes
+  pool items. Watch the Actions tab for a red run; the admin key lives in the repo secret ADMIN_API_KEY.
+- 7 researched titles have no obtainable cover (DDIA 2e, Phoenix 4e, Team Topologies 2e, Serverless
+  Development on AWS, System Design on AWS, IaC 3e, plus one unlinkable title). Drop a JPEG named
+  images/books/<isbn10>.jpg for any of them and re-run `node harness/build-books.js` + the seed step
+  in docs/AD_PLAN.md... (see harness/build-books.js header) to include it.
+- Restock the pool now and then: add candidates to docs/BOOKS_RESEARCH.json, fetch covers
+  (`node harness/fetch-covers.js docs/BOOKS_RESEARCH.json`), rebuild, seed.

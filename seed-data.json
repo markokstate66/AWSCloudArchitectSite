@@ -1,72 +1,143 @@
 {
+  "clearExisting": true,
   "products": [
     {
       "slotId": "slot-1",
-      "slotName": "SAA-C03 Study Guide",
+      "slotName": "SAA-C03 study guide",
       "variants": [
         {
-          "title": "AWS Certified Solutions Architect Study Guide: Associate SAA-C03 Exam",
+          "title": "AWS Certified Solutions Architect Study Guide with 900 Practice Test Questions: Associate (SAA-C03) Exam",
           "author": "Ben Piper & David Clinton",
-          "description": "The most comprehensive study guide for the SAA-C03 exam. Covers all exam objectives with hands-on labs and practice questions.",
-          "amazonUrl": "https://www.amazon.com/Certified-Solutions-Architect-Study-Guide/dp/1119982626?tag=dreamscribe09-20",
-          "imageUrl": "/images/books/saa-c03.jpg",
-          "tags": ["Best Seller", "SAA-C03"]
+          "description": "Sybex study guide covering all four SAA-C03 exam domains, with an online test bank of 900 practice questions and flashcards.",
+          "amazonUrl": "https://www.amazon.com/dp/1119982626?tag=dreamscribe09-20",
+          "imageUrl": "/images/books/1119982626.jpg",
+          "tags": [
+            "SAA-C03",
+            "Exam prep"
+          ]
+        },
+        {
+          "title": "AWS Certified Solutions Architect - Associate (SAA-C03) Cert Guide",
+          "author": "Mark Wilkins",
+          "description": "Pearson Cert Guide for SAA-C03 with per-chapter self-assessment quizzes, review tasks and Pearson Test Prep practice software.",
+          "amazonUrl": "https://www.amazon.com/dp/0137941587?tag=dreamscribe09-20",
+          "imageUrl": "/images/books/0137941587.jpg",
+          "tags": [
+            "SAA-C03",
+            "Exam prep"
+          ]
         }
       ]
     },
     {
       "slotId": "slot-2",
-      "slotName": "Kubernetes Guide",
+      "slotName": "Solutions Architect Professional (SAP-C02) prep",
       "variants": [
         {
-          "title": "The Kubernetes Book",
-          "author": "Nigel Poulton",
-          "description": "The fastest way to get your head around Kubernetes. Perfect for architects building cloud-native container orchestration.",
-          "amazonUrl": "https://www.amazon.com/Kubernetes-Book-Nigel-Poulton/dp/1521823634?tag=dreamscribe09-20",
-          "imageUrl": "/images/books/sap-c02.jpg",
-          "tags": ["Kubernetes", "Containers"]
+          "title": "AWS Certified Solutions Architect - Professional Exam Guide (SAP-C02)",
+          "author": "Patrick Sard & Yohan Wadia",
+          "description": "Professional-level guide covering authentication strategy, network design, migration planning and cost optimisation, with online mock exams.",
+          "amazonUrl": "https://www.amazon.com/dp/1801813132?tag=dreamscribe09-20",
+          "imageUrl": "/images/books/1801813132.jpg",
+          "tags": [
+            "SAP-C02",
+            "Advanced"
+          ]
+        },
+        {
+          "title": "Solutions Architect's Handbook",
+          "author": "Saurabh Shrivastava, Neelanjali Srivastav & Kamal Arora",
+          "description": "General solutions-architecture reference covering design principles, scalability, security and generative-AI architecture patterns.",
+          "amazonUrl": "https://www.amazon.com/dp/1835084230?tag=dreamscribe09-20",
+          "imageUrl": "/images/books/1835084230.jpg",
+          "tags": [
+            "Architecture",
+            "Supplementary"
+          ]
         }
       ]
     },
     {
       "slotId": "slot-3",
-      "slotName": "Data-Intensive Applications",
+      "slotName": "Systems / data architecture",
       "variants": [
         {
-          "title": "Designing Data-Intensive Applications",
-          "author": "Martin Kleppmann",
-          "description": "The definitive guide to building reliable, scalable, and maintainable systems. Essential reading for any cloud architect.",
-          "amazonUrl": "https://www.amazon.com/Designing-Data-Intensive-Applications-Reliable-Maintainable/dp/1449373321?tag=dreamscribe09-20",
-          "imageUrl": "/images/books/ddia.jpg",
-          "tags": ["Must Read", "Architecture"]
+          "title": "Fundamentals of Software Architecture: A Modern Engineering Approach",
+          "author": "Mark Richards & Neal Ford",
+          "description": "Introduction to architecture characteristics, architecture styles, and the soft skills and decision-making of the architect role.",
+          "amazonUrl": "https://www.amazon.com/dp/1098175514?tag=dreamscribe09-20",
+          "imageUrl": "/images/books/1098175514.jpg",
+          "tags": [
+            "Architecture",
+            "Core reading"
+          ]
+        },
+        {
+          "title": "Software Architecture: The Hard Parts: Modern Trade-Off Analyses for Distributed Architectures",
+          "author": "Neal Ford, Mark Richards, Pramod Sadalage & Zhamak Dehghani",
+          "description": "Trade-off analysis techniques for decomposing monoliths and distributing data across service boundaries in distributed architectures.",
+          "amazonUrl": "https://www.amazon.com/dp/1492086894?tag=dreamscribe09-20",
+          "imageUrl": "/images/books/1492086894.jpg",
+          "tags": [
+            "Architecture",
+            "Trade-offs"
+          ]
         }
       ]
     },
     {
       "slotId": "slot-4",
-      "slotName": "DevOps Culture",
+      "slotName": "DevOps culture",
       "variants": [
         {
-          "title": "The Phoenix Project",
+          "title": "Accelerate: The Science of Lean Software and DevOps: Building and Scaling High Performing Technology Organizations",
+          "author": "Nicole Forsgren, Jez Humble & Gene Kim",
+          "description": "Presents the statistical research behind the four DORA software delivery metrics and the capabilities that predict performance.",
+          "amazonUrl": "https://www.amazon.com/dp/1942788339?tag=dreamscribe09-20",
+          "imageUrl": "/images/books/1942788339.jpg",
+          "tags": [
+            "DORA metrics",
+            "Research"
+          ]
+        },
+        {
+          "title": "The Phoenix Project: A Novel about IT, DevOps, and Helping Your Business Win (5th Anniversary Edition)",
           "author": "Gene Kim, Kevin Behr & George Spafford",
-          "description": "A novel about IT, DevOps, and helping your business win. Understand the cultural and organizational aspects of cloud transformation.",
-          "amazonUrl": "https://www.amazon.com/Phoenix-Project-DevOps-Helping-Business/dp/1942788290?tag=dreamscribe09-20",
-          "imageUrl": "/images/books/phoenix-project.jpg",
-          "tags": ["DevOps", "Culture"]
+          "description": "The DevOps novel: a struggling IT organisation learns flow, feedback and continual learning. Anniversary edition with a new afterword.",
+          "amazonUrl": "https://www.amazon.com/dp/1942788290?tag=dreamscribe09-20",
+          "imageUrl": "/images/books/1942788290.jpg",
+          "tags": [
+            "DevOps",
+            "Novel"
+          ]
         }
       ]
     },
     {
       "slotId": "slot-5",
-      "slotName": "Cloud Native Patterns",
+      "slotName": "Cloud-native architecture on AWS",
       "variants": [
         {
-          "title": "Cloud Native Patterns",
-          "author": "Cornelia Davis",
-          "description": "Design patterns for building resilient, scalable cloud-native applications. Learn microservices, containers, and serverless patterns.",
-          "amazonUrl": "https://www.amazon.com/Cloud-Native-Designing-change-tolerant-software/dp/1617294292?tag=dreamscribe09-20",
-          "imageUrl": "/images/books/cloud-native.jpg",
-          "tags": ["Patterns", "Cloud Native"]
+          "title": "AWS for Solutions Architects: Design and scale secure AWS architectures with GenAI strategies and real-world patterns",
+          "author": "Saurabh Shrivastava, Neelanjali Srivastav & Dhiraj Thakur",
+          "description": "AWS architecture guide covering the Well-Architected Framework pillars, migration strategies, cost optimisation and GenAI/MLOps patterns.",
+          "amazonUrl": "https://www.amazon.com/dp/1836641931?tag=dreamscribe09-20",
+          "imageUrl": "/images/books/1836641931.jpg",
+          "tags": [
+            "Well-Architected",
+            "AWS"
+          ]
+        },
+        {
+          "title": "Amazon Web Services in Action, Third Edition",
+          "author": "Andreas Wittig & Michael Wittig",
+          "description": "Hands-on tour of core AWS services (EC2, S3, RDS, Lambda, VPC) with infrastructure-as-code examples, updated for current consoles and CLI.",
+          "amazonUrl": "https://www.amazon.com/dp/163343916X?tag=dreamscribe09-20",
+          "imageUrl": "/images/books/163343916X.jpg",
+          "tags": [
+            "AWS",
+            "Hands-on"
+          ]
         }
       ]
     },
@@ -75,40 +146,82 @@
       "slotName": "Infrastructure as Code",
       "variants": [
         {
-          "title": "Terraform: Up & Running",
+          "title": "Terraform: Up and Running: Writing Infrastructure as Code",
           "author": "Yevgeniy Brikman",
-          "description": "Write infrastructure as code using Terraform. Essential for any cloud architect working with multi-cloud or AWS deployments.",
-          "amazonUrl": "https://www.amazon.com/Terraform-Running-Writing-Infrastructure-Code/dp/1098116747?tag=dreamscribe09-20",
-          "imageUrl": "/images/books/terraform.jpg",
-          "tags": ["IaC", "Terraform"]
+          "description": "Hands-on progression through production Terraform: modules, state management, testing, secrets handling and multi-provider deployments.",
+          "amazonUrl": "https://www.amazon.com/dp/1098116747?tag=dreamscribe09-20",
+          "imageUrl": "/images/books/1098116747.jpg",
+          "tags": [
+            "Terraform",
+            "Hands-on"
+          ]
+        },
+        {
+          "title": "AWS CDK in Practice: Unleash the power of ordinary coding and streamline complex cloud applications on AWS",
+          "author": "Mark Avdi & Leo Lam",
+          "description": "Practical CDK walkthrough building container-based and serverless AWS applications with CI/CD pipelines defined in general-purpose code.",
+          "amazonUrl": "https://www.amazon.com/dp/180181239X?tag=dreamscribe09-20",
+          "imageUrl": "/images/books/180181239X.jpg",
+          "tags": [
+            "AWS CDK",
+            "Hands-on"
+          ]
         }
       ]
     },
     {
       "slotId": "slot-7",
-      "slotName": "Clean Code",
+      "slotName": "AWS security",
       "variants": [
         {
-          "title": "Clean Code: A Handbook of Agile Software Craftsmanship",
-          "author": "Robert C. Martin",
-          "description": "The classic guide to writing clean, maintainable code. Essential principles for any software professional.",
-          "amazonUrl": "https://www.amazon.com/Clean-Code-Handbook-Software-Craftsmanship/dp/0132350882?tag=dreamscribe09-20",
-          "imageUrl": "/images/books/aws-security.jpg",
-          "tags": ["Clean Code", "Best Practices"]
+          "title": "AWS Security",
+          "author": "Dylan Shields",
+          "description": "Practitioner guide to securing AWS workloads: IAM, VPC configuration, audit logging, security assessment, data protection and incident response.",
+          "amazonUrl": "https://www.amazon.com/dp/161729733X?tag=dreamscribe09-20",
+          "imageUrl": "/images/books/161729733X.jpg",
+          "tags": [
+            "AWS security",
+            "Practitioner"
+          ]
+        },
+        {
+          "title": "AWS Certified Security Study Guide: Specialty (SCS-C02) Exam",
+          "author": "Marcello Zillo Neto, Gustavo A. A. Santana, Mauricio Munoz, Dario Lucas Goldfarb & Alexandre M. S. P. Moraes",
+          "description": "Sybex study guide covering the AWS Certified Security Specialty domains with review questions and practical exercises.",
+          "amazonUrl": "https://www.amazon.com/dp/139425346X?tag=dreamscribe09-20",
+          "imageUrl": "/images/books/139425346X.jpg",
+          "tags": [
+            "SCS-C02",
+            "Exam prep"
+          ]
         }
       ]
     },
     {
       "slotId": "slot-8",
-      "slotName": "DevOps Handbook",
+      "slotName": "DevOps / SRE practice",
       "variants": [
         {
-          "title": "The DevOps Handbook",
-          "author": "Gene Kim, Jez Humble, Patrick Debois & John Willis",
-          "description": "How to create world-class agility, reliability, and security in technology organizations. The companion to The Phoenix Project.",
-          "amazonUrl": "https://www.amazon.com/DevOps-Handbook-World-Class-Reliability-Organizations/dp/1950508404?tag=dreamscribe09-20",
-          "imageUrl": "/images/books/devops-handbook.jpg",
-          "tags": ["DevOps", "Essential"]
+          "title": "The DevOps Handbook: How to Create World-Class Agility, Reliability, & Security in Technology Organizations",
+          "author": "Gene Kim, Jez Humble, Patrick Debois, John Willis & Nicole Forsgren",
+          "description": "Practitioner handbook mapping DevOps principles to implementation practices, with fifteen new case studies added in the second edition.",
+          "amazonUrl": "https://www.amazon.com/dp/1950508404?tag=dreamscribe09-20",
+          "imageUrl": "/images/books/1950508404.jpg",
+          "tags": [
+            "DevOps",
+            "Practice"
+          ]
+        },
+        {
+          "title": "Site Reliability Engineering: How Google Runs Production Systems",
+          "author": "Betsy Beyer, Chris Jones, Jennifer Petoff & Niall Richard Murphy",
+          "description": "Google's essay collection defining SRE practice: service level objectives, error budgets, toil reduction and on-call operations.",
+          "amazonUrl": "https://www.amazon.com/dp/149192912X?tag=dreamscribe09-20",
+          "imageUrl": "/images/books/149192912X.jpg",
+          "tags": [
+            "SRE",
+            "Canonical"
+          ]
         }
       ]
     }

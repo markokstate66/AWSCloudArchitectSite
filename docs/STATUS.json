@@ -219,5 +219,13 @@
     "vignette": "off",
     "sideRails": "off",
     "excludedAreas": "pending (docs/AD_PLAN.md list)"
+  },
+  "books": {
+    "rebuilt": "2026-09-13",
+    "researched": 24,
+    "coverVerified": 20,
+    "activeVariants": 16,
+    "pool": 4,
+    "rotation": "client-side weighted per load + daily analyser via GitHub cron (POST /api/analyze)"
   }
 }

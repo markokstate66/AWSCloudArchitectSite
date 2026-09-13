@@ -1,0 +1,744 @@
+{
+  "generated": "2026-09-13",
+  "slots": [
+    {
+      "slotId": "slot-1",
+      "slotName": "SAA-C03 study guide",
+      "examCodeInForce2026": "SAA-C03",
+      "candidates": [
+        {
+          "rank": 1,
+          "title": "AWS Certified Solutions Architect Study Guide with 900 Practice Test Questions: Associate (SAA-C03) Exam",
+          "authors": [
+            "Ben Piper",
+            "David Clinton"
+          ],
+          "publisher": "Sybex (John Wiley & Sons)",
+          "edition": "4th edition",
+          "year": 2022,
+          "isbn13": "9781119982623",
+          "isbn10": "1119982626",
+          "amazonUrl": "https://www.amazon.com/dp/1119982626?tag=dreamscribe09-20",
+          "amazonStatus": "200",
+          "openLibraryCover": "https://covers.openlibrary.org/b/isbn/9781119982623-L.jpg?default=false",
+          "coverStatus": "200",
+          "coverBytes": 31295,
+          "coverUsable": true,
+          "description": "Sybex study guide covering all four SAA-C03 exam domains, with an online test bank of 900 practice questions and flashcards.",
+          "tags": [
+            "SAA-C03",
+            "Exam prep"
+          ],
+          "confidence": "High. Verified in Open Library (9781119982623, Wiley, Piper/Clinton) and on the Wiley catalogue page. The default recommendation for the current associate exam code. Caveat: released Oct 2022 so the newest services are not covered; Open Library records the year as 2023 while Wiley/AbeBooks say 2022. A separate SKU, 9781394185573, is the same 4th-edition text bundled with online labs - do not list both as different books."
+        },
+        {
+          "rank": 2,
+          "title": "AWS Certified Solutions Architect - Associate (SAA-C03) Cert Guide",
+          "authors": [
+            "Mark Wilkins"
+          ],
+          "publisher": "Pearson IT Certification",
+          "edition": "2nd edition",
+          "year": 2023,
+          "isbn13": "9780137941582",
+          "isbn10": "0137941587",
+          "amazonUrl": "https://www.amazon.com/dp/0137941587?tag=dreamscribe09-20",
+          "amazonStatus": "200",
+          "openLibraryCover": "https://covers.openlibrary.org/b/isbn/9780137941582-L.jpg?default=false",
+          "coverStatus": "200",
+          "coverBytes": 29814,
+          "coverUsable": true,
+          "description": "Pearson Cert Guide for SAA-C03 with per-chapter self-assessment quizzes, review tasks and Pearson Test Prep practice software.",
+          "tags": [
+            "SAA-C03",
+            "Exam prep"
+          ],
+          "confidence": "High. Confirmed on the Pearson IT Certification product page (published 23 May 2023, 832 pages). Caveat: Open Library mis-records the publisher as Cisco Press and the year as 2022 - trust the Pearson page. The 1st edition (9780137325214) targets the retired SAA-C02 and should not be linked."
+        },
+        {
+          "rank": 3,
+          "title": "AWS Certified Solutions Architect - Associate (SAA-C03) Exam Guide",
+          "authors": [
+            "Michelle Chismon",
+            "Kate Gawron"
+          ],
+          "publisher": "Packt Publishing",
+          "edition": "1st edition",
+          "year": 2024,
+          "isbn13": "9781837630004",
+          "isbn10": "1837630003",
+          "amazonUrl": "https://www.amazon.com/dp/1837630003?tag=dreamscribe09-20",
+          "amazonStatus": "200",
+          "openLibraryCover": "https://covers.openlibrary.org/b/isbn/9781837630004-L.jpg?default=false",
+          "coverStatus": "404",
+          "coverBytes": 13,
+          "coverUsable": false,
+          "description": "Packt guide to the SAA-C03 objectives across IAM, VPC, compute, storage, serverless and cost optimisation, with online mock exams.",
+          "tags": [
+            "SAA-C03",
+            "Exam prep"
+          ],
+          "confidence": "Medium-high. Verified in Open Library (Packt, 2024, Chismon/Gawron) and on AbeBooks. Newest SAA-C03 title of the three. Caveat: no Open Library cover at either ISBN-13 or ISBN-10, so the site needs a fallback image. The Packt ebook carries a different ISBN-13 (9781837634903)."
+        }
+      ]
+    },
+    {
+      "slotId": "slot-2",
+      "slotName": "Solutions Architect Professional (SAP-C02) prep",
+      "examCodeInForce2026": "SAP-C02",
+      "candidates": [
+        {
+          "rank": 1,
+          "title": "AWS Certified Solutions Architect - Professional Exam Guide (SAP-C02)",
+          "authors": [
+            "Patrick Sard",
+            "Yohan Wadia"
+          ],
+          "publisher": "Packt Publishing",
+          "edition": "1st edition",
+          "year": 2024,
+          "isbn13": "9781801813136",
+          "isbn10": "1801813132",
+          "amazonUrl": "https://www.amazon.com/dp/1801813132?tag=dreamscribe09-20",
+          "amazonStatus": "200",
+          "openLibraryCover": "https://covers.openlibrary.org/b/isbn/9781801813136-L.jpg?default=false",
+          "coverStatus": "404",
+          "coverBytes": 13,
+          "coverUsable": false,
+          "description": "Professional-level guide covering authentication strategy, network design, migration planning and cost optimisation, with online mock exams.",
+          "tags": [
+            "SAP-C02",
+            "Advanced"
+          ],
+          "confidence": "High, and effectively the only option. Verified in Open Library (Packt, 2024, Sard/Wadia) and on AbeBooks; Amazon dp page confirmed. This is the sole current major-publisher SAP-C02 exam-prep book - neither Sybex/Wiley nor Pearson nor Apress publishes a professional-level Solutions Architect title. Caveat: no Open Library cover at either ISBN."
+        },
+        {
+          "rank": 2,
+          "title": "Solutions Architect's Handbook",
+          "authors": [
+            "Saurabh Shrivastava",
+            "Neelanjali Srivastav",
+            "Kamal Arora"
+          ],
+          "publisher": "Packt Publishing",
+          "edition": "3rd edition",
+          "year": 2024,
+          "isbn13": "9781835084236",
+          "isbn10": "1835084230",
+          "amazonUrl": "https://www.amazon.com/dp/1835084230?tag=dreamscribe09-20",
+          "amazonStatus": "200",
+          "openLibraryCover": "https://covers.openlibrary.org/b/isbn/9781835084236-L.jpg?default=false",
+          "coverStatus": "404",
+          "coverBytes": 13,
+          "coverUsable": false,
+          "description": "General solutions-architecture reference covering design principles, scalability, security and generative-AI architecture patterns.",
+          "tags": [
+            "Architecture",
+            "Supplementary"
+          ],
+          "confidence": "Medium-high as supplementary reading, NOT as exam prep. Verified in Open Library (Packt, 2024). It is not aligned to SAP-C02 objectives, so label it as background reading rather than a study guide. Open Library lists Kamal Arora as a third author; some retailer pages list only Shrivastava and Srivastav. No Open Library cover."
+        },
+        {
+          "rank": 3,
+          "title": "Ultimate AWS Certified Solutions Architect Professional Exam (SAP-C02) Guide",
+          "authors": [
+            "Gaurav H Kankaria",
+            "Karan Vichare"
+          ],
+          "publisher": "Orange AVA (Orange Education)",
+          "edition": "1st edition",
+          "year": 2025,
+          "isbn13": "9789348107800",
+          "isbn10": "9348107801",
+          "amazonUrl": "https://www.amazon.com/dp/9348107801?tag=dreamscribe09-20",
+          "amazonStatus": "404",
+          "openLibraryCover": "https://covers.openlibrary.org/b/isbn/9789348107800-L.jpg?default=false",
+          "coverStatus": "404",
+          "coverBytes": 13,
+          "coverUsable": false,
+          "description": "Guide to advanced AWS architecture, high availability, security and cost optimisation framed as real-world cloud scenarios.",
+          "tags": [
+            "SAP-C02",
+            "Exam prep"
+          ],
+          "confidence": "LOW - DO NOT PUBLISH THE AFFILIATE LINK. Title and ISBN-13 verified on the orangeava.com publisher page (published 15 Feb 2025, 366 pages), but the Amazon dp page for the derived ISBN-10 returns HTTP 404, meaning there is no US Amazon detail page for this ISBN. Small Indian publisher, no Open Library record, no cover. Listed only to show the full field; slot-2 realistically has two usable candidates."
+        }
+      ]
+    },
+    {
+      "slotId": "slot-3",
+      "slotName": "Systems / data architecture",
+      "candidates": [
+        {
+          "rank": 1,
+          "title": "Designing Data-Intensive Applications: The Big Ideas Behind Reliable, Scalable, and Maintainable Systems",
+          "authors": [
+            "Martin Kleppmann",
+            "Chris Riccomini"
+          ],
+          "publisher": "O'Reilly Media",
+          "edition": "2nd edition",
+          "year": 2026,
+          "isbn13": "9781098119065",
+          "isbn10": "1098119061",
+          "amazonUrl": "https://www.amazon.com/dp/1098119061?tag=dreamscribe09-20",
+          "amazonStatus": "200",
+          "openLibraryCover": "https://covers.openlibrary.org/b/isbn/9781098119065-L.jpg?default=false",
+          "coverStatus": "404",
+          "coverBytes": 13,
+          "coverUsable": false,
+          "description": "Survey of the principles behind distributed data systems: storage engines, replication, partitioning, transactions, consensus and stream processing.",
+          "tags": [
+            "Distributed systems",
+            "Core reading"
+          ],
+          "confidence": "High - and this is the single most important update on the list. THE 2ND EDITION IS PUBLISHED (March 2026), with Chris Riccomini added as co-author. Amazon dp/1098119061 resolves to the correct title and confirms ISBN 9781098119065; also listed at O'Reilly, Blackwell's and Apple Books. It supersedes the widely-linked 1st edition (2017, 9781449373320) - replace any existing link. Caveat: too new for an Open Library record or cover, so supply a fallback image."
+        },
+        {
+          "rank": 2,
+          "title": "Fundamentals of Software Architecture: A Modern Engineering Approach",
+          "authors": [
+            "Mark Richards",
+            "Neal Ford"
+          ],
+          "publisher": "O'Reilly Media",
+          "edition": "2nd edition",
+          "year": 2025,
+          "isbn13": "9781098175511",
+          "isbn10": "1098175514",
+          "amazonUrl": "https://www.amazon.com/dp/1098175514?tag=dreamscribe09-20",
+          "amazonStatus": "200",
+          "openLibraryCover": "https://covers.openlibrary.org/b/isbn/9781098175511-L.jpg?default=false",
+          "coverStatus": "200",
+          "coverBytes": 25922,
+          "coverUsable": true,
+          "description": "Introduction to architecture characteristics, architecture styles, and the soft skills and decision-making of the architect role.",
+          "tags": [
+            "Architecture",
+            "Core reading"
+          ],
+          "confidence": "High. Verified in Open Library (O'Reilly, 2025-03-12, Richards/Ford) with a usable cover. Supersedes the 1st edition (2020, 9781492043454); note the subtitle changed from 'An Engineering Approach' to 'A Modern Engineering Approach', so check any existing copy on the site."
+        },
+        {
+          "rank": 3,
+          "title": "Software Architecture: The Hard Parts: Modern Trade-Off Analyses for Distributed Architectures",
+          "authors": [
+            "Neal Ford",
+            "Mark Richards",
+            "Pramod Sadalage",
+            "Zhamak Dehghani"
+          ],
+          "publisher": "O'Reilly Media",
+          "edition": "1st edition",
+          "year": 2021,
+          "isbn13": "9781492086895",
+          "isbn10": "1492086894",
+          "amazonUrl": "https://www.amazon.com/dp/1492086894?tag=dreamscribe09-20",
+          "amazonStatus": "200",
+          "openLibraryCover": "https://covers.openlibrary.org/b/isbn/9781492086895-L.jpg?default=false",
+          "coverStatus": "200",
+          "coverBytes": 53385,
+          "coverUsable": true,
+          "description": "Trade-off analysis techniques for decomposing monoliths and distributing data across service boundaries in distributed architectures.",
+          "tags": [
+            "Architecture",
+            "Trade-offs"
+          ],
+          "confidence": "High. Verified in Open Library (O'Reilly, 2021) with a usable cover. Flagged as 2021, just outside the preferred 2022-2026 window, but no 2nd edition exists and it is the standard companion to Fundamentals of Software Architecture. Some content overlap if both are listed. Alternates checked and available: Database Internals (9781492040347, 2019) and Fundamentals of Data Engineering (9781098108304, 2022, no 2nd edition)."
+        }
+      ]
+    },
+    {
+      "slotId": "slot-4",
+      "slotName": "DevOps culture",
+      "candidates": [
+        {
+          "rank": 1,
+          "title": "The Phoenix Project: A Novel About IT, DevOps, and Helping Your Business Win",
+          "authors": [
+            "Gene Kim",
+            "Kevin Behr",
+            "George Spafford"
+          ],
+          "publisher": "IT Revolution Press",
+          "edition": "4th edition",
+          "year": 2024,
+          "isbn13": "9781950508945",
+          "isbn10": "1950508943",
+          "amazonUrl": "https://www.amazon.com/dp/1950508943?tag=dreamscribe09-20",
+          "amazonStatus": "200",
+          "openLibraryCover": "https://covers.openlibrary.org/b/isbn/9781950508945-L.jpg?default=false",
+          "coverStatus": "404",
+          "coverBytes": 13,
+          "coverUsable": false,
+          "description": "Business novel dramatising an IT turnaround, used to teach the Theory of Constraints and the Three Ways of DevOps.",
+          "tags": [
+            "DevOps",
+            "Narrative"
+          ],
+          "confidence": "High. Verified in Open Library (IT Revolution, 2024) and the Amazon dp page confirms ISBN 9781950508945. Caveat on edition naming: the very widely cited '5th Anniversary Edition' (2018, 9781942788294) is an older printing superseded by this 4th edition (Sept 2024) - 'anniversary' is marketing, not an edition number. Many sites still link the 2018 ISBN. The 2018 ISBN does have a usable Open Library cover (200, 53518) if a cover image matters more than currency."
+        },
+        {
+          "rank": 2,
+          "title": "Team Topologies, 2nd Edition: Organizing Business and Technology for Fast Flow of Value",
+          "authors": [
+            "Matthew Skelton",
+            "Manuel Pais"
+          ],
+          "publisher": "IT Revolution Press",
+          "edition": "2nd edition",
+          "year": 2025,
+          "isbn13": "9781966280002",
+          "isbn10": "1966280009",
+          "amazonUrl": "https://www.amazon.com/dp/1966280009?tag=dreamscribe09-20",
+          "amazonStatus": "200",
+          "openLibraryCover": "https://covers.openlibrary.org/b/isbn/9781966280002-L.jpg?default=false",
+          "coverStatus": "404",
+          "coverBytes": 13,
+          "coverUsable": false,
+          "description": "Describes four team types and three interaction modes for organising teams around fast flow of value.",
+          "tags": [
+            "Team design",
+            "Organisation"
+          ],
+          "confidence": "High. A 2nd edition shipped 23 Sept 2025; ISBN-13 confirmed on the IT Revolution product page, and the Amazon dp page for the ISBN-10 resolves to 'Team Topologies, 2nd Edition' and confirms 9781966280002. Supersedes the heavily cited 1st edition (2019, 9781942788812); the subtitle changed from 'Organizing Business and Technology Teams for Fast Flow'. Caveat: IT Revolution publishes ISBN-13 only, so the ISBN-10 was derived by check-digit recomputation and then confirmed against the live Amazon page. No Open Library record or cover yet."
+        },
+        {
+          "rank": 3,
+          "title": "Accelerate: The Science of Lean Software and DevOps: Building and Scaling High Performing Technology Organizations",
+          "authors": [
+            "Nicole Forsgren",
+            "Jez Humble",
+            "Gene Kim"
+          ],
+          "publisher": "IT Revolution Press",
+          "edition": "1st edition",
+          "year": 2018,
+          "isbn13": "9781942788331",
+          "isbn10": "1942788339",
+          "amazonUrl": "https://www.amazon.com/dp/1942788339?tag=dreamscribe09-20",
+          "amazonStatus": "200",
+          "openLibraryCover": "https://covers.openlibrary.org/b/isbn/9781942788331-L.jpg?default=false",
+          "coverStatus": "200",
+          "coverBytes": 39554,
+          "coverUsable": true,
+          "description": "Presents the statistical research behind the four DORA software delivery metrics and the capabilities that predict performance.",
+          "tags": [
+            "DORA metrics",
+            "Research"
+          ],
+          "confidence": "High on identity, flagged on age. Verified in Open Library (IT Revolution, 27 Mar 2018) with ISBN-10 recorded directly and a usable cover. Canonical classic, kept despite the pre-2020 date because the DORA framework is still the industry standard. Caveat: eight years old and no 2nd edition exists; the underlying research has been updated annually since via the DORA State of DevOps reports, so cite it for the framework rather than the numbers. Alternates verified: The Unicorn Project (9781942788768) and Wiring the Winning Organization (9781950508426)."
+        },
+        {
+          "slotId": "slot-4",
+          "title": "The Phoenix Project: A Novel about IT, DevOps, and Helping Your Business Win (5th Anniversary Edition)",
+          "authors": [
+            "Gene Kim",
+            "Kevin Behr",
+            "George Spafford"
+          ],
+          "publisher": "IT Revolution",
+          "year": 2018,
+          "isbn13": "9781942788294",
+          "description": "The DevOps novel: a struggling IT organisation learns flow, feedback and continual learning. Anniversary edition with a new afterword.",
+          "tags": [
+            "DevOps",
+            "Novel"
+          ],
+          "isbn10": "1942788290",
+          "amazonUrl": "https://www.amazon.com/dp/1942788290?tag=dreamscribe09-20",
+          "source": "integrator-added 2026-09-13 (Open Library cover present); ISBN-10 computed from ISBN-13",
+          "rank": 4
+        },
+        {
+          "slotId": "slot-4",
+          "title": "The Unicorn Project: A Novel about Developers, Digital Disruption, and Thriving in the Age of Data",
+          "authors": [
+            "Gene Kim"
+          ],
+          "publisher": "IT Revolution",
+          "year": 2019,
+          "isbn13": "9781942788768",
+          "description": "Companion to The Phoenix Project told from the developers’ side: locality, focus, psychological safety and customer focus.",
+          "tags": [
+            "DevOps",
+            "Novel"
+          ],
+          "isbn10": "1942788762",
+          "amazonUrl": "https://www.amazon.com/dp/1942788762?tag=dreamscribe09-20",
+          "source": "integrator-added 2026-09-13 (Open Library cover present); ISBN-10 computed from ISBN-13",
+          "rank": 5
+        }
+      ]
+    },
+    {
+      "slotId": "slot-5",
+      "slotName": "Cloud-native architecture on AWS",
+      "candidates": [
+        {
+          "rank": 1,
+          "title": "AWS for Solutions Architects: Design and scale secure AWS architectures with GenAI strategies and real-world patterns",
+          "authors": [
+            "Saurabh Shrivastava",
+            "Neelanjali Srivastav",
+            "Dhiraj Thakur"
+          ],
+          "publisher": "Packt Publishing",
+          "edition": "3rd edition",
+          "year": 2025,
+          "isbn13": "9781836641933",
+          "isbn10": "1836641931",
+          "amazonUrl": "https://www.amazon.com/dp/1836641931?tag=dreamscribe09-20",
+          "amazonStatus": "200",
+          "openLibraryCover": "https://covers.openlibrary.org/b/isbn/9781836641933-L.jpg?default=false",
+          "coverStatus": "404",
+          "coverBytes": 13,
+          "coverUsable": false,
+          "description": "AWS architecture guide covering the Well-Architected Framework pillars, migration strategies, cost optimisation and GenAI/MLOps patterns.",
+          "tags": [
+            "Well-Architected",
+            "AWS"
+          ],
+          "confidence": "High. Confirmed on the Packt product page and the Amazon dp page (published 31 July 2025, 788 pages, Shrivastava/Srivastav/Thakur). Supersedes the 2nd edition (2023, 9781803238951), which had a different author lineup - do not link the 2nd. Caveat: too new for an Open Library record or cover."
+        },
+        {
+          "rank": 2,
+          "title": "Serverless Development on AWS: Building Enterprise-Scale Serverless Solutions",
+          "authors": [
+            "Sheen Brisals",
+            "Luke Hedger"
+          ],
+          "publisher": "O'Reilly Media",
+          "edition": "1st edition",
+          "year": 2024,
+          "isbn13": "9781098141936",
+          "isbn10": "1098141938",
+          "amazonUrl": "https://www.amazon.com/dp/1098141938?tag=dreamscribe09-20",
+          "amazonStatus": "200",
+          "openLibraryCover": "https://covers.openlibrary.org/b/isbn/9781098141936-L.jpg?default=false",
+          "coverStatus": "404",
+          "coverBytes": 13,
+          "coverUsable": false,
+          "description": "Architectural, security and data patterns for building and testing enterprise-scale event-driven serverless systems on AWS.",
+          "tags": [
+            "Serverless",
+            "AWS"
+          ],
+          "confidence": "High. Verified in Open Library (O'Reilly, 2024, Brisals/Hedger) and AbeBooks. Current best serverless-on-AWS title; no newer edition. Caveat: no Open Library cover at either ISBN. The O'Reilly platform ID 9781098141929 is the ebook, not the print ISBN."
+        },
+        {
+          "rank": 3,
+          "title": "System Design on AWS: Building and Scaling Enterprise Solutions",
+          "authors": [
+            "Jayanth Kumar",
+            "Mandeep Singh"
+          ],
+          "publisher": "O'Reilly Media",
+          "edition": "1st edition",
+          "year": 2025,
+          "isbn13": "9781098146894",
+          "isbn10": "1098146891",
+          "amazonUrl": "https://www.amazon.com/dp/1098146891?tag=dreamscribe09-20",
+          "amazonStatus": "200",
+          "openLibraryCover": "https://covers.openlibrary.org/b/isbn/9781098146894-L.jpg?default=false",
+          "coverStatus": "404",
+          "coverBytes": 13,
+          "coverUsable": false,
+          "description": "Maps classic system-design fundamentals onto AWS services for scalable, resilient and cost-optimised enterprise architectures.",
+          "tags": [
+            "System design",
+            "AWS"
+          ],
+          "confidence": "High. Verified in Open Library (O'Reilly, Kumar/Singh) and AbeBooks; AbeBooks gives the publication date as 25 March 2025 while Open Library records 2024 - treat 2025 as the release year. Strong fit for architects moving from service knowledge to system design. Caveat: no Open Library cover. Alternates verified: AWS Cookbook (9781492092605, 2022) and Serverless Architectures on AWS 2e (9781617295423, 2022)."
+        },
+        {
+          "slotId": "slot-5",
+          "title": "Amazon Web Services in Action, Third Edition",
+          "authors": [
+            "Andreas Wittig",
+            "Michael Wittig"
+          ],
+          "publisher": "Manning",
+          "year": 2023,
+          "isbn13": "9781633439160",
+          "description": "Hands-on tour of core AWS services (EC2, S3, RDS, Lambda, VPC) with infrastructure-as-code examples, updated for current consoles and CLI.",
+          "tags": [
+            "AWS",
+            "Hands-on"
+          ],
+          "isbn10": "163343916X",
+          "amazonUrl": "https://www.amazon.com/dp/163343916X?tag=dreamscribe09-20",
+          "source": "integrator-added 2026-09-13 (Open Library cover present); ISBN-10 computed from ISBN-13",
+          "rank": 4
+        }
+      ]
+    },
+    {
+      "slotId": "slot-6",
+      "slotName": "Infrastructure as Code",
+      "candidates": [
+        {
+          "rank": 1,
+          "title": "Infrastructure as Code: Designing and Delivering Dynamic Systems for the Cloud Age",
+          "authors": [
+            "Kief Morris"
+          ],
+          "publisher": "O'Reilly Media",
+          "edition": "3rd edition",
+          "year": 2025,
+          "isbn13": "9781098150358",
+          "isbn10": "109815035X",
+          "amazonUrl": "https://www.amazon.com/dp/109815035X?tag=dreamscribe09-20",
+          "amazonStatus": "200",
+          "openLibraryCover": "https://covers.openlibrary.org/b/isbn/9781098150358-L.jpg?default=false",
+          "coverStatus": "404",
+          "coverBytes": 13,
+          "coverUsable": false,
+          "description": "Tool-agnostic principles and patterns for designing maintainable, testable infrastructure codebases at organisational scale.",
+          "tags": [
+            "IaC",
+            "Architecture"
+          ],
+          "confidence": "High. Verified in Open Library (O'Reilly, 2025, Kief Morris); AbeBooks gives 22 April 2025, 434 pages. The 3rd edition supersedes the 2nd (2020). Ranked first because it is the most recent and the most architect-level (principles rather than one tool). Caveat: no Open Library cover. The O'Reilly ebook ID 9781098150341 is a different format."
+        },
+        {
+          "rank": 2,
+          "title": "Terraform: Up and Running: Writing Infrastructure as Code",
+          "authors": [
+            "Yevgeniy Brikman"
+          ],
+          "publisher": "O'Reilly Media",
+          "edition": "3rd edition",
+          "year": 2022,
+          "isbn13": "9781098116743",
+          "isbn10": "1098116747",
+          "amazonUrl": "https://www.amazon.com/dp/1098116747?tag=dreamscribe09-20",
+          "amazonStatus": "200",
+          "openLibraryCover": "https://covers.openlibrary.org/b/isbn/9781098116743-L.jpg?default=false",
+          "coverStatus": "404",
+          "coverBytes": 13,
+          "coverUsable": false,
+          "description": "Hands-on progression through production Terraform: modules, state management, testing, secrets handling and multi-provider deployments.",
+          "tags": [
+            "Terraform",
+            "Hands-on"
+          ],
+          "confidence": "High. Verified in Open Library (O'Reilly, 2022, Brikman) and AbeBooks. Checked explicitly: NO 4th edition exists or is announced, and the author's own site (terraformupandrunning.com) still presents the 3rd edition as current - so the brief's '3rd ed' is right. Caveat: covers Terraform to roughly v1.2 and predates recent Terraform/OpenTofu developments. No Open Library cover."
+        },
+        {
+          "rank": 3,
+          "title": "AWS CDK in Practice: Unleash the power of ordinary coding and streamline complex cloud applications on AWS",
+          "authors": [
+            "Mark Avdi",
+            "Leo Lam"
+          ],
+          "publisher": "Packt Publishing",
+          "edition": "1st edition",
+          "year": 2023,
+          "isbn13": "9781801812399",
+          "isbn10": "180181239X",
+          "amazonUrl": "https://www.amazon.com/dp/180181239X?tag=dreamscribe09-20",
+          "amazonStatus": "200",
+          "openLibraryCover": "https://covers.openlibrary.org/b/isbn/9781801812399-L.jpg?default=false",
+          "coverStatus": "200",
+          "coverBytes": 39564,
+          "coverUsable": true,
+          "description": "Practical CDK walkthrough building container-based and serverless AWS applications with CI/CD pipelines defined in general-purpose code.",
+          "tags": [
+            "AWS CDK",
+            "Hands-on"
+          ],
+          "confidence": "Medium-high. Verified in Open Library (Packt, 2023, Avdi/Lam) with a usable cover. Included as the AWS-native IaC option alongside the two tool-agnostic/Terraform titles. Caveats: short at 196 pages, and CDK v2 has moved on since 2023. Note 'The CDK Book' by Bonig et al. was rejected - it is a Gumroad ebook with no ISBN. Alternates verified: Mastering Terraform (9781835086018, 2024) and Infrastructure as Code with Pulumi (9781835467527, 2025)."
+        }
+      ]
+    },
+    {
+      "slotId": "slot-7",
+      "slotName": "AWS security",
+      "examCodeInForce2026": "SCS-C03 (superseded SCS-C02; no SCS-C03 book exists yet)",
+      "candidates": [
+        {
+          "rank": 1,
+          "title": "AWS Security",
+          "authors": [
+            "Dylan Shields"
+          ],
+          "publisher": "Manning Publications",
+          "edition": "1st edition",
+          "year": 2022,
+          "isbn13": "9781617297335",
+          "isbn10": "161729733X",
+          "amazonUrl": "https://www.amazon.com/dp/161729733X?tag=dreamscribe09-20",
+          "amazonStatus": "200",
+          "openLibraryCover": "https://covers.openlibrary.org/b/isbn/9781617297335-L.jpg?default=false",
+          "coverStatus": "200",
+          "coverBytes": 24914,
+          "coverUsable": true,
+          "description": "Practitioner guide to securing AWS workloads: IAM, VPC configuration, audit logging, security assessment, data protection and incident response.",
+          "tags": [
+            "AWS security",
+            "Practitioner"
+          ],
+          "confidence": "High. Verified in Open Library (Manning, 2022, Dylan Shields) with a usable cover; ISBN-13 and 312-page count confirmed on manning.com. Ranked first because it is vendor-exam-independent, so it does not go stale when AWS rotates exam codes. Caveat: 2022, predates several newer AWS security services."
+        },
+        {
+          "rank": 2,
+          "title": "AWS Certified Security Study Guide: Specialty (SCS-C02) Exam",
+          "authors": [
+            "Marcello Zillo Neto",
+            "Gustavo A. A. Santana",
+            "Mauricio Munoz",
+            "Dario Lucas Goldfarb",
+            "Alexandre M. S. P. Moraes"
+          ],
+          "publisher": "Sybex (John Wiley & Sons)",
+          "edition": "2nd edition",
+          "year": 2024,
+          "isbn13": "9781394253463",
+          "isbn10": "139425346X",
+          "amazonUrl": "https://www.amazon.com/dp/139425346X?tag=dreamscribe09-20",
+          "amazonStatus": "200",
+          "openLibraryCover": "https://covers.openlibrary.org/b/isbn/9781394253463-L.jpg?default=false",
+          "coverStatus": "200",
+          "coverBytes": 34856,
+          "coverUsable": true,
+          "description": "Sybex study guide covering the AWS Certified Security Specialty domains with review questions and practical exercises.",
+          "tags": [
+            "SCS-C02",
+            "Exam prep"
+          ],
+          "confidence": "Medium - verified book, OUTDATED EXAM CODE. Verified in Open Library (Wiley, 9781394253463) with a usable cover. IMPORTANT CAVEAT: AWS has moved the Security Specialty exam to SCS-C03 (confirmed on docs.aws.amazon.com, which now carries an SCS-C03 exam guide plus an explicit 'Comparison of SCS-C02 and SCS-C03' appendix), so this book is one exam version behind. No SCS-C03 book exists from any publisher yet. Sources also disagree on the year (Open Library 2024, retailer metadata July 2025) and on the author lineup - the list here is Open Library's."
+        },
+        {
+          "rank": 3,
+          "title": "Mastering AWS Security - Second Edition: Strengthen your cloud environment using AWS security features coupled with proven strategies",
+          "authors": [
+            "Laurent Mathieu"
+          ],
+          "publisher": "Packt Publishing",
+          "edition": "2nd edition",
+          "year": 2024,
+          "isbn13": "9781805125440",
+          "isbn10": "1805125443",
+          "amazonUrl": "https://www.amazon.com/dp/1805125443?tag=dreamscribe09-20",
+          "amazonStatus": "200",
+          "openLibraryCover": "https://covers.openlibrary.org/b/isbn/9781805125440-L.jpg?default=false",
+          "coverStatus": "404",
+          "coverBytes": 13,
+          "coverUsable": false,
+          "description": "Architecture-led approach to designing and maintaining a secure AWS environment across identity, network, data and detection controls.",
+          "tags": [
+            "AWS security",
+            "Architecture"
+          ],
+          "confidence": "Medium-high. Title, author and 2024 date corroborated by an Open Library record under the ebook ISBN 9781805121718; the print pair 9781805125440 / 1805125443 comes from AbeBooks and Amazon and passes check-digit validation. Not exam-aligned, which is an advantage given the SCS-C02 to SCS-C03 move. Caveat: no Open Library cover for the print ISBN. Alternates verified: AWS Security Cookbook 2e (9781835081891, 2024) and Security and Microservice Architecture on AWS (9781098101466, 2021)."
+        }
+      ]
+    },
+    {
+      "slotId": "slot-8",
+      "slotName": "DevOps / SRE practice",
+      "candidates": [
+        {
+          "rank": 1,
+          "title": "The DevOps Handbook: How to Create World-Class Agility, Reliability, & Security in Technology Organizations",
+          "authors": [
+            "Gene Kim",
+            "Jez Humble",
+            "Patrick Debois",
+            "John Willis",
+            "Nicole Forsgren"
+          ],
+          "publisher": "IT Revolution Press",
+          "edition": "2nd edition",
+          "year": 2021,
+          "isbn13": "9781950508402",
+          "isbn10": "1950508404",
+          "amazonUrl": "https://www.amazon.com/dp/1950508404?tag=dreamscribe09-20",
+          "amazonStatus": "200",
+          "openLibraryCover": "https://covers.openlibrary.org/b/isbn/9781950508402-L.jpg?default=false",
+          "coverStatus": "200",
+          "coverBytes": 61431,
+          "coverUsable": true,
+          "description": "Practitioner handbook mapping DevOps principles to implementation practices, with fifteen new case studies added in the second edition.",
+          "tags": [
+            "DevOps",
+            "Practice"
+          ],
+          "confidence": "High. Verified in Open Library (IT Revolution, 30 Nov 2021) with ISBN-10 recorded directly and the largest usable cover in the set. Nicole Forsgren was added as an author for the 2nd edition; no 3rd edition exists. Caveat: make sure the link points at the 2nd edition - the 2016 1st edition is still widely stocked under a different ISBN."
+        },
+        {
+          "rank": 2,
+          "title": "Site Reliability Engineering: How Google Runs Production Systems",
+          "authors": [
+            "Betsy Beyer",
+            "Chris Jones",
+            "Jennifer Petoff",
+            "Niall Richard Murphy"
+          ],
+          "publisher": "O'Reilly Media",
+          "edition": "1st edition",
+          "year": 2016,
+          "isbn13": "9781491929124",
+          "isbn10": "149192912X",
+          "amazonUrl": "https://www.amazon.com/dp/149192912X?tag=dreamscribe09-20",
+          "amazonStatus": "200",
+          "openLibraryCover": "https://covers.openlibrary.org/b/isbn/9781491929124-L.jpg?default=false",
+          "coverStatus": "200",
+          "coverBytes": 55148,
+          "coverUsable": true,
+          "description": "Google's essay collection defining SRE practice: service level objectives, error budgets, toil reduction and on-call operations.",
+          "tags": [
+            "SRE",
+            "Canonical"
+          ],
+          "confidence": "High on identity, flagged on age. Verified in Open Library (O'Reilly, 2016) with ISBN-10 recorded directly and a usable cover. Well outside the 2022-2026 preference but retained as a canonical classic - it defines the SLO/error-budget vocabulary the whole field still uses, and no revised edition exists. Caveat worth surfacing to readers: Google hosts the full text free at sre.google/books, so the affiliate link competes with a free official copy."
+        },
+        {
+          "rank": 3,
+          "title": "Observability Engineering: Achieving Production Excellence",
+          "authors": [
+            "Charity Majors",
+            "Liz Fong-Jones",
+            "George Miranda"
+          ],
+          "publisher": "O'Reilly Media",
+          "edition": "1st edition",
+          "year": 2022,
+          "isbn13": "9781492076445",
+          "isbn10": "1492076449",
+          "amazonUrl": "https://www.amazon.com/dp/1492076449?tag=dreamscribe09-20",
+          "amazonStatus": "200",
+          "openLibraryCover": "https://covers.openlibrary.org/b/isbn/9781492076445-L.jpg?default=false",
+          "coverStatus": "200",
+          "coverBytes": 48161,
+          "coverUsable": true,
+          "description": "Distinguishes observability from traditional monitoring and covers instrumentation, high-cardinality events and migration off legacy tooling.",
+          "tags": [
+            "Observability",
+            "Practice"
+          ],
+          "confidence": "High. Verified in Open Library (O'Reilly, 2022, Majors/Fong-Jones/Miranda) with a usable cover. The only candidate in this slot inside the preferred 2022-2026 window, and it balances the two older titles. Caveat: page counts differ by source (318 vs 400), a format difference. Alternates verified: The Site Reliability Workbook (9781492029502, 2018) and Building Secure and Reliable Systems (9781492083122, 2020)."
+        }
+      ]
+    }
+  ],
+  "notes": [
+    "EXAM CODES VERIFIED AGAINST AWS ITSELF (2026-09-13). SAA-C03 is STILL the current Solutions Architect Associate exam - it has NOT been replaced. A search result claiming 'SAA-C04, released March 2024' came from an SEO content farm (citadelcloudmanagement.com) and is false: aws.amazon.com/certification/certified-solutions-architect-associate/ and the AWS docs exam guide both still resolve to solutions-architect-associate-03, and the AWS 'coming soon' page lists no SAA update. Do not let that claim reach the site.",
+    "SAP-C02 is still the current Solutions Architect Professional exam code; AWS lists no SAP-C03.",
+    "SCS-C03 IS NOW LIVE for AWS Certified Security - Specialty, replacing SCS-C02. Confirmed at docs.aws.amazon.com/aws-certification/latest/security-specialty-03/, which includes an explicit 'Comparison of SCS-C02 and SCS-C03' appendix. Every AWS security exam-prep book currently in print targets SCS-C02 and is therefore one version behind; no SCS-C03 book exists yet. If the site states SCS-C02 anywhere as current, that is now wrong. The exact SCS-C02 retirement date could not be confirmed on any AWS page - do not publish a date for it.",
+    "The only AWS 'coming soon' exam change AWS currently advertises is CloudOps Engineer Associate SOA-C03 replacing SOA-C02 (Sept 2025) - not relevant to these eight slots but worth knowing if a SysOps slot is ever added.",
+    "AMAZON STATUS IS WEAK EVIDENCE AND MUST NOT BE TREATED AS VERIFICATION. Amazon returns HTTP 200 for deliberately bogus ASINs (0000000000 and 9999999999 both returned 200 in testing), so a 200 does not prove a book exists. A 404 IS meaningful, and exactly one candidate hit it: the Orange AVA SAP-C02 guide (ISBN-10 9348107801) has no US Amazon detail page - do not publish that affiliate link. HEAD requests are rejected by Amazon with 405, so these are ranged GETs with a browser user-agent. Where the identity of a derived ISBN-10 mattered most, the Amazon page title was read back and matched: 1098119061 = DDIA, 1966280009 = Team Topologies 2nd Edition, 1950508943 = The Phoenix Project. Amazon began throttling after roughly fifteen requests, so the remaining titles were not title-checked this way.",
+    "REAL VERIFICATION came from three independent directions per book: the Open Library /api/books record (title, authors, publisher, date, ISBNs), a publisher or retailer page (IT Revolution, Manning, Pearson, Packt, O'Reilly, orangeava.com, AbeBooks), and deterministic ISBN-13 to ISBN-10 check-digit recomputation. Every ISBN-10 computed independently matched the ISBN-10 that had been read off a retailer page, and every ISBN-13 passes checksum validation. No ISBN in this file was invented or guessed.",
+    "OPEN LIBRARY COVERS ARE MISSING FOR 13 OF 24 CANDIDATES. Both the ISBN-13 and the ISBN-10 cover URLs were tested; where the ISBN-13 returned 404 (13 bytes), the ISBN-10 returned 404 as well, so there is no fallback within Open Library. The pattern is that recent Packt and O'Reilly titles have no cover art in Open Library. The site needs a placeholder or another cover source for: 9781837630004, 9781801813136, 9781835084236, 9789348107800, 9781098119065, 9781950508945, 9781966280002, 9781836641933, 9781098141936, 9781098146894, 9781098150358, 9781098116743, 9781805125440. A usable cover is >5 KB; the 11 that returned 200 ranged from 24,914 to 61,431 bytes.",
+    "BIGGEST CONTENT CHANGE: Designing Data-Intensive Applications 2nd edition is genuinely published (O'Reilly, March 2026, Kleppmann and Riccomini, 9781098119065). The author's own announcement page still reads as pre-release because it was written in March 2026, but the book is now listed and sold by O'Reilly, Blackwell's, Apple Books and Audible, and the Amazon dp page confirms the ISBN. Any existing link to the 2017 1st edition (9781449373320) should be replaced.",
+    "OTHER SUPERSEDED EDITIONS TO CHECK IF THE SITE ALREADY LINKS THEM: Fundamentals of Software Architecture 1st (9781492043454) is now 2nd (9781098175511, subtitle changed); Team Topologies 1st (9781942788812) is now 2nd (9781966280002, subtitle changed); The Phoenix Project '5th Anniversary Edition' (9781942788294) is superseded by the 2024 4th edition (9781950508945); AWS for Solutions Architects 2nd (9781803238951) is now 3rd (9781836641933) with a different author lineup; Designing Distributed Systems 1st is now 2nd (9781098156350); Infrastructure as Code 2nd is now 3rd (9781098150358).",
+    "EDITIONS EXPLICITLY CHECKED AND CONFIRMED AS STILL CURRENT (no newer edition exists): Terraform: Up & Running 3rd ed (the author's own site still presents it as current - there is no 4th edition), The DevOps Handbook 2nd ed, Accelerate (no 2nd ed), Software Architecture: The Hard Parts, Database Internals, Fundamentals of Data Engineering, Serverless Architectures on AWS 2nd ed, Site Reliability Engineering.",
+    "SLOT-2 IS GENUINELY THIN AND SHOULD BE PRESENTED AS SUCH. Only one current major-publisher SAP-C02 exam-prep book exists (the Packt Sard/Wadia guide). Sybex/Wiley publishes AWS Solutions Architect study guides at the Associate level only - the assumed 'Sybex SAP Professional Study Guide' does not exist. Pearson's AWS Solutions Architect author (Mark Wilkins) has written only at Associate level, and Marko Sluga's Pearson title is SysOps SOA-C02, a different certification. No Apress SAP-C02 title exists. Candidate 2 is supplementary reading rather than exam prep and candidate 3 is not Amazon-linkable, so treat slot-2 as one solid pick plus context.",
+    "TITLES DELIBERATELY REJECTED: the McGraw Hill AWS Certified Solutions Architect Associate All-in-One guide (latest edition targets SAA-C02, two codes behind, no SAA-C03 refresh exists); the McGraw Hill Security Specialty All-in-One guide (SCS-C01, two codes behind); the 2019 Pearson AWS SA Professional Cert Guide (SAP-C01 era, no named author); 'The CDK Book' (Gumroad ebook, no ISBN, cannot be catalogued or linked); Tutorials Dojo study guides (digital-only PDF licences with no ISBN of any kind, so they cannot use the /dp/<isbn10> link format); Neal Davis training-notes titles (979-prefix ISBNs, which have no ISBN-10 equivalent and therefore cannot form the required Amazon URL, plus an unconfirmed exam code); and several 2026-dated Amazon-only SAP-C02 and SAA-C03 titles by unknown authors with no publisher, which have the hallmarks of bulk or AI-generated certification books.",
+    "979-prefix ISBNs have no ISBN-10 equivalent by design. This is why some otherwise reasonable self-published titles cannot be used with the required amazonUrl format - it is a numbering-scheme fact, not a research gap.",
+    "FETCH BLOCKS ENCOUNTERED: wiley.com, packtpub.com, oreilly.com, blackwells.co.uk and mitpressbookstore all returned HTTP 403 to automated fetching, and the Google Books API returned 429 (quota exhausted). Open Library, Manning, Pearson IT Certification, orangeava.com, AbeBooks and the AWS documentation all fetched successfully and carried the load.",
+    "LOWEST-CONFIDENCE DATA POINTS, worth a re-check before publishing: the Sybex Security Study Guide 2nd edition year (Open Library says 2024, retailer metadata says July 2025) and its author lineup (two different lists circulate - Open Library's is used here); the Solutions Architect's Handbook 3rd edition author list (Open Library adds Kamal Arora, some retailers list only two authors); and System Design on AWS's year (AbeBooks 25 March 2025 vs Open Library 2024).",
+    "2026-09-13 integrator: added Phoenix Project 5th anniversary ed, The Unicorn Project, AWS in Action 3e (all with Open Library covers) so slots 4 and 5 have two cover-verified picks; 7 researched titles have no obtainable cover (Open Library, O'Reilly, Google Books 429) and are excluded from the live set until a cover exists."
+  ]
+}

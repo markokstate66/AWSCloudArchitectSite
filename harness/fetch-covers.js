@@ -17,7 +17,7 @@ const get = url => new Promise((res, rej) => https.get(url, { headers: { 'User-A
   await p.setContent('<html><body></body></html>');
   const out = [];
   for (const bk of books) {
-    const tries = [bk.isbn13, bk.isbn10].filter(Boolean).map(i => `https://covers.openlibrary.org/b/isbn/${i}-L.jpg?default=false`);
+    const tries = [bk.isbn13, bk.isbn10].filter(Boolean).map(i => `https://covers.openlibrary.org/b/isbn/${i}-L.jpg?default=false`).concat([`https://learning.oreilly.com/library/cover/${bk.isbn13}/400w/`]); // O'Reilly serves many Packt/O'Reilly covers publicly by ISBN
     let got = null;
     for (const u of tries) { try { const r = await get(u); if (r.status === 200 && r.body.length > 5000) { got = r; break; } } catch (e) {} }
     if (!got) { out.push({ isbn10: bk.isbn10, title: bk.title, status: 'NO COVER' }); continue; }
