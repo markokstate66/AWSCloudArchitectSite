@@ -19,12 +19,20 @@ const LOCAL_CSP = `<meta http-equiv="Content-Security-Policy" content="script-sr
 function send(res, status, file) {
   const ext = path.extname(file).toLowerCase();
   res.writeHead(status, { 'Content-Type': MIME[ext] || 'application/octet-stream', 'Cache-Control': 'no-store' });
-  if (ext === '.html') { const html = fs.readFileSync(file, 'utf8').replace(/<head>/i, '<head>' + LOCAL_CSP); return res.end(html); }
+  if (ext === '.html') {
+    // Point the two third-party loaders at same-origin empty stubs: no network request, no CSP console
+    // error, and the src still contains the substrings the integrity gate keys on.
+    const html = fs.readFileSync(file, 'utf8').replace(/<head>/i, '<head>' + LOCAL_CSP)
+      .replace('https://www.googletagmanager.com/gtag/js?id=', '/__stub/gtag/js?id=')
+      .replace('https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=', '/__stub/pagead/js/adsbygoogle.js?client=');
+    return res.end(html);
+  }
   fs.createReadStream(file).pipe(res);
 }
 
 const server = http.createServer((req, res) => {
   let urlPath = decodeURIComponent(req.url.split('?')[0]);
+  if (urlPath.startsWith('/__stub/')) { res.writeHead(200, { 'Content-Type': 'application/javascript', 'Cache-Control': 'no-store' }); return res.end('/* third-party loader stubbed by the local harness */'); }
   if (urlPath.startsWith('/api/')) {
     // Stub the Functions API so pages behave deterministically offline.
     res.writeHead(200, { 'Content-Type': 'application/json' });
