@@ -176,3 +176,18 @@ The only in-budget option is to not have the covers in the initial HTML (inject 
 which changes the frozen image markup and the A/B renderer. **Decide:** accept 2.1 s lab LCP on
 this one page (real-user LCP on a fast connection is far below this simulation), or approve an
 "images" change so the covers are inserted by script after first paint.
+
+## E. Launch steps (agents do not deploy)
+
+The facelift is on the local branch `facelift` (never pushed). Before launch:
+1. Read `docs/STATUS.json` and the final reports in `docs/rounds/final-*.md`; decide the four
+   sign-offs above (A2 soft-404 config, A3/A5/A6 content approvals, D1 bytes, D2 LCP).
+2. Optional content corrections: paste approved entries into `docs/APPROVALS.json`, then have an
+   agent apply them and run `node harness/integrity.js compare --base baseline-2026-09-13`.
+3. Confirm A1 (single deploy workflow / SWA binding) — the merge will trigger a deploy.
+4. `git push -u origin facelift`, open a PR to `main`, review the diff (24 site files + harness/docs),
+   merge. The workflow runs html-validate then deploys in ~90 s.
+5. Post-launch: run the watch plan in section C; take the "after" AdSense/GSC numbers at 7 and 28 days.
+6. Phase 2 (manual ad units): create the five units (B4), write ids to `docs/AD_UNITS.json`, run
+   `node harness/apply-ads.js --check` then without `--check`, add `adCount` approvals for the 15
+   pages, run the gate, review, merge. Set Auto ads to anchor on / vignettes off / side rails off.

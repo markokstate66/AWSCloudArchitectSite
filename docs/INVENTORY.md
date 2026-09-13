@@ -100,3 +100,17 @@ link the stylesheet normally, have CLS 0. `bf-cache` fails only because the loca
 `docs/CONTENT_AUDIT.md` — 78 claims checked, 44 OK, 13 WRONG, 18 STALE, 3 UNVERIFIED; 52
 external links checked (1 hard 404, 3 brand redirects). Nothing changed; approvals pending
 (HUMAN_TODO A3).
+
+## 9. After the facelift (label `polish-r2`, HEAD cff105e, 2026-09-13)
+
+| Page | Perf | A11y | BP | SEO | LCP | CLS | gzip weight now vs baseline |
+|------|------|------|----|-----|-----|-----|------------------------------|
+| index.html | 100 | 100 | 100 | 92 | 1.65 s | 0 | 16993 vs 14724 (+2269) |
+| projects.html | 100 | 100 | 100 | 100 | 1.65 s | 0 | 15396 vs 12750 (+2646) |
+| tools.html | 100 | 100 | 100 | 92 | 1.53 s | 0 | 15224 vs 12603 (+2621) |
+| interview-prep.html | 100 | 100 | 100 | 100 | 1.65 s | 0 | 17917 vs 15143 (+2774) |
+| about.html | 100 | 100 | 100 | 100 | 1.5 s | 0 | 13721 vs 11016 (+2705) |
+| project-multi-account-landing-zone.html | 100 | 100 | 100 | 100 | 1.65 s | 0 | 15811 vs 11889 (+3922) |
+| resources.html | 99 | 100 | 100 | 100 | 2.1 s | 0 | 160699 vs 372586 (-211887) |
+
+Playwright/axe (`harness/out/polish-r2/summary.json`, 20 public pages × 3 widths): 0 console errors, 0 failed requests, 0 axe violations of any impact (baseline: 146 serious contrast nodes + 42 keyboard-inaccessible code blocks), 0 horizontal overflow, CLS 0 everywhere. Integrity: PASS, 0 approvals used (no content, title, meta, canonical, link, image or structured-data change). SEO 92 on index/tools is the frozen "Learn More" text (HUMAN_TODO A5); resources LCP 2.1 s is HUMAN_TODO D2; gzip weight is HUMAN_TODO D1.
