@@ -5,8 +5,8 @@
   "areas": {
     "design-system": {
       "wave": 1,
-      "status": "ROUND_2_BUILDING",
-      "round": 1,
+      "status": "IN_GAUNTLET_R2",
+      "round": 2,
       "scores": {
         "r1": {
           "creativeDirector": 7.6,
@@ -17,13 +17,13 @@
       "openIssues": [
         "docs/rounds/wave1-r2-request.md (12 items)"
       ],
-      "builderReport": "docs/rounds/wave1-builder.md",
+      "builderReport": "docs/rounds/wave1-r2-builder.md",
       "next": "round 2 after Wave 2 builders land"
     },
     "layout-shell": {
       "wave": 1,
-      "status": "ROUND_2_BUILDING",
-      "round": 1,
+      "status": "IN_GAUNTLET_R2",
+      "round": 2,
       "scores": {
         "r1": {
           "creativeDirector": 7.6,
@@ -34,39 +34,71 @@
       "openIssues": [
         "docs/rounds/wave1-r2-request.md (12 items)"
       ],
-      "builderReport": "docs/rounds/wave1-builder.md",
+      "builderReport": "docs/rounds/wave1-r2-builder.md",
       "next": "round 2 after Wave 2 builders land"
     },
     "article-template": {
       "wave": 2,
-      "status": "IN_GAUNTLET",
-      "round": 1,
-      "scores": {},
-      "openIssues": [],
+      "status": "ROUND_2_BUILDING",
+      "round": 2,
+      "scores": {
+        "r1": {
+          "creativeDirector": 7.8,
+          "reader": 7.8,
+          "monetizationSeo": 8.2
+        }
+      },
+      "openIssues": [
+        "docs/rounds/wave2-r2-request.md"
+      ],
       "builderReport": "docs/rounds/article-template-r1-builder.md"
     },
     "code-and-diagrams": {
       "wave": 2,
-      "status": "IN_GAUNTLET",
-      "round": 1,
-      "scores": {},
-      "openIssues": [],
+      "status": "ROUND_2_BUILDING",
+      "round": 2,
+      "scores": {
+        "r1": {
+          "creativeDirector": 7.4,
+          "reader": 8.2,
+          "monetizationSeo": 8.8
+        }
+      },
+      "openIssues": [
+        "docs/rounds/wave2-r2-request.md"
+      ],
       "builderReport": "docs/rounds/code-and-diagrams-r1-builder.md"
     },
     "listing-pages": {
       "wave": 2,
-      "status": "IN_GAUNTLET",
-      "round": 1,
-      "scores": {},
-      "openIssues": [],
+      "status": "ROUND_2_BUILDING",
+      "round": 2,
+      "scores": {
+        "r1": {
+          "creativeDirector": 7.9,
+          "reader": 8.2,
+          "monetizationSeo": 8.3
+        }
+      },
+      "openIssues": [
+        "docs/rounds/wave2-r2-request.md"
+      ],
       "builderReport": "docs/rounds/listing-pages-r1-builder.md"
     },
     "static-pages": {
       "wave": 2,
-      "status": "IN_GAUNTLET",
-      "round": 1,
-      "scores": {},
-      "openIssues": [],
+      "status": "ROUND_2_BUILDING",
+      "round": 2,
+      "scores": {
+        "r1": {
+          "creativeDirector": 8.2,
+          "reader": 8.3,
+          "monetizationSeo": 8.7
+        }
+      },
+      "openIssues": [
+        "docs/rounds/wave2-r2-request.md"
+      ],
       "builderReport": "docs/rounds/static-pages-r1-builder.md"
     },
     "ad-presentation": {
@@ -93,5 +125,5 @@
     "Wave 1 built by one builder for both areas (cohesion); critics running round 1",
     "Integrator: skip link added after gate fix (fragment-only hrefs ignored); pre-block exact text added to gate; HTML re-indented 4->2 spaces outside <pre> (68 KB headroom)"
   ],
-  "weightBudget": "gzip per page vs f1ec399 via harness/weight.js; FAIL on 19 pages after Wave 2 (+3.2..4.6 KB gz); CSS consolidation assigned to Wave 1 r2; residual to be signed off (HUMAN_TODO)"
+  "weightBudget": "gzip per page vs f1ec399 (harness/weight.js). After Wave 1 r2 consolidation: styles.css 7,995 gz (ref 6,078); residual +0.3..+2.5 KB gz per page from real features (skip link, breadcrumbs, TOC rail, copy buttons, key-facts markup, script.js). Sign-off item in HUMAN_TODO D1."
 }

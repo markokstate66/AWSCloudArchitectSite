@@ -139,3 +139,22 @@ Baseline window: the 28 days before the launch push. Compare each week for 4 wee
 | Soft-404 / not-indexed pages | Search Console → Pages | Any project page dropping out of the index |
 
 Rollback = `git revert` of the launch merge and push; the single workflow redeploys in ~90 s.
+
+## D. Budget exceptions that need your sign-off
+
+### D1. Page weight is above the "at or below baseline" budget by 0.3–2.5 KB gzip per page
+Measured with `node harness/weight.js` (gzip, the way Azure SWA serves text), reference commit f1ec399:
+
+| Page type | gzip now vs baseline | Where it comes from |
+|-----------|----------------------|---------------------|
+| project guides (11) | about +2.45 KB (e.g. 14.3 KB vs 11.9 KB) | styles.css +1.9 KB (new design system replaces a 6 KB sheet that gzipped unusually well), script.js +0.3 KB (copy buttons, keyboard-accessible pre/FAQ/drawer), page HTML +0.23 KB (heading ids, "On this page" rail, key-facts list, skip link, breadcrumb) |
+| listing pages | about +1.3 KB | same shared CSS/JS; HTML is at or below baseline |
+| static pages | +1.2–1.6 KB | same |
+| home | +1.0 KB | same |
+| 404.html | +0.3 KB | self-contained restyle |
+
+Everything else in the budget holds (Lighthouse mobile perf 99–100, CLS 0, LCP ≤ 1.65 s except
+resources.html, 0 console errors, 0 axe). The overage is the cost of the features the brief asked
+for; the CSS has already been consolidated to within ~175 B of its floor. **Decide:** accept the
+exception (recommended — 14 KB total for a project page is still very small), or tell an agent
+which features to drop.
