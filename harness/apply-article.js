@@ -18,8 +18,9 @@
 //      row ahead of the article in tab order below 64em; at 64em+ the explicit grid placement
 //      still parks it in column 2, so no CSS `order` is needed anywhere;
 //   5. a stable id (step-1 ...) on every .guide-step h3, with the step number turned into an
-//      anchor to its own step so a step is deep-linkable. The number text is unchanged and the
-//      href is fragment-only, so neither the text nor the link snapshot moves.
+//      anchor to its own step so a step is deep-linkable, carrying aria-label="Step N" so the
+//      link is not a tab stop whose whole accessible name is a digit. The number text is
+//      unchanged and the href is fragment-only, so neither the text nor the link snapshot moves.
 const fs = require('fs');
 const path = require('path');
 const ROOT = path.resolve(__dirname, '..');
@@ -90,8 +91,8 @@ function transformMain(block) {
 
   // 5. step h3 ids + the step number as an anchor to its own step
   let n = 0;
-  block = block.replace(/<div class="step-number">(?:<a href="#step-\d+">)?([\s\S]*?)(?:<\/a>)?<\/div>([\s\S]*?)<h3(?: id="step-\d+")?>/g,
-    (m, num, mid) => { const id = `step-${++n}`; return `<div class="step-number"><a href="#${id}">${num}</a></div>${mid}<h3 id="${id}">`; });
+  block = block.replace(/<div class="step-number">(?:<a href="#step-\d+"(?: aria-label="Step \d+")?>)?([\s\S]*?)(?:<\/a>)?<\/div>([\s\S]*?)<h3(?: id="step-\d+")?>/g,
+    (m, num, mid) => { const k = ++n; return `<div class="step-number"><a href="#step-${k}" aria-label="Step ${k}">${num}</a></div>${mid}<h3 id="step-${k}">`; });
   return block;
 }
 
