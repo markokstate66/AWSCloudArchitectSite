@@ -9,12 +9,12 @@
   <!-- Self-contained: no second request. Tokens + navy header band copied from styles.css. -->
   <style>
     :root { --paper: #faf9f6; --paper-2: #f4f2ec; --ink: #1a1d21; --ink-2: #4a5159; --ink-3: #596169;
-      --line-2: #d8d2c6; --navy: #15202b; --accent: #c2410c; --aws-orange: #ff9900; }
+      --line-2: #d8d2c6; --navy: #15202b; --navy-line: #2e3d4e; --accent: #c2410c; --aws-orange: #ff9900; }
     * { box-sizing: border-box; }
     body { margin: 0; background: var(--paper); color: var(--ink); font: 1.0625rem/1.65 ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Inter, sans-serif; }
     .container { width: 100%; max-width: 1200px; margin-inline: auto; padding-inline: 1.5rem; }
-    .strip { display: flex; align-items: center; height: 56px; background: var(--navy); }
-    .cloud-icon { font-size: 1.5rem; line-height: 1; color: var(--aws-orange); }
+    .strip { display: flex; align-items: center; height: 56px; border-bottom: 1px solid var(--navy-line); background: var(--navy); }
+    .cloud-icon { display: grid; place-items: center; width: 24px; height: 24px; font-size: 1.5rem; line-height: 1; color: var(--aws-orange); }
     main { padding-block: 3rem 4rem; } .block { max-width: 36rem; }
     .error-code { margin: 0 0 .5rem; color: var(--ink-3); font-size: clamp(4rem, 17vw, 6rem); font-weight: 720; letter-spacing: -.05em; line-height: .95; }
     h1 { margin: 0 0 1rem; max-width: 26ch; font-size: clamp(1.6rem, 6.4vw, 2.125rem); font-weight: 720; letter-spacing: -.022em; line-height: 1.2; text-wrap: balance; }

@@ -135,13 +135,13 @@
             <ul class="question-list">
               <li>
                 <div class="question-item">
-                  <button type="button" class="question-toggle" aria-expanded="false" aria-labelledby="q1" onclick="toggleAnswer(this)"></button>
+                  <button type="button" class="question-toggle" aria-expanded="false" aria-controls="answer-1" aria-labelledby="q1" onclick="toggleAnswer(this)"></button>
                   <strong id="q1">Explain the difference between EC2, Lambda, and Fargate. When would you use each?
                     <span class="question-difficulty difficulty-easy">Easy</span>
                   </strong>
                   <span class="question-hint">Click to reveal answer</span>
                 </div>
-                <div class="answer" style="display: none">
+                <div class="answer" id="answer-1" style="display: none">
                   <p><strong>EC2:</strong> Virtual servers with full control over OS and configuration. Best for applications requiring specific OS configurations, long-running workloads, or when you need persistent storage.</p>
                   <p><strong>Lambda:</strong> Serverless compute that runs code in response to events. Best for event-driven workloads, short-running tasks (up to 15 min), and when you want zero server management.</p>
                   <p><strong>Fargate:</strong> Serverless containers without managing servers. Best for containerized applications where you want container benefits without cluster management.</p>
@@ -149,13 +149,13 @@
               </li>
               <li>
                 <div class="question-item">
-                  <button type="button" class="question-toggle" aria-expanded="false" aria-labelledby="q2" onclick="toggleAnswer(this)"></button>
+                  <button type="button" class="question-toggle" aria-expanded="false" aria-controls="answer-2" aria-labelledby="q2" onclick="toggleAnswer(this)"></button>
                   <strong id="q2">What are the differences between S3 storage classes and when would you use each?
                     <span class="question-difficulty difficulty-medium">Medium</span>
                   </strong>
                   <span class="question-hint">Click to reveal answer</span>
                 </div>
-                <div class="answer" style="display: none">
+                <div class="answer" id="answer-2" style="display: none">
                   <p><strong>S3 Standard:</strong> Frequently accessed data, low latency, high throughput.</p>
                   <p><strong>S3 Intelligent-Tiering:</strong> Unknown or changing access patterns - automatically moves data between tiers.</p>
                   <p><strong>S3 Standard-IA:</strong> Infrequently accessed but requires rapid access when needed.</p>
@@ -166,13 +166,13 @@
               </li>
               <li>
                 <div class="question-item">
-                  <button type="button" class="question-toggle" aria-expanded="false" aria-labelledby="q3" onclick="toggleAnswer(this)"></button>
+                  <button type="button" class="question-toggle" aria-expanded="false" aria-controls="answer-3" aria-labelledby="q3" onclick="toggleAnswer(this)"></button>
                   <strong id="q3">Explain the difference between RDS, Aurora, and DynamoDB.
                     <span class="question-difficulty difficulty-medium">Medium</span>
                   </strong>
                   <span class="question-hint">Click to reveal answer</span>
                 </div>
-                <div class="answer" style="display: none">
+                <div class="answer" id="answer-3" style="display: none">
                   <p><strong>RDS:</strong> Managed relational database service supporting MySQL, PostgreSQL, Oracle, SQL Server, MariaDB. Good for traditional relational workloads with predictable scale.</p>
                   <p><strong>Aurora:</strong> AWS-built relational database compatible with MySQL/PostgreSQL. 5x faster than MySQL, 3x faster than PostgreSQL, with automated scaling up to 128TB. Best for high-performance relational workloads.</p>
                   <p><strong>DynamoDB:</strong> Fully managed NoSQL key-value and document database. Single-digit millisecond latency at any scale. Best for high-scale, low-latency workloads with flexible schema requirements.</p>
@@ -187,13 +187,13 @@
             <ul class="question-list">
               <li>
                 <div class="question-item">
-                  <button type="button" class="question-toggle" aria-expanded="false" aria-labelledby="q4" onclick="toggleAnswer(this)"></button>
+                  <button type="button" class="question-toggle" aria-expanded="false" aria-controls="answer-4" aria-labelledby="q4" onclick="toggleAnswer(this)"></button>
                   <strong id="q4">Design a highly available web application architecture on AWS.
                     <span class="question-difficulty difficulty-medium">Medium</span>
                   </strong>
                   <span class="question-hint">Click to reveal answer</span>
                 </div>
-                <div class="answer" style="display: none">
+                <div class="answer" id="answer-4" style="display: none">
                   <p><strong>Key components:</strong></p>
                   <ul>
                     <li>Route 53 for DNS with health checks and failover routing</li>
@@ -209,13 +209,13 @@
               </li>
               <li>
                 <div class="question-item">
-                  <button type="button" class="question-toggle" aria-expanded="false" aria-labelledby="q5" onclick="toggleAnswer(this)"></button>
+                  <button type="button" class="question-toggle" aria-expanded="false" aria-controls="answer-5" aria-labelledby="q5" onclick="toggleAnswer(this)"></button>
                   <strong id="q5">How would you design a serverless event-driven architecture?
                     <span class="question-difficulty difficulty-hard">Hard</span>
                   </strong>
                   <span class="question-hint">Click to reveal answer</span>
                 </div>
-                <div class="answer" style="display: none">
+                <div class="answer" id="answer-5" style="display: none">
                   <p><strong>Components:</strong></p>
                   <ul>
                     <li>API Gateway for HTTP endpoints, or AppSync for GraphQL</li>
@@ -232,13 +232,13 @@
               </li>
               <li>
                 <div class="question-item">
-                  <button type="button" class="question-toggle" aria-expanded="false" aria-labelledby="q6" onclick="toggleAnswer(this)"></button>
+                  <button type="button" class="question-toggle" aria-expanded="false" aria-controls="answer-6" aria-labelledby="q6" onclick="toggleAnswer(this)"></button>
                   <strong id="q6">How do you achieve disaster recovery across regions?
                     <span class="question-difficulty difficulty-hard">Hard</span>
                   </strong>
                   <span class="question-hint">Click to reveal answer</span>
                 </div>
-                <div class="answer" style="display: none">
+                <div class="answer" id="answer-6" style="display: none">
                   <p><strong>DR Strategies (in order of cost/complexity):</strong></p>
                   <ul>
                     <li><strong>Backup & Restore:</strong> Lowest cost, highest RTO. Regular backups to S3, restore when needed.</li>
@@ -258,13 +258,13 @@
             <ul class="question-list">
               <li>
                 <div class="question-item">
-                  <button type="button" class="question-toggle" aria-expanded="false" aria-labelledby="q7" onclick="toggleAnswer(this)"></button>
+                  <button type="button" class="question-toggle" aria-expanded="false" aria-controls="answer-7" aria-labelledby="q7" onclick="toggleAnswer(this)"></button>
                   <strong id="q7">Explain the shared responsibility model in AWS.
                     <span class="question-difficulty difficulty-easy">Easy</span>
                   </strong>
                   <span class="question-hint">Click to reveal answer</span>
                 </div>
-                <div class="answer" style="display: none">
+                <div class="answer" id="answer-7" style="display: none">
                   <p><strong>AWS Responsibility (Security OF the Cloud):</strong></p>
                   <ul>
                     <li>Physical security of data centers</li>
@@ -284,13 +284,13 @@
               </li>
               <li>
                 <div class="question-item">
-                  <button type="button" class="question-toggle" aria-expanded="false" aria-labelledby="q8" onclick="toggleAnswer(this)"></button>
+                  <button type="button" class="question-toggle" aria-expanded="false" aria-controls="answer-8" aria-labelledby="q8" onclick="toggleAnswer(this)"></button>
                   <strong id="q8">How do you implement least privilege access in AWS?
                     <span class="question-difficulty difficulty-medium">Medium</span>
                   </strong>
                   <span class="question-hint">Click to reveal answer</span>
                 </div>
-                <div class="answer" style="display: none">
+                <div class="answer" id="answer-8" style="display: none">
                   <p><strong>Best practices:</strong></p>
                   <ul>
                     <li>Start with no permissions and add only what's needed</li>
@@ -306,13 +306,13 @@
               </li>
               <li>
                 <div class="question-item">
-                  <button type="button" class="question-toggle" aria-expanded="false" aria-labelledby="q9" onclick="toggleAnswer(this)"></button>
+                  <button type="button" class="question-toggle" aria-expanded="false" aria-controls="answer-9" aria-labelledby="q9" onclick="toggleAnswer(this)"></button>
                   <strong id="q9">How would you secure data at rest and in transit on AWS?
                     <span class="question-difficulty difficulty-medium">Medium</span>
                   </strong>
                   <span class="question-hint">Click to reveal answer</span>
                 </div>
-                <div class="answer" style="display: none">
+                <div class="answer" id="answer-9" style="display: none">
                   <p><strong>Data at Rest:</strong></p>
                   <ul>
                     <li>S3: Server-side encryption (SSE-S3, SSE-KMS, SSE-C)</li>
@@ -338,13 +338,13 @@
             <ul class="question-list">
               <li>
                 <div class="question-item">
-                  <button type="button" class="question-toggle" aria-expanded="false" aria-labelledby="q10" onclick="toggleAnswer(this)"></button>
+                  <button type="button" class="question-toggle" aria-expanded="false" aria-controls="answer-10" aria-labelledby="q10" onclick="toggleAnswer(this)"></button>
                   <strong id="q10">Explain the difference between Security Groups and NACLs.
                     <span class="question-difficulty difficulty-easy">Easy</span>
                   </strong>
                   <span class="question-hint">Click to reveal answer</span>
                 </div>
-                <div class="answer" style="display: none">
+                <div class="answer" id="answer-10" style="display: none">
                   <p><strong>Security Groups:</strong></p>
                   <ul>
                     <li>Operate at instance/ENI level</li>
@@ -363,13 +363,13 @@
               </li>
               <li>
                 <div class="question-item">
-                  <button type="button" class="question-toggle" aria-expanded="false" aria-labelledby="q11" onclick="toggleAnswer(this)"></button>
+                  <button type="button" class="question-toggle" aria-expanded="false" aria-controls="answer-11" aria-labelledby="q11" onclick="toggleAnswer(this)"></button>
                   <strong id="q11">When would you use VPC Peering vs Transit Gateway?
                     <span class="question-difficulty difficulty-medium">Medium</span>
                   </strong>
                   <span class="question-hint">Click to reveal answer</span>
                 </div>
-                <div class="answer" style="display: none">
+                <div class="answer" id="answer-11" style="display: none">
                   <p><strong>VPC Peering:</strong></p>
                   <ul>
                     <li>Simple 1:1 connection between two VPCs</li>
@@ -388,13 +388,13 @@
               </li>
               <li>
                 <div class="question-item">
-                  <button type="button" class="question-toggle" aria-expanded="false" aria-labelledby="q12" onclick="toggleAnswer(this)"></button>
+                  <button type="button" class="question-toggle" aria-expanded="false" aria-controls="answer-12" aria-labelledby="q12" onclick="toggleAnswer(this)"></button>
                   <strong id="q12">How do you design a multi-account VPC architecture?
                     <span class="question-difficulty difficulty-hard">Hard</span>
                   </strong>
                   <span class="question-hint">Click to reveal answer</span>
                 </div>
-                <div class="answer" style="display: none">
+                <div class="answer" id="answer-12" style="display: none">
                   <p><strong>Key components:</strong></p>
                   <ul>
                     <li><strong>AWS Organizations:</strong> Account management and SCPs</li>
@@ -420,13 +420,13 @@
             <ul class="question-list">
               <li>
                 <div class="question-item">
-                  <button type="button" class="question-toggle" aria-expanded="false" aria-labelledby="q13" onclick="toggleAnswer(this)"></button>
+                  <button type="button" class="question-toggle" aria-expanded="false" aria-controls="answer-13" aria-labelledby="q13" onclick="toggleAnswer(this)"></button>
                   <strong id="q13">What strategies would you use to reduce AWS costs?
                     <span class="question-difficulty difficulty-medium">Medium</span>
                   </strong>
                   <span class="question-hint">Click to reveal answer</span>
                 </div>
-                <div class="answer" style="display: none">
+                <div class="answer" id="answer-13" style="display: none">
                   <p><strong>Key strategies:</strong></p>
                   <ul>
                     <li><strong>Rightsizing:</strong> Use Compute Optimizer to identify underutilized resources</li>
@@ -441,13 +441,13 @@
               </li>
               <li>
                 <div class="question-item">
-                  <button type="button" class="question-toggle" aria-expanded="false" aria-labelledby="q14" onclick="toggleAnswer(this)"></button>
+                  <button type="button" class="question-toggle" aria-expanded="false" aria-controls="answer-14" aria-labelledby="q14" onclick="toggleAnswer(this)"></button>
                   <strong id="q14">Explain the difference between Reserved Instances and Savings Plans.
                     <span class="question-difficulty difficulty-easy">Easy</span>
                   </strong>
                   <span class="question-hint">Click to reveal answer</span>
                 </div>
-                <div class="answer" style="display: none">
+                <div class="answer" id="answer-14" style="display: none">
                   <p><strong>Reserved Instances:</strong></p>
                   <ul>
                     <li>Commitment to specific instance type, region, OS</li>
@@ -472,13 +472,13 @@
             <ul class="question-list">
               <li>
                 <div class="question-item">
-                  <button type="button" class="question-toggle" aria-expanded="false" aria-labelledby="q15" onclick="toggleAnswer(this)"></button>
+                  <button type="button" class="question-toggle" aria-expanded="false" aria-controls="answer-15" aria-labelledby="q15" onclick="toggleAnswer(this)"></button>
                   <strong id="q15">Tell me about a time you had to make a difficult architectural decision.
                     <span class="question-difficulty difficulty-medium">Medium</span>
                   </strong>
                   <span class="question-hint">Click to reveal answer</span>
                 </div>
-                <div class="answer" style="display: none">
+                <div class="answer" id="answer-15" style="display: none">
                   <p><strong>Use the STAR method:</strong></p>
                   <ul>
                     <li><strong>Situation:</strong> Describe the context and challenge</li>
@@ -491,13 +491,13 @@
               </li>
               <li>
                 <div class="question-item">
-                  <button type="button" class="question-toggle" aria-expanded="false" aria-labelledby="q16" onclick="toggleAnswer(this)"></button>
+                  <button type="button" class="question-toggle" aria-expanded="false" aria-controls="answer-16" aria-labelledby="q16" onclick="toggleAnswer(this)"></button>
                   <strong id="q16">How do you stay current with AWS services and best practices?
                     <span class="question-difficulty difficulty-easy">Easy</span>
                   </strong>
                   <span class="question-hint">Click to reveal answer</span>
                 </div>
-                <div class="answer" style="display: none">
+                <div class="answer" id="answer-16" style="display: none">
                   <p><strong>Good answers include:</strong></p>
                   <ul>
                     <li>AWS re:Invent sessions and announcements</li>
@@ -512,13 +512,13 @@
               </li>
               <li>
                 <div class="question-item">
-                  <button type="button" class="question-toggle" aria-expanded="false" aria-labelledby="q17" onclick="toggleAnswer(this)"></button>
+                  <button type="button" class="question-toggle" aria-expanded="false" aria-controls="answer-17" aria-labelledby="q17" onclick="toggleAnswer(this)"></button>
                   <strong id="q17">Describe a situation where you had to explain complex technical concepts to non-technical stakeholders.
                     <span class="question-difficulty difficulty-medium">Medium</span>
                   </strong>
                   <span class="question-hint">Click to reveal answer</span>
                 </div>
-                <div class="answer" style="display: none">
+                <div class="answer" id="answer-17" style="display: none">
                   <p><strong>Key points to cover:</strong></p>
                   <ul>
                     <li>Use analogies and real-world comparisons</li>

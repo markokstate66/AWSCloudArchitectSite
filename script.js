@@ -85,6 +85,14 @@
   o = new IntersectionObserver(() => { var k = rl[0]; rl.forEach(a => { if (a.t.getBoundingClientRect().top < 120) k = a }); rl.forEach(a => a.ariaCurrent = a == k ? 'location' : null) }, { rootMargin: '-120px 0px 99999px' });
   if (innerWidth > 1023) rl.forEach(a => o.observe(a.t));
 
+  /* --- back to top after one viewport; CSS owns the reduced-motion case --- */
+  d.body.insertAdjacentHTML('beforeend', '<button type="button" class="to-top" data-ui aria-label="Back to top">\u2191</button>');
+  var tt = d.querySelector('.to-top');
+  if (tt) {
+    tt.onclick = () => scrollTo(0, 0);
+    onscroll = () => tt.classList.toggle('is-on', scrollY > innerHeight);
+  }
+
   /* --- ad wells: collapse only on unfilled AND never seen --- */
   var io = new IntersectionObserver(es => es.forEach(n => { if (n.isIntersecting) { n.target.seen = 1; io.unobserve(n.target) } }));
   d.querySelectorAll('.ad-well').forEach(w => {
