@@ -9,7 +9,7 @@ created (one per format), mapped by fit — see `docs/AD_UNITS.json`:
 | article-mid-2 | 4265688185 | display (responsive) |
 | article-end | 8973246072 | multiplex (autorelaxed) |
 | listing-mid | 1914857011 | in-feed (fluid, layout key -6t+ed+2i-1n-4w) |
-| home-mid | 4265688185 | display — **shared with article-mid-2** until a second display unit exists (reports merge those two positions) |
+| home-mid | 9084926712 | display (responsive) — its own unit (awsca_display2) |
 
 37 wells on 15 pages, all below the fold at 390 and 1440 (gate: `NO_AD_ABOVE_FOLD` clean), widths
 342 / 624 px (phone / desktop article), 15 `adCount` approvals in `docs/APPROVALS.json`.

@@ -137,8 +137,7 @@ screenshot the 28-day status and the URL groups, and paste the numbers into
 You created four units (display 4265688185, in-feed 1914857011, in-article 1286327745, multiplex
 8973246072); they are placed at the five AD_PLAN positions (mapping in docs/AD_PLAN.md), 37 wells on
 15 pages, gate clean. Two follow-ups for you:
-1. **Create one more display unit** (e.g. "awsca home-mid") and paste its slot id so home-mid stops
-   sharing the display unit with article-mid-2 — until then those two positions report as one line.
+1. Second display unit (9084926712) received and placed at home-mid on 2026-09-13 — every position now has its own unit.
 2. **Auto ads settings** still yours: anchor on, vignette off, side rails off, plus the excluded areas
    listed in docs/AD_PLAN.md. And after one week of real fill, send the rendered heights per position
    (mobile/desktop) so the `--ad-h` reservations stop being guesses.
