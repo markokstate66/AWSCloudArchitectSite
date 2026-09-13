@@ -416,7 +416,7 @@ a:hover { color: var(--accent-strong); text-decoration-thickness: 2px; }
   border: 1px solid var(--line-2); border-radius: 50%; background: var(--paper-2); font: 720 var(--fs-s)/1 var(--font-sans); font-variant-numeric: tabular-nums;
 }
 .roadmap-content { grid-column: 2; grid-row: 1; padding: var(--sp-4) var(--sp-5) var(--sp-5); border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); }
-.roadmap-content h3 { margin-bottom: var(--sp-2); font-size: var(--fs-2); }
+.roadmap-content h3 { margin-bottom: var(--sp-2); }
 .roadmap-content p { margin-bottom: var(--sp-4); }
 .roadmap-skills { display: flex; flex-wrap: wrap; gap: var(--sp-2); padding-top: var(--sp-3); border-top: 1px solid var(--line); }
 /* one hairline card shell; cards are flex columns so actions align across a row */
@@ -446,9 +446,9 @@ a:hover { color: var(--accent-strong); text-decoration-thickness: 2px; }
 .resource-category h3, .interview-category h3 { margin-bottom: var(--sp-3); padding-bottom: var(--sp-3); border-bottom: 2px solid var(--ink); }
 .resource-list li, .question-list li { border-bottom: 1px solid var(--line); }
 .resource-list a { position: relative; display: block; padding: var(--sp-3) var(--sp-5) var(--sp-3) 0; color: var(--ink); text-decoration: none; }
-.resource-list a::after { content: "\203A"; position: absolute; top: 50%; right: var(--sp-3); color: var(--line-2); font-size: var(--fs-2); line-height: 0; transition: right .15s ease; }
+.resource-list a::after { content: "\203A"; position: absolute; top: 50%; right: var(--sp-2); color: var(--line-2); font-size: var(--fs-2); line-height: 0; }
 .resource-list a:hover { color: var(--accent-strong); }
-.resource-list a:hover::after { right: var(--sp-2); color: var(--accent); }
+.resource-list a:hover::after { color: var(--accent); }
 .resource-list strong { display: block; font-weight: 680; }
 .resource-list span { display: block; }
 /* salary: quiet panels, range as the display figure, featured = top rule only */
@@ -475,7 +475,7 @@ a:hover { color: var(--accent-strong); text-decoration-thickness: 2px; }
 .faq-item.is-open .faq-answer { max-height: 60rem; }
 .faq-answer p { max-width: var(--measure); margin: 0; padding: 0 0 var(--sp-5); color: var(--ink-2); }
 /* CTA band (paper, not navy) */
-.cta-section { background: var(--paper-2); border-block: 1px solid var(--line); }
+.cta-section { background: var(--paper); border-block: 1px solid var(--line); }
 .cta-section p { max-width: var(--measure); margin: var(--sp-3) 0 var(--sp-5); color: var(--ink-2); font-size: var(--fs-1); }
 .cta-buttons { display: flex; flex-wrap: wrap; gap: var(--sp-3); }
 /* project + course cards: badge -> title -> one-liner | chips -> list -> quiet action */
@@ -492,7 +492,7 @@ a:hover { color: var(--accent-strong); text-decoration-thickness: 2px; }
 /* book cards: cover contained on a quiet surface, box reserved before the JPEG lands
    (abtest.js renders this same anatomy from the API - keep the classes) */
 .book-cover { display: flex; align-items: center; justify-content: center; height: 190px; padding: var(--sp-4); border-bottom: 1px solid var(--line); background: var(--paper-2); }
-.book-cover img { width: auto; height: 100%; object-fit: contain; }
+.book-cover img { width: auto; height: 100%; border: 1px solid var(--line-2); object-fit: contain; }
 .book-placeholder { font-size: 3rem; opacity: .6; }
 .book-info h3 { margin-bottom: var(--sp-1); font-size: var(--fs-1); }
 .book-author { margin-bottom: var(--sp-3); color: var(--ink-3); }
@@ -509,8 +509,6 @@ a:hover { color: var(--accent-strong); text-decoration-thickness: 2px; }
 .course-content > p { margin-bottom: var(--sp-4); }
 .course-meta { display: flex; flex-wrap: wrap; gap: var(--sp-4); margin-bottom: var(--sp-4); padding-bottom: var(--sp-4); border-bottom: 1px solid var(--line); color: var(--ink-3); }
 .course-topics ul { margin-bottom: var(--sp-5); }
-.course-link { border-color: var(--line-2); color: var(--ink); }
-.course-link:hover { background: var(--paper-2); border-color: var(--accent); color: var(--accent-strong); }
 /* interview: ruled sections, questions as disclosure rows. Answers keep the frozen
    inline display:none (baseline too); the row is role=button + aria-expanded. */
 .question-item { position: relative; padding: var(--sp-4) var(--sp-6) var(--sp-4) 0; cursor: pointer; }
@@ -519,10 +517,9 @@ a:hover { color: var(--accent-strong); text-decoration-thickness: 2px; }
 .question-item > strong { display: block; margin-bottom: var(--sp-1); font-size: var(--fs-1); font-weight: 680; }
 .question-item:hover > strong { color: var(--accent-strong); }
 .question-item > span { color: var(--ink-3); font-size: var(--fs--1); }
-.question-difficulty { margin-left: .5em; padding: .1em .5em; font-size: .6875rem; vertical-align: 1px; }
+.question-difficulty { margin-left: .5em; vertical-align: 1px; }
 .answer { margin-top: var(--sp-4); padding-top: var(--sp-4); border-top: 1px solid var(--line); }
 .answer :is(p, ul) { margin-bottom: var(--sp-3); }
-.answer li { margin-bottom: var(--sp-1); }
 /* tools: a clean form card, the result as a display panel */
 .calculator-container { max-width: 46rem; padding: var(--sp-5); }
 .calculator-container h3 { margin-bottom: var(--sp-5); padding-bottom: var(--sp-4); border-bottom: 1px solid var(--line); }
@@ -539,17 +536,23 @@ a:hover { color: var(--accent-strong); text-decoration-thickness: 2px; }
 .tool-card h4 { margin-bottom: var(--sp-2); }
 .tool-card p { margin: 0 0 var(--sp-5); }
 @media (min-width: 40em) {
-  .cert-grid, .resources-grid, .salary-grid, .project-grid, .books-grid,
+  .cert-grid, .resources-grid, .salary-grid, .project-grid,
   .courses-grid, .tools-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .cert-card h3, .project-header h3 { min-height: 2.4em; }
+  .cert-card h3, .project-header h3, .course-header h3 { min-height: 2.4em; }
   .book-card { display: grid; grid-template-columns: 8.5rem minmax(0, 1fr); }
-  .book-cover { height: auto; padding: var(--sp-5) var(--sp-4); border-right: 1px solid var(--line); border-bottom: 0; }
+  .book-cover { height: auto; align-items: flex-start; padding: var(--sp-5) var(--sp-4); border-right: 1px solid var(--line); border-bottom: 0; }
   .book-cover img { height: auto; max-height: 11rem; }
+}
+@media (min-width: 48em) {
+  /* the calculator reads as one form card, two fields per row */
+  .calculator-container { display: grid; grid-template-columns: 1fr 1fr; column-gap: var(--sp-5); }
+  .calculator-container > :not(.form-group) { grid-column: 1 / -1; }
 }
 @media (min-width: 64em) {
   .cert-grid, .tools-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
   .resources-grid, .salary-grid, .project-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-  .interview-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--sp-7); }
+  .books-grid, .interview-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .interview-grid { gap: var(--sp-7); }
 }
 
 /* ==== [static-pages] prose, contact form, 404 ==== */
