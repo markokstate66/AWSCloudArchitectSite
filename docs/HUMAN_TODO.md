@@ -24,11 +24,19 @@ last). The API is live today only because the API workflow happened to win.
 What was done in the repo: the no-API workflow was deleted and its HTML-validation job folded
 into the remaining one (`azure-static-web-apps-green-water-0b250a80f.yml`).
 
+**Checked with the Azure CLI (read-only) on 2026-09-13:** the subscription has exactly one Static
+Web App for this site, `AWSCloudArchitectSite` (green-water-0b250a80f, Standard, East US 2), bound
+to `www.awscloudarchitect.com` (Ready). Both GitHub secrets therefore deployed to the same app and
+the last finisher won; deleting the no-API workflow is the right fix. The app has one deployment
+token; the contact-form settings (`ACS_CONNECTION_STRING`, `NOTIFICATION_EMAIL`) and the A/B
+storage settings are present. Side finding: the apex `awscloudarchitect.com` custom-domain binding
+on the SWA shows **Failed: "has not been resolving … and has expired"** (the apex still 301s to www,
+so DNS/registrar handles it; harmless unless you want Azure to own the apex).
+
 **You must:**
-1. Confirm in the Azure portal that the `green-water-0b250a80f` Static Web App is the one bound
-   to `www.awscloudarchitect.com`. If a second SWA resource exists for the other token, delete
-   it (or at least its custom-domain binding) so nothing can deploy over production.
-2. Delete the unused GitHub secret `AZURE_STATIC_WEB_APPS_API_TOKEN` once confirmed.
+1. Delete the GitHub repository secret `AZURE_STATIC_WEB_APPS_API_TOKEN` (the removed workflow's).
+   Keep `AZURE_STATIC_WEB_APPS_API_TOKEN_GREEN_WATER_0B250A80F`.
+2. Optional: delete or re-validate the failed apex domain binding in the SWA.
 3. After the first push with the single workflow, re-probe `GET https://www.awscloudarchitect.com/api/products` (expect 200 JSON).
 
 ### A2. Soft 404s: every unknown URL returns the home page with HTTP 200
