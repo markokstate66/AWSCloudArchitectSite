@@ -200,5 +200,11 @@
       "HUMAN_TODO D2 resources.html LCP 2.1 s lab",
       "HUMAN_TODO A5 Learn More link text (SEO 92 on 2 pages)"
     ]
+  },
+  "launched": {
+    "date": "2026-09-13",
+    "commit": "ead9f16",
+    "run": "34766608082",
+    "verified": "live index/styles/script/project/resources byte-identical to repo; missing route -> 404.html (404); /api/products 200; docs+harness blocked; 37 units live in markup"
   }
 }

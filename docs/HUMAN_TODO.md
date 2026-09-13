@@ -204,7 +204,10 @@ third-party scripts, so a forgotten route block can no longer execute the loader
 requests on an unblocked load). If you see stray localhost hits in GA4 realtime for 2026-09-13, that is
 what they were; no action needed in AdSense.
 
-## E. Launch steps (agents do not deploy)
+## E. Launch — DONE 2026-09-13 at the owner's instruction (run 34766608082, commit ead9f16)
+Post-launch: the 28-day pre-launch window for the watch plan (section C) ends 2026-09-13; compare weekly from 2026-09-20. Still open above: content approvals (A3/A5/A6), sap-c02 cover, the GitHub secret, Auto ads settings (B), CMP (B2), field data (B3), budget exceptions (D).
+
+### Original launch steps (kept for the next release)
 
 The facelift is on the local branch `facelift` (never pushed). Before launch:
 1. Read `docs/STATUS.json` and the final reports in `docs/rounds/final-*.md`; decide the four
