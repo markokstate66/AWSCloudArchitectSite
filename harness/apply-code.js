@@ -22,6 +22,7 @@ const fs = require('fs');
 const path = require('path');
 const ROOT = path.resolve(__dirname, '..');
 const CHECK = process.argv.includes('--check');
+const STRIP_ONLY = process.argv.includes('--strip'); // remove highlighting spans only (edit code, then re-run without --strip)
 
 // ---------------------------------------------------------------- language table
 // .code-lang text (upper-cased) -> grammar id
@@ -192,7 +193,7 @@ for (const page of pages) {
   const after = before.replace(BLOCK_RE, (m, head, langText, body, tail) => {
     blocks++;
     const lang = LANG[langText.trim().toUpperCase()];
-    if (!lang) { skipped.push(`${page}: ${langText}`); return head + strip(body) + tail; }
+    if (STRIP_ONLY || !lang) { if (!lang) skipped.push(`${page}: ${langText}`); return head + strip(body) + tail; }
     const r = highlight(body, lang);
     // invariant 1+2: the text behind the spans must be the plain source, character for character
     if (strip(r.out) !== r.plain) throw new Error(`TEXT DRIFT in ${page} (${langText}) - refusing to write`);

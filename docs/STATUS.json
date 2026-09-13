@@ -164,7 +164,7 @@
   },
   "phase0": {
     "backend": "OK (no 500s; workflow race fixed in repo, human to confirm SWA binding)",
-    "contentAudit": "docs/CONTENT_AUDIT.md — 31 WRONG/STALE awaiting approval"
+    "contentAudit": "docs/CONTENT_AUDIT.md — 56 corrections APPLIED 2026-09-13 (owner-approved)"
   },
   "blocked": [],
   "notes": [
@@ -206,5 +206,11 @@
     "commit": "ead9f16",
     "run": "34766608082",
     "verified": "live index/styles/script/project/resources byte-identical to repo; missing route -> 404.html (404); /api/products 200; docs+harness blocked; 37 units live in markup"
+  },
+  "contentCorrections": {
+    "applied": "2026-09-13",
+    "sourceEdits": 75,
+    "gateApprovals": 85,
+    "unexplainedDiffs": 0
   }
 }

@@ -67,10 +67,13 @@ on any page. The five that would embarrass the site most:
 5. `project-static-website.html` tells the reader to make the bucket public and then configures Origin Access Control, which requires it private.
 Also: EKS `1.28` (out of support), `PodSecurityPolicy` (removed in K8s 1.25), `aws-portal:*` in an SCP (inert since 2023-12-11), Terraform `~> 5.0` (v6 since 2025-06), RDS MySQL 8.0 (paid Extended Support since 2026-08-01), one affiliate link that 404s (SAP-C02 guide ASIN 1119951097), `acloudguru.com` and `cloudacademy.com` redirect to other brands, `© 2025` on 20 pages.
 
-**To approve corrections:** copy the entries you accept from the "Approval block" at the end of
-`docs/CONTENT_AUDIT.md` into `docs/APPROVALS.json`, fill in `approvedBy` (your name) and `date`.
-Each entry is one exact substitution on one page and field; the integrity gate applies exactly
-that and nothing else. An agent will then make the edits and the gate will verify them.
+**APPLIED 2026-09-13 at the owner's instruction ("apply the content corrections from the audit"):**
+all 56 approval-block substitutions plus the SAP-C02 byline the audit table required (75 source
+edits across 22 files incl. the year in every footer and pool-data.json). 85 gate approvals were
+derived by explaining every rendered difference with an approved substitution (0 unexplained);
+`node harness/integrity.js compare` → PASS with them, and still FAILS on any other change (tamper-tested).
+Still yours: replace `images/books/sap-c02.jpg` (the card now names the Packt SAP-C02 guide by Sard &
+Wadia but the photo is still *The Kubernetes Book*); the three UNVERIFIED cost estimates were left as-is.
 
 ### A4. No credentials found in the repo
 `git grep` for storage keys, ACS connection strings, AWS keys and private keys: nothing. A

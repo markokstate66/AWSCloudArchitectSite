@@ -141,6 +141,13 @@ Notes on the link check:
 
 ---
 
+## Status
+
+Applied 2026-09-13 (owner-approved in chat). Source edits by `harness/apply-audit.js` (with four
+markup-form overrides documented in that script), gate approvals derived by
+`harness/derive-approvals.js`, recorded in `docs/APPROVALS.json`. Not applied: the three UNVERIFIED
+estimates and the sap-c02 cover image (needs a new file from the owner).
+
 ## Approval block
 
 Paste into `docs/APPROVALS.json` once a human approves. Contains **only** WRONG/STALE items at high or medium confidence, with a precise substring substitution. Items 47–49, 57, 58 (UNVERIFIED / no defensible source), 69, 70 (newer edition exists but replacement ASIN unverified) and 80 (structural manifest change, not a substitution) are deliberately excluded.

@@ -160,7 +160,7 @@
                   <p><strong>S3 Intelligent-Tiering:</strong> Unknown or changing access patterns - automatically moves data between tiers.</p>
                   <p><strong>S3 Standard-IA:</strong> Infrequently accessed but requires rapid access when needed.</p>
                   <p><strong>S3 One Zone-IA:</strong> Infrequent access, lower cost, data stored in single AZ.</p>
-                  <p><strong>S3 Glacier:</strong> Archive data with retrieval times of minutes to hours.</p>
+                  <p><strong>S3 Glacier Flexible Retrieval:</strong> Archive data with retrieval times of minutes to hours.</p>
                   <p><strong>S3 Glacier Deep Archive:</strong> Lowest cost, retrieval times of 12-48 hours.</p>
                 </div>
               </li>
@@ -174,7 +174,7 @@
                 </div>
                 <div class="answer" id="answer-3" style="display: none">
                   <p><strong>RDS:</strong> Managed relational database service supporting MySQL, PostgreSQL, Oracle, SQL Server, MariaDB. Good for traditional relational workloads with predictable scale.</p>
-                  <p><strong>Aurora:</strong> AWS-built relational database compatible with MySQL/PostgreSQL. 5x faster than MySQL, 3x faster than PostgreSQL, with automated scaling up to 128TB. Best for high-performance relational workloads.</p>
+                  <p><strong>Aurora:</strong> AWS-built relational database compatible with MySQL/PostgreSQL. 6x the throughput of MySQL and PostgreSQL, with automated scaling up to 256 TiB. Best for high-performance relational workloads.</p>
                   <p><strong>DynamoDB:</strong> Fully managed NoSQL key-value and document database. Single-digit millisecond latency at any scale. Best for high-scale, low-latency workloads with flexible schema requirements.</p>
                 </div>
               </li>
@@ -315,7 +315,7 @@
                 <div class="answer" id="answer-9" style="display: none">
                   <p><strong>Data at Rest:</strong></p>
                   <ul>
-                    <li>S3: Server-side encryption (SSE-S3, SSE-KMS, SSE-C)</li>
+                    <li>S3: Server-side encryption (SSE-S3, SSE-KMS, DSSE-KMS, SSE-C)</li>
                     <li>EBS: Encrypted volumes using KMS</li>
                     <li>RDS: Encryption at rest using KMS</li>
                     <li>DynamoDB: Encryption using AWS owned or customer managed keys</li>
@@ -576,7 +576,7 @@
         </div>
       </div>
       <div class="footer-bottom">
-        <p>&copy; 2025 AWS Cloud Architect Guide. Not affiliated with Amazon Web Services.</p>
+        <p>&copy; 2026 AWS Cloud Architect Guide. Not affiliated with Amazon Web Services.</p>
         <p>AWS and Amazon Web Services are trademarks of Amazon.com, Inc.</p>
       </div>
     </div>

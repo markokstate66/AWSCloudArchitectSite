@@ -115,8 +115,11 @@ function applyApprovals(page, field, baseVal, approvals, used) {
   return v;
 }
 
+const SET_FIELDS = ['externalLinks', 'internalLinks'];
 function diffField(page, field, b, c, approvals, used, problems) {
-  const bb = applyApprovals(page, field, b, approvals, used);
+  let bb = applyApprovals(page, field, b, approvals, used);
+  // Link fields are sorted sets: an approved URL substitution changes the order, so re-sort after applying.
+  if (SET_FIELDS.includes(field) && Array.isArray(bb)) bb = [...bb].sort();
   const sb = typeof bb === 'string' ? bb : JSON.stringify(bb);
   const sc = typeof c === 'string' ? c : JSON.stringify(c);
   if (sb !== sc) {

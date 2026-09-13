@@ -70,7 +70,7 @@
 
             <dl class="guide-meta">
               <div class="meta-item"><dt>Difficulty:</dt><dd>Advanced</dd></div>
-              <div class="meta-item"><dt>AWS Services:</dt><dd>Kinesis Data Streams, Kinesis Firehose, Lambda, OpenSearch, QuickSight</dd></div>
+              <div class="meta-item"><dt>AWS Services:</dt><dd>Kinesis Data Streams, Amazon Data Firehose, Lambda, OpenSearch, QuickSight</dd></div>
               <div class="meta-item"><dt>Cost:</dt><dd>~$100-200/month</dd></div>
             </dl>
           </div>
@@ -170,7 +170,7 @@
             <div class="guide-step">
               <div class="step-number"><a href="#step-3" aria-label="Step 3">3</a></div>
               <div class="step-content">
-                <h3 id="step-3">Create Kinesis Firehose for S3 Delivery</h3>
+                <h3 id="step-3">Create an Amazon Data Firehose stream for S3 Delivery</h3>
                 <ul class="guide-list">
                   <li>Create a Firehose delivery stream</li>
                   <li>Source: Kinesis Data Stream</li>
@@ -205,7 +205,7 @@
                   <li>Configure Firehose to deliver to OpenSearch</li>
                   <li>Define index mappings for your data</li>
                   <li>Set up index rotation (daily/weekly)</li>
-                  <li>Use Kibana/OpenSearch Dashboards for visualization</li>
+                  <li>Use OpenSearch Dashboards for visualization</li>
                 </ul>
               </div>
             </div>
@@ -281,7 +281,7 @@ kinesis = boto3.<span class="function">client</span>(<span class="string">'kines
         <span class="string">'user_id'</span>: f<span class="string">'user-{random.randint(1, 100)}'</span>,
         <span class="string">'event_type'</span>: random.<span class="function">choice</span>([<span class="string">'click'</span>, <span class="string">'view'</span>, <span class="string">'purchase'</span>]),
         <span class="string">'page'</span>: random.<span class="function">choice</span>([<span class="string">'/home'</span>, <span class="string">'/products'</span>, <span class="string">'/checkout'</span>]),
-        <span class="string">'timestamp'</span>: datetime.<span class="function">utcnow</span>().isoformat()
+        <span class="string">'timestamp'</span>: datetime.<span class="function">now</span>(timezone.utc).isoformat()
     }
 
 <span class="keyword">def</span> <span class="function">send_events</span>(stream_name, count=<span class="number">100</span>):
@@ -339,7 +339,7 @@ table = dynamodb.<span class="function">Table</span>(<span class="string">'Event
     }</code></pre>
             </div>
 
-            <h3>Kinesis Firehose to S3 (CloudFormation)</h3>
+            <h3>Amazon Data Firehose to S3 (CloudFormation)</h3>
             <div class="code-block">
               <div class="code-header">
                 <span class="code-label">firehose.yaml</span>
@@ -396,7 +396,7 @@ table = dynamodb.<span class="function">Table</span>(<span class="string">'Event
             <ul class="guide-list">
               <li>Stream ingestion with Kinesis Data Streams</li>
               <li>Real-time data transformation with Lambda</li>
-              <li>Data delivery with Kinesis Firehose</li>
+              <li>Data delivery with Amazon Data Firehose</li>
               <li>Search and analytics with OpenSearch</li>
               <li>Dashboard creation and data visualization</li>
             </ul>
@@ -450,7 +450,7 @@ table = dynamodb.<span class="function">Table</span>(<span class="string">'Event
         </div>
       </div>
       <div class="footer-bottom">
-        <p>&copy; 2025 AWS Cloud Architect Guide. Not affiliated with Amazon Web Services.</p>
+        <p>&copy; 2026 AWS Cloud Architect Guide. Not affiliated with Amazon Web Services.</p>
       </div>
     </div>
   </footer>

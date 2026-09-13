@@ -118,5 +118,770 @@
     "to": "3",
     "approvedBy": "mark@aerocoders.com (chat 2026-09-13: supplied the four AdSense units and asked to place them)",
     "date": "2026-09-13"
+  },
+  {
+    "page": "index.html",
+    "field": "text",
+    "from": "$150K+",
+    "to": "$134K",
+    "source": "https://www.bls.gov/ooh/computer-and-information-technology/computer-network-architects.htm",
+    "approvedBy": "mark@aerocoders.com (chat 2026-09-13: 'apply the content corrections from the audit')",
+    "date": "2026-09-13"
+  },
+  {
+    "page": "index.html",
+    "field": "text",
+    "from": " SALARY 32% JOB GRO",
+    "to": " SALARY 8% JOB GRO",
+    "source": "https://www.bls.gov/ooh/computer-and-information-technology/computer-network-architects.htm",
+    "approvedBy": "mark@aerocoders.com (chat 2026-09-13: 'apply the content corrections from the audit')",
+    "date": "2026-09-13"
+  },
+  {
+    "page": "index.html",
+    "field": "text",
+    "from": "A Cloud Guru",
+    "to": "Pluralsight Cloud Guru",
+    "source": "https://www.pluralsight.com/cloud-guru",
+    "approvedBy": "mark@aerocoders.com (chat 2026-09-13: 'apply the content corrections from the audit')",
+    "date": "2026-09-13"
+  },
+  {
+    "page": "index.html",
+    "field": "text",
+    "from": "Cloud Academy",
+    "to": "QA Learning Platform",
+    "source": "https://platform.qa.com/",
+    "approvedBy": "mark@aerocoders.com (chat 2026-09-13: 'apply the content corrections from the audit')",
+    "date": "2026-09-13"
+  },
+  {
+    "page": "index.html",
+    "field": "text",
+    "from": "approximately 32% market share",
+    "to": "approximately 28% market share",
+    "source": "https://www.srgresearch.com/articles/q2-cloud-market-passes-143-billion-highest-growth-rate-in-eight-years",
+    "approvedBy": "mark@aerocoders.com (chat 2026-09-13: 'apply the content corrections from the audit')",
+    "date": "2026-09-13"
+  },
+  {
+    "page": "index.html",
+    "field": "text",
+    "from": "© 2025 AWS Cloud Architect Guide. Not affiliated with Amazon Web Services.",
+    "to": "© 2026 AWS Cloud Architect Guide. Not affiliated with Amazon Web Services.",
+    "source": "internal",
+    "approvedBy": "mark@aerocoders.com (chat 2026-09-13: 'apply the content corrections from the audit')",
+    "date": "2026-09-13"
+  },
+  {
+    "page": "index.html",
+    "field": "externalLinks",
+    "from": "\"https://acloudguru.com/\"",
+    "to": "\"https://www.pluralsight.com/cloud-guru\"",
+    "source": "https://www.pluralsight.com/cloud-guru",
+    "approvedBy": "mark@aerocoders.com (chat 2026-09-13: 'apply the content corrections from the audit')",
+    "date": "2026-09-13"
+  },
+  {
+    "page": "index.html",
+    "field": "externalLinks",
+    "from": "\"https://aws.amazon.com/training/digital/aws-cloud-quest/\"",
+    "to": "\"https://aws.amazon.com/training/digital/immersive-learning/\"",
+    "source": "https://aws.amazon.com/training/digital/immersive-learning/",
+    "approvedBy": "mark@aerocoders.com (chat 2026-09-13: 'apply the content corrections from the audit')",
+    "date": "2026-09-13"
+  },
+  {
+    "page": "index.html",
+    "field": "externalLinks",
+    "from": "\"https://cloudacademy.com/\"",
+    "to": "\"https://platform.qa.com/\"",
+    "source": "https://platform.qa.com/",
+    "approvedBy": "mark@aerocoders.com (chat 2026-09-13: 'apply the content corrections from the audit')",
+    "date": "2026-09-13"
+  },
+  {
+    "page": "projects.html",
+    "field": "text",
+    "from": "Most of these projects can be built within free tier limits.",
+    "to": "Most of these projects fit inside the $100-$200 of new-account credits.",
+    "source": "https://aws.amazon.com/about-aws/whats-new/2025/07/aws-free-tier-credits-month-free-plan/",
+    "approvedBy": "mark@aerocoders.com (chat 2026-09-13: 'apply the content corrections from the audit')",
+    "date": "2026-09-13"
+  },
+  {
+    "page": "projects.html",
+    "field": "text",
+    "from": "© 2025 AWS Cloud Architect Guide. Not affiliated with Amazon Web Services.",
+    "to": "© 2026 AWS Cloud Architect Guide. Not affiliated with Amazon Web Services.",
+    "source": "internal",
+    "approvedBy": "mark@aerocoders.com (chat 2026-09-13: 'apply the content corrections from the audit')",
+    "date": "2026-09-13"
+  },
+  {
+    "page": "resources.html",
+    "field": "headings",
+    "from": "AWS Certified Solutions Architect Professional Study Guide (SAP-C02)",
+    "to": "AWS Certified Solutions Architect - Professional Exam Guide (SAP-C02)",
+    "source": "https://www.amazon.com/AWS-Certified-Solutions-Architect-Professional/dp/1801813132",
+    "approvedBy": "mark@aerocoders.com (chat 2026-09-13: 'apply the content corrections from the audit')",
+    "date": "2026-09-13"
+  },
+  {
+    "page": "resources.html",
+    "field": "headings",
+    "from": "Unlimited Access to 7,000+ Courses",
+    "to": "Unlimited Access to 6,500+ Courses",
+    "source": "https://www.pluralsight.com/pricing",
+    "approvedBy": "mark@aerocoders.com (chat 2026-09-13: 'apply the content corrections from the audit')",
+    "date": "2026-09-13"
+  },
+  {
+    "page": "resources.html",
+    "field": "text",
+    "from": "AWS Certified Solutions Architect Professional Study Guide (SAP-C02)",
+    "to": "AWS Certified Solutions Architect - Professional Exam Guide (SAP-C02)",
+    "source": "https://www.amazon.com/AWS-Certified-Solutions-Architect-Professional/dp/1801813132",
+    "approvedBy": "mark@aerocoders.com (chat 2026-09-13: 'apply the content corrections from the audit')",
+    "date": "2026-09-13"
+  },
+  {
+    "page": "resources.html",
+    "field": "text",
+    "from": "AP-C02) by Ben Piper & David Clinton Advance",
+    "to": "AP-C02) by Patrick Sard & Yohan Wadia Advance",
+    "source": "audit items 32/33 byline",
+    "approvedBy": "mark@aerocoders.com (chat 2026-09-13: 'apply the content corrections from the audit')",
+    "date": "2026-09-13"
+  },
+  {
+    "page": "resources.html",
+    "field": "text",
+    "from": "Unlimited Access to 7,000+ Courses",
+    "to": "Unlimited Access to 6,500+ Courses",
+    "source": "https://www.pluralsight.com/pricing",
+    "approvedBy": "mark@aerocoders.com (chat 2026-09-13: 'apply the content corrections from the audit')",
+    "date": "2026-09-13"
+  },
+  {
+    "page": "resources.html",
+    "field": "text",
+    "from": "🕑 40+ hours",
+    "to": "🕑 97 hours",
+    "source": "https://www.pluralsight.com/paths/aws-certified-solutions-architect-associate-saa-c03",
+    "approvedBy": "mark@aerocoders.com (chat 2026-09-13: 'apply the content corrections from the audit')",
+    "date": "2026-09-13"
+  },
+  {
+    "page": "resources.html",
+    "field": "text",
+    "from": "© 2025 AWS Cloud Architect Guide. Not affiliated with Amazon Web Services.",
+    "to": "© 2026 AWS Cloud Architect Guide. Not affiliated with Amazon Web Services.",
+    "source": "internal",
+    "approvedBy": "mark@aerocoders.com (chat 2026-09-13: 'apply the content corrections from the audit')",
+    "date": "2026-09-13"
+  },
+  {
+    "page": "resources.html",
+    "field": "externalLinks",
+    "from": "\"https://www.amazon.com/Certified-Solutions-Architect-Professional-Study/dp/1119951097?tag=dreamscribe09-20\"",
+    "to": "\"https://www.amazon.com/AWS-Certified-Solutions-Architect-Professional/dp/1801813132?tag=dreamscribe09-20\"",
+    "source": "https://www.amazon.com/AWS-Certified-Solutions-Architect-Professional/dp/1801813132",
+    "approvedBy": "mark@aerocoders.com (chat 2026-09-13: 'apply the content corrections from the audit')",
+    "date": "2026-09-13"
+  },
+  {
+    "page": "resources.html",
+    "field": "externalLinks",
+    "from": "\"https://www.pluralsight.com/pricing/skills\"",
+    "to": "\"https://www.pluralsight.com/pricing\"",
+    "source": "https://www.pluralsight.com/pricing",
+    "approvedBy": "mark@aerocoders.com (chat 2026-09-13: 'apply the content corrections from the audit')",
+    "date": "2026-09-13"
+  },
+  {
+    "page": "tools.html",
+    "field": "text",
+    "from": "Advanced Networking Specialty ($300)",
+    "to": "Advanced Networking Specialty ($300 - retires 31 Dec 2026)",
+    "source": "https://aws.amazon.com/certification/certified-advanced-networking-specialty/",
+    "approvedBy": "mark@aerocoders.com (chat 2026-09-13: 'apply the content corrections from the audit')",
+    "date": "2026-09-13"
+  },
+  {
+    "page": "tools.html",
+    "field": "text",
+    "from": "Database Specialty ($300)",
+    "to": "Data Engineer Associate ($150)",
+    "source": "https://aws.amazon.com/blogs/training-and-certification/aws-certification-retirements-and-launches/",
+    "approvedBy": "mark@aerocoders.com (chat 2026-09-13: 'apply the content corrections from the audit')",
+    "date": "2026-09-13"
+  },
+  {
+    "page": "tools.html",
+    "field": "text",
+    "from": "A Cloud Guru subscription (~$30/month)",
+    "to": "Pluralsight subscription (~$25/month annual)",
+    "source": "https://www.pluralsight.com/cloud-guru",
+    "approvedBy": "mark@aerocoders.com (chat 2026-09-13: 'apply the content corrections from the audit')",
+    "date": "2026-09-13"
+  },
+  {
+    "page": "tools.html",
+    "field": "text",
+    "from": "© 2025 AWS Cloud Architect Guide. Not affiliated with Amazon Web Services.",
+    "to": "© 2026 AWS Cloud Architect Guide. Not affiliated with Amazon Web Services.",
+    "source": "internal",
+    "approvedBy": "mark@aerocoders.com (chat 2026-09-13: 'apply the content corrections from the audit')",
+    "date": "2026-09-13"
+  },
+  {
+    "page": "interview-prep.html",
+    "field": "text",
+    "from": "© 2025 AWS Cloud Architect Guide. Not affiliated with Amazon Web Services.",
+    "to": "© 2026 AWS Cloud Architect Guide. Not affiliated with Amazon Web Services.",
+    "source": "internal",
+    "approvedBy": "mark@aerocoders.com (chat 2026-09-13: 'apply the content corrections from the audit')",
+    "date": "2026-09-13"
+  },
+  {
+    "page": "about.html",
+    "field": "text",
+    "from": "© 2025 AWS Cloud Architect Guide. Not affiliated with Amazon Web Services.",
+    "to": "© 2026 AWS Cloud Architect Guide. Not affiliated with Amazon Web Services.",
+    "source": "internal",
+    "approvedBy": "mark@aerocoders.com (chat 2026-09-13: 'apply the content corrections from the audit')",
+    "date": "2026-09-13"
+  },
+  {
+    "page": "contact.html",
+    "field": "text",
+    "from": "© 2025 AWS Cloud Architect Guide. Not affiliated with Amazon Web Services.",
+    "to": "© 2026 AWS Cloud Architect Guide. Not affiliated with Amazon Web Services.",
+    "source": "internal",
+    "approvedBy": "mark@aerocoders.com (chat 2026-09-13: 'apply the content corrections from the audit')",
+    "date": "2026-09-13"
+  },
+  {
+    "page": "privacy.html",
+    "field": "text",
+    "from": "© 2025 AWS Cloud Architect Guide. Not affiliated with Amazon Web Services.",
+    "to": "© 2026 AWS Cloud Architect Guide. Not affiliated with Amazon Web Services.",
+    "source": "internal",
+    "approvedBy": "mark@aerocoders.com (chat 2026-09-13: 'apply the content corrections from the audit')",
+    "date": "2026-09-13"
+  },
+  {
+    "page": "privacy.html",
+    "field": "externalLinks",
+    "from": "\"https://www.google.com/settings/ads\"",
+    "to": "\"https://myadcenter.google.com/\"",
+    "source": "https://www.google.com/settings/ads",
+    "approvedBy": "mark@aerocoders.com (chat 2026-09-13: 'apply the content corrections from the audit')",
+    "date": "2026-09-13"
+  },
+  {
+    "page": "project-static-website.html",
+    "field": "text",
+    "from": " (e.g., my-portfolio-site-2024) Unchec",
+    "to": " (e.g., my-portfolio-site-2026) Unchec",
+    "source": "internal",
+    "approvedBy": "mark@aerocoders.com (chat 2026-09-13: 'apply the content corrections from the audit')",
+    "date": "2026-09-13"
+  },
+  {
+    "page": "project-static-website.html",
+    "field": "text",
+    "from": "Uncheck \"Block all public access\" (we'll use CloudFront instead)",
+    "to": "Leave \"Block all public access\" enabled (CloudFront OAC reaches the bucket via a bucket policy)",
+    "source": "https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/private-content-restricting-access-to-s3.html",
+    "approvedBy": "mark@aerocoders.com (chat 2026-09-13: 'apply the content corrections from the audit')",
+    "date": "2026-09-13"
+  },
+  {
+    "page": "project-static-website.html",
+    "field": "text",
+    "from": "Enable static website hosting in bucket properties",
+    "to": "Leave static website hosting disabled (OAC requires a regular S3 REST origin)",
+    "source": "https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/private-content-restricting-access-to-s3.html",
+    "approvedBy": "mark@aerocoders.com (chat 2026-09-13: 'apply the content corrections from the audit')",
+    "date": "2026-09-13"
+  },
+  {
+    "page": "project-static-website.html",
+    "field": "text",
+    "from": "mb s3://my-portfolio-site-2024 # Uploa",
+    "to": "mb s3://my-portfolio-site-2026 # Uploa",
+    "source": "internal",
+    "approvedBy": "mark@aerocoders.com (chat 2026-09-13: 'apply the content corrections from the audit')",
+    "date": "2026-09-13"
+  },
+  {
+    "page": "project-static-website.html",
+    "field": "text",
+    "from": "te s3://my-portfolio-site-2024 # Inval",
+    "to": "te s3://my-portfolio-site-2026 # Inval",
+    "source": "internal",
+    "approvedBy": "mark@aerocoders.com (chat 2026-09-13: 'apply the content corrections from the audit')",
+    "date": "2026-09-13"
+  },
+  {
+    "page": "project-static-website.html",
+    "field": "text",
+    "from": "BUCKET=\"my-portfolio-site-2024\" DISTRI",
+    "to": "BUCKET=\"my-portfolio-site-2026\" DISTRI",
+    "source": "internal",
+    "approvedBy": "mark@aerocoders.com (chat 2026-09-13: 'apply the content corrections from the audit')",
+    "date": "2026-09-13"
+  },
+  {
+    "page": "project-static-website.html",
+    "field": "text",
+    "from": "© 2025 AWS Cloud Architect Guide. Not affiliated with Amazon Web Services.",
+    "to": "© 2026 AWS Cloud Architect Guide. Not affiliated with Amazon Web Services.",
+    "source": "internal",
+    "approvedBy": "mark@aerocoders.com (chat 2026-09-13: 'apply the content corrections from the audit')",
+    "date": "2026-09-13"
+  },
+  {
+    "page": "project-static-website.html",
+    "field": "pre",
+    "from": "mb s3://my-portfolio-site-2024\\n\\n# Up",
+    "to": "mb s3://my-portfolio-site-2026\\n\\n# Up",
+    "source": "internal",
+    "approvedBy": "mark@aerocoders.com (chat 2026-09-13: 'apply the content corrections from the audit')",
+    "date": "2026-09-13"
+  },
+  {
+    "page": "project-static-website.html",
+    "field": "pre",
+    "from": "te s3://my-portfolio-site-2024\\n\\n# In",
+    "to": "te s3://my-portfolio-site-2026\\n\\n# In",
+    "source": "internal",
+    "approvedBy": "mark@aerocoders.com (chat 2026-09-13: 'apply the content corrections from the audit')",
+    "date": "2026-09-13"
+  },
+  {
+    "page": "project-static-website.html",
+    "field": "pre",
+    "from": "UCKET=\\\"my-portfolio-site-2024\\\"\\nDIST",
+    "to": "UCKET=\\\"my-portfolio-site-2026\\\"\\nDIST",
+    "source": "internal",
+    "approvedBy": "mark@aerocoders.com (chat 2026-09-13: 'apply the content corrections from the audit')",
+    "date": "2026-09-13"
+  },
+  {
+    "page": "project-serverless-contact-form.html",
+    "field": "text",
+    "from": "Cost: Free Tier eligible",
+    "to": "Cost: Pennies per month at low volume; covered by new-account credits",
+    "source": "https://aws.amazon.com/free/",
+    "approvedBy": "mark@aerocoders.com (chat 2026-09-13: 'apply the content corrections from the audit')",
+    "date": "2026-09-13"
+  },
+  {
+    "page": "project-serverless-contact-form.html",
+    "field": "text",
+    "from": "Select Python 3.12 or Node.js 20.x runtime",
+    "to": "Select Python 3.13 or Node.js 22.x runtime",
+    "source": "https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html",
+    "approvedBy": "mark@aerocoders.com (chat 2026-09-13: 'apply the content corrections from the audit')",
+    "date": "2026-09-13"
+  },
+  {
+    "page": "project-serverless-contact-form.html",
+    "field": "text",
+    "from": "© 2025 AWS Cloud Architect Guide. Not affiliated with Amazon Web Services.",
+    "to": "© 2026 AWS Cloud Architect Guide. Not affiliated with Amazon Web Services.",
+    "source": "internal",
+    "approvedBy": "mark@aerocoders.com (chat 2026-09-13: 'apply the content corrections from the audit')",
+    "date": "2026-09-13"
+  },
+  {
+    "page": "project-ec2-web-server.html",
+    "field": "text",
+    "from": "Free Tier eligible (t2.micro/t3.micro)",
+    "to": "~$10/month (t3.micro + Elastic IP), or covered by new-account credits",
+    "source": "https://aws.amazon.com/free/",
+    "approvedBy": "mark@aerocoders.com (chat 2026-09-13: 'apply the content corrections from the audit')",
+    "date": "2026-09-13"
+  },
+  {
+    "page": "project-ec2-web-server.html",
+    "field": "text",
+    "from": "Select t2.micro (Free Tier eligible)",
+    "to": "Select t3.micro (smallest general-purpose size)",
+    "source": "https://aws.amazon.com/free/compute/",
+    "approvedBy": "mark@aerocoders.com (chat 2026-09-13: 'apply the content corrections from the audit')",
+    "date": "2026-09-13"
+  },
+  {
+    "page": "project-ec2-web-server.html",
+    "field": "text",
+    "from": "Note: Elastic IPs are free when associated",
+    "to": "Note: all public IPv4 addresses, including associated Elastic IPs, cost $0.005/hour",
+    "source": "https://aws.amazon.com/vpc/pricing/",
+    "approvedBy": "mark@aerocoders.com (chat 2026-09-13: 'apply the content corrections from the audit')",
+    "date": "2026-09-13"
+  },
+  {
+    "page": "project-ec2-web-server.html",
+    "field": "text",
+    "from": "amazon-linux-extras install nginx1 -y",
+    "to": "dnf install -y nginx",
+    "source": "https://docs.aws.amazon.com/linux/al2023/ug/compare-with-al2.html",
+    "approvedBy": "mark@aerocoders.com (chat 2026-09-13: 'apply the content corrections from the audit')",
+    "date": "2026-09-13"
+  },
+  {
+    "page": "project-ec2-web-server.html",
+    "field": "text",
+    "from": "© 2025 AWS Cloud Architect Guide. Not affiliated with Amazon Web Services.",
+    "to": "© 2026 AWS Cloud Architect Guide. Not affiliated with Amazon Web Services.",
+    "source": "internal",
+    "approvedBy": "mark@aerocoders.com (chat 2026-09-13: 'apply the content corrections from the audit')",
+    "date": "2026-09-13"
+  },
+  {
+    "page": "project-ec2-web-server.html",
+    "field": "pre",
+    "from": "amazon-linux-extras install nginx1 -y",
+    "to": "dnf install -y nginx",
+    "source": "https://docs.aws.amazon.com/linux/al2023/ug/compare-with-al2.html",
+    "approvedBy": "mark@aerocoders.com (chat 2026-09-13: 'apply the content corrections from the audit')",
+    "date": "2026-09-13"
+  },
+  {
+    "page": "project-three-tier-web-app.html",
+    "field": "text",
+    "from": "EngineVersion: '8.0'",
+    "to": "EngineVersion: '8.4'",
+    "source": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/MySQL.Concepts.VersionMgmt.html",
+    "approvedBy": "mark@aerocoders.com (chat 2026-09-13: 'apply the content corrections from the audit')",
+    "date": "2026-09-13"
+  },
+  {
+    "page": "project-three-tier-web-app.html",
+    "field": "text",
+    "from": "© 2025 AWS Cloud Architect Guide. Not affiliated with Amazon Web Services.",
+    "to": "© 2026 AWS Cloud Architect Guide. Not affiliated with Amazon Web Services.",
+    "source": "internal",
+    "approvedBy": "mark@aerocoders.com (chat 2026-09-13: 'apply the content corrections from the audit')",
+    "date": "2026-09-13"
+  },
+  {
+    "page": "project-three-tier-web-app.html",
+    "field": "pre",
+    "from": "    EngineVersion: '8.0'",
+    "to": "    EngineVersion: '8.4'",
+    "source": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/MySQL.Concepts.VersionMgmt.html",
+    "approvedBy": "mark@aerocoders.com (chat 2026-09-13: 'apply the content corrections from the audit')",
+    "date": "2026-09-13"
+  },
+  {
+    "page": "project-cicd-pipeline.html",
+    "field": "text",
+    "from": "Select a managed image (e.g., Amazon Linux 2, Node.js)",
+    "to": "Select a managed image (e.g., Amazon Linux 2023, Node.js)",
+    "source": "https://docs.aws.amazon.com/codebuild/latest/userguide/ec2-compute-images.html",
+    "approvedBy": "mark@aerocoders.com (chat 2026-09-13: 'apply the content corrections from the audit')",
+    "date": "2026-09-13"
+  },
+  {
+    "page": "project-cicd-pipeline.html",
+    "field": "text",
+    "from": "nodejs: 18",
+    "to": "nodejs: 22",
+    "source": "https://docs.aws.amazon.com/codebuild/latest/userguide/runtime-versions.html",
+    "approvedBy": "mark@aerocoders.com (chat 2026-09-13: 'apply the content corrections from the audit')",
+    "date": "2026-09-13"
+  },
+  {
+    "page": "project-cicd-pipeline.html",
+    "field": "text",
+    "from": "image=aws/codebuild/amazonlinux2-x86_64-standard:4.0",
+    "to": "image=aws/codebuild/amazonlinux-x86_64-standard:5.0",
+    "source": "https://docs.aws.amazon.com/codebuild/latest/userguide/ec2-compute-images.html",
+    "approvedBy": "mark@aerocoders.com (chat 2026-09-13: 'apply the content corrections from the audit')",
+    "date": "2026-09-13"
+  },
+  {
+    "page": "project-cicd-pipeline.html",
+    "field": "text",
+    "from": "© 2025 AWS Cloud Architect Guide. Not affiliated with Amazon Web Services.",
+    "to": "© 2026 AWS Cloud Architect Guide. Not affiliated with Amazon Web Services.",
+    "source": "internal",
+    "approvedBy": "mark@aerocoders.com (chat 2026-09-13: 'apply the content corrections from the audit')",
+    "date": "2026-09-13"
+  },
+  {
+    "page": "project-cicd-pipeline.html",
+    "field": "pre",
+    "from": "      nodejs: 18",
+    "to": "      nodejs: 22",
+    "source": "https://docs.aws.amazon.com/codebuild/latest/userguide/runtime-versions.html",
+    "approvedBy": "mark@aerocoders.com (chat 2026-09-13: 'apply the content corrections from the audit')",
+    "date": "2026-09-13"
+  },
+  {
+    "page": "project-cicd-pipeline.html",
+    "field": "pre",
+    "from": "image=aws/codebuild/amazonlinux2-x86_64-standard:4.0",
+    "to": "image=aws/codebuild/amazonlinux-x86_64-standard:5.0",
+    "source": "https://docs.aws.amazon.com/codebuild/latest/userguide/ec2-compute-images.html",
+    "approvedBy": "mark@aerocoders.com (chat 2026-09-13: 'apply the content corrections from the audit')",
+    "date": "2026-09-13"
+  },
+  {
+    "page": "project-serverless-rest-api.html",
+    "field": "text",
+    "from": "Cost: Free Tier eligible",
+    "to": "Cost: Pennies per month at low volume; covered by new-account credits",
+    "source": "https://aws.amazon.com/free/",
+    "approvedBy": "mark@aerocoders.com (chat 2026-09-13: 'apply the content corrections from the audit')",
+    "date": "2026-09-13"
+  },
+  {
+    "page": "project-serverless-rest-api.html",
+    "field": "text",
+    "from": "© 2025 AWS Cloud Architect Guide. Not affiliated with Amazon Web Services.",
+    "to": "© 2026 AWS Cloud Architect Guide. Not affiliated with Amazon Web Services.",
+    "source": "internal",
+    "approvedBy": "mark@aerocoders.com (chat 2026-09-13: 'apply the content corrections from the audit')",
+    "date": "2026-09-13"
+  },
+  {
+    "page": "project-infrastructure-as-code.html",
+    "field": "text",
+    "from": "version = \"~> 5.0\"",
+    "to": "version = \"~> 6.0\"",
+    "source": "https://registry.terraform.io/providers/hashicorp/aws/latest",
+    "approvedBy": "mark@aerocoders.com (chat 2026-09-13: 'apply the content corrections from the audit')",
+    "date": "2026-09-13"
+  },
+  {
+    "page": "project-infrastructure-as-code.html",
+    "field": "text",
+    "from": "© 2025 AWS Cloud Architect Guide. Not affiliated with Amazon Web Services.",
+    "to": "© 2026 AWS Cloud Architect Guide. Not affiliated with Amazon Web Services.",
+    "source": "internal",
+    "approvedBy": "mark@aerocoders.com (chat 2026-09-13: 'apply the content corrections from the audit')",
+    "date": "2026-09-13"
+  },
+  {
+    "page": "project-infrastructure-as-code.html",
+    "field": "pre",
+    "from": "      version = \\\"~> 5.0\\\"",
+    "to": "      version = \\\"~> 6.0\\\"",
+    "source": "https://registry.terraform.io/providers/hashicorp/aws/latest",
+    "approvedBy": "mark@aerocoders.com (chat 2026-09-13: 'apply the content corrections from the audit')",
+    "date": "2026-09-13"
+  },
+  {
+    "page": "project-multi-region-active-active.html",
+    "field": "text",
+    "from": "© 2025 AWS Cloud Architect Guide. Not affiliated with Amazon Web Services.",
+    "to": "© 2026 AWS Cloud Architect Guide. Not affiliated with Amazon Web Services.",
+    "source": "internal",
+    "approvedBy": "mark@aerocoders.com (chat 2026-09-13: 'apply the content corrections from the audit')",
+    "date": "2026-09-13"
+  },
+  {
+    "page": "project-kubernetes-eks.html",
+    "field": "text",
+    "from": "~$75-150/month (EKS cluster + nodes)",
+    "to": "~$130-220/month (EKS cluster + nodes)",
+    "source": "https://aws.amazon.com/eks/pricing/",
+    "approvedBy": "mark@aerocoders.com (chat 2026-09-13: 'apply the content corrections from the audit')",
+    "date": "2026-09-13"
+  },
+  {
+    "page": "project-kubernetes-eks.html",
+    "field": "text",
+    "from": "Configure aws-auth ConfigMap for additional users",
+    "to": "Configure EKS access entries for additional users",
+    "source": "https://docs.aws.amazon.com/eks/latest/userguide/access-entries.html",
+    "approvedBy": "mark@aerocoders.com (chat 2026-09-13: 'apply the content corrections from the audit')",
+    "date": "2026-09-13"
+  },
+  {
+    "page": "project-kubernetes-eks.html",
+    "field": "text",
+    "from": "Implement pod security policies",
+    "to": "Apply Pod Security Standards via Pod Security Admission",
+    "source": "https://kubernetes.io/docs/tasks/configure-pod-container/migrate-from-psp/",
+    "approvedBy": "mark@aerocoders.com (chat 2026-09-13: 'apply the content corrections from the audit')",
+    "date": "2026-09-13"
+  },
+  {
+    "page": "project-kubernetes-eks.html",
+    "field": "text",
+    "from": "version: \"1.28\"",
+    "to": "version: \"1.34\"",
+    "source": "https://docs.aws.amazon.com/eks/latest/userguide/kubernetes-versions-standard.html",
+    "approvedBy": "mark@aerocoders.com (chat 2026-09-13: 'apply the content corrections from the audit')",
+    "date": "2026-09-13"
+  },
+  {
+    "page": "project-kubernetes-eks.html",
+    "field": "text",
+    "from": "© 2025 AWS Cloud Architect Guide. Not affiliated with Amazon Web Services.",
+    "to": "© 2026 AWS Cloud Architect Guide. Not affiliated with Amazon Web Services.",
+    "source": "internal",
+    "approvedBy": "mark@aerocoders.com (chat 2026-09-13: 'apply the content corrections from the audit')",
+    "date": "2026-09-13"
+  },
+  {
+    "page": "project-kubernetes-eks.html",
+    "field": "pre",
+    "from": "  version: \\\"1.28\\\"",
+    "to": "  version: \\\"1.34\\\"",
+    "source": "https://docs.aws.amazon.com/eks/latest/userguide/kubernetes-versions-standard.html",
+    "approvedBy": "mark@aerocoders.com (chat 2026-09-13: 'apply the content corrections from the audit')",
+    "date": "2026-09-13"
+  },
+  {
+    "page": "project-realtime-data-pipeline.html",
+    "field": "headings",
+    "from": "Create Kinesis Firehose for S3 Delivery",
+    "to": "Create an Amazon Data Firehose stream for S3 Delivery",
+    "source": "https://aws.amazon.com/about-aws/whats-new/2024/02/amazon-data-firehose-formerly-kinesis-data-firehose",
+    "approvedBy": "mark@aerocoders.com (chat 2026-09-13: 'apply the content corrections from the audit')",
+    "date": "2026-09-13"
+  },
+  {
+    "page": "project-realtime-data-pipeline.html",
+    "field": "headings",
+    "from": "Kinesis Firehose to S3 (CloudFormation)",
+    "to": "Amazon Data Firehose to S3 (CloudFormation)",
+    "source": "https://aws.amazon.com/about-aws/whats-new/2024/02/amazon-data-firehose-formerly-kinesis-data-firehose",
+    "approvedBy": "mark@aerocoders.com (chat 2026-09-13: 'apply the content corrections from the audit')",
+    "date": "2026-09-13"
+  },
+  {
+    "page": "project-realtime-data-pipeline.html",
+    "field": "text",
+    "from": "Kinesis Data Streams, Kinesis Firehose, Lambda, OpenSearch, QuickSight",
+    "to": "Kinesis Data Streams, Amazon Data Firehose, Lambda, OpenSearch, QuickSight",
+    "source": "https://aws.amazon.com/about-aws/whats-new/2024/02/amazon-data-firehose-formerly-kinesis-data-firehose",
+    "approvedBy": "mark@aerocoders.com (chat 2026-09-13: 'apply the content corrections from the audit')",
+    "date": "2026-09-13"
+  },
+  {
+    "page": "project-realtime-data-pipeline.html",
+    "field": "text",
+    "from": "Create Kinesis Firehose for S3 Delivery",
+    "to": "Create an Amazon Data Firehose stream for S3 Delivery",
+    "source": "https://aws.amazon.com/about-aws/whats-new/2024/02/amazon-data-firehose-formerly-kinesis-data-firehose",
+    "approvedBy": "mark@aerocoders.com (chat 2026-09-13: 'apply the content corrections from the audit')",
+    "date": "2026-09-13"
+  },
+  {
+    "page": "project-realtime-data-pipeline.html",
+    "field": "text",
+    "from": "Use Kibana/OpenSearch Dashboards for visualization",
+    "to": "Use OpenSearch Dashboards for visualization",
+    "source": "https://docs.aws.amazon.com/opensearch-service/latest/developerguide/dashboards.html",
+    "approvedBy": "mark@aerocoders.com (chat 2026-09-13: 'apply the content corrections from the audit')",
+    "date": "2026-09-13"
+  },
+  {
+    "page": "project-realtime-data-pipeline.html",
+    "field": "text",
+    "from": "'timestamp': datetime.utcnow().isoformat()",
+    "to": "'timestamp': datetime.now(timezone.utc).isoformat()",
+    "source": "https://docs.python.org/3/library/datetime.html#datetime.datetime.utcnow",
+    "approvedBy": "mark@aerocoders.com (chat 2026-09-13: 'apply the content corrections from the audit')",
+    "date": "2026-09-13"
+  },
+  {
+    "page": "project-realtime-data-pipeline.html",
+    "field": "text",
+    "from": "Kinesis Firehose to S3 (CloudFormation)",
+    "to": "Amazon Data Firehose to S3 (CloudFormation)",
+    "source": "https://aws.amazon.com/about-aws/whats-new/2024/02/amazon-data-firehose-formerly-kinesis-data-firehose",
+    "approvedBy": "mark@aerocoders.com (chat 2026-09-13: 'apply the content corrections from the audit')",
+    "date": "2026-09-13"
+  },
+  {
+    "page": "project-realtime-data-pipeline.html",
+    "field": "text",
+    "from": "Data delivery with Kinesis Firehose",
+    "to": "Data delivery with Amazon Data Firehose",
+    "source": "https://aws.amazon.com/about-aws/whats-new/2024/02/amazon-data-firehose-formerly-kinesis-data-firehose",
+    "approvedBy": "mark@aerocoders.com (chat 2026-09-13: 'apply the content corrections from the audit')",
+    "date": "2026-09-13"
+  },
+  {
+    "page": "project-realtime-data-pipeline.html",
+    "field": "text",
+    "from": "© 2025 AWS Cloud Architect Guide. Not affiliated with Amazon Web Services.",
+    "to": "© 2026 AWS Cloud Architect Guide. Not affiliated with Amazon Web Services.",
+    "source": "internal",
+    "approvedBy": "mark@aerocoders.com (chat 2026-09-13: 'apply the content corrections from the audit')",
+    "date": "2026-09-13"
+  },
+  {
+    "page": "project-realtime-data-pipeline.html",
+    "field": "pre",
+    "from": "'timestamp': datetime.utcnow().isoformat()",
+    "to": "'timestamp': datetime.now(timezone.utc).isoformat()",
+    "source": "https://docs.python.org/3/library/datetime.html#datetime.datetime.utcnow",
+    "approvedBy": "mark@aerocoders.com (chat 2026-09-13: 'apply the content corrections from the audit')",
+    "date": "2026-09-13"
+  },
+  {
+    "page": "project-multi-account-landing-zone.html",
+    "field": "text",
+    "from": "~$10-50/month (mostly free tier)",
+    "to": "~$10-50/month (AWS Config and CloudTrail charges apply)",
+    "source": "https://docs.aws.amazon.com/controltower/latest/userguide/quick-start.html",
+    "approvedBy": "mark@aerocoders.com (chat 2026-09-13: 'apply the content corrections from the audit')",
+    "date": "2026-09-13"
+  },
+  {
+    "page": "project-multi-account-landing-zone.html",
+    "field": "text",
+    "from": "Wait for setup to complete (~1 hour)",
+    "to": "Wait for setup to complete (~30 minutes)",
+    "source": "https://docs.aws.amazon.com/controltower/latest/userguide/quick-start.html",
+    "approvedBy": "mark@aerocoders.com (chat 2026-09-13: 'apply the content corrections from the audit')",
+    "date": "2026-09-13"
+  },
+  {
+    "page": "project-multi-account-landing-zone.html",
+    "field": "text",
+    "from": "Use AWS SSO for centralized access",
+    "to": "Use IAM Identity Center for centralized access",
+    "source": "https://docs.aws.amazon.com/singlesignon/latest/userguide/what-is.html",
+    "approvedBy": "mark@aerocoders.com (chat 2026-09-13: 'apply the content corrections from the audit')",
+    "date": "2026-09-13"
+  },
+  {
+    "page": "project-multi-account-landing-zone.html",
+    "field": "text",
+    "from": "\"aws-portal:*\",",
+    "to": "\"billing:*\",",
+    "source": "https://aws.amazon.com/blogs/aws-cloud-financial-management/changes-to-aws-billing-cost-management-and-account-consoles-permissions/",
+    "approvedBy": "mark@aerocoders.com (chat 2026-09-13: 'apply the content corrections from the audit')",
+    "date": "2026-09-13"
+  },
+  {
+    "page": "project-multi-account-landing-zone.html",
+    "field": "text",
+    "from": "© 2025 AWS Cloud Architect Guide. Not affiliated with Amazon Web Services.",
+    "to": "© 2026 AWS Cloud Architect Guide. Not affiliated with Amazon Web Services.",
+    "source": "internal",
+    "approvedBy": "mark@aerocoders.com (chat 2026-09-13: 'apply the content corrections from the audit')",
+    "date": "2026-09-13"
+  },
+  {
+    "page": "project-multi-account-landing-zone.html",
+    "field": "pre",
+    "from": "                    \\\"aws-portal:*\\\",",
+    "to": "                    \\\"billing:*\\\",",
+    "source": "https://aws.amazon.com/blogs/aws-cloud-financial-management/changes-to-aws-billing-cost-management-and-account-consoles-permissions/",
+    "approvedBy": "mark@aerocoders.com (chat 2026-09-13: 'apply the content corrections from the audit')",
+    "date": "2026-09-13"
   }
 ]

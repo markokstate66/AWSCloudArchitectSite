@@ -71,7 +71,7 @@
             <dl class="guide-meta">
               <div class="meta-item"><dt>Difficulty:</dt><dd>Advanced</dd></div>
               <div class="meta-item"><dt>AWS Services:</dt><dd>EKS, ECR, ALB Ingress Controller, Secrets Manager</dd></div>
-              <div class="meta-item"><dt>Cost:</dt><dd>~$75-150/month (EKS cluster + nodes)</dd></div>
+              <div class="meta-item"><dt>Cost:</dt><dd>~$130-220/month (EKS cluster + nodes)</dd></div>
             </dl>
           </div>
 
@@ -161,7 +161,7 @@
                 <ul class="guide-list">
                   <li>Update kubeconfig: aws eks update-kubeconfig --name cluster-name</li>
                   <li>Verify connection: kubectl get nodes</li>
-                  <li>Configure aws-auth ConfigMap for additional users</li>
+                  <li>Configure EKS access entries for additional users</li>
                   <li>Set up RBAC for team access</li>
                 </ul>
               </div>
@@ -229,7 +229,7 @@
             <div class="tips-box">
               <ul class="guide-list">
                 <li><strong>Use Fargate profiles for serverless pods</strong> - No node management for specific workloads</li>
-                <li><strong>Implement pod security policies</strong> - Enforce security best practices for pods</li>
+                <li><strong>Apply Pod Security Standards via Pod Security Admission</strong> - Enforce security best practices for pods</li>
                 <li><strong>Use namespaces for isolation</strong> - Separate environments and teams</li>
                 <li><strong>Consider GitOps with ArgoCD or Flux</strong> - Declarative, version-controlled deployments</li>
               </ul>
@@ -256,7 +256,7 @@
 <span class="variable">metadata</span>:
   <span class="variable">name</span>: my-cluster
   <span class="variable">region</span>: us-east-1
-  <span class="variable">version</span>: <span class="string">"1.28"</span>
+  <span class="variable">version</span>: <span class="string">"1.34"</span>
 
 <span class="variable">managedNodeGroups</span>:
   - <span class="variable">name</span>: ng-1
@@ -481,7 +481,7 @@ kubectl scale deployment myapp <span class="variable">--replicas</span>=<span cl
         </div>
       </div>
       <div class="footer-bottom">
-        <p>&copy; 2025 AWS Cloud Architect Guide. Not affiliated with Amazon Web Services.</p>
+        <p>&copy; 2026 AWS Cloud Architect Guide. Not affiliated with Amazon Web Services.</p>
       </div>
     </div>
   </footer>

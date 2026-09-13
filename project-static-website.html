@@ -131,9 +131,9 @@
                 <ul class="guide-list">
                   <li>Go to S3 in the AWS Console</li>
                   <li>Click "Create bucket"</li>
-                  <li>Name it something unique (e.g., my-portfolio-site-2024)</li>
-                  <li>Uncheck "Block all public access" (we'll use CloudFront instead)</li>
-                  <li>Enable static website hosting in bucket properties</li>
+                  <li>Name it something unique (e.g., my-portfolio-site-2026)</li>
+                  <li>Leave "Block all public access" enabled (CloudFront OAC reaches the bucket via a bucket policy)</li>
+                  <li>Leave static website hosting disabled (OAC requires a regular S3 REST origin)</li>
                   <li>Set index.html as the index document</li>
                 </ul>
               </div>
@@ -259,10 +259,10 @@
                 <span class="code-lang">BASH</span>
               </div>
               <pre><code><span class="comment"># Create S3 bucket</span>
-<span class="keyword">aws</span> s3 mb s3://my-portfolio-site-2024
+<span class="keyword">aws</span> s3 mb s3://my-portfolio-site-2026
 
 <span class="comment"># Upload website files</span>
-<span class="keyword">aws</span> s3 sync ./website s3://my-portfolio-site-2024
+<span class="keyword">aws</span> s3 sync ./website s3://my-portfolio-site-2026
 
 <span class="comment"># Invalidate CloudFront cache</span>
 <span class="keyword">aws</span> cloudfront create-invalidation \
@@ -277,7 +277,7 @@
                 <span class="code-lang">BASH</span>
               </div>
               <pre><code><span class="comment">#!/bin/bash</span>
-BUCKET=<span class="string">"my-portfolio-site-2024"</span>
+BUCKET=<span class="string">"my-portfolio-site-2026"</span>
 DISTRIBUTION_ID=<span class="string">"E1234567890"</span>
 
 <span class="comment"># Sync files to S3</span>
@@ -351,7 +351,7 @@ DISTRIBUTION_ID=<span class="string">"E1234567890"</span>
         </div>
       </div>
       <div class="footer-bottom">
-        <p>&copy; 2025 AWS Cloud Architect Guide. Not affiliated with Amazon Web Services.</p>
+        <p>&copy; 2026 AWS Cloud Architect Guide. Not affiliated with Amazon Web Services.</p>
       </div>
     </div>
   </footer>

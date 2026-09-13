@@ -71,7 +71,7 @@
             <dl class="guide-meta">
               <div class="meta-item"><dt>Difficulty:</dt><dd>Beginner</dd></div>
               <div class="meta-item"><dt>AWS Services:</dt><dd>EC2, VPC, Security Groups, Elastic IP</dd></div>
-              <div class="meta-item"><dt>Cost:</dt><dd>Free Tier eligible (t2.micro/t3.micro)</dd></div>
+              <div class="meta-item"><dt>Cost:</dt><dd>~$10/month (t3.micro + Elastic IP), or covered by new-account credits</dd></div>
             </dl>
           </div>
 
@@ -133,7 +133,7 @@
                   <li>Go to EC2 in the AWS Console</li>
                   <li>Click "Launch instance"</li>
                   <li>Choose Amazon Linux 2023 or Ubuntu 22.04 LTS</li>
-                  <li>Select t2.micro (Free Tier eligible)</li>
+                  <li>Select t3.micro (smallest general-purpose size)</li>
                   <li>Create a new key pair and download the .pem file</li>
                   <li>Keep it safe - you can't download it again!</li>
                 </ul>
@@ -203,7 +203,7 @@
                   <li>Allocate a new Elastic IP</li>
                   <li>Associate it with your instance</li>
                   <li>Your server now has a permanent IP</li>
-                  <li>Note: Elastic IPs are free when associated</li>
+                  <li>Note: all public IPv4 addresses, including associated Elastic IPs, cost $0.005/hour</li>
                 </ul>
               </div>
             </div>
@@ -240,7 +240,7 @@
 yum update -y
 
 <span class="comment"># Install nginx</span>
-amazon-linux-extras install nginx1 -y
+dnf install -y nginx
 
 <span class="comment"># Start and enable nginx</span>
 systemctl start nginx
@@ -373,7 +373,7 @@ EOF</code></pre>
         </div>
       </div>
       <div class="footer-bottom">
-        <p>&copy; 2025 AWS Cloud Architect Guide. Not affiliated with Amazon Web Services.</p>
+        <p>&copy; 2026 AWS Cloud Architect Guide. Not affiliated with Amazon Web Services.</p>
       </div>
     </div>
   </footer>

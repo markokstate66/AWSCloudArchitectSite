@@ -71,7 +71,7 @@
             <dl class="guide-meta">
               <div class="meta-item"><dt>Difficulty:</dt><dd>Advanced</dd></div>
               <div class="meta-item"><dt>AWS Services:</dt><dd>Organizations, Control Tower, IAM Identity Center, Service Catalog</dd></div>
-              <div class="meta-item"><dt>Cost:</dt><dd>~$10-50/month (mostly free tier)</dd></div>
+              <div class="meta-item"><dt>Cost:</dt><dd>~$10-50/month (AWS Config and CloudTrail charges apply)</dd></div>
             </dl>
           </div>
 
@@ -166,7 +166,7 @@
                   <li>Launch Control Tower from the console</li>
                   <li>Configure home region and governed regions</li>
                   <li>Let Control Tower create Log Archive and Audit accounts</li>
-                  <li>Wait for setup to complete (~1 hour)</li>
+                  <li>Wait for setup to complete (~30 minutes)</li>
                   <li>Review created resources and baseline guardrails</li>
                 </ul>
               </div>
@@ -233,7 +233,7 @@
             <h2 id="tips">Tips</h2>
             <div class="tips-box">
               <ul class="guide-list">
-                <li><strong>Use AWS SSO for centralized access</strong> - Single portal for all accounts, no need for separate IAM users</li>
+                <li><strong>Use IAM Identity Center for centralized access</strong> - Single portal for all accounts, no need for separate IAM users</li>
                 <li><strong>Implement tag policies</strong> - Enforce consistent tagging for cost allocation</li>
                 <li><strong>Centralize logging in Log Archive account</strong> - CloudTrail, Config, and VPC flow logs</li>
                 <li><strong>Start with preventive guardrails</strong> - Easier than detecting and fixing violations later</li>
@@ -377,7 +377,7 @@ ROOT_ID=$(<span class="keyword">aws</span> organizations list-roots <span class=
                 <span class="variable">"Sid"</span>: <span class="string">"DenyBillingAccess"</span>,
                 <span class="variable">"Effect"</span>: <span class="string">"Deny"</span>,
                 <span class="variable">"Action"</span>: [
-                    <span class="string">"aws-portal:*"</span>,
+                    <span class="string">"billing:*"</span>,
                     <span class="string">"budgets:*"</span>
                 ],
                 <span class="variable">"Resource"</span>: <span class="string">"*"</span>
@@ -489,7 +489,7 @@ ROOT_ID=$(<span class="keyword">aws</span> organizations list-roots <span class=
         </div>
       </div>
       <div class="footer-bottom">
-        <p>&copy; 2025 AWS Cloud Architect Guide. Not affiliated with Amazon Web Services.</p>
+        <p>&copy; 2026 AWS Cloud Architect Guide. Not affiliated with Amazon Web Services.</p>
       </div>
     </div>
   </footer>

@@ -151,7 +151,7 @@
                 <ul class="guide-list">
                   <li>Go to CodeBuild and create a new project</li>
                   <li>Connect to your source repository</li>
-                  <li>Select a managed image (e.g., Amazon Linux 2, Node.js)</li>
+                  <li>Select a managed image (e.g., Amazon Linux 2023, Node.js)</li>
                   <li>Configure environment variables for sensitive values</li>
                   <li>Enable build caching to speed up subsequent builds</li>
                 </ul>
@@ -245,7 +245,7 @@
 <span class="variable">phases</span>:
   <span class="variable">install</span>:
     <span class="variable">runtime-versions</span>:
-      <span class="variable">nodejs</span>: <span class="number">18</span>
+      <span class="variable">nodejs</span>: <span class="number">22</span>
     <span class="variable">commands</span>:
       - npm install
   <span class="variable">pre_build</span>:
@@ -338,7 +338,7 @@ chown -R www-data:www-data /var/www/myapp
     <span class="variable">--name</span> my-build-project \
     <span class="variable">--source</span> type=GITHUB,location=https://github.com/user/repo \
     <span class="variable">--artifacts</span> type=S3,location=my-artifact-bucket \
-    <span class="variable">--environment</span> type=LINUX_CONTAINER,image=aws/codebuild/amazonlinux2-x86_64-standard:4.0,computeType=BUILD_GENERAL1_SMALL \
+    <span class="variable">--environment</span> type=LINUX_CONTAINER,image=aws/codebuild/amazonlinux-x86_64-standard:5.0,computeType=BUILD_GENERAL1_SMALL \
     <span class="variable">--service-role</span> arn:aws:iam::123456789:role/CodeBuildRole
 
 <span class="comment"># Create CodeDeploy application</span>
@@ -415,7 +415,7 @@ chown -R www-data:www-data /var/www/myapp
         </div>
       </div>
       <div class="footer-bottom">
-        <p>&copy; 2025 AWS Cloud Architect Guide. Not affiliated with Amazon Web Services.</p>
+        <p>&copy; 2026 AWS Cloud Architect Guide. Not affiliated with Amazon Web Services.</p>
       </div>
     </div>
   </footer>

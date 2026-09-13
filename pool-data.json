@@ -3,10 +3,10 @@
   "products": [
     {
       "slotId": "slot-1",
-      "title": "AWS Certified Cloud Practitioner Study Guide",
+      "title": "AWS Certified Cloud Practitioner Study Guide (CLF-C02)",
       "author": "Ben Piper & David Clinton",
       "description": "Your one-stop resource for the foundational AWS certification. Great for beginners starting their cloud journey.",
-      "amazonUrl": "https://www.amazon.com/Certified-Cloud-Practitioner-Study-Guide/dp/1119490707?tag=dreamscribe09-20",
+      "amazonUrl": "https://www.amazon.com/Certified-Cloud-Practitioner-Practice-Questions/dp/1394235631?tag=dreamscribe09-20",
       "imageUrl": "/images/books/saa-c03.jpg",
       "tags": ["Beginner", "Cloud Practitioner"]
     },
@@ -76,11 +76,11 @@
     {
       "slotId": "slot-1",
       "title": "AWS Certified Developer Associate Guide",
-      "author": "John Paul Mueller",
-      "description": "Complete preparation for the DVA-C02 exam with practice questions and detailed explanations.",
+      "author": "Nick Alteen, Jennifer Fisher & Casey Gerena",
+      "description": "Official study guide for the DVA-C01 exam. Note: superseded by DVA-C02/DVA-C03.",
       "amazonUrl": "https://www.amazon.com/Certified-Developer-Official-Study-Guide/dp/1119508193?tag=dreamscribe09-20",
       "imageUrl": "/images/books/saa-c03.jpg",
-      "tags": ["Developer", "DVA-C02"]
+      "tags": ["Developer", "DVA-C01"]
     },
     {
       "slotId": "slot-3",
