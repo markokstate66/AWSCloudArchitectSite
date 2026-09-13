@@ -20,25 +20,32 @@ function well(position, slot, h) {
     `<script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>`,
   ].join('\n');
 }
-// position -> { pages: predicate, insert: (html, block) => html }
+// Project pages have six .guide-section blocks: 1 Prerequisites, 2 Architecture, 3 Steps, 4 Tips,
+// 5 Code Examples, 6 What You'll Learn. Wells go after 2 (mid-1), 4 (mid-2) and 6 (end, before the nav).
 const PLAN = {
-  'article-mid-1': { pages: p => /^project-/.test(p), after: 3 }, // after the 3rd .guide-section (Architecture)
-  'article-mid-2': { pages: p => /^project-/.test(p), after: 5 }, // after the 5th (Tips)
-  'article-end':   { pages: p => /^project-/.test(p), after: 7 }, // after the 7th (Next Steps), before nav
+  'article-mid-1': { pages: p => /^project-/.test(p), after: 2 },
+  'article-mid-2': { pages: p => /^project-/.test(p), after: 4 },
+  'article-end':   { pages: p => /^project-/.test(p), after: 6 },
 };
+// Find the nth <div class="guide-section"> and its matching </div> by depth counting (indentation-agnostic).
 function insertAfterNthSection(html, n, block) {
-  const re = /<div class="guide-section"[\s\S]*?\n {6}<\/div>\n/g; // sections are 6-space indented children of .project-guide
-  let i = 0, m, idx = -1;
-  while ((m = re.exec(html))) { i++; if (i === n) { idx = m.index + m[0].length; break; } }
-  if (idx < 0) return null;
-  return html.slice(0, idx) + block.split('\n').map(l => '      ' + l).join('\n') + '\n' + html.slice(idx);
+  const re = /<div class="guide-section"[^>]*>/g; let m, i = 0;
+  while ((m = re.exec(html))) {
+    i++; if (i !== n) continue;
+    let depth = 0, pos = -1; const tag = /<\/?div\b[^>]*>/g; tag.lastIndex = m.index;
+    let t; while ((t = tag.exec(html))) { depth += t[0].startsWith('</') ? -1 : 1; if (depth === 0) { pos = t.index + t[0].length; break; } }
+    if (pos < 0) return null;
+    const eol = html.indexOf('\n', pos); const cut = eol < 0 ? pos : eol + 1;
+    const indent = (html.slice(html.lastIndexOf('\n', m.index) + 1, m.index).match(/^ */) || [''])[0];
+    return html.slice(0, cut) + block.split('\n').map(l => indent + l).join('\n') + '\n' + html.slice(cut);
+  }
+  return null;
 }
+const STRIP = / *<div class="ad-well" data-position="[^"]+"[\s\S]*?<\/div>\n *<script>\(adsbygoogle=window\.adsbygoogle\|\|\[\]\)\.push\(\{\}\);<\/script>\n/g;
 const pages = fs.readdirSync(ROOT).filter(f => f.endsWith('.html') && !/^(admin|404)\.html$/.test(f));
-let placed = 0, skipped = [];
+let placed = 0; const skipped = [];
 for (const page of pages) {
-  let html = fs.readFileSync(path.join(ROOT, page), 'utf8');
-  // strip previously placed wells (idempotent)
-  html = html.replace(/ *<div class="ad-well" data-position="[^"]+"[\s\S]*?<\/div>\n *<script>\(adsbygoogle=window\.adsbygoogle\|\|\[\]\)\.push\(\{\}\);<\/script>\n/g, '');
+  let html = fs.readFileSync(path.join(ROOT, page), 'utf8').replace(STRIP, ''); // idempotent
   const before = html;
   for (const [pos, rule] of Object.entries(PLAN)) {
     if (!rule.pages(page)) continue;

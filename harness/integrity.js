@@ -47,7 +47,11 @@ function extract() {
   // indentation change inside a code sample slip through, and copied code must stay byte-exact.
   const pre = q('pre').filter(p => !p.closest('[data-harness-placeholder]')).map(p => p.textContent);
   // Ad units AND wrappers (an Auto-ads-only .ad-well must obey the fold rule too).
-  const ads = q('ins.adsbygoogle, .ad-well').map(el => { const r = el.getBoundingClientRect(); const top = r.top + window.scrollY; const isWell = el.classList.contains('ad-well'); const ins = isWell ? el.querySelector('ins.adsbygoogle') : el; if (isWell && ins && ins.closest('.ad-well') === el) return null; return { kind: isWell ? 'well' : 'unit', position: isWell ? (el.getAttribute('data-position') || '') : undefined, slot: ins ? (ins.getAttribute('data-ad-slot') || '') : '', format: ins ? (ins.getAttribute('data-ad-format') || '') : '', top: Math.round(top), height: Math.round(r.height), aboveFold: top < window.innerHeight }; }).filter(Boolean);
+  // One record per .ad-well (measured at the WELL's top edge, i.e. where the reader first sees the
+  // label) carrying the inner unit's slot if any; plus one record per <ins> that sits outside a well.
+  const rec = (el, kind, ins, position) => { const r = el.getBoundingClientRect(); const top = r.top + window.scrollY; return { kind, position, hasIns: !!ins, slot: ins ? (ins.getAttribute('data-ad-slot') || '') : '', format: ins ? (ins.getAttribute('data-ad-format') || '') : '', top: Math.round(top), height: Math.round(r.height), aboveFold: top < window.innerHeight }; };
+  const ads = q('.ad-well').map(w => rec(w, 'well', w.querySelector('ins.adsbygoogle'), w.getAttribute('data-position') || ''))
+    .concat(q('ins.adsbygoogle').filter(i => !i.closest('.ad-well')).map(i => rec(i, 'unit', i, undefined)));
   const clone = document.body.cloneNode(true);
   clone.querySelectorAll(CHROME + ',script,style,noscript,template,ins.adsbygoogle').forEach(n => n.remove());
   // innerText needs layout; attach the clone off-screen briefly.
@@ -147,10 +151,10 @@ function diffField(page, field, b, c, approvals, used, problems) {
       for (const fld of AD_FIELDS) if (JSON.stringify(base[page][fld]) !== JSON.stringify(cur[page][fld])) adProblems.push({ page, field: fld, baseline: base[page][fld], current: cur[page][fld], rule: 'TRACKING_SNIPPET_CHANGED' });
       for (const w of ['ads390', 'ads1440']) for (const ad of (cur[page][w] || [])) {
         if (ad.aboveFold) adProblems.push({ page, field: w, rule: 'NO_AD_ABOVE_FOLD', ad });
-        if (ad.kind !== 'well' && !ad.slot) adProblems.push({ page, field: w, rule: 'AD_UNIT_WITHOUT_SLOT_ID', ad });
+        if ((ad.kind === 'unit' || ad.hasIns) && !ad.slot) adProblems.push({ page, field: w, rule: 'AD_UNIT_WITHOUT_SLOT_ID', ad });
         if (ad.kind === 'well' && !ad.position) adProblems.push({ page, field: w, rule: 'AD_WELL_WITHOUT_POSITION', ad });
       }
-      const units = a => (a || []).filter(x => x.kind !== 'well').length;
+      const units = a => (a || []).filter(x => x.kind === 'unit' || x.hasIns).length;
       const bc = units(base[page].ads1440), cc = units(cur[page].ads1440);
       if (bc !== cc) {
         const ok = approvals.some(a => a.page === page && a.field === 'adCount' && String(a.from) === String(bc) && String(a.to) === String(cc));
