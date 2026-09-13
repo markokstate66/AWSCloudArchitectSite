@@ -59,24 +59,18 @@
       <div class="container">
         <div class="project-guide">
           <div class="guide-overview">
-            <h2>Project Overview</h2>
+            <h2 id="project-overview">Project Overview</h2>
             <p>Define your entire infrastructure in code, enabling version control, reproducibility, and automated deployments. A critical skill for any cloud architect.</p>
 
-            <div class="guide-meta">
-              <div class="meta-item">
-                <strong>Difficulty:</strong> Intermediate
-              </div>
-              <div class="meta-item">
-                <strong>AWS Services:</strong> CloudFormation, CDK, S3, IAM
-              </div>
-              <div class="meta-item">
-                <strong>Cost:</strong> Free (CloudFormation is free, you pay for resources)
-              </div>
-            </div>
+            <dl class="guide-meta">
+              <div class="meta-item"><dt>Difficulty:</dt><dd>Intermediate</dd></div>
+              <div class="meta-item"><dt>AWS Services:</dt><dd>CloudFormation, CDK, S3, IAM</dd></div>
+              <div class="meta-item"><dt>Cost:</dt><dd>Free (CloudFormation is free, you pay for resources)</dd></div>
+            </dl>
           </div>
 
           <div class="guide-section">
-            <h2>Prerequisites</h2>
+            <h2 id="prerequisites">Prerequisites</h2>
             <ul class="guide-list">
               <li>Familiarity with AWS services (VPC, EC2, etc.)</li>
               <li>YAML or JSON knowledge</li>
@@ -86,7 +80,7 @@
           </div>
 
           <div class="guide-section">
-            <h2>Choose Your Tool</h2>
+            <h2 id="choose-your-tool">Choose Your Tool</h2>
             <div class="architecture-diagram">
               <div class="arch-row">
                 <div class="arch-component primary">
@@ -130,7 +124,7 @@
           </div>
 
           <div class="guide-section">
-            <h2>Step-by-Step Instructions</h2>
+            <h2 id="step-by-step-instructions">Step-by-Step Instructions</h2>
 
             <div class="guide-step">
               <div class="step-number">1</div>
@@ -217,7 +211,7 @@
           </div>
 
           <div class="guide-section">
-            <h2>Tips</h2>
+            <h2 id="tips">Tips</h2>
             <div class="tips-box">
               <ul class="guide-list">
                 <li><strong>Use nested stacks/modules for reusability</strong> - Create reusable components for common patterns</li>
@@ -229,7 +223,7 @@
           </div>
 
           <div class="guide-section">
-            <h2>Code Examples</h2>
+            <h2 id="code-examples">Code Examples</h2>
 
             <h3>CloudFormation VPC Template</h3>
             <div class="code-block">
@@ -408,7 +402,7 @@ cdk deploy</code></pre>
           </div>
 
           <div class="guide-section">
-            <h2>What You'll Learn</h2>
+            <h2 id="what-youll-learn">What You'll Learn</h2>
             <ul class="guide-list">
               <li>Infrastructure as Code principles and benefits</li>
               <li>CloudFormation template authoring and best practices</li>
@@ -419,9 +413,15 @@ cdk deploy</code></pre>
           </div>
 
           <div class="guide-navigation">
-            <a href="project-serverless-rest-api.html" class="btn-secondary">&larr; Previous Project</a>
-            <a href="project-multi-region-active-active.html" class="btn-primary">Next Project &rarr;</a>
+            <a href="project-serverless-rest-api.html" class="guide-nav-link">&larr; Previous Project</a>
+            <a href="project-multi-region-active-active.html" class="guide-nav-link">Next Project &rarr;</a>
           </div>
+          <aside class="guide-aside" data-ui>
+            <nav aria-label="On this page">
+              <p class="guide-aside-title">On this page</p>
+              <ol><li><a href="#project-overview">Project Overview</a></li><li><a href="#prerequisites">Prerequisites</a></li><li><a href="#choose-your-tool">Choose Your Tool</a></li><li><a href="#step-by-step-instructions">Step-by-Step Instructions</a></li><li><a href="#tips">Tips</a></li><li><a href="#code-examples">Code Examples</a></li><li><a href="#what-youll-learn">What You'll Learn</a></li></ol>
+            </nav>
+          </aside>
         </div>
       </div>
     </section>

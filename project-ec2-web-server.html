@@ -59,24 +59,18 @@
       <div class="container">
         <div class="project-guide">
           <div class="guide-overview">
-            <h2>Project Overview</h2>
+            <h2 id="project-overview">Project Overview</h2>
             <p>Launch an EC2 instance, configure networking and security groups, and deploy a web application. This foundational project teaches you core AWS compute concepts.</p>
 
-            <div class="guide-meta">
-              <div class="meta-item">
-                <strong>Difficulty:</strong> Beginner
-              </div>
-              <div class="meta-item">
-                <strong>AWS Services:</strong> EC2, VPC, Security Groups, Elastic IP
-              </div>
-              <div class="meta-item">
-                <strong>Cost:</strong> Free Tier eligible (t2.micro/t3.micro)
-              </div>
-            </div>
+            <dl class="guide-meta">
+              <div class="meta-item"><dt>Difficulty:</dt><dd>Beginner</dd></div>
+              <div class="meta-item"><dt>AWS Services:</dt><dd>EC2, VPC, Security Groups, Elastic IP</dd></div>
+              <div class="meta-item"><dt>Cost:</dt><dd>Free Tier eligible (t2.micro/t3.micro)</dd></div>
+            </dl>
           </div>
 
           <div class="guide-section">
-            <h2>Prerequisites</h2>
+            <h2 id="prerequisites">Prerequisites</h2>
             <ul class="guide-list">
               <li>AWS account (Free Tier)</li>
               <li>Basic Linux command line knowledge</li>
@@ -86,7 +80,7 @@
           </div>
 
           <div class="guide-section">
-            <h2>Architecture</h2>
+            <h2 id="architecture">Architecture</h2>
             <div class="architecture-diagram">
               <div class="arch-flow">
                 <div class="arch-component user">
@@ -118,7 +112,7 @@
           </div>
 
           <div class="guide-section">
-            <h2>Step-by-Step Instructions</h2>
+            <h2 id="step-by-step-instructions">Step-by-Step Instructions</h2>
 
             <div class="guide-step">
               <div class="step-number">1</div>
@@ -205,7 +199,7 @@
           </div>
 
           <div class="guide-section">
-            <h2>Tips</h2>
+            <h2 id="tips">Tips</h2>
             <div class="tips-box">
               <ul class="guide-list">
                 <li><strong>Use an IAM role instead of storing credentials</strong> - Attach a role to your instance for AWS API access</li>
@@ -217,7 +211,7 @@
           </div>
 
           <div class="guide-section">
-            <h2>Code Examples</h2>
+            <h2 id="code-examples">Code Examples</h2>
 
             <h3>EC2 User Data Script</h3>
             <div class="code-block">
@@ -305,7 +299,7 @@ aws ec2 authorize-security-group-ingress \
           </div>
 
           <div class="guide-section">
-            <h2>What You'll Learn</h2>
+            <h2 id="what-youll-learn">What You'll Learn</h2>
             <ul class="guide-list">
               <li>EC2 instance launching and configuration</li>
               <li>VPC and subnet fundamentals</li>
@@ -316,9 +310,15 @@ aws ec2 authorize-security-group-ingress \
           </div>
 
           <div class="guide-navigation">
-            <a href="project-serverless-contact-form.html" class="btn-secondary">&larr; Previous Project</a>
-            <a href="project-three-tier-web-app.html" class="btn-primary">Next Project &rarr;</a>
+            <a href="project-serverless-contact-form.html" class="guide-nav-link">&larr; Previous Project</a>
+            <a href="project-three-tier-web-app.html" class="guide-nav-link">Next Project &rarr;</a>
           </div>
+          <aside class="guide-aside" data-ui>
+            <nav aria-label="On this page">
+              <p class="guide-aside-title">On this page</p>
+              <ol><li><a href="#project-overview">Project Overview</a></li><li><a href="#prerequisites">Prerequisites</a></li><li><a href="#architecture">Architecture</a></li><li><a href="#step-by-step-instructions">Step-by-Step Instructions</a></li><li><a href="#tips">Tips</a></li><li><a href="#code-examples">Code Examples</a></li><li><a href="#what-youll-learn">What You'll Learn</a></li></ol>
+            </nav>
+          </aside>
         </div>
       </div>
     </section>

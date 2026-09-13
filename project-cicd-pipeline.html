@@ -59,24 +59,18 @@
       <div class="container">
         <div class="project-guide">
           <div class="guide-overview">
-            <h2>Project Overview</h2>
+            <h2 id="project-overview">Project Overview</h2>
             <p>Create an automated deployment pipeline that builds, tests, and deploys your application whenever you push code. Essential for modern DevOps practices.</p>
 
-            <div class="guide-meta">
-              <div class="meta-item">
-                <strong>Difficulty:</strong> Intermediate
-              </div>
-              <div class="meta-item">
-                <strong>AWS Services:</strong> CodePipeline, CodeBuild, CodeDeploy, ECR
-              </div>
-              <div class="meta-item">
-                <strong>Cost:</strong> ~$5-15/month for light usage
-              </div>
-            </div>
+            <dl class="guide-meta">
+              <div class="meta-item"><dt>Difficulty:</dt><dd>Intermediate</dd></div>
+              <div class="meta-item"><dt>AWS Services:</dt><dd>CodePipeline, CodeBuild, CodeDeploy, ECR</dd></div>
+              <div class="meta-item"><dt>Cost:</dt><dd>~$5-15/month for light usage</dd></div>
+            </dl>
           </div>
 
           <div class="guide-section">
-            <h2>Prerequisites</h2>
+            <h2 id="prerequisites">Prerequisites</h2>
             <ul class="guide-list">
               <li>GitHub or CodeCommit repository with application code</li>
               <li>EC2 instances or ECS cluster for deployment</li>
@@ -86,7 +80,7 @@
           </div>
 
           <div class="guide-section">
-            <h2>Architecture</h2>
+            <h2 id="architecture">Architecture</h2>
             <div class="architecture-diagram">
               <div class="arch-flow">
                 <div class="arch-component user">
@@ -124,7 +118,7 @@
           </div>
 
           <div class="guide-section">
-            <h2>Step-by-Step Instructions</h2>
+            <h2 id="step-by-step-instructions">Step-by-Step Instructions</h2>
 
             <div class="guide-step">
               <div class="step-number">1</div>
@@ -210,7 +204,7 @@
           </div>
 
           <div class="guide-section">
-            <h2>Tips</h2>
+            <h2 id="tips">Tips</h2>
             <div class="tips-box">
               <ul class="guide-list">
                 <li><strong>Use Parameter Store for secrets</strong> - Store database passwords, API keys securely and reference in buildspec</li>
@@ -222,7 +216,7 @@
           </div>
 
           <div class="guide-section">
-            <h2>Code Examples</h2>
+            <h2 id="code-examples">Code Examples</h2>
 
             <h3>CodeBuild buildspec.yml</h3>
             <div class="code-block">
@@ -347,7 +341,7 @@ aws deploy create-deployment-group \
           </div>
 
           <div class="guide-section">
-            <h2>What You'll Learn</h2>
+            <h2 id="what-youll-learn">What You'll Learn</h2>
             <ul class="guide-list">
               <li>Source control integration with AWS services</li>
               <li>Build automation with CodeBuild and buildspec.yml</li>
@@ -358,9 +352,15 @@ aws deploy create-deployment-group \
           </div>
 
           <div class="guide-navigation">
-            <a href="project-three-tier-web-app.html" class="btn-secondary">&larr; Previous Project</a>
-            <a href="project-serverless-rest-api.html" class="btn-primary">Next Project &rarr;</a>
+            <a href="project-three-tier-web-app.html" class="guide-nav-link">&larr; Previous Project</a>
+            <a href="project-serverless-rest-api.html" class="guide-nav-link">Next Project &rarr;</a>
           </div>
+          <aside class="guide-aside" data-ui>
+            <nav aria-label="On this page">
+              <p class="guide-aside-title">On this page</p>
+              <ol><li><a href="#project-overview">Project Overview</a></li><li><a href="#prerequisites">Prerequisites</a></li><li><a href="#architecture">Architecture</a></li><li><a href="#step-by-step-instructions">Step-by-Step Instructions</a></li><li><a href="#tips">Tips</a></li><li><a href="#code-examples">Code Examples</a></li><li><a href="#what-youll-learn">What You'll Learn</a></li></ol>
+            </nav>
+          </aside>
         </div>
       </div>
     </section>

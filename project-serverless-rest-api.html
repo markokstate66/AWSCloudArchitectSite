@@ -59,24 +59,18 @@
       <div class="container">
         <div class="project-guide">
           <div class="guide-overview">
-            <h2>Project Overview</h2>
+            <h2 id="project-overview">Project Overview</h2>
             <p>Create a fully serverless backend API that handles CRUD operations with authentication. Perfect for mobile apps, SPAs, or any application needing a REST backend.</p>
 
-            <div class="guide-meta">
-              <div class="meta-item">
-                <strong>Difficulty:</strong> Intermediate
-              </div>
-              <div class="meta-item">
-                <strong>AWS Services:</strong> API Gateway, Lambda, DynamoDB, Cognito
-              </div>
-              <div class="meta-item">
-                <strong>Cost:</strong> Free Tier eligible
-              </div>
-            </div>
+            <dl class="guide-meta">
+              <div class="meta-item"><dt>Difficulty:</dt><dd>Intermediate</dd></div>
+              <div class="meta-item"><dt>AWS Services:</dt><dd>API Gateway, Lambda, DynamoDB, Cognito</dd></div>
+              <div class="meta-item"><dt>Cost:</dt><dd>Free Tier eligible</dd></div>
+            </dl>
           </div>
 
           <div class="guide-section">
-            <h2>Prerequisites</h2>
+            <h2 id="prerequisites">Prerequisites</h2>
             <ul class="guide-list">
               <li>Basic understanding of REST API concepts</li>
               <li>Python or Node.js programming skills</li>
@@ -86,7 +80,7 @@
           </div>
 
           <div class="guide-section">
-            <h2>Architecture</h2>
+            <h2 id="architecture">Architecture</h2>
             <div class="architecture-diagram">
               <div class="arch-flow">
                 <div class="arch-component user">
@@ -124,7 +118,7 @@
           </div>
 
           <div class="guide-section">
-            <h2>Step-by-Step Instructions</h2>
+            <h2 id="step-by-step-instructions">Step-by-Step Instructions</h2>
 
             <div class="guide-step">
               <div class="step-number">1</div>
@@ -211,7 +205,7 @@
           </div>
 
           <div class="guide-section">
-            <h2>Tips</h2>
+            <h2 id="tips">Tips</h2>
             <div class="tips-box">
               <ul class="guide-list">
                 <li><strong>Use Lambda Layers for shared code</strong> - Share utilities and SDK clients across functions</li>
@@ -223,7 +217,7 @@
           </div>
 
           <div class="guide-section">
-            <h2>Code Examples</h2>
+            <h2 id="code-examples">Code Examples</h2>
 
             <h3>Lambda CRUD Handler (Python)</h3>
             <div class="code-block">
@@ -360,7 +354,7 @@ curl -X DELETE "$API_URL/items/123-456-789"</code></pre>
           </div>
 
           <div class="guide-section">
-            <h2>What You'll Learn</h2>
+            <h2 id="what-youll-learn">What You'll Learn</h2>
             <ul class="guide-list">
               <li>RESTful API design with API Gateway</li>
               <li>Lambda function patterns for CRUD operations</li>
@@ -371,9 +365,15 @@ curl -X DELETE "$API_URL/items/123-456-789"</code></pre>
           </div>
 
           <div class="guide-navigation">
-            <a href="project-cicd-pipeline.html" class="btn-secondary">&larr; Previous Project</a>
-            <a href="project-infrastructure-as-code.html" class="btn-primary">Next Project &rarr;</a>
+            <a href="project-cicd-pipeline.html" class="guide-nav-link">&larr; Previous Project</a>
+            <a href="project-infrastructure-as-code.html" class="guide-nav-link">Next Project &rarr;</a>
           </div>
+          <aside class="guide-aside" data-ui>
+            <nav aria-label="On this page">
+              <p class="guide-aside-title">On this page</p>
+              <ol><li><a href="#project-overview">Project Overview</a></li><li><a href="#prerequisites">Prerequisites</a></li><li><a href="#architecture">Architecture</a></li><li><a href="#step-by-step-instructions">Step-by-Step Instructions</a></li><li><a href="#tips">Tips</a></li><li><a href="#code-examples">Code Examples</a></li><li><a href="#what-youll-learn">What You'll Learn</a></li></ol>
+            </nav>
+          </aside>
         </div>
       </div>
     </section>

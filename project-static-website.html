@@ -59,24 +59,18 @@
       <div class="container">
         <div class="project-guide">
           <div class="guide-overview">
-            <h2>Project Overview</h2>
+            <h2 id="project-overview">Project Overview</h2>
             <p>Deploy a static website using Amazon S3 for storage and CloudFront for global content delivery. This is the perfect first AWS project to build your portfolio.</p>
 
-            <div class="guide-meta">
-              <div class="meta-item">
-                <strong>Difficulty:</strong> Beginner
-              </div>
-              <div class="meta-item">
-                <strong>AWS Services:</strong> S3, CloudFront, Route 53, ACM
-              </div>
-              <div class="meta-item">
-                <strong>Cost:</strong> Free Tier eligible
-              </div>
-            </div>
+            <dl class="guide-meta">
+              <div class="meta-item"><dt>Difficulty:</dt><dd>Beginner</dd></div>
+              <div class="meta-item"><dt>AWS Services:</dt><dd>S3, CloudFront, Route 53, ACM</dd></div>
+              <div class="meta-item"><dt>Cost:</dt><dd>Free Tier eligible</dd></div>
+            </dl>
           </div>
 
           <div class="guide-section">
-            <h2>Prerequisites</h2>
+            <h2 id="prerequisites">Prerequisites</h2>
             <ul class="guide-list">
               <li>AWS account (Free Tier)</li>
               <li>Basic HTML/CSS knowledge</li>
@@ -85,7 +79,7 @@
           </div>
 
           <div class="guide-section">
-            <h2>Architecture</h2>
+            <h2 id="architecture">Architecture</h2>
             <div class="architecture-diagram">
               <div class="arch-flow">
                 <div class="arch-component user">
@@ -117,7 +111,7 @@
           </div>
 
           <div class="guide-section">
-            <h2>Step-by-Step Instructions</h2>
+            <h2 id="step-by-step-instructions">Step-by-Step Instructions</h2>
 
             <div class="guide-step">
               <div class="step-number">1</div>
@@ -201,7 +195,7 @@
           </div>
 
           <div class="guide-section">
-            <h2>Tips</h2>
+            <h2 id="tips">Tips</h2>
             <div class="tips-box">
               <ul class="guide-list">
                 <li><strong>Use index.html as default root object</strong> - This ensures visitors see your homepage without specifying a file</li>
@@ -213,7 +207,7 @@
           </div>
 
           <div class="guide-section">
-            <h2>Code Examples</h2>
+            <h2 id="code-examples">Code Examples</h2>
 
             <h3>S3 Bucket Policy for CloudFront OAC</h3>
             <div class="code-block">
@@ -283,7 +277,7 @@ echo "Deployment complete!"</code></pre>
           </div>
 
           <div class="guide-section">
-            <h2>What You'll Learn</h2>
+            <h2 id="what-youll-learn">What You'll Learn</h2>
             <ul class="guide-list">
               <li>S3 bucket configuration for static hosting</li>
               <li>CloudFront distribution setup and caching</li>
@@ -294,9 +288,15 @@ echo "Deployment complete!"</code></pre>
           </div>
 
           <div class="guide-navigation">
-            <a href="projects.html" class="btn-secondary">&larr; Back to Projects</a>
-            <a href="project-serverless-contact-form.html" class="btn-primary">Next Project &rarr;</a>
+            <a href="projects.html" class="guide-nav-link">&larr; Back to Projects</a>
+            <a href="project-serverless-contact-form.html" class="guide-nav-link">Next Project &rarr;</a>
           </div>
+          <aside class="guide-aside" data-ui>
+            <nav aria-label="On this page">
+              <p class="guide-aside-title">On this page</p>
+              <ol><li><a href="#project-overview">Project Overview</a></li><li><a href="#prerequisites">Prerequisites</a></li><li><a href="#architecture">Architecture</a></li><li><a href="#step-by-step-instructions">Step-by-Step Instructions</a></li><li><a href="#tips">Tips</a></li><li><a href="#code-examples">Code Examples</a></li><li><a href="#what-youll-learn">What You'll Learn</a></li></ol>
+            </nav>
+          </aside>
         </div>
       </div>
     </section>

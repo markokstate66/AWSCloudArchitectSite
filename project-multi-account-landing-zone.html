@@ -59,24 +59,18 @@
       <div class="container">
         <div class="project-guide">
           <div class="guide-overview">
-            <h2>Project Overview</h2>
+            <h2 id="project-overview">Project Overview</h2>
             <p>Create a scalable, secure AWS multi-account structure using Control Tower, Organizations, and IAM Identity Center. Essential for enterprise environments.</p>
 
-            <div class="guide-meta">
-              <div class="meta-item">
-                <strong>Difficulty:</strong> Advanced
-              </div>
-              <div class="meta-item">
-                <strong>AWS Services:</strong> Organizations, Control Tower, IAM Identity Center, Service Catalog
-              </div>
-              <div class="meta-item">
-                <strong>Cost:</strong> ~$10-50/month (mostly free tier)
-              </div>
-            </div>
+            <dl class="guide-meta">
+              <div class="meta-item"><dt>Difficulty:</dt><dd>Advanced</dd></div>
+              <div class="meta-item"><dt>AWS Services:</dt><dd>Organizations, Control Tower, IAM Identity Center, Service Catalog</dd></div>
+              <div class="meta-item"><dt>Cost:</dt><dd>~$10-50/month (mostly free tier)</dd></div>
+            </dl>
           </div>
 
           <div class="guide-section">
-            <h2>Prerequisites</h2>
+            <h2 id="prerequisites">Prerequisites</h2>
             <ul class="guide-list">
               <li>Understanding of IAM and permissions</li>
               <li>Experience managing AWS accounts</li>
@@ -86,7 +80,7 @@
           </div>
 
           <div class="guide-section">
-            <h2>Architecture</h2>
+            <h2 id="architecture">Architecture</h2>
             <div class="architecture-diagram">
               <div class="arch-vertical">
                 <div class="arch-component primary">
@@ -137,7 +131,7 @@
           </div>
 
           <div class="guide-section">
-            <h2>Step-by-Step Instructions</h2>
+            <h2 id="step-by-step-instructions">Step-by-Step Instructions</h2>
 
             <div class="guide-step">
               <div class="step-number">1</div>
@@ -225,7 +219,7 @@
           </div>
 
           <div class="guide-section">
-            <h2>Tips</h2>
+            <h2 id="tips">Tips</h2>
             <div class="tips-box">
               <ul class="guide-list">
                 <li><strong>Use AWS SSO for centralized access</strong> - Single portal for all accounts, no need for separate IAM users</li>
@@ -237,7 +231,7 @@
           </div>
 
           <div class="guide-section">
-            <h2>Code Examples</h2>
+            <h2 id="code-examples">Code Examples</h2>
 
             <h3>Service Control Policy - Deny Region</h3>
             <div class="code-block">
@@ -421,7 +415,7 @@ Resources:
           </div>
 
           <div class="guide-section">
-            <h2>What You'll Learn</h2>
+            <h2 id="what-youll-learn">What You'll Learn</h2>
             <ul class="guide-list">
               <li>AWS Organizations structure and management</li>
               <li>Service Control Policies (SCPs) for governance</li>
@@ -432,9 +426,15 @@ Resources:
           </div>
 
           <div class="guide-navigation">
-            <a href="project-realtime-data-pipeline.html" class="btn-secondary">&larr; Previous Project</a>
-            <a href="projects.html" class="btn-primary">Back to All Projects</a>
+            <a href="project-realtime-data-pipeline.html" class="guide-nav-link">&larr; Previous Project</a>
+            <a href="projects.html" class="guide-nav-link">Back to All Projects</a>
           </div>
+          <aside class="guide-aside" data-ui>
+            <nav aria-label="On this page">
+              <p class="guide-aside-title">On this page</p>
+              <ol><li><a href="#project-overview">Project Overview</a></li><li><a href="#prerequisites">Prerequisites</a></li><li><a href="#architecture">Architecture</a></li><li><a href="#step-by-step-instructions">Step-by-Step Instructions</a></li><li><a href="#tips">Tips</a></li><li><a href="#code-examples">Code Examples</a></li><li><a href="#what-youll-learn">What You'll Learn</a></li></ol>
+            </nav>
+          </aside>
         </div>
       </div>
     </section>

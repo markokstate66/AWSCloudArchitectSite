@@ -454,8 +454,8 @@ a:hover { color: var(--accent-strong); text-decoration-thickness: 2px; }
 .salary-card { border-top: 3px solid transparent; }
 .salary-card.featured { border-top-color: var(--aws-orange); }
 .salary-card h3 { font-size: var(--fs-1); }
-.salary-range { margin: var(--sp-2) 0 var(--sp-1); font-size: var(--fs-4); font-weight: 750; letter-spacing: -.025em; font-variant-numeric: tabular-nums; }
-.salary-card > p { margin-bottom: var(--sp-5); color: var(--ink-3); font-size: var(--fs-s); }
+.salary-range { margin: var(--sp-2) 0 var(--sp-1); color: var(--ink); font-size: var(--fs-4); font-weight: 750; letter-spacing: -.025em; font-variant-numeric: tabular-nums; }
+.salary-card > p { margin-bottom: var(--sp-5); color: var(--ink-3); }
 .salary-card li::before { content: "\2022"; position: absolute; left: 0; color: var(--accent); }
 .salary-note { max-width: var(--measure); margin-top: var(--sp-6); padding: var(--sp-4) var(--sp-5); border: 1px solid var(--accent-tint-2); border-left: 3px solid var(--accent); border-radius: 0 var(--radius) var(--radius) 0; background: var(--accent-tint); }
 .salary-note p { margin: 0; }
@@ -494,7 +494,7 @@ a:hover { color: var(--accent-strong); text-decoration-thickness: 2px; }
 .book-cover img { width: auto; height: 100%; object-fit: contain; }
 .book-placeholder { font-size: 3rem; opacity: .6; }
 .book-info h3 { margin-bottom: var(--sp-1); font-size: var(--fs-1); }
-.book-author { margin-bottom: var(--sp-3); color: var(--ink-3); font-size: var(--fs-s); }
+.book-author { margin-bottom: var(--sp-3); color: var(--ink-3); }
 .book-description { margin-bottom: var(--sp-4); }
 .book-meta { display: flex; flex-wrap: wrap; gap: var(--sp-2); margin-bottom: var(--sp-5); }
 /* partner panel: quiet paper, the pink survives as the wordmark and the level chip */
@@ -506,7 +506,7 @@ a:hover { color: var(--accent-strong); text-decoration-thickness: 2px; }
 .course-level { background: #fce7f3; border-color: #f3c6de; color: #9d174d; }
 .course-header h3 { font-size: var(--fs-1); }
 .course-content > p { margin-bottom: var(--sp-4); }
-.course-meta { display: flex; flex-wrap: wrap; gap: var(--sp-4); margin-bottom: var(--sp-4); padding-bottom: var(--sp-4); border-bottom: 1px solid var(--line); color: var(--ink-3); font-size: var(--fs-s); }
+.course-meta { display: flex; flex-wrap: wrap; gap: var(--sp-4); margin-bottom: var(--sp-4); padding-bottom: var(--sp-4); border-bottom: 1px solid var(--line); color: var(--ink-3); }
 .course-topics ul { margin-bottom: var(--sp-5); }
 .course-link { border-color: var(--line-2); color: var(--ink); }
 .course-link:hover { background: var(--paper-2); border-color: var(--accent); color: var(--accent-strong); }

@@ -59,24 +59,18 @@
       <div class="container">
         <div class="project-guide">
           <div class="guide-overview">
-            <h2>Project Overview</h2>
+            <h2 id="project-overview">Project Overview</h2>
             <p>Design and deploy a production-ready three-tier architecture with load balancing, auto scaling, and a managed database. This is a foundational pattern for enterprise applications.</p>
 
-            <div class="guide-meta">
-              <div class="meta-item">
-                <strong>Difficulty:</strong> Intermediate
-              </div>
-              <div class="meta-item">
-                <strong>AWS Services:</strong> ALB, EC2 ASG, RDS Multi-AZ, ElastiCache
-              </div>
-              <div class="meta-item">
-                <strong>Cost:</strong> ~$50-100/month (tear down after learning)
-              </div>
-            </div>
+            <dl class="guide-meta">
+              <div class="meta-item"><dt>Difficulty:</dt><dd>Intermediate</dd></div>
+              <div class="meta-item"><dt>AWS Services:</dt><dd>ALB, EC2 ASG, RDS Multi-AZ, ElastiCache</dd></div>
+              <div class="meta-item"><dt>Cost:</dt><dd>~$50-100/month (tear down after learning)</dd></div>
+            </dl>
           </div>
 
           <div class="guide-section">
-            <h2>Prerequisites</h2>
+            <h2 id="prerequisites">Prerequisites</h2>
             <ul class="guide-list">
               <li>Completed EC2 Web Server project</li>
               <li>Understanding of VPC networking</li>
@@ -86,7 +80,7 @@
           </div>
 
           <div class="guide-section">
-            <h2>Architecture</h2>
+            <h2 id="architecture">Architecture</h2>
             <div class="architecture-diagram">
               <div class="arch-group">
                 <div class="arch-group-label">Public Subnets (Multi-AZ)</div>
@@ -130,7 +124,7 @@
           </div>
 
           <div class="guide-section">
-            <h2>Step-by-Step Instructions</h2>
+            <h2 id="step-by-step-instructions">Step-by-Step Instructions</h2>
 
             <div class="guide-step">
               <div class="step-number">1</div>
@@ -218,7 +212,7 @@
           </div>
 
           <div class="guide-section">
-            <h2>Tips</h2>
+            <h2 id="tips">Tips</h2>
             <div class="tips-box">
               <ul class="guide-list">
                 <li><strong>Use NAT Gateway for outbound internet</strong> - Required for instances in private subnets to download updates</li>
@@ -230,7 +224,7 @@
           </div>
 
           <div class="guide-section">
-            <h2>Code Examples</h2>
+            <h2 id="code-examples">Code Examples</h2>
 
             <h3>VPC CloudFormation Template</h3>
             <div class="code-block">
@@ -325,7 +319,7 @@ ScalingPolicy:
           </div>
 
           <div class="guide-section">
-            <h2>What You'll Learn</h2>
+            <h2 id="what-youll-learn">What You'll Learn</h2>
             <ul class="guide-list">
               <li>Application Load Balancer configuration and health checks</li>
               <li>Auto Scaling Groups and scaling policies</li>
@@ -336,9 +330,15 @@ ScalingPolicy:
           </div>
 
           <div class="guide-navigation">
-            <a href="project-ec2-web-server.html" class="btn-secondary">&larr; Previous Project</a>
-            <a href="project-cicd-pipeline.html" class="btn-primary">Next Project &rarr;</a>
+            <a href="project-ec2-web-server.html" class="guide-nav-link">&larr; Previous Project</a>
+            <a href="project-cicd-pipeline.html" class="guide-nav-link">Next Project &rarr;</a>
           </div>
+          <aside class="guide-aside" data-ui>
+            <nav aria-label="On this page">
+              <p class="guide-aside-title">On this page</p>
+              <ol><li><a href="#project-overview">Project Overview</a></li><li><a href="#prerequisites">Prerequisites</a></li><li><a href="#architecture">Architecture</a></li><li><a href="#step-by-step-instructions">Step-by-Step Instructions</a></li><li><a href="#tips">Tips</a></li><li><a href="#code-examples">Code Examples</a></li><li><a href="#what-youll-learn">What You'll Learn</a></li></ol>
+            </nav>
+          </aside>
         </div>
       </div>
     </section>
