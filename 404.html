@@ -6,81 +6,32 @@
     <meta name="robots" content="noindex">
     <title>404 - Page Not Found | AWS Cloud Architect Guide</title>
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <!-- Self-contained on purpose: this page must render with no second request.
+         Same tokens as styles.css [design-system]. -->
     <style>
-        :root {
-            --primary-color: #ff9900;
-            --secondary-color: #232f3e;
-            --dark-bg: #1a1a2e;
-        }
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: linear-gradient(135deg, var(--secondary-color) 0%, var(--dark-bg) 100%);
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #fff;
-            text-align: center;
-            padding: 20px;
-        }
-        .container {
-            max-width: 600px;
-        }
-        .error-code {
-            font-size: 8rem;
-            font-weight: 800;
-            color: var(--primary-color);
-            line-height: 1;
-            margin-bottom: 20px;
-        }
-        h1 {
-            font-size: 2rem;
-            margin-bottom: 20px;
-        }
-        .message {
-            font-size: 1.2rem;
-            color: rgba(255, 255, 255, 0.8);
-            margin-bottom: 30px;
-            line-height: 1.6;
-        }
-        .joke {
-            background: rgba(255, 153, 0, 0.1);
-            border: 1px solid var(--primary-color);
-            border-radius: 10px;
-            padding: 20px;
-            margin-bottom: 30px;
-            font-style: italic;
-            color: rgba(255, 255, 255, 0.9);
-        }
-        .btn {
-            display: inline-block;
-            background: var(--primary-color);
-            color: var(--secondary-color);
-            padding: 15px 35px;
-            border-radius: 50px;
-            font-size: 1.1rem;
-            font-weight: 700;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-        .btn:hover {
-            background: #fff;
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(255, 153, 0, 0.3);
-        }
-        .cloud-icon {
-            font-size: 4rem;
-            margin-bottom: 20px;
-        }
+        :root { --paper: #faf9f6; --ink: #1a1d21; --ink-2: #4a5159; --line: #e6e2da;
+            --navy: #15202b; --accent: #c2410c; --aws-orange: #ff9900; }
+        * { box-sizing: border-box; }
+        body { margin: 0; min-height: 100vh; display: flex; align-items: center; justify-content: center;
+            padding: 2rem 1.5rem; background: var(--paper); color: var(--ink);
+            font: 1.0625rem/1.65 ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Inter, sans-serif; }
+        .container { max-width: 34rem; }
+        .cloud-icon { font-size: 1.75rem; line-height: 1; color: var(--aws-orange); }
+        .error-code { margin: .5rem 0 1rem; color: var(--navy); font-size: 4rem; font-weight: 750;
+            letter-spacing: -.04em; line-height: 1; }
+        h1 { margin: 0 0 1rem; font-size: 1.75rem; font-weight: 720; letter-spacing: -.02em; line-height: 1.2; }
+        .message { margin: 0 0 1.5rem; color: var(--ink-2); }
+        .joke { margin: 0 0 2rem; padding: 1rem 1.25rem; border: 1px solid var(--line);
+            border-left: 3px solid var(--accent); border-radius: 0 8px 8px 0; background: #fff;
+            color: var(--ink-2); font-style: italic; }
+        .btn { display: inline-block; padding: .7em 1.25em; border: 1px solid #e08600; border-radius: 5px;
+            background: var(--aws-orange); color: var(--navy); font-weight: 650; text-decoration: none; }
+        .btn:hover { background: #ffad33; }
+        .btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
     </style>
 </head>
 <body>
-    <div class="container">
+    <main class="container" id="main">
         <div class="cloud-icon">&#9729;</div>
         <div class="error-code">404</div>
         <h1>This resource has been terminated</h1>
@@ -89,6 +40,6 @@
             "I asked AWS where my page went. They said it's in a better region now."
         </div>
         <a href="index.html" class="btn">Return to Home Region</a>
-    </div>
+    </main>
 </body>
 </html>
