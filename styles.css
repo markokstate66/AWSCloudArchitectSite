@@ -130,7 +130,7 @@ html.nav-open::before { content: ""; position: fixed; inset: var(--header-h) 0 0
   html.nav-open::before { content: none; }
 }
 @media (min-width: 48em) { .brand { font-size: var(--fs-0); } }
-.to-top { position: fixed; right: var(--sp-4); bottom: 96px; z-index: var(--z-header); display: none; place-items: center; width: 44px; height: 44px; border: 1px solid var(--line-2); border-radius: 50%; background: var(--surface); color: var(--ink-2); font: var(--fs-1)/1 var(--font-sans); cursor: pointer; }
+.to-top { position: fixed; right: var(--sp-4); bottom: 96px; z-index: var(--z-header); display: none; place-items: center; width: 44px; height: 44px; border: 1px solid var(--line-2); border-radius: var(--radius); background: var(--surface); color: var(--ink-2); font: var(--fs-1)/1 var(--font-sans); cursor: pointer; }
 .to-top.is-on { display: grid; }
 .to-top:hover { border-color: var(--accent); color: var(--accent-strong); }
 html.nav-open .to-top { display: none; }

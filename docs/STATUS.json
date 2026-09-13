@@ -5,7 +5,7 @@
   "areas": {
     "design-system": {
       "wave": 1,
-      "status": "PASS_R2",
+      "status": "PASS",
       "round": 2,
       "scores": {
         "r1": {
@@ -28,7 +28,7 @@
     },
     "layout-shell": {
       "wave": 1,
-      "status": "PASS_R2",
+      "status": "PASS",
       "round": 2,
       "scores": {
         "r1": {
@@ -51,7 +51,7 @@
     },
     "article-template": {
       "wave": 2,
-      "status": "PASS_R2",
+      "status": "PASS",
       "round": 2,
       "scores": {
         "r1": {
@@ -72,7 +72,7 @@
     },
     "code-and-diagrams": {
       "wave": 2,
-      "status": "PASS_R2",
+      "status": "PASS",
       "round": 2,
       "scores": {
         "r1": {
@@ -93,7 +93,7 @@
     },
     "listing-pages": {
       "wave": 2,
-      "status": "PASS_FINAL",
+      "status": "PASS",
       "round": 2,
       "scores": {
         "r1": {
@@ -117,7 +117,7 @@
     },
     "static-pages": {
       "wave": 2,
-      "status": "PASS_R2",
+      "status": "PASS",
       "round": 2,
       "scores": {
         "r1": {
@@ -138,20 +138,25 @@
     },
     "ad-presentation": {
       "wave": 3,
-      "status": "LAYOUT_PASS (wrapper, collapse JS proven 4 states, placement script 5 positions); units human-gated",
+      "status": "PASS (layout; units human-gated: HUMAN_TODO B4)",
       "round": 0,
       "scores": {},
       "openIssues": []
     },
     "whole-site": {
       "wave": 3,
-      "status": "POLISH_R2_BUILDING",
+      "status": "PASS",
       "round": 2,
       "scores": {
         "final_r1": {
           "creativeDirector": 8.4,
           "monetizationSeo": 8.8,
           "reader": 8.6
+        },
+        "final_r2": {
+          "creativeDirector": 8.6,
+          "reader": 8.6,
+          "monetizationSeo": 8.5
         }
       },
       "openIssues": []
@@ -181,5 +186,19 @@
       5.62
     ],
     "tally": "docs/rounds/final-ab-tally.md"
+  },
+  "finalGate": {
+    "integrity": "PASS (21 pages identical to f1ec399 content/meta/links/JSON-LD/pre)",
+    "crawl": "21/21 URLs identical (docs/rounds/final-monetization-seo.md)",
+    "lighthouseMobile": "perf 99-100, a11y 100, BP 100, SEO 100 (index/tools 92: frozen Learn More text)",
+    "cls": 0,
+    "console": 0,
+    "axe": 0,
+    "blindAB": "42/42 new wins",
+    "exceptions": [
+      "HUMAN_TODO D1 gzip weight +0.3..2.5 KB/page",
+      "HUMAN_TODO D2 resources.html LCP 2.1 s lab",
+      "HUMAN_TODO A5 Learn More link text (SEO 92 on 2 pages)"
+    ]
   }
 }
