@@ -33,10 +33,24 @@ storage settings are present. Side finding: the apex `awscloudarchitect.com` cus
 on the SWA shows **Failed: "has not been resolving … and has expired"** (the apex still 301s to www,
 so DNS/registrar handles it; harmless unless you want Azure to own the apex).
 
+**Cleanup done on 2026-09-13 (Azure CLI):** the failed apex binding `awscloudarchitect.com` was
+deleted from the SWA (apex DNS points at Squarespace, which 301s to www; Azure could never validate
+it). Remaining binding: `www.awscloudarchitect.com` Ready.
+
 **You must:**
-1. Delete the GitHub repository secret `AZURE_STATIC_WEB_APPS_API_TOKEN` (the removed workflow's).
-   Keep `AZURE_STATIC_WEB_APPS_API_TOKEN_GREEN_WATER_0B250A80F`.
-2. Optional: delete or re-validate the failed apex domain binding in the SWA.
+1. Delete the GitHub repository secret `AZURE_STATIC_WEB_APPS_API_TOKEN` (the removed workflow's):
+   `gh secret delete AZURE_STATIC_WEB_APPS_API_TOKEN` — the agent's secret-store write was blocked by
+   policy. Keep `AZURE_STATIC_WEB_APPS_API_TOKEN_GREEN_WATER_0B250A80F`.
+2. **Orphaned monitoring (confirm, then delete):** `aws-architect-insights` (Application Insights,
+   created 2025-12-14), its portal dashboard `311009b2-…-dashboard`, and the managed workspace RG
+   `ai_aws-architect-insights_…_managed`. The site removed the App Insights SDK on 2025-12-24
+   (commit 3c0de04), no SWA app setting carries an instrumentation key, and `api/host.json` only
+   has the default logging block, so nothing writes to it (a telemetry count could not be run: the
+   CLI query API rejected the workspace-based component). Delete with:
+   `az resource delete -g DefaultResourceGroup-EUS -n 311009b2-362b-4b1e-ba95-212857364f9a-dashboard --resource-type Microsoft.Portal/dashboards`,
+   `az monitor app-insights component delete -a aws-architect-insights -g DefaultResourceGroup-EUS`,
+   then `az group delete -n ai_aws-architect-insights_311009b2-362b-4b1e-ba95-212857364f9a_managed --yes`.
+   Not done by the agent because it destroys 90 days of (probably empty) log history.
 3. After the first push with the single workflow, re-probe `GET https://www.awscloudarchitect.com/api/products` (expect 200 JSON).
 
 ### A2. Soft 404s: every unknown URL returns the home page with HTTP 200
