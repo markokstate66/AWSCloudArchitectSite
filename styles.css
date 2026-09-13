@@ -183,18 +183,20 @@ html.nav-open::before { content: ""; position: fixed; inset: var(--header-h) 0 0
 .project-guide > * { min-width: 0; }
 .guide-overview { margin-bottom: var(--sp-5); }
 .guide-overview h2 { font-size: var(--fs-4); }
-.guide-overview p { max-width: var(--measure); margin: var(--sp-3) 0 var(--sp-5); color: var(--ink-2); font-size: var(--fs-1); line-height: 1.6; }
-.guide-meta { max-width: var(--measure); margin: 0; border-top: 1px solid var(--line-2); }
-.meta-item { display: grid; grid-template-columns: fit-content(30%) minmax(0, 1fr); align-items: baseline; gap: 0 var(--sp-3); padding: .6rem 0; border-bottom: 1px solid var(--line); }
+/* 39rem, not var(--measure): 68ch resolves against the child's own font size, so headings
+   would rule wider than the body. One column width per viewport is the point. */
+.guide-overview p { max-width: 39rem; margin: var(--sp-3) 0 var(--sp-5); color: var(--ink-2); font-size: var(--fs-1); line-height: 1.6; }
+.guide-meta { display: grid; grid-template-columns: fit-content(30%) minmax(0, 1fr); max-width: 39rem; margin: 0; border-top: 1px solid var(--line-2); }
+.meta-item { display: grid; grid-column: 1 / -1; grid-template-columns: subgrid; align-items: baseline; gap: 0 var(--sp-3); padding: .6rem 0; border-bottom: 1px solid var(--line); }
 .meta-item dt { color: var(--ink-3); font-size: var(--fs--1); font-weight: 700; letter-spacing: .04em; }
 .meta-item dd { margin: 0; color: var(--ink); font-size: var(--fs-s); }
 @media (min-width: 48em) {
   .guide-meta { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-bottom: 1px solid var(--line); }
-  .meta-item { display: block; padding: var(--sp-4) var(--sp-4) var(--sp-4) 0; border-bottom: 0; }
+  .meta-item { display: block; grid-column: auto; padding: var(--sp-4) var(--sp-4) var(--sp-4) 0; border-bottom: 0; }
   .meta-item + .meta-item { padding-left: var(--sp-4); border-left: 1px solid var(--line); }
   .meta-item dt { margin-bottom: .3rem; }
 }
-.guide-section { max-width: var(--measure); margin: 0 0 var(--sp-6); }
+.guide-section { max-width: 39rem; margin: 0 0 var(--sp-6); }
 .guide-section > h2 { margin: 0 0 var(--sp-4); padding-top: var(--sp-5); border-top: 1px solid var(--line-2); }
 .guide-section > h2:target { border-top-color: var(--accent); }
 .guide-section > h3 { margin: var(--sp-6) 0 var(--sp-3); font-size: var(--fs-1); }
@@ -206,7 +208,8 @@ html.nav-open::before { content: ""; position: fixed; inset: var(--header-h) 0 0
 .guide-step:first-of-type { border-top: 0; }
 .step-content { display: contents; }
 .step-number { grid-area: 1 / 1; align-self: start; display: grid; place-items: center; width: 1.75rem; height: 1.75rem; border: 1px solid var(--accent-tint-2); border-radius: 50%; background: var(--accent-tint); color: var(--accent-strong); font-size: var(--fs--1); font-weight: 720; }
-.step-number a { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 50%; color: inherit; text-decoration: none; }
+.step-number { position: relative; }
+.step-number a { position: absolute; inset: -9px; display: grid; place-items: center; border-radius: 50%; color: inherit; text-decoration: none; }
 .step-number a:hover { color: var(--accent); }
 .step-content > h3 { grid-area: 1 / 2; align-self: center; margin: 0; font-size: var(--fs-1); }
 .step-content > :not(h3) { grid-column: 1 / -1; margin: var(--sp-3) 0 0; }
@@ -218,7 +221,7 @@ html.nav-open::before { content: ""; position: fixed; inset: var(--header-h) 0 0
 .tips-box .guide-list { margin: 0; }
 .tips-box .guide-list li + li { margin-top: var(--sp-3); }
 .tips-box .guide-list li::marker { color: var(--accent); }
-.guide-navigation { display: grid; max-width: var(--measure); margin-top: var(--sp-5); padding-top: var(--sp-5); border-top: 1px solid var(--line-2); }
+.guide-navigation { display: grid; max-width: 39rem; margin-top: var(--sp-5); padding-top: var(--sp-5); border-top: 1px solid var(--line-2); }
 .guide-nav-link { padding: var(--sp-4) 0; color: var(--ink); font-size: var(--fs-s); font-weight: 650; text-decoration: none; }
 .guide-nav-link + .guide-nav-link { border-top: 1px solid var(--line); }
 /* direction cue: pseudo-content only, so the frozen link text is the title and innerText never moves */
@@ -245,7 +248,7 @@ html.nav-open::before { content: ""; position: fixed; inset: var(--header-h) 0 0
   .project-guide { display: grid; grid-template-columns: minmax(0, 1fr) var(--rail); column-gap: var(--sp-7); align-items: start; }
   .project-guide > :not(.guide-aside) { grid-column: 1; }
   .guide-section { max-width: none; }
-  .guide-section > :not(.code-block, .architecture-diagram) { max-width: var(--measure); }
+  .guide-section > :not(.code-block, .architecture-diagram) { max-width: 39rem; }
   .guide-aside { grid-column: 2; grid-row: 1 / -1; margin: 0; position: sticky; top: calc(var(--header-h) + var(--sp-5)); }
   .guide-aside nav { padding-left: var(--sp-4); border-left: 1px solid var(--line-2); }
   .guide-aside nav::after { content: none; }
@@ -282,7 +285,6 @@ html.nav-open::before { content: ""; position: fixed; inset: var(--header-h) 0 0
 /* a two-region pair never wraps: 2 columns side by side with the replication marker centred
    between/below them, so the bidirectional arrow always sits between the two regions */
 .arch-pair { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: start; }
-.arch-pair > * { min-width: 0; }
 .arch-pair > :nth-child(2) { grid-area: 2 / 1 / 3 / 3; justify-self: center; }
 .arch-component { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 0 .45rem; align-items: center; align-content: center; padding: var(--sp-2) var(--sp-3); border: 1px solid var(--navy-line); background: var(--navy-2); border-left: 3px solid var(--role, var(--on-navy-2)); border-radius: var(--radius-sm); }
 /* three roles, not six: runs-or-routes / stores / guards. The accent is kept for arrows only. */
@@ -290,13 +292,13 @@ html.nav-open::before { content: ""; position: fixed; inset: var(--header-h) 0 0
 .arch-component.storage, .arch-component.database { --role: #7fb0f0; }
 .arch-component.security { --role: #f08b8b; }
 .arch-component-icon { grid-row: 1 / span 2; font-size: 1rem; line-height: 1.1; filter: grayscale(1); opacity: .7; }
-.arch-component-name { color: var(--on-navy); font-size: .875rem; font-weight: 650; line-height: 1.25; }
+.arch-component-name { color: var(--on-navy); font-size: .875rem; font-weight: 650; line-height: 1.25; overflow-wrap: break-word; }
 .arch-component-detail { color: var(--on-navy-2); font-size: var(--fs--1); line-height: 1.3; }
 .arch-arrow, .arch-arrow-down { align-self: center; color: var(--aws-orange); font-size: 1.125rem; line-height: 1; text-align: center; }
 .arch-flow > .arch-arrow { transform: rotate(90deg); }
 .arch-group { padding: var(--sp-2) var(--sp-3) var(--sp-3); border: 1px solid var(--navy-line); border-radius: var(--radius-sm); background: #ffffff08; }
 .arch-group-label { margin-bottom: var(--sp-2); color: var(--on-navy-2); font: 700 .75rem/1.4 var(--font-sans); letter-spacing: .09em; text-transform: uppercase; font-variant-caps: all-small-caps; }
-.arch-note { margin: var(--sp-3) 0 0; color: var(--on-navy-2); font-size: var(--fs--1); text-align: center; }
+.arch-note { margin: var(--sp-3) 0 0; color: var(--on-navy-2); font-size: var(--fs--1); }
 @media (min-width: 40em) {
   .arch-flow { flex-flow: row wrap; justify-content: center; }
   .arch-flow > :not(.arch-arrow) { flex: 1 1 9rem; }

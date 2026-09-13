@@ -58,6 +58,12 @@
     <section class="section">
       <div class="container">
         <div class="project-guide">
+          <aside class="guide-aside" data-ui>
+            <nav aria-label="On this page">
+              <p class="guide-aside-title">On this page</p>
+              <ol><li><a href="#project-overview">Project Overview</a></li><li><a href="#prerequisites">Prerequisites</a></li><li><a href="#architecture">Architecture</a></li><li><a href="#step-by-step-instructions">Step-by-Step Instructions</a></li><li><a href="#tips">Tips</a></li><li><a href="#code-examples">Code Examples</a></li><li><a href="#what-youll-learn">What You'll Learn</a></li></ol>
+            </nav>
+          </aside>
           <div class="guide-overview">
             <h2 id="project-overview">Project Overview</h2>
             <p>Create a real-time data ingestion and processing pipeline that handles streaming data, performs transformations, and delivers insights through dashboards.</p>
@@ -129,9 +135,9 @@
             <h2 id="step-by-step-instructions">Step-by-Step Instructions</h2>
 
             <div class="guide-step">
-              <div class="step-number">1</div>
+              <div class="step-number"><a href="#step-1">1</a></div>
               <div class="step-content">
-                <h3>Create Kinesis Data Stream</h3>
+                <h3 id="step-1">Create Kinesis Data Stream</h3>
                 <ul class="guide-list">
                   <li>Go to Kinesis and create a new Data Stream</li>
                   <li>Choose On-Demand capacity mode for variable loads</li>
@@ -143,9 +149,9 @@
             </div>
 
             <div class="guide-step">
-              <div class="step-number">2</div>
+              <div class="step-number"><a href="#step-2">2</a></div>
               <div class="step-content">
-                <h3>Set Up Data Producers</h3>
+                <h3 id="step-2">Set Up Data Producers</h3>
                 <ul class="guide-list">
                   <li>Create a sample data generator using AWS SDK</li>
                   <li>Use PutRecord or PutRecords API</li>
@@ -157,9 +163,9 @@
             </div>
 
             <div class="guide-step">
-              <div class="step-number">3</div>
+              <div class="step-number"><a href="#step-3">3</a></div>
               <div class="step-content">
-                <h3>Create Kinesis Firehose for S3 Delivery</h3>
+                <h3 id="step-3">Create Kinesis Firehose for S3 Delivery</h3>
                 <ul class="guide-list">
                   <li>Create a Firehose delivery stream</li>
                   <li>Source: Kinesis Data Stream</li>
@@ -172,9 +178,9 @@
             </div>
 
             <div class="guide-step">
-              <div class="step-number">4</div>
+              <div class="step-number"><a href="#step-4">4</a></div>
               <div class="step-content">
-                <h3>Add Real-Time Processing with Lambda</h3>
+                <h3 id="step-4">Add Real-Time Processing with Lambda</h3>
                 <ul class="guide-list">
                   <li>Create Lambda function triggered by Kinesis</li>
                   <li>Process records in batches</li>
@@ -186,9 +192,9 @@
             </div>
 
             <div class="guide-step">
-              <div class="step-number">5</div>
+              <div class="step-number"><a href="#step-5">5</a></div>
               <div class="step-content">
-                <h3>Set Up OpenSearch for Analytics</h3>
+                <h3 id="step-5">Set Up OpenSearch for Analytics</h3>
                 <ul class="guide-list">
                   <li>Create OpenSearch domain</li>
                   <li>Configure Firehose to deliver to OpenSearch</li>
@@ -200,9 +206,9 @@
             </div>
 
             <div class="guide-step">
-              <div class="step-number">6</div>
+              <div class="step-number"><a href="#step-6">6</a></div>
               <div class="step-content">
-                <h3>Create Dashboards and Alerts</h3>
+                <h3 id="step-6">Create Dashboards and Alerts</h3>
                 <ul class="guide-list">
                   <li>Build OpenSearch Dashboards visualizations</li>
                   <li>Or connect QuickSight to S3/Athena</li>
@@ -235,15 +241,15 @@
                 <span class="code-label">Terminal Commands</span>
                 <span class="code-lang">BASH</span>
               </div>
-              <pre><code># Create Kinesis Data Stream (on-demand mode)
-aws kinesis create-stream \
-    --stream-name clickstream-events \
-    --stream-mode-details StreamMode=ON_DEMAND
+              <pre><code><span class="comment"># Create Kinesis Data Stream (on-demand mode)</span>
+<span class="keyword">aws</span> kinesis create-stream \
+    <span class="variable">--stream-name</span> clickstream-events \
+    <span class="variable">--stream-mode-details</span> StreamMode=ON_DEMAND
 
-# Or create with provisioned capacity
-aws kinesis create-stream \
-    --stream-name clickstream-events \
-    --shard-count 2</code></pre>
+<span class="comment"># Or create with provisioned capacity</span>
+<span class="keyword">aws</span> kinesis create-stream \
+    <span class="variable">--stream-name</span> clickstream-events \
+    <span class="variable">--shard-count</span> <span class="number">2</span></code></pre>
             </div>
 
             <h3>Data Producer (Python)</h3>
@@ -252,34 +258,34 @@ aws kinesis create-stream \
                 <span class="code-label">producer.py</span>
                 <span class="code-lang">PYTHON</span>
               </div>
-              <pre><code>import boto3
-import json
-import random
-from datetime import datetime
+              <pre><code><span class="keyword">import</span> boto3
+<span class="keyword">import</span> json
+<span class="keyword">import</span> random
+<span class="keyword">from</span> datetime <span class="keyword">import</span> datetime
 
-kinesis = boto3.client('kinesis')
+kinesis = boto3.<span class="function">client</span>(<span class="string">'kinesis'</span>)
 
-def generate_event():
-    return {
-        'event_id': f'evt-{random.randint(1000, 9999)}',
-        'user_id': f'user-{random.randint(1, 100)}',
-        'event_type': random.choice(['click', 'view', 'purchase']),
-        'page': random.choice(['/home', '/products', '/checkout']),
-        'timestamp': datetime.utcnow().isoformat()
+<span class="keyword">def</span> <span class="function">generate_event</span>():
+    <span class="keyword">return</span> {
+        <span class="string">'event_id'</span>: f<span class="string">'evt-{random.randint(1000, 9999)}'</span>,
+        <span class="string">'user_id'</span>: f<span class="string">'user-{random.randint(1, 100)}'</span>,
+        <span class="string">'event_type'</span>: random.<span class="function">choice</span>([<span class="string">'click'</span>, <span class="string">'view'</span>, <span class="string">'purchase'</span>]),
+        <span class="string">'page'</span>: random.<span class="function">choice</span>([<span class="string">'/home'</span>, <span class="string">'/products'</span>, <span class="string">'/checkout'</span>]),
+        <span class="string">'timestamp'</span>: datetime.<span class="function">utcnow</span>().isoformat()
     }
 
-def send_events(stream_name, count=100):
-    for _ in range(count):
-        event = generate_event()
-        kinesis.put_record(
+<span class="keyword">def</span> <span class="function">send_events</span>(stream_name, count=<span class="number">100</span>):
+    <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="function">range</span>(count):
+        event = <span class="function">generate_event</span>()
+        kinesis.<span class="function">put_record</span>(
             StreamName=stream_name,
-            Data=json.dumps(event),
-            PartitionKey=event['user_id']
+            Data=json.<span class="function">dumps</span>(event),
+            PartitionKey=event[<span class="string">'user_id'</span>]
         )
-    print(f'Sent {count} events to {stream_name}')
+    <span class="function">print</span>(f<span class="string">'Sent {count} events to {stream_name}'</span>)
 
-if __name__ == '__main__':
-    send_events('clickstream-events', 100)</code></pre>
+<span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:
+    <span class="function">send_events</span>(<span class="string">'clickstream-events'</span>, <span class="number">100</span>)</code></pre>
             </div>
 
             <h3>Lambda Stream Processor</h3>
@@ -288,38 +294,38 @@ if __name__ == '__main__':
                 <span class="code-label">lambda_function.py</span>
                 <span class="code-lang">PYTHON</span>
               </div>
-              <pre><code>import json
-import base64
-import boto3
+              <pre><code><span class="keyword">import</span> json
+<span class="keyword">import</span> base64
+<span class="keyword">import</span> boto3
 
-dynamodb = boto3.resource('dynamodb')
-table = dynamodb.Table('EventAggregates')
+dynamodb = boto3.<span class="function">resource</span>(<span class="string">'dynamodb'</span>)
+table = dynamodb.<span class="function">Table</span>(<span class="string">'EventAggregates'</span>)
 
-def lambda_handler(event, context):
+<span class="keyword">def</span> <span class="function">lambda_handler</span>(event, context):
     aggregates = {}
 
-    for record in event['Records']:
-        # Decode the Kinesis data
-        payload = base64.b64decode(record['kinesis']['data'])
-        data = json.loads(payload)
+    <span class="keyword">for</span> record <span class="keyword">in</span> event[<span class="string">'Records'</span>]:
+        <span class="comment"># Decode the Kinesis data</span>
+        payload = base64.<span class="function">b64decode</span>(record[<span class="string">'kinesis'</span>][<span class="string">'data'</span>])
+        data = json.<span class="function">loads</span>(payload)
 
-        # Aggregate by event type
-        event_type = data['event_type']
-        if event_type not in aggregates:
-            aggregates[event_type] = 0
-        aggregates[event_type] += 1
+        <span class="comment"># Aggregate by event type</span>
+        event_type = data[<span class="string">'event_type'</span>]
+        <span class="keyword">if</span> event_type <span class="keyword">not</span> <span class="keyword">in</span> aggregates:
+            aggregates[event_type] = <span class="number">0</span>
+        aggregates[event_type] += <span class="number">1</span>
 
-    # Store aggregates
-    for event_type, count in aggregates.items():
-        table.update_item(
-            Key={'event_type': event_type},
-            UpdateExpression='ADD event_count :c',
-            ExpressionAttributeValues={':c': count}
+    <span class="comment"># Store aggregates</span>
+    <span class="keyword">for</span> event_type, count <span class="keyword">in</span> aggregates.<span class="function">items</span>():
+        table.<span class="function">update_item</span>(
+            Key={<span class="string">'event_type'</span>: event_type},
+            UpdateExpression=<span class="string">'ADD event_count :c'</span>,
+            ExpressionAttributeValues={<span class="string">':c'</span>: count}
         )
 
-    return {
-        'statusCode': 200,
-        'body': f'Processed {len(event["Records"])} records'
+    <span class="keyword">return</span> {
+        <span class="string">'statusCode'</span>: <span class="number">200</span>,
+        <span class="string">'body'</span>: f<span class="string">'Processed {len(event["Records"])} records'</span>
     }</code></pre>
             </div>
 
@@ -329,25 +335,25 @@ def lambda_handler(event, context):
                 <span class="code-label">firehose.yaml</span>
                 <span class="code-lang">YAML</span>
               </div>
-              <pre><code>AWSTemplateFormatVersion: '2010-09-09'
-Resources:
-  DeliveryStream:
-    Type: AWS::KinesisFirehose::DeliveryStream
-    Properties:
-      DeliveryStreamName: clickstream-to-s3
-      DeliveryStreamType: KinesisStreamAsSource
-      KinesisStreamSourceConfiguration:
-        KinesisStreamARN: !Sub arn:aws:kinesis:${AWS::Region}:${AWS::AccountId}:stream/clickstream-events
-        RoleARN: !GetAtt FirehoseRole.Arn
-      S3DestinationConfiguration:
-        BucketARN: !GetAtt DataLakeBucket.Arn
-        RoleARN: !GetAtt FirehoseRole.Arn
-        BufferingHints:
-          IntervalInSeconds: 60
-          SizeInMBs: 5
-        CompressionFormat: GZIP
-        Prefix: 'raw/year=!{timestamp:yyyy}/month=!{timestamp:MM}/day=!{timestamp:dd}/'
-        ErrorOutputPrefix: 'errors/'</code></pre>
+              <pre><code><span class="variable">AWSTemplateFormatVersion</span>: <span class="string">'2010-09-09'</span>
+<span class="variable">Resources</span>:
+  <span class="variable">DeliveryStream</span>:
+    <span class="variable">Type</span>: AWS::KinesisFirehose::DeliveryStream
+    <span class="variable">Properties</span>:
+      <span class="variable">DeliveryStreamName</span>: clickstream-to-s3
+      <span class="variable">DeliveryStreamType</span>: KinesisStreamAsSource
+      <span class="variable">KinesisStreamSourceConfiguration</span>:
+        <span class="variable">KinesisStreamARN</span>: !Sub arn:aws:kinesis:${AWS::Region}:${AWS::AccountId}:stream/clickstream-events
+        <span class="variable">RoleARN</span>: !GetAtt FirehoseRole.Arn
+      <span class="variable">S3DestinationConfiguration</span>:
+        <span class="variable">BucketARN</span>: !GetAtt DataLakeBucket.Arn
+        <span class="variable">RoleARN</span>: !GetAtt FirehoseRole.Arn
+        <span class="variable">BufferingHints</span>:
+          <span class="variable">IntervalInSeconds</span>: <span class="number">60</span>
+          <span class="variable">SizeInMBs</span>: <span class="number">5</span>
+        <span class="variable">CompressionFormat</span>: GZIP
+        <span class="variable">Prefix</span>: <span class="string">'raw/year=!{timestamp:yyyy}/month=!{timestamp:MM}/day=!{timestamp:dd}/'</span>
+        <span class="variable">ErrorOutputPrefix</span>: <span class="string">'errors/'</span></code></pre>
             </div>
 
             <h3>OpenSearch Index Mapping</h3>
@@ -357,19 +363,19 @@ Resources:
                 <span class="code-lang">JSON</span>
               </div>
               <pre><code>{
-    "mappings": {
-        "properties": {
-            "event_id": { "type": "keyword" },
-            "user_id": { "type": "keyword" },
-            "event_type": { "type": "keyword" },
-            "page": { "type": "keyword" },
-            "timestamp": { "type": "date" },
-            "location": { "type": "geo_point" }
+    <span class="variable">"mappings"</span>: {
+        <span class="variable">"properties"</span>: {
+            <span class="variable">"event_id"</span>: { <span class="variable">"type"</span>: <span class="string">"keyword"</span> },
+            <span class="variable">"user_id"</span>: { <span class="variable">"type"</span>: <span class="string">"keyword"</span> },
+            <span class="variable">"event_type"</span>: { <span class="variable">"type"</span>: <span class="string">"keyword"</span> },
+            <span class="variable">"page"</span>: { <span class="variable">"type"</span>: <span class="string">"keyword"</span> },
+            <span class="variable">"timestamp"</span>: { <span class="variable">"type"</span>: <span class="string">"date"</span> },
+            <span class="variable">"location"</span>: { <span class="variable">"type"</span>: <span class="string">"geo_point"</span> }
         }
     },
-    "settings": {
-        "number_of_shards": 2,
-        "number_of_replicas": 1
+    <span class="variable">"settings"</span>: {
+        <span class="variable">"number_of_shards"</span>: <span class="number">2</span>,
+        <span class="variable">"number_of_replicas"</span>: <span class="number">1</span>
     }
 }</code></pre>
             </div>
@@ -387,15 +393,9 @@ Resources:
           </div>
 
           <div class="guide-navigation">
-            <a href="project-kubernetes-eks.html" class="guide-nav-link">&larr; Previous Project</a>
-            <a href="project-multi-account-landing-zone.html" class="guide-nav-link">Next Project &rarr;</a>
+            <a href="project-kubernetes-eks.html" class="guide-nav-link guide-nav-prev">&larr; Previous Project</a>
+            <a href="project-multi-account-landing-zone.html" class="guide-nav-link guide-nav-next">Next Project &rarr;</a>
           </div>
-          <aside class="guide-aside" data-ui>
-            <nav aria-label="On this page">
-              <p class="guide-aside-title">On this page</p>
-              <ol><li><a href="#project-overview">Project Overview</a></li><li><a href="#prerequisites">Prerequisites</a></li><li><a href="#architecture">Architecture</a></li><li><a href="#step-by-step-instructions">Step-by-Step Instructions</a></li><li><a href="#tips">Tips</a></li><li><a href="#code-examples">Code Examples</a></li><li><a href="#what-youll-learn">What You'll Learn</a></li></ol>
-            </nav>
-          </aside>
         </div>
       </div>
     </section>

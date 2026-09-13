@@ -58,6 +58,12 @@
     <section class="section">
       <div class="container">
         <div class="project-guide">
+          <aside class="guide-aside" data-ui>
+            <nav aria-label="On this page">
+              <p class="guide-aside-title">On this page</p>
+              <ol><li><a href="#project-overview">Project Overview</a></li><li><a href="#prerequisites">Prerequisites</a></li><li><a href="#architecture">Architecture</a></li><li><a href="#step-by-step-instructions">Step-by-Step Instructions</a></li><li><a href="#tips">Tips</a></li><li><a href="#code-examples">Code Examples</a></li><li><a href="#what-youll-learn">What You'll Learn</a></li></ol>
+            </nav>
+          </aside>
           <div class="guide-overview">
             <h2 id="project-overview">Project Overview</h2>
             <p>Create a fully serverless contact form that processes submissions and sends email notifications. No servers to manage, and you only pay for what you use.</p>
@@ -115,9 +121,9 @@
             <h2 id="step-by-step-instructions">Step-by-Step Instructions</h2>
 
             <div class="guide-step">
-              <div class="step-number">1</div>
+              <div class="step-number"><a href="#step-1">1</a></div>
               <div class="step-content">
-                <h3>Verify Email in SES</h3>
+                <h3 id="step-1">Verify Email in SES</h3>
                 <ul class="guide-list">
                   <li>Go to Amazon SES in the AWS Console</li>
                   <li>Click "Verified identities" then "Create identity"</li>
@@ -129,9 +135,9 @@
             </div>
 
             <div class="guide-step">
-              <div class="step-number">2</div>
+              <div class="step-number"><a href="#step-2">2</a></div>
               <div class="step-content">
-                <h3>Create the Lambda Function</h3>
+                <h3 id="step-2">Create the Lambda Function</h3>
                 <ul class="guide-list">
                   <li>Go to Lambda and click "Create function"</li>
                   <li>Choose "Author from scratch"</li>
@@ -143,9 +149,9 @@
             </div>
 
             <div class="guide-step">
-              <div class="step-number">3</div>
+              <div class="step-number"><a href="#step-3">3</a></div>
               <div class="step-content">
-                <h3>Add Lambda Code</h3>
+                <h3 id="step-3">Add Lambda Code</h3>
                 <ul class="guide-list">
                   <li>Parse the incoming JSON body (name, email, message)</li>
                   <li>Validate required fields</li>
@@ -157,9 +163,9 @@
             </div>
 
             <div class="guide-step">
-              <div class="step-number">4</div>
+              <div class="step-number"><a href="#step-4">4</a></div>
               <div class="step-content">
-                <h3>Set Up API Gateway</h3>
+                <h3 id="step-4">Set Up API Gateway</h3>
                 <ul class="guide-list">
                   <li>Go to API Gateway and create a REST API</li>
                   <li>Create a new resource called "/contact"</li>
@@ -171,9 +177,9 @@
             </div>
 
             <div class="guide-step">
-              <div class="step-number">5</div>
+              <div class="step-number"><a href="#step-5">5</a></div>
               <div class="step-content">
-                <h3>Configure CORS</h3>
+                <h3 id="step-5">Configure CORS</h3>
                 <ul class="guide-list">
                   <li>Select the /contact resource</li>
                   <li>Click "Enable CORS" from the Actions menu</li>
@@ -185,9 +191,9 @@
             </div>
 
             <div class="guide-step">
-              <div class="step-number">6</div>
+              <div class="step-number"><a href="#step-6">6</a></div>
               <div class="step-content">
-                <h3>Connect Your Frontend</h3>
+                <h3 id="step-6">Connect Your Frontend</h3>
                 <ul class="guide-list">
                   <li>Copy the API Gateway invoke URL</li>
                   <li>Update your HTML form to submit via fetch/AJAX</li>
@@ -220,46 +226,46 @@
                 <span class="code-label">lambda_function.py</span>
                 <span class="code-lang">PYTHON</span>
               </div>
-              <pre><code>import json
-import boto3
-import os
+              <pre><code><span class="keyword">import</span> json
+<span class="keyword">import</span> boto3
+<span class="keyword">import</span> os
 
-ses = boto3.client('ses')
+ses = boto3.<span class="function">client</span>(<span class="string">'ses'</span>)
 
-def lambda_handler(event, context):
+<span class="keyword">def</span> <span class="function">lambda_handler</span>(event, context):
     try:
-        body = json.loads(event['body'])
-        name = body['name']
-        email = body['email']
-        message = body['message']
+        body = json.<span class="function">loads</span>(event[<span class="string">'body'</span>])
+        name = body[<span class="string">'name'</span>]
+        email = body[<span class="string">'email'</span>]
+        message = body[<span class="string">'message'</span>]
 
-        # Send email via SES
-        ses.send_email(
-            Source=os.environ['SENDER_EMAIL'],
+        <span class="comment"># Send email via SES</span>
+        ses.<span class="function">send_email</span>(
+            Source=os.environ[<span class="string">'SENDER_EMAIL'</span>],
             Destination={
-                'ToAddresses': [os.environ['RECIPIENT_EMAIL']]
+                <span class="string">'ToAddresses'</span>: [os.environ[<span class="string">'RECIPIENT_EMAIL'</span>]]
             },
             Message={
-                'Subject': {'Data': f'Contact Form: {name}'},
-                'Body': {
-                    'Text': {'Data': f'From: {name} ({email})\n\n{message}'}
+                <span class="string">'Subject'</span>: {<span class="string">'Data'</span>: f<span class="string">'Contact Form: {name}'</span>},
+                <span class="string">'Body'</span>: {
+                    <span class="string">'Text'</span>: {<span class="string">'Data'</span>: f<span class="string">'From: {name} ({email})\n\n{message}'</span>}
                 }
             }
         )
 
-        return {
-            'statusCode': 200,
-            'headers': {
-                'Access-Control-Allow-Origin': '*',
-                'Content-Type': 'application/json'
+        <span class="keyword">return</span> {
+            <span class="string">'statusCode'</span>: <span class="number">200</span>,
+            <span class="string">'headers'</span>: {
+                <span class="string">'Access-Control-Allow-Origin'</span>: <span class="string">'*'</span>,
+                <span class="string">'Content-Type'</span>: <span class="string">'application/json'</span>
             },
-            'body': json.dumps({'message': 'Email sent successfully'})
+            <span class="string">'body'</span>: json.<span class="function">dumps</span>({<span class="string">'message'</span>: <span class="string">'Email sent successfully'</span>})
         }
-    except Exception as e:
-        return {
-            'statusCode': 500,
-            'headers': {'Access-Control-Allow-Origin': '*'},
-            'body': json.dumps({'error': str(e)})
+    <span class="keyword">except</span> Exception <span class="keyword">as</span> e:
+        <span class="keyword">return</span> {
+            <span class="string">'statusCode'</span>: <span class="number">500</span>,
+            <span class="string">'headers'</span>: {<span class="string">'Access-Control-Allow-Origin'</span>: <span class="string">'*'</span>},
+            <span class="string">'body'</span>: json.<span class="function">dumps</span>({<span class="string">'error'</span>: <span class="function">str</span>(e)})
         }</code></pre>
             </div>
 
@@ -269,33 +275,33 @@ def lambda_handler(event, context):
                 <span class="code-label">contact-form.js</span>
                 <span class="code-lang">JAVASCRIPT</span>
               </div>
-              <pre><code>const form = document.getElementById('contact-form');
-const API_URL = 'https://abc123.execute-api.us-east-1.amazonaws.com/prod/contact';
+              <pre><code><span class="keyword">const</span> form = document.<span class="function">getElementById</span>(<span class="string">'contact-form'</span>);
+<span class="keyword">const</span> API_URL = <span class="string">'https://abc123.execute-api.us-east-1.amazonaws.com/prod/contact'</span>;
 
-form.addEventListener('submit', async (e) => {
-    e.preventDefault();
+form.<span class="function">addEventListener</span>(<span class="string">'submit'</span>, <span class="keyword">async</span> (e) => {
+    e.<span class="function">preventDefault</span>();
 
-    const data = {
-        name: document.getElementById('name').value,
-        email: document.getElementById('email').value,
-        message: document.getElementById('message').value
+    <span class="keyword">const</span> data = {
+        name: document.<span class="function">getElementById</span>(<span class="string">'name'</span>).value,
+        email: document.<span class="function">getElementById</span>(<span class="string">'email'</span>).value,
+        message: document.<span class="function">getElementById</span>(<span class="string">'message'</span>).value
     };
 
-    try {
-        const response = await fetch(API_URL, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(data)
+    <span class="keyword">try</span> {
+        <span class="keyword">const</span> response = <span class="keyword">await</span> <span class="function">fetch</span>(API_URL, {
+            method: <span class="string">'POST'</span>,
+            headers: { <span class="string">'Content-Type'</span>: <span class="string">'application/json'</span> },
+            body: JSON.<span class="function">stringify</span>(data)
         });
 
-        if (response.ok) {
-            alert('Message sent successfully!');
-            form.reset();
-        } else {
-            throw new Error('Failed to send message');
+        <span class="keyword">if</span> (response.ok) {
+            <span class="function">alert</span>(<span class="string">'Message sent successfully!'</span>);
+            form.<span class="function">reset</span>();
+        } <span class="keyword">else</span> {
+            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="function">Error</span>(<span class="string">'Failed to send message'</span>);
         }
-    } catch (error) {
-        alert('Error: ' + error.message);
+    } <span class="keyword">catch</span> (error) {
+        <span class="function">alert</span>(<span class="string">'Error: '</span> + error.message);
     }
 });</code></pre>
             </div>
@@ -307,24 +313,24 @@ form.addEventListener('submit', async (e) => {
                 <span class="code-lang">JSON</span>
               </div>
               <pre><code>{
-    "Version": "2012-10-17",
-    "Statement": [
+    <span class="variable">"Version"</span>: <span class="string">"2012-10-17"</span>,
+    <span class="variable">"Statement"</span>: [
         {
-            "Effect": "Allow",
-            "Action": [
-                "ses:SendEmail",
-                "ses:SendRawEmail"
+            <span class="variable">"Effect"</span>: <span class="string">"Allow"</span>,
+            <span class="variable">"Action"</span>: [
+                <span class="string">"ses:SendEmail"</span>,
+                <span class="string">"ses:SendRawEmail"</span>
             ],
-            "Resource": "*"
+            <span class="variable">"Resource"</span>: <span class="string">"*"</span>
         },
         {
-            "Effect": "Allow",
-            "Action": [
-                "logs:CreateLogGroup",
-                "logs:CreateLogStream",
-                "logs:PutLogEvents"
+            <span class="variable">"Effect"</span>: <span class="string">"Allow"</span>,
+            <span class="variable">"Action"</span>: [
+                <span class="string">"logs:CreateLogGroup"</span>,
+                <span class="string">"logs:CreateLogStream"</span>,
+                <span class="string">"logs:PutLogEvents"</span>
             ],
-            "Resource": "arn:aws:logs:*:*:*"
+            <span class="variable">"Resource"</span>: <span class="string">"arn:aws:logs:*:*:*"</span>
         }
     ]
 }</code></pre>
@@ -343,15 +349,9 @@ form.addEventListener('submit', async (e) => {
           </div>
 
           <div class="guide-navigation">
-            <a href="project-static-website.html" class="guide-nav-link">&larr; Previous Project</a>
-            <a href="project-ec2-web-server.html" class="guide-nav-link">Next Project &rarr;</a>
+            <a href="project-static-website.html" class="guide-nav-link guide-nav-prev">&larr; Previous Project</a>
+            <a href="project-ec2-web-server.html" class="guide-nav-link guide-nav-next">Next Project &rarr;</a>
           </div>
-          <aside class="guide-aside" data-ui>
-            <nav aria-label="On this page">
-              <p class="guide-aside-title">On this page</p>
-              <ol><li><a href="#project-overview">Project Overview</a></li><li><a href="#prerequisites">Prerequisites</a></li><li><a href="#architecture">Architecture</a></li><li><a href="#step-by-step-instructions">Step-by-Step Instructions</a></li><li><a href="#tips">Tips</a></li><li><a href="#code-examples">Code Examples</a></li><li><a href="#what-youll-learn">What You'll Learn</a></li></ol>
-            </nav>
-          </aside>
         </div>
       </div>
     </section>

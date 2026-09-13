@@ -58,6 +58,12 @@
     <section class="section">
       <div class="container">
         <div class="project-guide">
+          <aside class="guide-aside" data-ui>
+            <nav aria-label="On this page">
+              <p class="guide-aside-title">On this page</p>
+              <ol><li><a href="#project-overview">Project Overview</a></li><li><a href="#prerequisites">Prerequisites</a></li><li><a href="#architecture">Architecture</a></li><li><a href="#step-by-step-instructions">Step-by-Step Instructions</a></li><li><a href="#tips">Tips</a></li><li><a href="#code-examples">Code Examples</a></li><li><a href="#what-youll-learn">What You'll Learn</a></li></ol>
+            </nav>
+          </aside>
           <div class="guide-overview">
             <h2 id="project-overview">Project Overview</h2>
             <p>Set up an Amazon EKS cluster, deploy containerized applications, configure ingress, and implement auto-scaling. Essential for modern microservices architectures.</p>
@@ -130,9 +136,9 @@
             <h2 id="step-by-step-instructions">Step-by-Step Instructions</h2>
 
             <div class="guide-step">
-              <div class="step-number">1</div>
+              <div class="step-number"><a href="#step-1">1</a></div>
               <div class="step-content">
-                <h3>Create EKS Cluster</h3>
+                <h3 id="step-1">Create EKS Cluster</h3>
                 <ul class="guide-list">
                   <li>Use eksctl to create cluster: eksctl create cluster</li>
                   <li>Or use AWS Console/Terraform for more control</li>
@@ -144,9 +150,9 @@
             </div>
 
             <div class="guide-step">
-              <div class="step-number">2</div>
+              <div class="step-number"><a href="#step-2">2</a></div>
               <div class="step-content">
-                <h3>Configure kubectl Access</h3>
+                <h3 id="step-2">Configure kubectl Access</h3>
                 <ul class="guide-list">
                   <li>Update kubeconfig: aws eks update-kubeconfig --name cluster-name</li>
                   <li>Verify connection: kubectl get nodes</li>
@@ -157,9 +163,9 @@
             </div>
 
             <div class="guide-step">
-              <div class="step-number">3</div>
+              <div class="step-number"><a href="#step-3">3</a></div>
               <div class="step-content">
-                <h3>Deploy Your Application</h3>
+                <h3 id="step-3">Deploy Your Application</h3>
                 <ul class="guide-list">
                   <li>Push container image to ECR</li>
                   <li>Create Kubernetes Deployment manifest</li>
@@ -171,9 +177,9 @@
             </div>
 
             <div class="guide-step">
-              <div class="step-number">4</div>
+              <div class="step-number"><a href="#step-4">4</a></div>
               <div class="step-content">
-                <h3>Set Up ALB Ingress Controller</h3>
+                <h3 id="step-4">Set Up ALB Ingress Controller</h3>
                 <ul class="guide-list">
                   <li>Install AWS Load Balancer Controller</li>
                   <li>Create IAM OIDC provider for the cluster</li>
@@ -185,9 +191,9 @@
             </div>
 
             <div class="guide-step">
-              <div class="step-number">5</div>
+              <div class="step-number"><a href="#step-5">5</a></div>
               <div class="step-content">
-                <h3>Implement Auto Scaling</h3>
+                <h3 id="step-5">Implement Auto Scaling</h3>
                 <ul class="guide-list">
                   <li>Deploy Metrics Server for resource metrics</li>
                   <li>Create Horizontal Pod Autoscaler (HPA)</li>
@@ -199,9 +205,9 @@
             </div>
 
             <div class="guide-step">
-              <div class="step-number">6</div>
+              <div class="step-number"><a href="#step-6">6</a></div>
               <div class="step-content">
-                <h3>Configure Logging and Monitoring</h3>
+                <h3 id="step-6">Configure Logging and Monitoring</h3>
                 <ul class="guide-list">
                   <li>Enable Control Plane logging to CloudWatch</li>
                   <li>Deploy CloudWatch Container Insights</li>
@@ -234,31 +240,31 @@
                 <span class="code-label">cluster-config.yaml</span>
                 <span class="code-lang">YAML</span>
               </div>
-              <pre><code>apiVersion: eksctl.io/v1alpha5
-kind: ClusterConfig
+              <pre><code><span class="variable">apiVersion</span>: eksctl.io/v1alpha5
+<span class="variable">kind</span>: ClusterConfig
 
-metadata:
-  name: my-cluster
-  region: us-east-1
-  version: "1.28"
+<span class="variable">metadata</span>:
+  <span class="variable">name</span>: my-cluster
+  <span class="variable">region</span>: us-east-1
+  <span class="variable">version</span>: <span class="string">"1.28"</span>
 
-managedNodeGroups:
-  - name: ng-1
-    instanceType: t3.medium
-    desiredCapacity: 2
-    minSize: 1
-    maxSize: 4
-    volumeSize: 50
-    ssh:
-      allow: false
-    iam:
-      withAddonPolicies:
-        albIngress: true
-        cloudWatch: true
+<span class="variable">managedNodeGroups</span>:
+  - <span class="variable">name</span>: ng-1
+    <span class="variable">instanceType</span>: t3.medium
+    <span class="variable">desiredCapacity</span>: <span class="number">2</span>
+    <span class="variable">minSize</span>: <span class="number">1</span>
+    <span class="variable">maxSize</span>: <span class="number">4</span>
+    <span class="variable">volumeSize</span>: <span class="number">50</span>
+    <span class="variable">ssh</span>:
+      <span class="variable">allow</span>: <span class="keyword">false</span>
+    <span class="variable">iam</span>:
+      <span class="variable">withAddonPolicies</span>:
+        <span class="variable">albIngress</span>: <span class="keyword">true</span>
+        <span class="variable">cloudWatch</span>: <span class="keyword">true</span>
 
-cloudWatch:
-  clusterLogging:
-    enableTypes: ["api", "audit", "authenticator"]</code></pre>
+<span class="variable">cloudWatch</span>:
+  <span class="variable">clusterLogging</span>:
+    <span class="variable">enableTypes</span>: [<span class="string">"api"</span>, <span class="string">"audit"</span>, <span class="string">"authenticator"</span>]</code></pre>
             </div>
 
             <h3>Kubernetes Deployment Manifest</h3>
@@ -267,52 +273,52 @@ cloudWatch:
                 <span class="code-label">deployment.yaml</span>
                 <span class="code-lang">YAML</span>
               </div>
-              <pre><code>apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: myapp
-  labels:
-    app: myapp
-spec:
-  replicas: 3
-  selector:
-    matchLabels:
-      app: myapp
-  template:
-    metadata:
-      labels:
-        app: myapp
-    spec:
-      containers:
-      - name: myapp
-        image: 123456789.dkr.ecr.us-east-1.amazonaws.com/myapp:latest
-        ports:
-        - containerPort: 8080
-        resources:
-          requests:
-            memory: "128Mi"
-            cpu: "100m"
-          limits:
-            memory: "256Mi"
-            cpu: "500m"
-        livenessProbe:
-          httpGet:
-            path: /health
-            port: 8080
-          initialDelaySeconds: 30
-          periodSeconds: 10
+              <pre><code><span class="variable">apiVersion</span>: apps/v1
+<span class="variable">kind</span>: Deployment
+<span class="variable">metadata</span>:
+  <span class="variable">name</span>: myapp
+  <span class="variable">labels</span>:
+    <span class="variable">app</span>: myapp
+<span class="variable">spec</span>:
+  <span class="variable">replicas</span>: <span class="number">3</span>
+  <span class="variable">selector</span>:
+    <span class="variable">matchLabels</span>:
+      <span class="variable">app</span>: myapp
+  <span class="variable">template</span>:
+    <span class="variable">metadata</span>:
+      <span class="variable">labels</span>:
+        <span class="variable">app</span>: myapp
+    <span class="variable">spec</span>:
+      <span class="variable">containers</span>:
+      - <span class="variable">name</span>: myapp
+        <span class="variable">image</span>: 123456789.dkr.ecr.us-east-1.amazonaws.com/myapp:latest
+        <span class="variable">ports</span>:
+        - <span class="variable">containerPort</span>: <span class="number">8080</span>
+        <span class="variable">resources</span>:
+          <span class="variable">requests</span>:
+            <span class="variable">memory</span>: <span class="string">"128Mi"</span>
+            <span class="variable">cpu</span>: <span class="string">"100m"</span>
+          <span class="variable">limits</span>:
+            <span class="variable">memory</span>: <span class="string">"256Mi"</span>
+            <span class="variable">cpu</span>: <span class="string">"500m"</span>
+        <span class="variable">livenessProbe</span>:
+          <span class="variable">httpGet</span>:
+            <span class="variable">path</span>: /health
+            <span class="variable">port</span>: <span class="number">8080</span>
+          <span class="variable">initialDelaySeconds</span>: <span class="number">30</span>
+          <span class="variable">periodSeconds</span>: <span class="number">10</span>
 ---
-apiVersion: v1
-kind: Service
-metadata:
-  name: myapp-service
-spec:
-  type: ClusterIP
-  selector:
-    app: myapp
-  ports:
-  - port: 80
-    targetPort: 8080</code></pre>
+<span class="variable">apiVersion</span>: v1
+<span class="variable">kind</span>: Service
+<span class="variable">metadata</span>:
+  <span class="variable">name</span>: myapp-service
+<span class="variable">spec</span>:
+  <span class="variable">type</span>: ClusterIP
+  <span class="variable">selector</span>:
+    <span class="variable">app</span>: myapp
+  <span class="variable">ports</span>:
+  - <span class="variable">port</span>: <span class="number">80</span>
+    <span class="variable">targetPort</span>: <span class="number">8080</span></code></pre>
             </div>
 
             <h3>ALB Ingress Configuration</h3>
@@ -321,28 +327,28 @@ spec:
                 <span class="code-label">ingress.yaml</span>
                 <span class="code-lang">YAML</span>
               </div>
-              <pre><code>apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  name: myapp-ingress
-  annotations:
+              <pre><code><span class="variable">apiVersion</span>: networking.k8s.io/v1
+<span class="variable">kind</span>: Ingress
+<span class="variable">metadata</span>:
+  <span class="variable">name</span>: myapp-ingress
+  <span class="variable">annotations</span>:
     kubernetes.io/ingress.class: alb
     alb.ingress.kubernetes.io/scheme: internet-facing
     alb.ingress.kubernetes.io/target-type: ip
     alb.ingress.kubernetes.io/healthcheck-path: /health
     alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:us-east-1:123456789:certificate/xxx
-spec:
-  rules:
-  - host: myapp.example.com
-    http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: myapp-service
-            port:
-              number: 80</code></pre>
+<span class="variable">spec</span>:
+  <span class="variable">rules</span>:
+  - <span class="variable">host</span>: myapp.example.com
+    <span class="variable">http</span>:
+      <span class="variable">paths</span>:
+      - <span class="variable">path</span>: /
+        <span class="variable">pathType</span>: Prefix
+        <span class="variable">backend</span>:
+          <span class="variable">service</span>:
+            <span class="variable">name</span>: myapp-service
+            <span class="variable">port</span>:
+              <span class="variable">number</span>: <span class="number">80</span></code></pre>
             </div>
 
             <h3>Horizontal Pod Autoscaler</h3>
@@ -351,30 +357,30 @@ spec:
                 <span class="code-label">hpa.yaml</span>
                 <span class="code-lang">YAML</span>
               </div>
-              <pre><code>apiVersion: autoscaling/v2
-kind: HorizontalPodAutoscaler
-metadata:
-  name: myapp-hpa
-spec:
-  scaleTargetRef:
-    apiVersion: apps/v1
-    kind: Deployment
-    name: myapp
-  minReplicas: 2
-  maxReplicas: 10
-  metrics:
-  - type: Resource
-    resource:
-      name: cpu
-      target:
-        type: Utilization
-        averageUtilization: 70
-  - type: Resource
-    resource:
-      name: memory
-      target:
-        type: Utilization
-        averageUtilization: 80</code></pre>
+              <pre><code><span class="variable">apiVersion</span>: autoscaling/v2
+<span class="variable">kind</span>: HorizontalPodAutoscaler
+<span class="variable">metadata</span>:
+  <span class="variable">name</span>: myapp-hpa
+<span class="variable">spec</span>:
+  <span class="variable">scaleTargetRef</span>:
+    <span class="variable">apiVersion</span>: apps/v1
+    <span class="variable">kind</span>: Deployment
+    <span class="variable">name</span>: myapp
+  <span class="variable">minReplicas</span>: <span class="number">2</span>
+  <span class="variable">maxReplicas</span>: <span class="number">10</span>
+  <span class="variable">metrics</span>:
+  - <span class="variable">type</span>: Resource
+    <span class="variable">resource</span>:
+      <span class="variable">name</span>: cpu
+      <span class="variable">target</span>:
+        <span class="variable">type</span>: Utilization
+        <span class="variable">averageUtilization</span>: <span class="number">70</span>
+  - <span class="variable">type</span>: Resource
+    <span class="variable">resource</span>:
+      <span class="variable">name</span>: memory
+      <span class="variable">target</span>:
+        <span class="variable">type</span>: Utilization
+        <span class="variable">averageUtilization</span>: <span class="number">80</span></code></pre>
             </div>
 
             <h3>Essential kubectl Commands</h3>
@@ -383,26 +389,26 @@ spec:
                 <span class="code-label">Terminal Commands</span>
                 <span class="code-lang">BASH</span>
               </div>
-              <pre><code># Create cluster
+              <pre><code><span class="comment"># Create cluster</span>
 eksctl create cluster -f cluster-config.yaml
 
-# Update kubeconfig
-aws eks update-kubeconfig --name my-cluster --region us-east-1
+<span class="comment"># Update kubeconfig</span>
+<span class="keyword">aws</span> eks update-kubeconfig <span class="variable">--name</span> my-cluster <span class="variable">--region</span> us-east-1
 
-# Deploy application
+<span class="comment"># Deploy application</span>
 kubectl apply -f deployment.yaml
 kubectl apply -f ingress.yaml
 
-# Check status
+<span class="comment"># Check status</span>
 kubectl get pods
 kubectl get svc
 kubectl get ingress
 
-# View logs
+<span class="comment"># View logs</span>
 kubectl logs -f deployment/myapp
 
-# Scale deployment
-kubectl scale deployment myapp --replicas=5</code></pre>
+<span class="comment"># Scale deployment</span>
+kubectl scale deployment myapp <span class="variable">--replicas</span>=<span class="number">5</span></code></pre>
             </div>
           </div>
 
@@ -418,15 +424,9 @@ kubectl scale deployment myapp --replicas=5</code></pre>
           </div>
 
           <div class="guide-navigation">
-            <a href="project-multi-region-active-active.html" class="guide-nav-link">&larr; Previous Project</a>
-            <a href="project-realtime-data-pipeline.html" class="guide-nav-link">Next Project &rarr;</a>
+            <a href="project-multi-region-active-active.html" class="guide-nav-link guide-nav-prev">&larr; Previous Project</a>
+            <a href="project-realtime-data-pipeline.html" class="guide-nav-link guide-nav-next">Next Project &rarr;</a>
           </div>
-          <aside class="guide-aside" data-ui>
-            <nav aria-label="On this page">
-              <p class="guide-aside-title">On this page</p>
-              <ol><li><a href="#project-overview">Project Overview</a></li><li><a href="#prerequisites">Prerequisites</a></li><li><a href="#architecture">Architecture</a></li><li><a href="#step-by-step-instructions">Step-by-Step Instructions</a></li><li><a href="#tips">Tips</a></li><li><a href="#code-examples">Code Examples</a></li><li><a href="#what-youll-learn">What You'll Learn</a></li></ol>
-            </nav>
-          </aside>
         </div>
       </div>
     </section>

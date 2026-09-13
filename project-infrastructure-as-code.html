@@ -58,6 +58,12 @@
     <section class="section">
       <div class="container">
         <div class="project-guide">
+          <aside class="guide-aside" data-ui>
+            <nav aria-label="On this page">
+              <p class="guide-aside-title">On this page</p>
+              <ol><li><a href="#project-overview">Project Overview</a></li><li><a href="#prerequisites">Prerequisites</a></li><li><a href="#choose-your-tool">Choose Your Tool</a></li><li><a href="#step-by-step-instructions">Step-by-Step Instructions</a></li><li><a href="#tips">Tips</a></li><li><a href="#code-examples">Code Examples</a></li><li><a href="#what-youll-learn">What You'll Learn</a></li></ol>
+            </nav>
+          </aside>
           <div class="guide-overview">
             <h2 id="project-overview">Project Overview</h2>
             <p>Define your entire infrastructure in code, enabling version control, reproducibility, and automated deployments. A critical skill for any cloud architect.</p>
@@ -127,9 +133,9 @@
             <h2 id="step-by-step-instructions">Step-by-Step Instructions</h2>
 
             <div class="guide-step">
-              <div class="step-number">1</div>
+              <div class="step-number"><a href="#step-1">1</a></div>
               <div class="step-content">
-                <h3>Start with a Simple Template</h3>
+                <h3 id="step-1">Start with a Simple Template</h3>
                 <ul class="guide-list">
                   <li>Create a template that deploys a single S3 bucket</li>
                   <li>Define the AWSTemplateFormatVersion and Description</li>
@@ -141,9 +147,9 @@
             </div>
 
             <div class="guide-step">
-              <div class="step-number">2</div>
+              <div class="step-number"><a href="#step-2">2</a></div>
               <div class="step-content">
-                <h3>Add Parameters and Outputs</h3>
+                <h3 id="step-2">Add Parameters and Outputs</h3>
                 <ul class="guide-list">
                   <li>Add Parameters section for customizable values</li>
                   <li>Use parameter types (String, Number, AWS::SSM::Parameter::Value)</li>
@@ -154,9 +160,9 @@
             </div>
 
             <div class="guide-step">
-              <div class="step-number">3</div>
+              <div class="step-number"><a href="#step-3">3</a></div>
               <div class="step-content">
-                <h3>Build a VPC Template</h3>
+                <h3 id="step-3">Build a VPC Template</h3>
                 <ul class="guide-list">
                   <li>Define VPC with CIDR block</li>
                   <li>Create public and private subnets</li>
@@ -168,9 +174,9 @@
             </div>
 
             <div class="guide-step">
-              <div class="step-number">4</div>
+              <div class="step-number"><a href="#step-4">4</a></div>
               <div class="step-content">
-                <h3>Add Compute and Database Resources</h3>
+                <h3 id="step-4">Add Compute and Database Resources</h3>
                 <ul class="guide-list">
                   <li>Add EC2 instances or Lambda functions</li>
                   <li>Define security groups with proper ingress/egress</li>
@@ -182,9 +188,9 @@
             </div>
 
             <div class="guide-step">
-              <div class="step-number">5</div>
+              <div class="step-number"><a href="#step-5">5</a></div>
               <div class="step-content">
-                <h3>Implement Nested Stacks or Modules</h3>
+                <h3 id="step-5">Implement Nested Stacks or Modules</h3>
                 <ul class="guide-list">
                   <li>Break large templates into nested stacks</li>
                   <li>Store child templates in S3</li>
@@ -196,9 +202,9 @@
             </div>
 
             <div class="guide-step">
-              <div class="step-number">6</div>
+              <div class="step-number"><a href="#step-6">6</a></div>
               <div class="step-content">
-                <h3>Set Up CI/CD for Infrastructure</h3>
+                <h3 id="step-6">Set Up CI/CD for Infrastructure</h3>
                 <ul class="guide-list">
                   <li>Store templates in Git repository</li>
                   <li>Use CloudFormation change sets for previewing changes</li>
@@ -231,53 +237,53 @@
                 <span class="code-label">vpc-template.yaml</span>
                 <span class="code-lang">YAML</span>
               </div>
-              <pre><code>AWSTemplateFormatVersion: '2010-09-09'
-Description: VPC with public and private subnets
+              <pre><code><span class="variable">AWSTemplateFormatVersion</span>: <span class="string">'2010-09-09'</span>
+<span class="variable">Description</span>: VPC with public and private subnets
 
-Parameters:
-  VpcCidr:
-    Type: String
-    Default: 10.0.0.0/16
+<span class="variable">Parameters</span>:
+  <span class="variable">VpcCidr</span>:
+    <span class="variable">Type</span>: String
+    <span class="variable">Default</span>: 10.0.0.0/16
 
-Resources:
-  VPC:
-    Type: AWS::EC2::VPC
-    Properties:
-      CidrBlock: !Ref VpcCidr
-      EnableDnsHostnames: true
-      Tags:
-        - Key: Name
-          Value: !Sub ${AWS::StackName}-vpc
+<span class="variable">Resources</span>:
+  <span class="variable">VPC</span>:
+    <span class="variable">Type</span>: AWS::EC2::VPC
+    <span class="variable">Properties</span>:
+      <span class="variable">CidrBlock</span>: !Ref VpcCidr
+      <span class="variable">EnableDnsHostnames</span>: <span class="keyword">true</span>
+      <span class="variable">Tags</span>:
+        - <span class="variable">Key</span>: Name
+          <span class="variable">Value</span>: !Sub ${AWS::StackName}-vpc
 
-  PublicSubnet:
-    Type: AWS::EC2::Subnet
-    Properties:
-      VpcId: !Ref VPC
-      CidrBlock: !Select [0, !Cidr [!Ref VpcCidr, 4, 8]]
-      AvailabilityZone: !Select [0, !GetAZs '']
-      MapPublicIpOnLaunch: true
+  <span class="variable">PublicSubnet</span>:
+    <span class="variable">Type</span>: AWS::EC2::Subnet
+    <span class="variable">Properties</span>:
+      <span class="variable">VpcId</span>: !Ref VPC
+      <span class="variable">CidrBlock</span>: !Select [<span class="number">0</span>, !Cidr [!Ref VpcCidr, <span class="number">4</span>, <span class="number">8</span>]]
+      <span class="variable">AvailabilityZone</span>: !Select [<span class="number">0</span>, !GetAZs <span class="string">''</span>]
+      <span class="variable">MapPublicIpOnLaunch</span>: <span class="keyword">true</span>
 
-  PrivateSubnet:
-    Type: AWS::EC2::Subnet
-    Properties:
-      VpcId: !Ref VPC
-      CidrBlock: !Select [1, !Cidr [!Ref VpcCidr, 4, 8]]
-      AvailabilityZone: !Select [0, !GetAZs '']
+  <span class="variable">PrivateSubnet</span>:
+    <span class="variable">Type</span>: AWS::EC2::Subnet
+    <span class="variable">Properties</span>:
+      <span class="variable">VpcId</span>: !Ref VPC
+      <span class="variable">CidrBlock</span>: !Select [<span class="number">1</span>, !Cidr [!Ref VpcCidr, <span class="number">4</span>, <span class="number">8</span>]]
+      <span class="variable">AvailabilityZone</span>: !Select [<span class="number">0</span>, !GetAZs <span class="string">''</span>]
 
-  InternetGateway:
-    Type: AWS::EC2::InternetGateway
+  <span class="variable">InternetGateway</span>:
+    <span class="variable">Type</span>: AWS::EC2::InternetGateway
 
-  VPCGatewayAttachment:
-    Type: AWS::EC2::VPCGatewayAttachment
-    Properties:
-      VpcId: !Ref VPC
-      InternetGatewayId: !Ref InternetGateway
+  <span class="variable">VPCGatewayAttachment</span>:
+    <span class="variable">Type</span>: AWS::EC2::VPCGatewayAttachment
+    <span class="variable">Properties</span>:
+      <span class="variable">VpcId</span>: !Ref VPC
+      <span class="variable">InternetGatewayId</span>: !Ref InternetGateway
 
-Outputs:
-  VpcId:
-    Value: !Ref VPC
-    Export:
-      Name: !Sub ${AWS::StackName}-VpcId</code></pre>
+<span class="variable">Outputs</span>:
+  <span class="variable">VpcId</span>:
+    <span class="variable">Value</span>: !Ref VPC
+    <span class="variable">Export</span>:
+      <span class="variable">Name</span>: !Sub ${AWS::StackName}-VpcId</code></pre>
             </div>
 
             <h3>Terraform AWS Configuration</h3>
@@ -286,49 +292,49 @@ Outputs:
                 <span class="code-label">main.tf</span>
                 <span class="code-lang">HCL</span>
               </div>
-              <pre><code>terraform {
+              <pre><code><span class="keyword">terraform</span> {
   required_providers {
     aws = {
-      source  = "hashicorp/aws"
-      version = "~> 5.0"
+      source  = <span class="string">"hashicorp/aws"</span>
+      version = <span class="string">"~> 5.0"</span>
     }
   }
-  backend "s3" {
-    bucket = "my-terraform-state"
-    key    = "vpc/terraform.tfstate"
-    region = "us-east-1"
+  <span class="keyword">backend</span> <span class="string">"s3"</span> {
+    bucket = <span class="string">"my-terraform-state"</span>
+    key    = <span class="string">"vpc/terraform.tfstate"</span>
+    region = <span class="string">"us-east-1"</span>
   }
 }
 
-provider "aws" {
+<span class="keyword">provider</span> <span class="string">"aws"</span> {
   region = var.aws_region
 }
 
-resource "aws_vpc" "main" {
+<span class="keyword">resource</span> <span class="string">"aws_vpc"</span> <span class="string">"main"</span> {
   cidr_block           = var.vpc_cidr
-  enable_dns_hostnames = true
+  enable_dns_hostnames = <span class="keyword">true</span>
 
   tags = {
-    Name = "${var.project_name}-vpc"
+    Name = <span class="string">"${var.project_name}-vpc"</span>
   }
 }
 
-resource "aws_subnet" "public" {
+<span class="keyword">resource</span> <span class="string">"aws_subnet"</span> <span class="string">"public"</span> {
   count             = length(var.availability_zones)
   vpc_id            = aws_vpc.main.id
-  cidr_block        = cidrsubnet(var.vpc_cidr, 4, count.index)
+  cidr_block        = cidrsubnet(var.vpc_cidr, <span class="number">4</span>, count.index)
   availability_zone = var.availability_zones[count.index]
 
   tags = {
-    Name = "${var.project_name}-public-${count.index + 1}"
+    Name = <span class="string">"${var.project_name}-public-${count.index + 1}"</span>
   }
 }
 
-resource "aws_internet_gateway" "main" {
+<span class="keyword">resource</span> <span class="string">"aws_internet_gateway"</span> <span class="string">"main"</span> {
   vpc_id = aws_vpc.main.id
 
   tags = {
-    Name = "${var.project_name}-igw"
+    Name = <span class="string">"${var.project_name}-igw"</span>
   }
 }</code></pre>
             </div>
@@ -339,33 +345,33 @@ resource "aws_internet_gateway" "main" {
                 <span class="code-label">lib/vpc-stack.ts</span>
                 <span class="code-lang">TYPESCRIPT</span>
               </div>
-              <pre><code>import * as cdk from 'aws-cdk-lib';
-import * as ec2 from 'aws-cdk-lib/aws-ec2';
+              <pre><code><span class="keyword">import</span> * <span class="keyword">as</span> cdk <span class="keyword">from</span> <span class="string">'aws-cdk-lib'</span>;
+<span class="keyword">import</span> * <span class="keyword">as</span> ec2 <span class="keyword">from</span> <span class="string">'aws-cdk-lib/aws-ec2'</span>;
 
-export class VpcStack extends cdk.Stack {
-  public readonly vpc: ec2.Vpc;
+<span class="keyword">export</span> <span class="keyword">class</span> VpcStack <span class="keyword">extends</span> cdk.Stack {
+  <span class="keyword">public</span> <span class="keyword">readonly</span> vpc: ec2.Vpc;
 
-  constructor(scope: cdk.App, id: string, props?: cdk.StackProps) {
-    super(scope, id, props);
+  <span class="function">constructor</span>(scope: cdk.App, id: string, props?: cdk.StackProps) {
+    <span class="function">super</span>(scope, id, props);
 
-    this.vpc = new ec2.Vpc(this, 'MainVpc', {
-      maxAzs: 2,
+    <span class="keyword">this</span>.vpc = <span class="keyword">new</span> ec2.<span class="function">Vpc</span>(<span class="keyword">this</span>, <span class="string">'MainVpc'</span>, {
+      maxAzs: <span class="number">2</span>,
       subnetConfiguration: [
         {
-          name: 'Public',
+          name: <span class="string">'Public'</span>,
           subnetType: ec2.SubnetType.PUBLIC,
-          cidrMask: 24,
+          cidrMask: <span class="number">24</span>,
         },
         {
-          name: 'Private',
+          name: <span class="string">'Private'</span>,
           subnetType: ec2.SubnetType.PRIVATE_WITH_EGRESS,
-          cidrMask: 24,
+          cidrMask: <span class="number">24</span>,
         },
       ],
     });
 
-    new cdk.CfnOutput(this, 'VpcId', {
-      value: this.vpc.vpcId,
+    <span class="keyword">new</span> cdk.<span class="function">CfnOutput</span>(<span class="keyword">this</span>, <span class="string">'VpcId'</span>, {
+      value: <span class="keyword">this</span>.vpc.vpcId,
     });
   }
 }</code></pre>
@@ -377,24 +383,24 @@ export class VpcStack extends cdk.Stack {
                 <span class="code-label">Terminal Commands</span>
                 <span class="code-lang">BASH</span>
               </div>
-              <pre><code># CloudFormation
-aws cloudformation deploy \
-    --template-file vpc-template.yaml \
-    --stack-name my-vpc-stack \
-    --parameter-overrides VpcCidr=10.0.0.0/16
+              <pre><code><span class="comment"># CloudFormation</span>
+<span class="keyword">aws</span> cloudformation deploy \
+    <span class="variable">--template-file</span> vpc-template.yaml \
+    <span class="variable">--stack-name</span> my-vpc-stack \
+    <span class="variable">--parameter-overrides</span> VpcCidr=10.0.0.0/16
 
-# View change set before applying
-aws cloudformation create-change-set \
-    --stack-name my-vpc-stack \
-    --change-set-name my-changes \
-    --template-body file://vpc-template.yaml
+<span class="comment"># View change set before applying</span>
+<span class="keyword">aws</span> cloudformation create-change-set \
+    <span class="variable">--stack-name</span> my-vpc-stack \
+    <span class="variable">--change-set-name</span> my-changes \
+    <span class="variable">--template-body</span> file://vpc-template.yaml
 
-# Terraform
+<span class="comment"># Terraform</span>
 terraform init
 terraform plan -out=tfplan
 terraform apply tfplan
 
-# CDK
+<span class="comment"># CDK</span>
 cdk bootstrap
 cdk diff
 cdk deploy</code></pre>
@@ -413,15 +419,9 @@ cdk deploy</code></pre>
           </div>
 
           <div class="guide-navigation">
-            <a href="project-serverless-rest-api.html" class="guide-nav-link">&larr; Previous Project</a>
-            <a href="project-multi-region-active-active.html" class="guide-nav-link">Next Project &rarr;</a>
+            <a href="project-serverless-rest-api.html" class="guide-nav-link guide-nav-prev">&larr; Previous Project</a>
+            <a href="project-multi-region-active-active.html" class="guide-nav-link guide-nav-next">Next Project &rarr;</a>
           </div>
-          <aside class="guide-aside" data-ui>
-            <nav aria-label="On this page">
-              <p class="guide-aside-title">On this page</p>
-              <ol><li><a href="#project-overview">Project Overview</a></li><li><a href="#prerequisites">Prerequisites</a></li><li><a href="#choose-your-tool">Choose Your Tool</a></li><li><a href="#step-by-step-instructions">Step-by-Step Instructions</a></li><li><a href="#tips">Tips</a></li><li><a href="#code-examples">Code Examples</a></li><li><a href="#what-youll-learn">What You'll Learn</a></li></ol>
-            </nav>
-          </aside>
         </div>
       </div>
     </section>

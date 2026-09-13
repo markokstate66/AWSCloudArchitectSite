@@ -64,6 +64,11 @@
     b.textContent = 'Copy';
     head.appendChild(b);
   }
+  /* --- guide rail: aria-current follows the h2 in view; >=64em only --- */
+var rl=[...d.querySelectorAll('.guide-aside a')].filter(a=>(a.t=d.querySelector(a.hash))),
+o=new IntersectionObserver(()=>{var k=rl[0];rl.forEach(a=>{if(a.t.getBoundingClientRect().top<120)k=a});rl.forEach(a=>a.ariaCurrent=a==k?'location':null)},{rootMargin:'-120px 0px 99999px'});
+if(innerWidth>1023)rl.forEach(a=>o.observe(a.t));
+
   d.addEventListener('click', function (e) {
     var b = e.target && e.target.closest && e.target.closest('.code-copy');
     if (!b) return;

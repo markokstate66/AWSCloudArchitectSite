@@ -58,6 +58,12 @@
     <section class="section">
       <div class="container">
         <div class="project-guide">
+          <aside class="guide-aside" data-ui>
+            <nav aria-label="On this page">
+              <p class="guide-aside-title">On this page</p>
+              <ol><li><a href="#project-overview">Project Overview</a></li><li><a href="#prerequisites">Prerequisites</a></li><li><a href="#architecture">Architecture</a></li><li><a href="#step-by-step-instructions">Step-by-Step Instructions</a></li><li><a href="#tips">Tips</a></li><li><a href="#code-examples">Code Examples</a></li><li><a href="#what-youll-learn">What You'll Learn</a></li></ol>
+            </nav>
+          </aside>
           <div class="guide-overview">
             <h2 id="project-overview">Project Overview</h2>
             <p>Deploy a static website using Amazon S3 for storage and CloudFront for global content delivery. This is the perfect first AWS project to build your portfolio.</p>
@@ -114,9 +120,9 @@
             <h2 id="step-by-step-instructions">Step-by-Step Instructions</h2>
 
             <div class="guide-step">
-              <div class="step-number">1</div>
+              <div class="step-number"><a href="#step-1">1</a></div>
               <div class="step-content">
-                <h3>Create an S3 Bucket</h3>
+                <h3 id="step-1">Create an S3 Bucket</h3>
                 <ul class="guide-list">
                   <li>Go to S3 in the AWS Console</li>
                   <li>Click "Create bucket"</li>
@@ -129,9 +135,9 @@
             </div>
 
             <div class="guide-step">
-              <div class="step-number">2</div>
+              <div class="step-number"><a href="#step-2">2</a></div>
               <div class="step-content">
-                <h3>Upload Your Website Files</h3>
+                <h3 id="step-2">Upload Your Website Files</h3>
                 <ul class="guide-list">
                   <li>Upload your HTML, CSS, and JS files to the bucket</li>
                   <li>Ensure index.html is in the root of the bucket</li>
@@ -141,9 +147,9 @@
             </div>
 
             <div class="guide-step">
-              <div class="step-number">3</div>
+              <div class="step-number"><a href="#step-3">3</a></div>
               <div class="step-content">
-                <h3>Create a CloudFront Distribution</h3>
+                <h3 id="step-3">Create a CloudFront Distribution</h3>
                 <ul class="guide-list">
                   <li>Go to CloudFront in the AWS Console</li>
                   <li>Click "Create distribution"</li>
@@ -156,9 +162,9 @@
             </div>
 
             <div class="guide-step">
-              <div class="step-number">4</div>
+              <div class="step-number"><a href="#step-4">4</a></div>
               <div class="step-content">
-                <h3>Configure S3 Bucket Policy</h3>
+                <h3 id="step-4">Configure S3 Bucket Policy</h3>
                 <ul class="guide-list">
                   <li>CloudFront will provide a bucket policy</li>
                   <li>Copy and apply it to your S3 bucket</li>
@@ -168,9 +174,9 @@
             </div>
 
             <div class="guide-step">
-              <div class="step-number">5</div>
+              <div class="step-number"><a href="#step-5">5</a></div>
               <div class="step-content">
-                <h3>Set Up Custom Domain (Optional)</h3>
+                <h3 id="step-5">Set Up Custom Domain (Optional)</h3>
                 <ul class="guide-list">
                   <li>Request an SSL certificate in ACM (must be in us-east-1)</li>
                   <li>Validate via DNS or email</li>
@@ -181,9 +187,9 @@
             </div>
 
             <div class="guide-step">
-              <div class="step-number">6</div>
+              <div class="step-number"><a href="#step-6">6</a></div>
               <div class="step-content">
-                <h3>Test and Verify</h3>
+                <h3 id="step-6">Test and Verify</h3>
                 <ul class="guide-list">
                   <li>Access your site via the CloudFront URL</li>
                   <li>Test from different locations if possible</li>
@@ -216,19 +222,19 @@
                 <span class="code-lang">JSON</span>
               </div>
               <pre><code>{
-    "Version": "2012-10-17",
-    "Statement": [
+    <span class="variable">"Version"</span>: <span class="string">"2012-10-17"</span>,
+    <span class="variable">"Statement"</span>: [
         {
-            "Sid": "AllowCloudFrontServicePrincipal",
-            "Effect": "Allow",
-            "Principal": {
-                "Service": "cloudfront.amazonaws.com"
+            <span class="variable">"Sid"</span>: <span class="string">"AllowCloudFrontServicePrincipal"</span>,
+            <span class="variable">"Effect"</span>: <span class="string">"Allow"</span>,
+            <span class="variable">"Principal"</span>: {
+                <span class="variable">"Service"</span>: <span class="string">"cloudfront.amazonaws.com"</span>
             },
-            "Action": "s3:GetObject",
-            "Resource": "arn:aws:s3:::your-bucket-name/*",
-            "Condition": {
-                "StringEquals": {
-                    "AWS:SourceArn": "arn:aws:cloudfront::ACCOUNT_ID:distribution/DISTRIBUTION_ID"
+            <span class="variable">"Action"</span>: <span class="string">"s3:GetObject"</span>,
+            <span class="variable">"Resource"</span>: <span class="string">"arn:aws:s3:::your-bucket-name/*"</span>,
+            <span class="variable">"Condition"</span>: {
+                <span class="variable">"StringEquals"</span>: {
+                    <span class="variable">"AWS:SourceArn"</span>: <span class="string">"arn:aws:cloudfront::ACCOUNT_ID:distribution/DISTRIBUTION_ID"</span>
                 }
             }
         }
@@ -242,16 +248,16 @@
                 <span class="code-label">Terminal Commands</span>
                 <span class="code-lang">BASH</span>
               </div>
-              <pre><code># Create S3 bucket
-aws s3 mb s3://my-portfolio-site-2024
+              <pre><code><span class="comment"># Create S3 bucket</span>
+<span class="keyword">aws</span> s3 mb s3://my-portfolio-site-2024
 
-# Upload website files
-aws s3 sync ./website s3://my-portfolio-site-2024
+<span class="comment"># Upload website files</span>
+<span class="keyword">aws</span> s3 sync ./website s3://my-portfolio-site-2024
 
-# Invalidate CloudFront cache
-aws cloudfront create-invalidation \
-    --distribution-id E1234567890 \
-    --paths "/*"</code></pre>
+<span class="comment"># Invalidate CloudFront cache</span>
+<span class="keyword">aws</span> cloudfront create-invalidation \
+    <span class="variable">--distribution-id</span> E1234567890 \
+    <span class="variable">--paths</span> <span class="string">"/*"</span></code></pre>
             </div>
 
             <h3>CloudFront Cache Invalidation Script</h3>
@@ -260,19 +266,19 @@ aws cloudfront create-invalidation \
                 <span class="code-label">deploy.sh</span>
                 <span class="code-lang">BASH</span>
               </div>
-              <pre><code>#!/bin/bash
-BUCKET="my-portfolio-site-2024"
-DISTRIBUTION_ID="E1234567890"
+              <pre><code><span class="comment">#!/bin/bash</span>
+BUCKET=<span class="string">"my-portfolio-site-2024"</span>
+DISTRIBUTION_ID=<span class="string">"E1234567890"</span>
 
-# Sync files to S3
-aws s3 sync ./dist s3://$BUCKET --delete
+<span class="comment"># Sync files to S3</span>
+<span class="keyword">aws</span> s3 sync ./dist s3://$BUCKET <span class="variable">--delete</span>
 
-# Invalidate CloudFront cache
-aws cloudfront create-invalidation \
-    --distribution-id $DISTRIBUTION_ID \
-    --paths "/*"
+<span class="comment"># Invalidate CloudFront cache</span>
+<span class="keyword">aws</span> cloudfront create-invalidation \
+    <span class="variable">--distribution-id</span> <span class="variable">$DISTRIBUTION_ID</span> \
+    <span class="variable">--paths</span> <span class="string">"/*"</span>
 
-echo "Deployment complete!"</code></pre>
+<span class="keyword">echo</span> <span class="string">"Deployment complete!"</span></code></pre>
             </div>
           </div>
 
@@ -288,15 +294,9 @@ echo "Deployment complete!"</code></pre>
           </div>
 
           <div class="guide-navigation">
-            <a href="projects.html" class="guide-nav-link">&larr; Back to Projects</a>
-            <a href="project-serverless-contact-form.html" class="guide-nav-link">Next Project &rarr;</a>
+            <a href="projects.html" class="guide-nav-link guide-nav-index">&larr; Back to Projects</a>
+            <a href="project-serverless-contact-form.html" class="guide-nav-link guide-nav-next">Next Project &rarr;</a>
           </div>
-          <aside class="guide-aside" data-ui>
-            <nav aria-label="On this page">
-              <p class="guide-aside-title">On this page</p>
-              <ol><li><a href="#project-overview">Project Overview</a></li><li><a href="#prerequisites">Prerequisites</a></li><li><a href="#architecture">Architecture</a></li><li><a href="#step-by-step-instructions">Step-by-Step Instructions</a></li><li><a href="#tips">Tips</a></li><li><a href="#code-examples">Code Examples</a></li><li><a href="#what-youll-learn">What You'll Learn</a></li></ol>
-            </nav>
-          </aside>
         </div>
       </div>
     </section>

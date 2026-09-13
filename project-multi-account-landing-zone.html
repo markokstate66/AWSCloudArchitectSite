@@ -58,6 +58,12 @@
     <section class="section">
       <div class="container">
         <div class="project-guide">
+          <aside class="guide-aside" data-ui>
+            <nav aria-label="On this page">
+              <p class="guide-aside-title">On this page</p>
+              <ol><li><a href="#project-overview">Project Overview</a></li><li><a href="#prerequisites">Prerequisites</a></li><li><a href="#architecture">Architecture</a></li><li><a href="#step-by-step-instructions">Step-by-Step Instructions</a></li><li><a href="#tips">Tips</a></li><li><a href="#code-examples">Code Examples</a></li><li><a href="#what-youll-learn">What You'll Learn</a></li></ol>
+            </nav>
+          </aside>
           <div class="guide-overview">
             <h2 id="project-overview">Project Overview</h2>
             <p>Create a scalable, secure AWS multi-account structure using Control Tower, Organizations, and IAM Identity Center. Essential for enterprise environments.</p>
@@ -134,9 +140,9 @@
             <h2 id="step-by-step-instructions">Step-by-Step Instructions</h2>
 
             <div class="guide-step">
-              <div class="step-number">1</div>
+              <div class="step-number"><a href="#step-1">1</a></div>
               <div class="step-content">
-                <h3>Enable AWS Organizations</h3>
+                <h3 id="step-1">Enable AWS Organizations</h3>
                 <ul class="guide-list">
                   <li>Use a clean AWS account as management account</li>
                   <li>Enable AWS Organizations</li>
@@ -148,9 +154,9 @@
             </div>
 
             <div class="guide-step">
-              <div class="step-number">2</div>
+              <div class="step-number"><a href="#step-2">2</a></div>
               <div class="step-content">
-                <h3>Set Up AWS Control Tower</h3>
+                <h3 id="step-2">Set Up AWS Control Tower</h3>
                 <ul class="guide-list">
                   <li>Launch Control Tower from the console</li>
                   <li>Configure home region and governed regions</li>
@@ -162,9 +168,9 @@
             </div>
 
             <div class="guide-step">
-              <div class="step-number">3</div>
+              <div class="step-number"><a href="#step-3">3</a></div>
               <div class="step-content">
-                <h3>Design Organizational Unit Structure</h3>
+                <h3 id="step-3">Design Organizational Unit Structure</h3>
                 <ul class="guide-list">
                   <li>Create Security OU (shared security services)</li>
                   <li>Create Infrastructure OU (networking, shared services)</li>
@@ -176,9 +182,9 @@
             </div>
 
             <div class="guide-step">
-              <div class="step-number">4</div>
+              <div class="step-number"><a href="#step-4">4</a></div>
               <div class="step-content">
-                <h3>Configure Service Control Policies</h3>
+                <h3 id="step-4">Configure Service Control Policies</h3>
                 <ul class="guide-list">
                   <li>Create SCPs to enforce security guardrails</li>
                   <li>Deny actions: disabling CloudTrail, deleting VPC flow logs</li>
@@ -190,9 +196,9 @@
             </div>
 
             <div class="guide-step">
-              <div class="step-number">5</div>
+              <div class="step-number"><a href="#step-5">5</a></div>
               <div class="step-content">
-                <h3>Set Up IAM Identity Center</h3>
+                <h3 id="step-5">Set Up IAM Identity Center</h3>
                 <ul class="guide-list">
                   <li>Enable IAM Identity Center (formerly AWS SSO)</li>
                   <li>Configure identity source (built-in, AD, external IdP)</li>
@@ -204,9 +210,9 @@
             </div>
 
             <div class="guide-step">
-              <div class="step-number">6</div>
+              <div class="step-number"><a href="#step-6">6</a></div>
               <div class="step-content">
-                <h3>Implement Account Vending</h3>
+                <h3 id="step-6">Implement Account Vending</h3>
                 <ul class="guide-list">
                   <li>Use Account Factory in Control Tower</li>
                   <li>Or create Service Catalog products</li>
@@ -240,27 +246,27 @@
                 <span class="code-lang">JSON</span>
               </div>
               <pre><code>{
-    "Version": "2012-10-17",
-    "Statement": [
+    <span class="variable">"Version"</span>: <span class="string">"2012-10-17"</span>,
+    <span class="variable">"Statement"</span>: [
         {
-            "Sid": "DenyAllOutsideAllowedRegions",
-            "Effect": "Deny",
-            "NotAction": [
-                "iam:*",
-                "organizations:*",
-                "route53:*",
-                "budgets:*",
-                "support:*",
-                "cloudfront:*",
-                "globalaccelerator:*"
+            <span class="variable">"Sid"</span>: <span class="string">"DenyAllOutsideAllowedRegions"</span>,
+            <span class="variable">"Effect"</span>: <span class="string">"Deny"</span>,
+            <span class="variable">"NotAction"</span>: [
+                <span class="string">"iam:*"</span>,
+                <span class="string">"organizations:*"</span>,
+                <span class="string">"route53:*"</span>,
+                <span class="string">"budgets:*"</span>,
+                <span class="string">"support:*"</span>,
+                <span class="string">"cloudfront:*"</span>,
+                <span class="string">"globalaccelerator:*"</span>
             ],
-            "Resource": "*",
-            "Condition": {
-                "StringNotEquals": {
-                    "aws:RequestedRegion": [
-                        "us-east-1",
-                        "us-west-2",
-                        "eu-west-1"
+            <span class="variable">"Resource"</span>: <span class="string">"*"</span>,
+            <span class="variable">"Condition"</span>: {
+                <span class="variable">"StringNotEquals"</span>: {
+                    <span class="variable">"aws:RequestedRegion"</span>: [
+                        <span class="string">"us-east-1"</span>,
+                        <span class="string">"us-west-2"</span>,
+                        <span class="string">"eu-west-1"</span>
                     ]
                 }
             }
@@ -276,34 +282,34 @@
                 <span class="code-lang">JSON</span>
               </div>
               <pre><code>{
-    "Version": "2012-10-17",
-    "Statement": [
+    <span class="variable">"Version"</span>: <span class="string">"2012-10-17"</span>,
+    <span class="variable">"Statement"</span>: [
         {
-            "Sid": "ProtectCloudTrail",
-            "Effect": "Deny",
-            "Action": [
-                "cloudtrail:DeleteTrail",
-                "cloudtrail:StopLogging",
-                "cloudtrail:UpdateTrail"
+            <span class="variable">"Sid"</span>: <span class="string">"ProtectCloudTrail"</span>,
+            <span class="variable">"Effect"</span>: <span class="string">"Deny"</span>,
+            <span class="variable">"Action"</span>: [
+                <span class="string">"cloudtrail:DeleteTrail"</span>,
+                <span class="string">"cloudtrail:StopLogging"</span>,
+                <span class="string">"cloudtrail:UpdateTrail"</span>
             ],
-            "Resource": "*"
+            <span class="variable">"Resource"</span>: <span class="string">"*"</span>
         },
         {
-            "Sid": "ProtectConfig",
-            "Effect": "Deny",
-            "Action": [
-                "config:DeleteConfigRule",
-                "config:DeleteConfigurationRecorder",
-                "config:DeleteDeliveryChannel",
-                "config:StopConfigurationRecorder"
+            <span class="variable">"Sid"</span>: <span class="string">"ProtectConfig"</span>,
+            <span class="variable">"Effect"</span>: <span class="string">"Deny"</span>,
+            <span class="variable">"Action"</span>: [
+                <span class="string">"config:DeleteConfigRule"</span>,
+                <span class="string">"config:DeleteConfigurationRecorder"</span>,
+                <span class="string">"config:DeleteDeliveryChannel"</span>,
+                <span class="string">"config:StopConfigurationRecorder"</span>
             ],
-            "Resource": "*"
+            <span class="variable">"Resource"</span>: <span class="string">"*"</span>
         },
         {
-            "Sid": "DenyLeaveOrganization",
-            "Effect": "Deny",
-            "Action": "organizations:LeaveOrganization",
-            "Resource": "*"
+            <span class="variable">"Sid"</span>: <span class="string">"DenyLeaveOrganization"</span>,
+            <span class="variable">"Effect"</span>: <span class="string">"Deny"</span>,
+            <span class="variable">"Action"</span>: <span class="string">"organizations:LeaveOrganization"</span>,
+            <span class="variable">"Resource"</span>: <span class="string">"*"</span>
         }
     ]
 }</code></pre>
@@ -315,30 +321,30 @@
                 <span class="code-label">Terminal Commands</span>
                 <span class="code-lang">BASH</span>
               </div>
-              <pre><code># Get root ID
-ROOT_ID=$(aws organizations list-roots --query 'Roots[0].Id' --output text)
+              <pre><code><span class="comment"># Get root ID</span>
+ROOT_ID=$(<span class="keyword">aws</span> organizations list-roots <span class="variable">--query</span> <span class="string">'Roots[0].Id'</span> <span class="variable">--output</span> text)
 
-# Create OUs
-aws organizations create-organizational-unit \
-    --parent-id $ROOT_ID \
-    --name "Security"
+<span class="comment"># Create OUs</span>
+<span class="keyword">aws</span> organizations create-organizational-unit \
+    <span class="variable">--parent-id</span> <span class="variable">$ROOT_ID</span> \
+    <span class="variable">--name</span> <span class="string">"Security"</span>
 
-aws organizations create-organizational-unit \
-    --parent-id $ROOT_ID \
-    --name "Infrastructure"
+<span class="keyword">aws</span> organizations create-organizational-unit \
+    <span class="variable">--parent-id</span> <span class="variable">$ROOT_ID</span> \
+    <span class="variable">--name</span> <span class="string">"Infrastructure"</span>
 
-aws organizations create-organizational-unit \
-    --parent-id $ROOT_ID \
-    --name "Workloads"
+<span class="keyword">aws</span> organizations create-organizational-unit \
+    <span class="variable">--parent-id</span> <span class="variable">$ROOT_ID</span> \
+    <span class="variable">--name</span> <span class="string">"Workloads"</span>
 
-aws organizations create-organizational-unit \
-    --parent-id $ROOT_ID \
-    --name "Sandbox"
+<span class="keyword">aws</span> organizations create-organizational-unit \
+    <span class="variable">--parent-id</span> <span class="variable">$ROOT_ID</span> \
+    <span class="variable">--name</span> <span class="string">"Sandbox"</span>
 
-# Attach SCP to an OU
-aws organizations attach-policy \
-    --policy-id p-1234567 \
-    --target-id ou-xxxx-xxxxxxxx</code></pre>
+<span class="comment"># Attach SCP to an OU</span>
+<span class="keyword">aws</span> organizations attach-policy \
+    <span class="variable">--policy-id</span> p-1234567 \
+    <span class="variable">--target-id</span> ou-xxxx-xxxxxxxx</code></pre>
             </div>
 
             <h3>IAM Identity Center Permission Set</h3>
@@ -348,23 +354,23 @@ aws organizations attach-policy \
                 <span class="code-lang">JSON</span>
               </div>
               <pre><code>{
-    "Name": "AdministratorAccess",
-    "Description": "Full admin access to AWS accounts",
-    "SessionDuration": "PT4H",
-    "ManagedPolicies": [
-        "arn:aws:iam::aws:policy/AdministratorAccess"
+    <span class="variable">"Name"</span>: <span class="string">"AdministratorAccess"</span>,
+    <span class="variable">"Description"</span>: <span class="string">"Full admin access to AWS accounts"</span>,
+    <span class="variable">"SessionDuration"</span>: <span class="string">"PT4H"</span>,
+    <span class="variable">"ManagedPolicies"</span>: [
+        <span class="string">"arn:aws:iam::aws:policy/AdministratorAccess"</span>
     ],
-    "InlinePolicy": {
-        "Version": "2012-10-17",
-        "Statement": [
+    <span class="variable">"InlinePolicy"</span>: {
+        <span class="variable">"Version"</span>: <span class="string">"2012-10-17"</span>,
+        <span class="variable">"Statement"</span>: [
             {
-                "Sid": "DenyBillingAccess",
-                "Effect": "Deny",
-                "Action": [
-                    "aws-portal:*",
-                    "budgets:*"
+                <span class="variable">"Sid"</span>: <span class="string">"DenyBillingAccess"</span>,
+                <span class="variable">"Effect"</span>: <span class="string">"Deny"</span>,
+                <span class="variable">"Action"</span>: [
+                    <span class="string">"aws-portal:*"</span>,
+                    <span class="string">"budgets:*"</span>
                 ],
-                "Resource": "*"
+                <span class="variable">"Resource"</span>: <span class="string">"*"</span>
             }
         ]
     }
@@ -377,39 +383,39 @@ aws organizations attach-policy \
                 <span class="code-label">account-baseline.yaml</span>
                 <span class="code-lang">YAML</span>
               </div>
-              <pre><code>AWSTemplateFormatVersion: '2010-09-09'
-Description: Baseline configuration for new accounts
+              <pre><code><span class="variable">AWSTemplateFormatVersion</span>: <span class="string">'2010-09-09'</span>
+<span class="variable">Description</span>: Baseline configuration for new accounts
 
-Resources:
-  # Enable AWS Config
-  ConfigRecorder:
-    Type: AWS::Config::ConfigurationRecorder
-    Properties:
-      Name: default
-      RoleARN: !GetAtt ConfigRole.Arn
-      RecordingGroup:
-        AllSupported: true
-        IncludeGlobalResourceTypes: true
+<span class="variable">Resources</span>:
+  <span class="comment"># Enable AWS Config</span>
+  <span class="variable">ConfigRecorder</span>:
+    <span class="variable">Type</span>: AWS::Config::ConfigurationRecorder
+    <span class="variable">Properties</span>:
+      <span class="variable">Name</span>: default
+      <span class="variable">RoleARN</span>: !GetAtt ConfigRole.Arn
+      <span class="variable">RecordingGroup</span>:
+        <span class="variable">AllSupported</span>: <span class="keyword">true</span>
+        <span class="variable">IncludeGlobalResourceTypes</span>: <span class="keyword">true</span>
 
-  # Security notification topic
-  SecurityAlertTopic:
-    Type: AWS::SNS::Topic
-    Properties:
-      TopicName: security-alerts
-      KmsMasterKeyId: alias/aws/sns
+  <span class="comment"># Security notification topic</span>
+  <span class="variable">SecurityAlertTopic</span>:
+    <span class="variable">Type</span>: AWS::SNS::Topic
+    <span class="variable">Properties</span>:
+      <span class="variable">TopicName</span>: security-alerts
+      <span class="variable">KmsMasterKeyId</span>: alias/aws/sns
 
-  # CloudWatch alarm for root login
-  RootLoginAlarm:
-    Type: AWS::CloudWatch::Alarm
-    Properties:
-      AlarmName: RootAccountUsage
-      MetricName: RootAccountUsage
-      Namespace: CloudTrailMetrics
-      Statistic: Sum
-      Period: 300
-      EvaluationPeriods: 1
-      Threshold: 1
-      AlarmActions:
+  <span class="comment"># CloudWatch alarm for root login</span>
+  <span class="variable">RootLoginAlarm</span>:
+    <span class="variable">Type</span>: AWS::CloudWatch::Alarm
+    <span class="variable">Properties</span>:
+      <span class="variable">AlarmName</span>: RootAccountUsage
+      <span class="variable">MetricName</span>: RootAccountUsage
+      <span class="variable">Namespace</span>: CloudTrailMetrics
+      <span class="variable">Statistic</span>: Sum
+      <span class="variable">Period</span>: <span class="number">300</span>
+      <span class="variable">EvaluationPeriods</span>: <span class="number">1</span>
+      <span class="variable">Threshold</span>: <span class="number">1</span>
+      <span class="variable">AlarmActions</span>:
         - !Ref SecurityAlertTopic</code></pre>
             </div>
           </div>
@@ -426,15 +432,9 @@ Resources:
           </div>
 
           <div class="guide-navigation">
-            <a href="project-realtime-data-pipeline.html" class="guide-nav-link">&larr; Previous Project</a>
-            <a href="projects.html" class="guide-nav-link">Back to All Projects</a>
+            <a href="project-realtime-data-pipeline.html" class="guide-nav-link guide-nav-prev">&larr; Previous Project</a>
+            <a href="projects.html" class="guide-nav-link guide-nav-index">Back to All Projects</a>
           </div>
-          <aside class="guide-aside" data-ui>
-            <nav aria-label="On this page">
-              <p class="guide-aside-title">On this page</p>
-              <ol><li><a href="#project-overview">Project Overview</a></li><li><a href="#prerequisites">Prerequisites</a></li><li><a href="#architecture">Architecture</a></li><li><a href="#step-by-step-instructions">Step-by-Step Instructions</a></li><li><a href="#tips">Tips</a></li><li><a href="#code-examples">Code Examples</a></li><li><a href="#what-youll-learn">What You'll Learn</a></li></ol>
-            </nav>
-          </aside>
         </div>
       </div>
     </section>

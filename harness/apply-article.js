@@ -12,9 +12,14 @@
 //      one-line form is ~110 B/page smaller than the three-line original);
 //   3. the two .guide-navigation links move off the shared .btn-* buttons onto .guide-nav-link
 //      so the pagination footer can be two quiet cards (href and link text untouched);
-//   4. an "On this page" rail as the LAST child of .project-guide, built from that page's own
+//   4. an "On this page" rail as the FIRST child of .project-guide, built from that page's own
 //      h2s. It is data-ui + <nav>, so integrity.js excludes its text from the content snapshot;
-//      its hrefs are fragment-only, which the gate also ignores.
+//      its hrefs are fragment-only, which the gate also ignores. DOM-first is what puts the chip
+//      row ahead of the article in tab order below 64em; at 64em+ the explicit grid placement
+//      still parks it in column 2, so no CSS `order` is needed anywhere;
+//   5. a stable id (step-1 ...) on every .guide-step h3, with the step number turned into an
+//      anchor to its own step so a step is deep-linkable. The number text is unchanged and the
+//      href is fragment-only, so neither the text nor the link snapshot moves.
 const fs = require('fs');
 const path = require('path');
 const ROOT = path.resolve(__dirname, '..');
@@ -67,11 +72,26 @@ function transformMain(block) {
       + `\n${ind}</dl>`;
   });
 
-  // 3 + 4. pagination footer classes, then the rail right after it (it is the last child)
-  block = block.replace(/<div class="guide-navigation">[\s\S]*?\n([ \t]*)<\/div>/, (nav, ind) => {
-    const cards = nav.replace(/ class="(?:btn-secondary|btn-primary|guide-nav-link)"/g, ' class="guide-nav-link"');
-    return `${cards}\n${rail(ind, toc)}`;
+  // 3. pagination footer classes: off the shared .btn-* buttons, plus a direction class taken
+  //    from the href so CSS can put an honest small-caps eyebrow over each frozen link text
+  //    (projects.html is the listing, not a neighbour). href and link text untouched.
+  block = block.replace(/<div class="guide-navigation">[\s\S]*?\n[ \t]*<\/div>/, (nav) => {
+    let k = 0;
+    return nav.replace(/<a href="([^"]+)" class="[^"]*">/g, (m, href) => {
+      const dir = /^projects\.html/.test(href) ? 'index' : (k ? 'next' : 'prev');
+      k++;
+      return `<a href="${href}" class="guide-nav-link guide-nav-${dir}">`;
+    });
   });
+
+  // 4. the rail, as the first child of .project-guide
+  block = block.replace(/([ \t]*)<div class="project-guide">\n/, (m, ind) =>
+    `${ind}<div class="project-guide">\n${rail(ind + '  ', toc)}\n`);
+
+  // 5. step h3 ids + the step number as an anchor to its own step
+  let n = 0;
+  block = block.replace(/<div class="step-number">(?:<a href="#step-\d+">)?([\s\S]*?)(?:<\/a>)?<\/div>([\s\S]*?)<h3(?: id="step-\d+")?>/g,
+    (m, num, mid) => { const id = `step-${++n}`; return `<div class="step-number"><a href="#${id}">${num}</a></div>${mid}<h3 id="${id}">`; });
   return block;
 }
 
@@ -82,7 +102,7 @@ for (const page of pages) {
   const raw = fs.readFileSync(file, 'utf8');
   const crlf = /\r\n/.test(raw);
   const before = raw.replace(/\r\n/g, '\n');
-  const s = before.replace(/<main id="main">[\s\S]*?<\/main>/, (m) => transformMain(m));
+  const s = before.replace(/<main\b[^>]*>[\s\S]*?<\/main>/, (m) => transformMain(m));
   results.push([page, s === before ? 'unchanged' : 'updated', s.length - before.length]);
   if (!CHECK && s !== before) fs.writeFileSync(file, crlf ? s.replace(/\n/g, '\r\n') : s);
 }

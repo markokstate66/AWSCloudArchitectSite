@@ -58,6 +58,12 @@
     <section class="section">
       <div class="container">
         <div class="project-guide">
+          <aside class="guide-aside" data-ui>
+            <nav aria-label="On this page">
+              <p class="guide-aside-title">On this page</p>
+              <ol><li><a href="#project-overview">Project Overview</a></li><li><a href="#prerequisites">Prerequisites</a></li><li><a href="#architecture">Architecture</a></li><li><a href="#step-by-step-instructions">Step-by-Step Instructions</a></li><li><a href="#tips">Tips</a></li><li><a href="#code-examples">Code Examples</a></li><li><a href="#what-youll-learn">What You'll Learn</a></li></ol>
+            </nav>
+          </aside>
           <div class="guide-overview">
             <h2 id="project-overview">Project Overview</h2>
             <p>Design and deploy a production-ready three-tier architecture with load balancing, auto scaling, and a managed database. This is a foundational pattern for enterprise applications.</p>
@@ -127,9 +133,9 @@
             <h2 id="step-by-step-instructions">Step-by-Step Instructions</h2>
 
             <div class="guide-step">
-              <div class="step-number">1</div>
+              <div class="step-number"><a href="#step-1">1</a></div>
               <div class="step-content">
-                <h3>Create VPC with Public and Private Subnets</h3>
+                <h3 id="step-1">Create VPC with Public and Private Subnets</h3>
                 <ul class="guide-list">
                   <li>Create a VPC with CIDR 10.0.0.0/16</li>
                   <li>Create 2 public subnets in different AZs (10.0.1.0/24, 10.0.2.0/24)</li>
@@ -142,9 +148,9 @@
             </div>
 
             <div class="guide-step">
-              <div class="step-number">2</div>
+              <div class="step-number"><a href="#step-2">2</a></div>
               <div class="step-content">
-                <h3>Set Up Application Load Balancer</h3>
+                <h3 id="step-2">Set Up Application Load Balancer</h3>
                 <ul class="guide-list">
                   <li>Create an ALB in the public subnets</li>
                   <li>Configure a target group for your instances</li>
@@ -156,9 +162,9 @@
             </div>
 
             <div class="guide-step">
-              <div class="step-number">3</div>
+              <div class="step-number"><a href="#step-3">3</a></div>
               <div class="step-content">
-                <h3>Create Launch Template</h3>
+                <h3 id="step-3">Create Launch Template</h3>
                 <ul class="guide-list">
                   <li>Create a launch template for your EC2 instances</li>
                   <li>Include user data script to install your application</li>
@@ -169,9 +175,9 @@
             </div>
 
             <div class="guide-step">
-              <div class="step-number">4</div>
+              <div class="step-number"><a href="#step-4">4</a></div>
               <div class="step-content">
-                <h3>Configure Auto Scaling Group</h3>
+                <h3 id="step-4">Configure Auto Scaling Group</h3>
                 <ul class="guide-list">
                   <li>Create an ASG using your launch template</li>
                   <li>Deploy across private subnets in multiple AZs</li>
@@ -183,9 +189,9 @@
             </div>
 
             <div class="guide-step">
-              <div class="step-number">5</div>
+              <div class="step-number"><a href="#step-5">5</a></div>
               <div class="step-content">
-                <h3>Deploy RDS Database</h3>
+                <h3 id="step-5">Deploy RDS Database</h3>
                 <ul class="guide-list">
                   <li>Create a DB subnet group using private subnets</li>
                   <li>Launch RDS MySQL or PostgreSQL instance</li>
@@ -197,9 +203,9 @@
             </div>
 
             <div class="guide-step">
-              <div class="step-number">6</div>
+              <div class="step-number"><a href="#step-6">6</a></div>
               <div class="step-content">
-                <h3>Test and Validate</h3>
+                <h3 id="step-6">Test and Validate</h3>
                 <ul class="guide-list">
                   <li>Access application via ALB DNS name</li>
                   <li>Test auto scaling by generating load</li>
@@ -232,31 +238,31 @@
                 <span class="code-label">vpc.yaml</span>
                 <span class="code-lang">YAML</span>
               </div>
-              <pre><code>AWSTemplateFormatVersion: '2010-09-09'
-Resources:
-  VPC:
-    Type: AWS::EC2::VPC
-    Properties:
-      CidrBlock: 10.0.0.0/16
-      EnableDnsHostnames: true
-      Tags:
-        - Key: Name
-          Value: three-tier-vpc
+              <pre><code><span class="variable">AWSTemplateFormatVersion</span>: <span class="string">'2010-09-09'</span>
+<span class="variable">Resources</span>:
+  <span class="variable">VPC</span>:
+    <span class="variable">Type</span>: AWS::EC2::VPC
+    <span class="variable">Properties</span>:
+      <span class="variable">CidrBlock</span>: 10.0.0.0/16
+      <span class="variable">EnableDnsHostnames</span>: <span class="keyword">true</span>
+      <span class="variable">Tags</span>:
+        - <span class="variable">Key</span>: Name
+          <span class="variable">Value</span>: three-tier-vpc
 
-  PublicSubnet1:
-    Type: AWS::EC2::Subnet
-    Properties:
-      VpcId: !Ref VPC
-      CidrBlock: 10.0.1.0/24
-      AvailabilityZone: !Select [0, !GetAZs '']
-      MapPublicIpOnLaunch: true
+  <span class="variable">PublicSubnet1</span>:
+    <span class="variable">Type</span>: AWS::EC2::Subnet
+    <span class="variable">Properties</span>:
+      <span class="variable">VpcId</span>: !Ref VPC
+      <span class="variable">CidrBlock</span>: 10.0.1.0/24
+      <span class="variable">AvailabilityZone</span>: !Select [<span class="number">0</span>, !GetAZs <span class="string">''</span>]
+      <span class="variable">MapPublicIpOnLaunch</span>: <span class="keyword">true</span>
 
-  PrivateSubnet1:
-    Type: AWS::EC2::Subnet
-    Properties:
-      VpcId: !Ref VPC
-      CidrBlock: 10.0.10.0/24
-      AvailabilityZone: !Select [0, !GetAZs '']</code></pre>
+  <span class="variable">PrivateSubnet1</span>:
+    <span class="variable">Type</span>: AWS::EC2::Subnet
+    <span class="variable">Properties</span>:
+      <span class="variable">VpcId</span>: !Ref VPC
+      <span class="variable">CidrBlock</span>: 10.0.10.0/24
+      <span class="variable">AvailabilityZone</span>: !Select [<span class="number">0</span>, !GetAZs <span class="string">''</span>]</code></pre>
             </div>
 
             <h3>Auto Scaling Group Configuration</h3>
@@ -265,32 +271,32 @@ Resources:
                 <span class="code-label">asg.yaml</span>
                 <span class="code-lang">YAML</span>
               </div>
-              <pre><code>AutoScalingGroup:
-  Type: AWS::AutoScaling::AutoScalingGroup
-  Properties:
-    LaunchTemplate:
-      LaunchTemplateId: !Ref LaunchTemplate
-      Version: !GetAtt LaunchTemplate.LatestVersionNumber
-    MinSize: 2
-    MaxSize: 4
-    DesiredCapacity: 2
-    VPCZoneIdentifier:
+              <pre><code><span class="variable">AutoScalingGroup</span>:
+  <span class="variable">Type</span>: AWS::AutoScaling::AutoScalingGroup
+  <span class="variable">Properties</span>:
+    <span class="variable">LaunchTemplate</span>:
+      <span class="variable">LaunchTemplateId</span>: !Ref LaunchTemplate
+      <span class="variable">Version</span>: !GetAtt LaunchTemplate.LatestVersionNumber
+    <span class="variable">MinSize</span>: <span class="number">2</span>
+    <span class="variable">MaxSize</span>: <span class="number">4</span>
+    <span class="variable">DesiredCapacity</span>: <span class="number">2</span>
+    <span class="variable">VPCZoneIdentifier</span>:
       - !Ref PrivateSubnet1
       - !Ref PrivateSubnet2
-    TargetGroupARNs:
+    <span class="variable">TargetGroupARNs</span>:
       - !Ref TargetGroup
-    HealthCheckType: ELB
-    HealthCheckGracePeriod: 300
+    <span class="variable">HealthCheckType</span>: ELB
+    <span class="variable">HealthCheckGracePeriod</span>: <span class="number">300</span>
 
-ScalingPolicy:
-  Type: AWS::AutoScaling::ScalingPolicy
-  Properties:
-    AutoScalingGroupName: !Ref AutoScalingGroup
-    PolicyType: TargetTrackingScaling
-    TargetTrackingConfiguration:
-      PredefinedMetricSpecification:
-        PredefinedMetricType: ASGAverageCPUUtilization
-      TargetValue: 70</code></pre>
+<span class="variable">ScalingPolicy</span>:
+  <span class="variable">Type</span>: AWS::AutoScaling::ScalingPolicy
+  <span class="variable">Properties</span>:
+    <span class="variable">AutoScalingGroupName</span>: !Ref AutoScalingGroup
+    <span class="variable">PolicyType</span>: TargetTrackingScaling
+    <span class="variable">TargetTrackingConfiguration</span>:
+      <span class="variable">PredefinedMetricSpecification</span>:
+        <span class="variable">PredefinedMetricType</span>: ASGAverageCPUUtilization
+      <span class="variable">TargetValue</span>: <span class="number">70</span></code></pre>
             </div>
 
             <h3>RDS Multi-AZ Configuration</h3>
@@ -299,22 +305,22 @@ ScalingPolicy:
                 <span class="code-label">rds.yaml</span>
                 <span class="code-lang">YAML</span>
               </div>
-              <pre><code>RDSInstance:
-  Type: AWS::RDS::DBInstance
-  Properties:
-    DBInstanceIdentifier: myapp-db
-    DBInstanceClass: db.t3.micro
-    Engine: mysql
-    EngineVersion: '8.0'
-    MasterUsername: admin
-    MasterUserPassword: !Ref DBPassword
-    AllocatedStorage: 20
-    MultiAZ: true
-    DBSubnetGroupName: !Ref DBSubnetGroup
-    VPCSecurityGroups:
+              <pre><code><span class="variable">RDSInstance</span>:
+  <span class="variable">Type</span>: AWS::RDS::DBInstance
+  <span class="variable">Properties</span>:
+    <span class="variable">DBInstanceIdentifier</span>: myapp-db
+    <span class="variable">DBInstanceClass</span>: db.t3.micro
+    <span class="variable">Engine</span>: mysql
+    <span class="variable">EngineVersion</span>: <span class="string">'8.0'</span>
+    <span class="variable">MasterUsername</span>: admin
+    <span class="variable">MasterUserPassword</span>: !Ref DBPassword
+    <span class="variable">AllocatedStorage</span>: <span class="number">20</span>
+    <span class="variable">MultiAZ</span>: <span class="keyword">true</span>
+    <span class="variable">DBSubnetGroupName</span>: !Ref DBSubnetGroup
+    <span class="variable">VPCSecurityGroups</span>:
       - !Ref DBSecurityGroup
-    BackupRetentionPeriod: 7
-    StorageEncrypted: true</code></pre>
+    <span class="variable">BackupRetentionPeriod</span>: <span class="number">7</span>
+    <span class="variable">StorageEncrypted</span>: <span class="keyword">true</span></code></pre>
             </div>
           </div>
 
@@ -330,15 +336,9 @@ ScalingPolicy:
           </div>
 
           <div class="guide-navigation">
-            <a href="project-ec2-web-server.html" class="guide-nav-link">&larr; Previous Project</a>
-            <a href="project-cicd-pipeline.html" class="guide-nav-link">Next Project &rarr;</a>
+            <a href="project-ec2-web-server.html" class="guide-nav-link guide-nav-prev">&larr; Previous Project</a>
+            <a href="project-cicd-pipeline.html" class="guide-nav-link guide-nav-next">Next Project &rarr;</a>
           </div>
-          <aside class="guide-aside" data-ui>
-            <nav aria-label="On this page">
-              <p class="guide-aside-title">On this page</p>
-              <ol><li><a href="#project-overview">Project Overview</a></li><li><a href="#prerequisites">Prerequisites</a></li><li><a href="#architecture">Architecture</a></li><li><a href="#step-by-step-instructions">Step-by-Step Instructions</a></li><li><a href="#tips">Tips</a></li><li><a href="#code-examples">Code Examples</a></li><li><a href="#what-youll-learn">What You'll Learn</a></li></ol>
-            </nav>
-          </aside>
         </div>
       </div>
     </section>

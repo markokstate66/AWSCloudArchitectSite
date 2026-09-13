@@ -58,6 +58,12 @@
     <section class="section">
       <div class="container">
         <div class="project-guide">
+          <aside class="guide-aside" data-ui>
+            <nav aria-label="On this page">
+              <p class="guide-aside-title">On this page</p>
+              <ol><li><a href="#project-overview">Project Overview</a></li><li><a href="#prerequisites">Prerequisites</a></li><li><a href="#architecture">Architecture</a></li><li><a href="#step-by-step-instructions">Step-by-Step Instructions</a></li><li><a href="#tips">Tips</a></li><li><a href="#code-examples">Code Examples</a></li><li><a href="#what-youll-learn">What You'll Learn</a></li></ol>
+            </nav>
+          </aside>
           <div class="guide-overview">
             <h2 id="project-overview">Project Overview</h2>
             <p>Create a fully serverless backend API that handles CRUD operations with authentication. Perfect for mobile apps, SPAs, or any application needing a REST backend.</p>
@@ -121,9 +127,9 @@
             <h2 id="step-by-step-instructions">Step-by-Step Instructions</h2>
 
             <div class="guide-step">
-              <div class="step-number">1</div>
+              <div class="step-number"><a href="#step-1">1</a></div>
               <div class="step-content">
-                <h3>Create DynamoDB Table</h3>
+                <h3 id="step-1">Create DynamoDB Table</h3>
                 <ul class="guide-list">
                   <li>Go to DynamoDB and create a new table</li>
                   <li>Choose an appropriate partition key (e.g., "id" or "userId")</li>
@@ -135,9 +141,9 @@
             </div>
 
             <div class="guide-step">
-              <div class="step-number">2</div>
+              <div class="step-number"><a href="#step-2">2</a></div>
               <div class="step-content">
-                <h3>Create Lambda Functions</h3>
+                <h3 id="step-2">Create Lambda Functions</h3>
                 <ul class="guide-list">
                   <li>Create separate functions: createItem, getItem, updateItem, deleteItem, listItems</li>
                   <li>Or create a single function that routes based on HTTP method</li>
@@ -149,9 +155,9 @@
             </div>
 
             <div class="guide-step">
-              <div class="step-number">3</div>
+              <div class="step-number"><a href="#step-3">3</a></div>
               <div class="step-content">
-                <h3>Set Up API Gateway</h3>
+                <h3 id="step-3">Set Up API Gateway</h3>
                 <ul class="guide-list">
                   <li>Create a REST API in API Gateway</li>
                   <li>Create resources (e.g., /items, /items/{id})</li>
@@ -163,9 +169,9 @@
             </div>
 
             <div class="guide-step">
-              <div class="step-number">4</div>
+              <div class="step-number"><a href="#step-4">4</a></div>
               <div class="step-content">
-                <h3>Configure Cognito Authentication</h3>
+                <h3 id="step-4">Configure Cognito Authentication</h3>
                 <ul class="guide-list">
                   <li>Create a Cognito User Pool</li>
                   <li>Configure sign-up and sign-in options</li>
@@ -177,9 +183,9 @@
             </div>
 
             <div class="guide-step">
-              <div class="step-number">5</div>
+              <div class="step-number"><a href="#step-5">5</a></div>
               <div class="step-content">
-                <h3>Deploy and Configure CORS</h3>
+                <h3 id="step-5">Deploy and Configure CORS</h3>
                 <ul class="guide-list">
                   <li>Enable CORS on API Gateway resources</li>
                   <li>Ensure Lambda returns CORS headers</li>
@@ -190,9 +196,9 @@
             </div>
 
             <div class="guide-step">
-              <div class="step-number">6</div>
+              <div class="step-number"><a href="#step-6">6</a></div>
               <div class="step-content">
-                <h3>Test with Postman or curl</h3>
+                <h3 id="step-6">Test with Postman or curl</h3>
                 <ul class="guide-list">
                   <li>Test unauthenticated endpoints first</li>
                   <li>Get a JWT token from Cognito</li>
@@ -225,58 +231,58 @@
                 <span class="code-label">lambda_function.py</span>
                 <span class="code-lang">PYTHON</span>
               </div>
-              <pre><code>import json
-import boto3
-import uuid
-from decimal import Decimal
+              <pre><code><span class="keyword">import</span> json
+<span class="keyword">import</span> boto3
+<span class="keyword">import</span> uuid
+<span class="keyword">from</span> decimal <span class="keyword">import</span> Decimal
 
-dynamodb = boto3.resource('dynamodb')
-table = dynamodb.Table('Items')
+dynamodb = boto3.<span class="function">resource</span>(<span class="string">'dynamodb'</span>)
+table = dynamodb.<span class="function">Table</span>(<span class="string">'Items'</span>)
 
-def lambda_handler(event, context):
-    http_method = event['httpMethod']
+<span class="keyword">def</span> <span class="function">lambda_handler</span>(event, context):
+    http_method = event[<span class="string">'httpMethod'</span>]
 
     try:
-        if http_method == 'GET':
-            if event.get('pathParameters'):
-                # Get single item
-                item_id = event['pathParameters']['id']
-                response = table.get_item(Key={'id': item_id})
-                return build_response(200, response.get('Item'))
+        <span class="keyword">if</span> http_method == <span class="string">'GET'</span>:
+            <span class="keyword">if</span> event.<span class="function">get</span>(<span class="string">'pathParameters'</span>):
+                <span class="comment"># Get single item</span>
+                item_id = event[<span class="string">'pathParameters'</span>][<span class="string">'id'</span>]
+                response = table.<span class="function">get_item</span>(Key={<span class="string">'id'</span>: item_id})
+                <span class="keyword">return</span> <span class="function">build_response</span>(<span class="number">200</span>, response.<span class="function">get</span>(<span class="string">'Item'</span>))
             else:
-                # List all items
-                response = table.scan()
-                return build_response(200, response.get('Items', []))
+                <span class="comment"># List all items</span>
+                response = table.<span class="function">scan</span>()
+                <span class="keyword">return</span> <span class="function">build_response</span>(<span class="number">200</span>, response.<span class="function">get</span>(<span class="string">'Items'</span>, []))
 
-        elif http_method == 'POST':
-            body = json.loads(event['body'])
-            body['id'] = str(uuid.uuid4())
-            table.put_item(Item=body)
-            return build_response(201, body)
+        <span class="keyword">elif</span> http_method == <span class="string">'POST'</span>:
+            body = json.<span class="function">loads</span>(event[<span class="string">'body'</span>])
+            body[<span class="string">'id'</span>] = <span class="function">str</span>(uuid.<span class="function">uuid4</span>())
+            table.<span class="function">put_item</span>(Item=body)
+            <span class="keyword">return</span> <span class="function">build_response</span>(<span class="number">201</span>, body)
 
-        elif http_method == 'PUT':
-            item_id = event['pathParameters']['id']
-            body = json.loads(event['body'])
-            body['id'] = item_id
-            table.put_item(Item=body)
-            return build_response(200, body)
+        <span class="keyword">elif</span> http_method == <span class="string">'PUT'</span>:
+            item_id = event[<span class="string">'pathParameters'</span>][<span class="string">'id'</span>]
+            body = json.<span class="function">loads</span>(event[<span class="string">'body'</span>])
+            body[<span class="string">'id'</span>] = item_id
+            table.<span class="function">put_item</span>(Item=body)
+            <span class="keyword">return</span> <span class="function">build_response</span>(<span class="number">200</span>, body)
 
-        elif http_method == 'DELETE':
-            item_id = event['pathParameters']['id']
-            table.delete_item(Key={'id': item_id})
-            return build_response(200, {'message': 'Deleted'})
+        <span class="keyword">elif</span> http_method == <span class="string">'DELETE'</span>:
+            item_id = event[<span class="string">'pathParameters'</span>][<span class="string">'id'</span>]
+            table.<span class="function">delete_item</span>(Key={<span class="string">'id'</span>: item_id})
+            <span class="keyword">return</span> <span class="function">build_response</span>(<span class="number">200</span>, {<span class="string">'message'</span>: <span class="string">'Deleted'</span>})
 
-    except Exception as e:
-        return build_response(500, {'error': str(e)})
+    <span class="keyword">except</span> Exception <span class="keyword">as</span> e:
+        <span class="keyword">return</span> <span class="function">build_response</span>(<span class="number">500</span>, {<span class="string">'error'</span>: <span class="function">str</span>(e)})
 
-def build_response(status_code, body):
-    return {
-        'statusCode': status_code,
-        'headers': {
-            'Content-Type': 'application/json',
-            'Access-Control-Allow-Origin': '*'
+<span class="keyword">def</span> <span class="function">build_response</span>(status_code, body):
+    <span class="keyword">return</span> {
+        <span class="string">'statusCode'</span>: status_code,
+        <span class="string">'headers'</span>: {
+            <span class="string">'Content-Type'</span>: <span class="string">'application/json'</span>,
+            <span class="string">'Access-Control-Allow-Origin'</span>: <span class="string">'*'</span>
         },
-        'body': json.dumps(body, default=str)
+        <span class="string">'body'</span>: json.<span class="function">dumps</span>(body, default=str)
     }</code></pre>
             </div>
 
@@ -286,17 +292,17 @@ def build_response(status_code, body):
                 <span class="code-label">Terminal Commands</span>
                 <span class="code-lang">BASH</span>
               </div>
-              <pre><code># Create DynamoDB table
-aws dynamodb create-table \
-    --table-name Items \
-    --attribute-definitions AttributeName=id,AttributeType=S \
-    --key-schema AttributeName=id,KeyType=HASH \
-    --billing-mode PAY_PER_REQUEST
+              <pre><code><span class="comment"># Create DynamoDB table</span>
+<span class="keyword">aws</span> dynamodb create-table \
+    <span class="variable">--table-name</span> Items \
+    <span class="variable">--attribute-definitions</span> AttributeName=id,AttributeType=S \
+    <span class="variable">--key-schema</span> AttributeName=id,KeyType=HASH \
+    <span class="variable">--billing-mode</span> PAY_PER_REQUEST
 
-# Enable point-in-time recovery
-aws dynamodb update-continuous-backups \
-    --table-name Items \
-    --point-in-time-recovery-specification PointInTimeRecoveryEnabled=true</code></pre>
+<span class="comment"># Enable point-in-time recovery</span>
+<span class="keyword">aws</span> dynamodb update-continuous-backups \
+    <span class="variable">--table-name</span> Items \
+    <span class="variable">--point-in-time-recovery-specification</span> PointInTimeRecoveryEnabled=true</code></pre>
             </div>
 
             <h3>IAM Policy for Lambda</h3>
@@ -306,19 +312,19 @@ aws dynamodb update-continuous-backups \
                 <span class="code-lang">JSON</span>
               </div>
               <pre><code>{
-    "Version": "2012-10-17",
-    "Statement": [
+    <span class="variable">"Version"</span>: <span class="string">"2012-10-17"</span>,
+    <span class="variable">"Statement"</span>: [
         {
-            "Effect": "Allow",
-            "Action": [
-                "dynamodb:GetItem",
-                "dynamodb:PutItem",
-                "dynamodb:UpdateItem",
-                "dynamodb:DeleteItem",
-                "dynamodb:Scan",
-                "dynamodb:Query"
+            <span class="variable">"Effect"</span>: <span class="string">"Allow"</span>,
+            <span class="variable">"Action"</span>: [
+                <span class="string">"dynamodb:GetItem"</span>,
+                <span class="string">"dynamodb:PutItem"</span>,
+                <span class="string">"dynamodb:UpdateItem"</span>,
+                <span class="string">"dynamodb:DeleteItem"</span>,
+                <span class="string">"dynamodb:Scan"</span>,
+                <span class="string">"dynamodb:Query"</span>
             ],
-            "Resource": "arn:aws:dynamodb:*:*:table/Items"
+            <span class="variable">"Resource"</span>: <span class="string">"arn:aws:dynamodb:*:*:table/Items"</span>
         }
     ]
 }</code></pre>
@@ -330,26 +336,26 @@ aws dynamodb update-continuous-backups \
                 <span class="code-label">API Tests</span>
                 <span class="code-lang">BASH</span>
               </div>
-              <pre><code>API_URL="https://abc123.execute-api.us-east-1.amazonaws.com/prod"
+              <pre><code>API_URL=<span class="string">"https://abc123.execute-api.us-east-1.amazonaws.com/prod"</span>
 
-# Create item
-curl -X POST "$API_URL/items" \
-    -H "Content-Type: application/json" \
-    -d '{"name": "Test Item", "price": 29.99}'
+<span class="comment"># Create item</span>
+curl -X POST <span class="string">"$API_URL/items"</span> \
+    -H <span class="string">"Content-Type: application/json"</span> \
+    -d <span class="string">'{"name": "Test Item", "price": 29.99}'</span>
 
-# Get all items
-curl "$API_URL/items"
+<span class="comment"># Get all items</span>
+curl <span class="string">"$API_URL/items"</span>
 
-# Get single item
-curl "$API_URL/items/123-456-789"
+<span class="comment"># Get single item</span>
+curl <span class="string">"$API_URL/items/123-456-789"</span>
 
-# Update item
-curl -X PUT "$API_URL/items/123-456-789" \
-    -H "Content-Type: application/json" \
-    -d '{"name": "Updated Item", "price": 39.99}'
+<span class="comment"># Update item</span>
+curl -X PUT <span class="string">"$API_URL/items/123-456-789"</span> \
+    -H <span class="string">"Content-Type: application/json"</span> \
+    -d <span class="string">'{"name": "Updated Item", "price": 39.99}'</span>
 
-# Delete item
-curl -X DELETE "$API_URL/items/123-456-789"</code></pre>
+<span class="comment"># Delete item</span>
+curl -X DELETE <span class="string">"$API_URL/items/123-456-789"</span></code></pre>
             </div>
           </div>
 
@@ -365,15 +371,9 @@ curl -X DELETE "$API_URL/items/123-456-789"</code></pre>
           </div>
 
           <div class="guide-navigation">
-            <a href="project-cicd-pipeline.html" class="guide-nav-link">&larr; Previous Project</a>
-            <a href="project-infrastructure-as-code.html" class="guide-nav-link">Next Project &rarr;</a>
+            <a href="project-cicd-pipeline.html" class="guide-nav-link guide-nav-prev">&larr; Previous Project</a>
+            <a href="project-infrastructure-as-code.html" class="guide-nav-link guide-nav-next">Next Project &rarr;</a>
           </div>
-          <aside class="guide-aside" data-ui>
-            <nav aria-label="On this page">
-              <p class="guide-aside-title">On this page</p>
-              <ol><li><a href="#project-overview">Project Overview</a></li><li><a href="#prerequisites">Prerequisites</a></li><li><a href="#architecture">Architecture</a></li><li><a href="#step-by-step-instructions">Step-by-Step Instructions</a></li><li><a href="#tips">Tips</a></li><li><a href="#code-examples">Code Examples</a></li><li><a href="#what-youll-learn">What You'll Learn</a></li></ol>
-            </nav>
-          </aside>
         </div>
       </div>
     </section>
