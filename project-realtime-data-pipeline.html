@@ -1,246 +1,247 @@
 <!DOCTYPE html>
 <html lang="en" class="no-js">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Build a real-time data pipeline on AWS using Kinesis, Lambda, and OpenSearch. Stream processing and analytics platform.">
-    <meta name="keywords" content="AWS Kinesis, real-time data, stream processing, OpenSearch, data pipeline AWS">
-    <meta name="author" content="AWS Cloud Architect Guide">
-    <meta name="robots" content="index, follow">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Build a real-time data pipeline on AWS using Kinesis, Lambda, and OpenSearch. Stream processing and analytics platform.">
+  <meta name="keywords" content="AWS Kinesis, real-time data, stream processing, OpenSearch, data pipeline AWS">
+  <meta name="author" content="AWS Cloud Architect Guide">
+  <meta name="robots" content="index, follow">
 
-    <meta name="google-site-verification" content="S5Ea49iR485VLGQdZrR9g5bwazOFpVs8SFOiOPckRaY">
-    <meta name="msvalidate.01" content="E4792860CAB72733FACE91C7EE52BB14">
+  <meta name="google-site-verification" content="S5Ea49iR485VLGQdZrR9g5bwazOFpVs8SFOiOPckRaY">
+  <meta name="msvalidate.01" content="E4792860CAB72733FACE91C7EE52BB14">
 
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-VBQ33BLD4E"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-VBQ33BLD4E');
-    </script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-VBQ33BLD4E"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-VBQ33BLD4E');
+  </script>
 
-    <meta property="og:type" content="article">
-    <meta property="og:title" content="Real-Time Data Pipeline on AWS | Project Guide">
-    <meta property="og:description" content="Build a real-time data pipeline using Kinesis and OpenSearch.">
-    <meta property="og:url" content="https://www.awscloudarchitect.com/project-realtime-data-pipeline.html">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Real-Time Data Pipeline on AWS | Project Guide">
+  <meta property="og:description" content="Build a real-time data pipeline using Kinesis and OpenSearch.">
+  <meta property="og:url" content="https://www.awscloudarchitect.com/project-realtime-data-pipeline.html">
 
-    <title>Real-Time Data Pipeline on AWS | Advanced Project Guide</title>
-    <link rel="canonical" href="https://www.awscloudarchitect.com/project-realtime-data-pipeline.html">
-    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <title>Real-Time Data Pipeline on AWS | Advanced Project Guide</title>
+  <link rel="canonical" href="https://www.awscloudarchitect.com/project-realtime-data-pipeline.html">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
 
-    <link rel="preconnect" href="https://www.googletagmanager.com">
-    <link rel="preconnect" href="https://pagead2.googlesyndication.com" crossorigin>
-    <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://www.googletagmanager.com">
+  <link rel="preconnect" href="https://pagead2.googlesyndication.com" crossorigin>
+  <link rel="stylesheet" href="styles.css">
 
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6676281664229738" crossorigin="anonymous"></script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6676281664229738" crossorigin="anonymous"></script>
 </head>
 <body>
-    <header class="site-header">
-        <nav class="site-header-inner" aria-label="Main">
-            <a class="brand" href="index.html"><svg class="brand-mark" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M18.3 10.1a6.2 6.2 0 0 0-11.7-1.6 4.8 4.8 0 0 0 .6 9.5h10.6a4 4 0 0 0 .5-7.9Z"/></svg><span class="logo-text">AWS Cloud Architect Guide</span></a>
-            <ul class="site-nav" id="site-nav"><li><a href="index.html#roadmap">Roadmap</a></li><li><a href="index.html#certifications">Certifications</a></li><li><a href="interview-prep.html">Interview Prep</a></li><li><a href="projects.html">Projects</a></li><li><a href="resources.html">Resources</a></li><li><a href="tools.html">Tools</a></li></ul>
-            <button class="nav-toggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="site-nav"><span></span><span></span><span></span></button>
-        </nav>
-    </header>
-    <nav class="breadcrumbs" aria-label="Breadcrumb" data-ui>
-        <ol class="container"><li><a href="index.html">Home</a></li><li><a href="projects.html">Projects</a></li><li><span aria-current="page">Real-Time Data Pipeline</span></li></ol>
+  <a class="skip-link" href="#main" data-ui>Skip to content</a>
+  <header class="site-header">
+    <nav class="site-header-inner" aria-label="Main">
+      <a class="brand" href="index.html"><svg class="brand-mark" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M18.3 10.1a6.2 6.2 0 0 0-11.7-1.6 4.8 4.8 0 0 0 .6 9.5h10.6a4 4 0 0 0 .5-7.9Z"/></svg><span class="logo-text">AWS Cloud Architect Guide</span></a>
+      <ul class="site-nav" id="site-nav"><li><a href="index.html#roadmap">Roadmap</a></li><li><a href="index.html#certifications">Certifications</a></li><li><a href="interview-prep.html">Interview Prep</a></li><li><a href="projects.html">Projects</a></li><li><a href="resources.html">Resources</a></li><li><a href="tools.html">Tools</a></li></ul>
+      <button class="nav-toggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="site-nav"><span></span><span></span><span></span></button>
     </nav>
-    <main id="main">
-        <section class="page-header">
-            <div class="container">
-                <span class="page-eyebrow project-level level-advanced">Advanced</span>
-                <h1>Real-Time <span class="highlight">Data Pipeline</span></h1>
-                <p class="hero-subtitle">Build a stream processing and analytics platform with Kinesis</p>
+  </header>
+  <nav class="breadcrumbs" aria-label="Breadcrumb" data-ui>
+    <ol class="container"><li><a href="index.html">Home</a></li><li><a href="projects.html">Projects</a></li><li><span aria-current="page">Real-Time Data Pipeline</span></li></ol>
+  </nav>
+  <main id="main">
+    <section class="page-header">
+      <div class="container">
+        <span class="page-eyebrow project-level level-advanced">Advanced</span>
+        <h1>Real-Time <span class="highlight">Data Pipeline</span></h1>
+        <p class="hero-subtitle">Build a stream processing and analytics platform with Kinesis</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="project-guide">
+          <div class="guide-overview">
+            <h2>Project Overview</h2>
+            <p>Create a real-time data ingestion and processing pipeline that handles streaming data, performs transformations, and delivers insights through dashboards.</p>
+
+            <div class="guide-meta">
+              <div class="meta-item">
+                <strong>Difficulty:</strong> Advanced
+              </div>
+              <div class="meta-item">
+                <strong>AWS Services:</strong> Kinesis Data Streams, Kinesis Firehose, Lambda, OpenSearch, QuickSight
+              </div>
+              <div class="meta-item">
+                <strong>Cost:</strong> ~$100-200/month
+              </div>
             </div>
-        </section>
+          </div>
 
-        <section class="section">
-            <div class="container">
-                <div class="project-guide">
-                    <div class="guide-overview">
-                        <h2>Project Overview</h2>
-                        <p>Create a real-time data ingestion and processing pipeline that handles streaming data, performs transformations, and delivers insights through dashboards.</p>
+          <div class="guide-section">
+            <h2>Prerequisites</h2>
+            <ul class="guide-list">
+              <li>Understanding of streaming data concepts</li>
+              <li>Python or Node.js programming skills</li>
+              <li>Basic SQL and data analytics knowledge</li>
+              <li>Experience with Lambda functions</li>
+            </ul>
+          </div>
 
-                        <div class="guide-meta">
-                            <div class="meta-item">
-                                <strong>Difficulty:</strong> Advanced
-                            </div>
-                            <div class="meta-item">
-                                <strong>AWS Services:</strong> Kinesis Data Streams, Kinesis Firehose, Lambda, OpenSearch, QuickSight
-                            </div>
-                            <div class="meta-item">
-                                <strong>Cost:</strong> ~$100-200/month
-                            </div>
-                        </div>
-                    </div>
+          <div class="guide-section">
+            <h2>Architecture</h2>
+            <div class="architecture-diagram">
+              <div class="arch-flow">
+                <div class="arch-component user">
+                  <div class="arch-component-icon">&#128225;</div>
+                  <div class="arch-component-name">Data Sources</div>
+                  <div class="arch-component-detail">IoT/Apps/Logs</div>
+                </div>
+                <span class="arch-arrow">&#8594;</span>
+                <div class="arch-component primary">
+                  <div class="arch-component-icon">&#127754;</div>
+                  <div class="arch-component-name">Kinesis</div>
+                  <div class="arch-component-detail">Data Streams</div>
+                </div>
+                <span class="arch-arrow">&#8594;</span>
+                <div class="arch-vertical">
+                  <div class="arch-component compute">
+                    <div class="arch-component-icon">&#9889;</div>
+                    <div class="arch-component-name">Lambda</div>
+                    <div class="arch-component-detail">Transform</div>
+                  </div>
+                  <div class="arch-component primary">
+                    <div class="arch-component-icon">&#128293;</div>
+                    <div class="arch-component-name">Firehose</div>
+                    <div class="arch-component-detail">Delivery</div>
+                  </div>
+                </div>
+                <span class="arch-arrow">&#8594;</span>
+                <div class="arch-vertical">
+                  <div class="arch-component storage">
+                    <div class="arch-component-icon">&#128230;</div>
+                    <div class="arch-component-name">S3</div>
+                    <div class="arch-component-detail">Data Lake</div>
+                  </div>
+                  <div class="arch-component database">
+                    <div class="arch-component-icon">&#128269;</div>
+                    <div class="arch-component-name">OpenSearch</div>
+                    <div class="arch-component-detail">Analytics</div>
+                  </div>
+                </div>
+              </div>
+              <p class="arch-note">QuickSight or Kibana for visualization and dashboards</p>
+            </div>
+          </div>
 
-                    <div class="guide-section">
-                        <h2>Prerequisites</h2>
-                        <ul class="guide-list">
-                            <li>Understanding of streaming data concepts</li>
-                            <li>Python or Node.js programming skills</li>
-                            <li>Basic SQL and data analytics knowledge</li>
-                            <li>Experience with Lambda functions</li>
-                        </ul>
-                    </div>
+          <div class="guide-section">
+            <h2>Step-by-Step Instructions</h2>
 
-                    <div class="guide-section">
-                        <h2>Architecture</h2>
-                        <div class="architecture-diagram">
-                            <div class="arch-flow">
-                                <div class="arch-component user">
-                                    <div class="arch-component-icon">&#128225;</div>
-                                    <div class="arch-component-name">Data Sources</div>
-                                    <div class="arch-component-detail">IoT/Apps/Logs</div>
-                                </div>
-                                <span class="arch-arrow">&#8594;</span>
-                                <div class="arch-component primary">
-                                    <div class="arch-component-icon">&#127754;</div>
-                                    <div class="arch-component-name">Kinesis</div>
-                                    <div class="arch-component-detail">Data Streams</div>
-                                </div>
-                                <span class="arch-arrow">&#8594;</span>
-                                <div class="arch-vertical">
-                                    <div class="arch-component compute">
-                                        <div class="arch-component-icon">&#9889;</div>
-                                        <div class="arch-component-name">Lambda</div>
-                                        <div class="arch-component-detail">Transform</div>
-                                    </div>
-                                    <div class="arch-component primary">
-                                        <div class="arch-component-icon">&#128293;</div>
-                                        <div class="arch-component-name">Firehose</div>
-                                        <div class="arch-component-detail">Delivery</div>
-                                    </div>
-                                </div>
-                                <span class="arch-arrow">&#8594;</span>
-                                <div class="arch-vertical">
-                                    <div class="arch-component storage">
-                                        <div class="arch-component-icon">&#128230;</div>
-                                        <div class="arch-component-name">S3</div>
-                                        <div class="arch-component-detail">Data Lake</div>
-                                    </div>
-                                    <div class="arch-component database">
-                                        <div class="arch-component-icon">&#128269;</div>
-                                        <div class="arch-component-name">OpenSearch</div>
-                                        <div class="arch-component-detail">Analytics</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <p class="arch-note">QuickSight or Kibana for visualization and dashboards</p>
-                        </div>
-                    </div>
+            <div class="guide-step">
+              <div class="step-number">1</div>
+              <div class="step-content">
+                <h3>Create Kinesis Data Stream</h3>
+                <ul class="guide-list">
+                  <li>Go to Kinesis and create a new Data Stream</li>
+                  <li>Choose On-Demand capacity mode for variable loads</li>
+                  <li>Or Provisioned mode for predictable throughput</li>
+                  <li>Name it appropriately (e.g., clickstream-events)</li>
+                  <li>Note the stream ARN for permissions</li>
+                </ul>
+              </div>
+            </div>
 
-                    <div class="guide-section">
-                        <h2>Step-by-Step Instructions</h2>
+            <div class="guide-step">
+              <div class="step-number">2</div>
+              <div class="step-content">
+                <h3>Set Up Data Producers</h3>
+                <ul class="guide-list">
+                  <li>Create a sample data generator using AWS SDK</li>
+                  <li>Use PutRecord or PutRecords API</li>
+                  <li>Choose an appropriate partition key strategy</li>
+                  <li>Implement error handling and retries</li>
+                  <li>Consider Kinesis Data Generator for testing</li>
+                </ul>
+              </div>
+            </div>
 
-                        <div class="guide-step">
-                            <div class="step-number">1</div>
-                            <div class="step-content">
-                                <h3>Create Kinesis Data Stream</h3>
-                                <ul class="guide-list">
-                                    <li>Go to Kinesis and create a new Data Stream</li>
-                                    <li>Choose On-Demand capacity mode for variable loads</li>
-                                    <li>Or Provisioned mode for predictable throughput</li>
-                                    <li>Name it appropriately (e.g., clickstream-events)</li>
-                                    <li>Note the stream ARN for permissions</li>
-                                </ul>
-                            </div>
-                        </div>
+            <div class="guide-step">
+              <div class="step-number">3</div>
+              <div class="step-content">
+                <h3>Create Kinesis Firehose for S3 Delivery</h3>
+                <ul class="guide-list">
+                  <li>Create a Firehose delivery stream</li>
+                  <li>Source: Kinesis Data Stream</li>
+                  <li>Destination: S3 bucket</li>
+                  <li>Configure buffering (size and interval)</li>
+                  <li>Enable data format conversion (Parquet) if needed</li>
+                  <li>Add transformation Lambda if required</li>
+                </ul>
+              </div>
+            </div>
 
-                        <div class="guide-step">
-                            <div class="step-number">2</div>
-                            <div class="step-content">
-                                <h3>Set Up Data Producers</h3>
-                                <ul class="guide-list">
-                                    <li>Create a sample data generator using AWS SDK</li>
-                                    <li>Use PutRecord or PutRecords API</li>
-                                    <li>Choose an appropriate partition key strategy</li>
-                                    <li>Implement error handling and retries</li>
-                                    <li>Consider Kinesis Data Generator for testing</li>
-                                </ul>
-                            </div>
-                        </div>
+            <div class="guide-step">
+              <div class="step-number">4</div>
+              <div class="step-content">
+                <h3>Add Real-Time Processing with Lambda</h3>
+                <ul class="guide-list">
+                  <li>Create Lambda function triggered by Kinesis</li>
+                  <li>Process records in batches</li>
+                  <li>Perform aggregations, filtering, or enrichment</li>
+                  <li>Write results to DynamoDB or another stream</li>
+                  <li>Handle partial batch failures properly</li>
+                </ul>
+              </div>
+            </div>
 
-                        <div class="guide-step">
-                            <div class="step-number">3</div>
-                            <div class="step-content">
-                                <h3>Create Kinesis Firehose for S3 Delivery</h3>
-                                <ul class="guide-list">
-                                    <li>Create a Firehose delivery stream</li>
-                                    <li>Source: Kinesis Data Stream</li>
-                                    <li>Destination: S3 bucket</li>
-                                    <li>Configure buffering (size and interval)</li>
-                                    <li>Enable data format conversion (Parquet) if needed</li>
-                                    <li>Add transformation Lambda if required</li>
-                                </ul>
-                            </div>
-                        </div>
+            <div class="guide-step">
+              <div class="step-number">5</div>
+              <div class="step-content">
+                <h3>Set Up OpenSearch for Analytics</h3>
+                <ul class="guide-list">
+                  <li>Create OpenSearch domain</li>
+                  <li>Configure Firehose to deliver to OpenSearch</li>
+                  <li>Define index mappings for your data</li>
+                  <li>Set up index rotation (daily/weekly)</li>
+                  <li>Use Kibana/OpenSearch Dashboards for visualization</li>
+                </ul>
+              </div>
+            </div>
 
-                        <div class="guide-step">
-                            <div class="step-number">4</div>
-                            <div class="step-content">
-                                <h3>Add Real-Time Processing with Lambda</h3>
-                                <ul class="guide-list">
-                                    <li>Create Lambda function triggered by Kinesis</li>
-                                    <li>Process records in batches</li>
-                                    <li>Perform aggregations, filtering, or enrichment</li>
-                                    <li>Write results to DynamoDB or another stream</li>
-                                    <li>Handle partial batch failures properly</li>
-                                </ul>
-                            </div>
-                        </div>
+            <div class="guide-step">
+              <div class="step-number">6</div>
+              <div class="step-content">
+                <h3>Create Dashboards and Alerts</h3>
+                <ul class="guide-list">
+                  <li>Build OpenSearch Dashboards visualizations</li>
+                  <li>Or connect QuickSight to S3/Athena</li>
+                  <li>Create real-time monitoring dashboards</li>
+                  <li>Set up CloudWatch alarms for pipeline health</li>
+                  <li>Configure anomaly detection if needed</li>
+                </ul>
+              </div>
+            </div>
+          </div>
 
-                        <div class="guide-step">
-                            <div class="step-number">5</div>
-                            <div class="step-content">
-                                <h3>Set Up OpenSearch for Analytics</h3>
-                                <ul class="guide-list">
-                                    <li>Create OpenSearch domain</li>
-                                    <li>Configure Firehose to deliver to OpenSearch</li>
-                                    <li>Define index mappings for your data</li>
-                                    <li>Set up index rotation (daily/weekly)</li>
-                                    <li>Use Kibana/OpenSearch Dashboards for visualization</li>
-                                </ul>
-                            </div>
-                        </div>
+          <div class="guide-section">
+            <h2>Tips</h2>
+            <div class="tips-box">
+              <ul class="guide-list">
+                <li><strong>Use enhanced fan-out for multiple consumers</strong> - Each consumer gets dedicated throughput</li>
+                <li><strong>Partition data effectively</strong> - Choose partition keys that distribute load evenly</li>
+                <li><strong>Monitor iterator age</strong> - High iterator age indicates processing lag</li>
+                <li><strong>Implement dead letter queues</strong> - Capture failed records for later analysis</li>
+              </ul>
+            </div>
+          </div>
 
-                        <div class="guide-step">
-                            <div class="step-number">6</div>
-                            <div class="step-content">
-                                <h3>Create Dashboards and Alerts</h3>
-                                <ul class="guide-list">
-                                    <li>Build OpenSearch Dashboards visualizations</li>
-                                    <li>Or connect QuickSight to S3/Athena</li>
-                                    <li>Create real-time monitoring dashboards</li>
-                                    <li>Set up CloudWatch alarms for pipeline health</li>
-                                    <li>Configure anomaly detection if needed</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
+          <div class="guide-section">
+            <h2>Code Examples</h2>
 
-                    <div class="guide-section">
-                        <h2>Tips</h2>
-                        <div class="tips-box">
-                            <ul class="guide-list">
-                                <li><strong>Use enhanced fan-out for multiple consumers</strong> - Each consumer gets dedicated throughput</li>
-                                <li><strong>Partition data effectively</strong> - Choose partition keys that distribute load evenly</li>
-                                <li><strong>Monitor iterator age</strong> - High iterator age indicates processing lag</li>
-                                <li><strong>Implement dead letter queues</strong> - Capture failed records for later analysis</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="guide-section">
-                        <h2>Code Examples</h2>
-
-                        <h3>Create Kinesis Data Stream</h3>
-                        <div class="code-block">
-                            <div class="code-header">
-                                <span class="code-label">Terminal Commands</span>
-                                <span class="code-lang">BASH</span>
-                            </div>
-                            <pre><code># Create Kinesis Data Stream (on-demand mode)
+            <h3>Create Kinesis Data Stream</h3>
+            <div class="code-block">
+              <div class="code-header">
+                <span class="code-label">Terminal Commands</span>
+                <span class="code-lang">BASH</span>
+              </div>
+              <pre><code># Create Kinesis Data Stream (on-demand mode)
 aws kinesis create-stream \
     --stream-name clickstream-events \
     --stream-mode-details StreamMode=ON_DEMAND
@@ -249,15 +250,15 @@ aws kinesis create-stream \
 aws kinesis create-stream \
     --stream-name clickstream-events \
     --shard-count 2</code></pre>
-                        </div>
+            </div>
 
-                        <h3>Data Producer (Python)</h3>
-                        <div class="code-block">
-                            <div class="code-header">
-                                <span class="code-label">producer.py</span>
-                                <span class="code-lang">PYTHON</span>
-                            </div>
-                            <pre><code>import boto3
+            <h3>Data Producer (Python)</h3>
+            <div class="code-block">
+              <div class="code-header">
+                <span class="code-label">producer.py</span>
+                <span class="code-lang">PYTHON</span>
+              </div>
+              <pre><code>import boto3
 import json
 import random
 from datetime import datetime
@@ -285,15 +286,15 @@ def send_events(stream_name, count=100):
 
 if __name__ == '__main__':
     send_events('clickstream-events', 100)</code></pre>
-                        </div>
+            </div>
 
-                        <h3>Lambda Stream Processor</h3>
-                        <div class="code-block">
-                            <div class="code-header">
-                                <span class="code-label">lambda_function.py</span>
-                                <span class="code-lang">PYTHON</span>
-                            </div>
-                            <pre><code>import json
+            <h3>Lambda Stream Processor</h3>
+            <div class="code-block">
+              <div class="code-header">
+                <span class="code-label">lambda_function.py</span>
+                <span class="code-lang">PYTHON</span>
+              </div>
+              <pre><code>import json
 import base64
 import boto3
 
@@ -326,15 +327,15 @@ def lambda_handler(event, context):
         'statusCode': 200,
         'body': f'Processed {len(event["Records"])} records'
     }</code></pre>
-                        </div>
+            </div>
 
-                        <h3>Kinesis Firehose to S3 (CloudFormation)</h3>
-                        <div class="code-block">
-                            <div class="code-header">
-                                <span class="code-label">firehose.yaml</span>
-                                <span class="code-lang">YAML</span>
-                            </div>
-                            <pre><code>AWSTemplateFormatVersion: '2010-09-09'
+            <h3>Kinesis Firehose to S3 (CloudFormation)</h3>
+            <div class="code-block">
+              <div class="code-header">
+                <span class="code-label">firehose.yaml</span>
+                <span class="code-lang">YAML</span>
+              </div>
+              <pre><code>AWSTemplateFormatVersion: '2010-09-09'
 Resources:
   DeliveryStream:
     Type: AWS::KinesisFirehose::DeliveryStream
@@ -353,15 +354,15 @@ Resources:
         CompressionFormat: GZIP
         Prefix: 'raw/year=!{timestamp:yyyy}/month=!{timestamp:MM}/day=!{timestamp:dd}/'
         ErrorOutputPrefix: 'errors/'</code></pre>
-                        </div>
+            </div>
 
-                        <h3>OpenSearch Index Mapping</h3>
-                        <div class="code-block">
-                            <div class="code-header">
-                                <span class="code-label">index-mapping.json</span>
-                                <span class="code-lang">JSON</span>
-                            </div>
-                            <pre><code>{
+            <h3>OpenSearch Index Mapping</h3>
+            <div class="code-block">
+              <div class="code-header">
+                <span class="code-label">index-mapping.json</span>
+                <span class="code-lang">JSON</span>
+              </div>
+              <pre><code>{
     "mappings": {
         "properties": {
             "event_id": { "type": "keyword" },
@@ -377,68 +378,68 @@ Resources:
         "number_of_replicas": 1
     }
 }</code></pre>
-                        </div>
-                    </div>
-
-                    <div class="guide-section">
-                        <h2>What You'll Learn</h2>
-                        <ul class="guide-list">
-                            <li>Stream ingestion with Kinesis Data Streams</li>
-                            <li>Real-time data transformation with Lambda</li>
-                            <li>Data delivery with Kinesis Firehose</li>
-                            <li>Search and analytics with OpenSearch</li>
-                            <li>Dashboard creation and data visualization</li>
-                        </ul>
-                    </div>
-
-                    <div class="guide-navigation">
-                        <a href="project-kubernetes-eks.html" class="btn-secondary">&larr; Previous Project</a>
-                        <a href="project-multi-account-landing-zone.html" class="btn-primary">Next Project &rarr;</a>
-                    </div>
-                </div>
             </div>
-        </section>
-    </main>
+          </div>
 
-    <footer class="site-footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h4 aria-level="2">AWS Cloud Architect Guide</h4>
-                    <p>Your roadmap to a successful career in cloud architecture.</p>
-                </div>
-                <div class="footer-section">
-                    <h4 aria-level="2">Quick Links</h4>
-                    <ul>
-                        <li><a href="index.html#roadmap">Roadmap</a></li>
-                        <li><a href="interview-prep.html">Interview Prep</a></li>
-                        <li><a href="projects.html">Projects</a></li>
-                        <li><a href="resources.html">Resources</a></li>
-                        <li><a href="tools.html">Tools</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4 aria-level="2">Official AWS Links</h4>
-                    <ul>
-                        <li><a href="https://aws.amazon.com/certification/" target="_blank" rel="noopener">AWS Certification</a></li>
-                        <li><a href="https://aws.amazon.com/training/" target="_blank" rel="noopener">AWS Training</a></li>
-                        <li><a href="https://aws.amazon.com/architecture/" target="_blank" rel="noopener">AWS Architecture Center</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4 aria-level="2">Legal</h4>
-                    <ul>
-                        <li><a href="privacy.html">Privacy Policy</a></li>
-                        <li><a href="about.html">About</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 AWS Cloud Architect Guide. Not affiliated with Amazon Web Services.</p>
-            </div>
+          <div class="guide-section">
+            <h2>What You'll Learn</h2>
+            <ul class="guide-list">
+              <li>Stream ingestion with Kinesis Data Streams</li>
+              <li>Real-time data transformation with Lambda</li>
+              <li>Data delivery with Kinesis Firehose</li>
+              <li>Search and analytics with OpenSearch</li>
+              <li>Dashboard creation and data visualization</li>
+            </ul>
+          </div>
+
+          <div class="guide-navigation">
+            <a href="project-kubernetes-eks.html" class="btn-secondary">&larr; Previous Project</a>
+            <a href="project-multi-account-landing-zone.html" class="btn-primary">Next Project &rarr;</a>
+          </div>
         </div>
-    </footer>
+      </div>
+    </section>
+  </main>
 
-    <script src="script.js" defer></script>
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h4 aria-level="2">AWS Cloud Architect Guide</h4>
+          <p>Your roadmap to a successful career in cloud architecture.</p>
+        </div>
+        <div class="footer-section">
+          <h4 aria-level="2">Quick Links</h4>
+          <ul>
+            <li><a href="index.html#roadmap">Roadmap</a></li>
+            <li><a href="interview-prep.html">Interview Prep</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="resources.html">Resources</a></li>
+            <li><a href="tools.html">Tools</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4 aria-level="2">Official AWS Links</h4>
+          <ul>
+            <li><a href="https://aws.amazon.com/certification/" target="_blank" rel="noopener">AWS Certification</a></li>
+            <li><a href="https://aws.amazon.com/training/" target="_blank" rel="noopener">AWS Training</a></li>
+            <li><a href="https://aws.amazon.com/architecture/" target="_blank" rel="noopener">AWS Architecture Center</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4 aria-level="2">Legal</h4>
+          <ul>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+            <li><a href="about.html">About</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 AWS Cloud Architect Guide. Not affiliated with Amazon Web Services.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js" defer></script>
 </body>
 </html>

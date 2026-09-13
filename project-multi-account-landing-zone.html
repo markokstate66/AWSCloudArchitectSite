@@ -1,250 +1,251 @@
 <!DOCTYPE html>
 <html lang="en" class="no-js">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Set up an enterprise-grade AWS multi-account landing zone with Control Tower, Organizations, and SSO. Governance at scale.">
-    <meta name="keywords" content="AWS Control Tower, AWS Organizations, multi-account AWS, landing zone, AWS SSO, SCPs">
-    <meta name="author" content="AWS Cloud Architect Guide">
-    <meta name="robots" content="index, follow">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Set up an enterprise-grade AWS multi-account landing zone with Control Tower, Organizations, and SSO. Governance at scale.">
+  <meta name="keywords" content="AWS Control Tower, AWS Organizations, multi-account AWS, landing zone, AWS SSO, SCPs">
+  <meta name="author" content="AWS Cloud Architect Guide">
+  <meta name="robots" content="index, follow">
 
-    <meta name="google-site-verification" content="S5Ea49iR485VLGQdZrR9g5bwazOFpVs8SFOiOPckRaY">
-    <meta name="msvalidate.01" content="E4792860CAB72733FACE91C7EE52BB14">
+  <meta name="google-site-verification" content="S5Ea49iR485VLGQdZrR9g5bwazOFpVs8SFOiOPckRaY">
+  <meta name="msvalidate.01" content="E4792860CAB72733FACE91C7EE52BB14">
 
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-VBQ33BLD4E"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-VBQ33BLD4E');
-    </script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-VBQ33BLD4E"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-VBQ33BLD4E');
+  </script>
 
-    <meta property="og:type" content="article">
-    <meta property="og:title" content="Multi-Account Landing Zone on AWS | Project Guide">
-    <meta property="og:description" content="Set up an enterprise-grade AWS multi-account landing zone.">
-    <meta property="og:url" content="https://www.awscloudarchitect.com/project-multi-account-landing-zone.html">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Multi-Account Landing Zone on AWS | Project Guide">
+  <meta property="og:description" content="Set up an enterprise-grade AWS multi-account landing zone.">
+  <meta property="og:url" content="https://www.awscloudarchitect.com/project-multi-account-landing-zone.html">
 
-    <title>Multi-Account Landing Zone on AWS | Advanced Project Guide</title>
-    <link rel="canonical" href="https://www.awscloudarchitect.com/project-multi-account-landing-zone.html">
-    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <title>Multi-Account Landing Zone on AWS | Advanced Project Guide</title>
+  <link rel="canonical" href="https://www.awscloudarchitect.com/project-multi-account-landing-zone.html">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
 
-    <link rel="preconnect" href="https://www.googletagmanager.com">
-    <link rel="preconnect" href="https://pagead2.googlesyndication.com" crossorigin>
-    <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://www.googletagmanager.com">
+  <link rel="preconnect" href="https://pagead2.googlesyndication.com" crossorigin>
+  <link rel="stylesheet" href="styles.css">
 
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6676281664229738" crossorigin="anonymous"></script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6676281664229738" crossorigin="anonymous"></script>
 </head>
 <body>
-    <header class="site-header">
-        <nav class="site-header-inner" aria-label="Main">
-            <a class="brand" href="index.html"><svg class="brand-mark" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M18.3 10.1a6.2 6.2 0 0 0-11.7-1.6 4.8 4.8 0 0 0 .6 9.5h10.6a4 4 0 0 0 .5-7.9Z"/></svg><span class="logo-text">AWS Cloud Architect Guide</span></a>
-            <ul class="site-nav" id="site-nav"><li><a href="index.html#roadmap">Roadmap</a></li><li><a href="index.html#certifications">Certifications</a></li><li><a href="interview-prep.html">Interview Prep</a></li><li><a href="projects.html">Projects</a></li><li><a href="resources.html">Resources</a></li><li><a href="tools.html">Tools</a></li></ul>
-            <button class="nav-toggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="site-nav"><span></span><span></span><span></span></button>
-        </nav>
-    </header>
-    <nav class="breadcrumbs" aria-label="Breadcrumb" data-ui>
-        <ol class="container"><li><a href="index.html">Home</a></li><li><a href="projects.html">Projects</a></li><li><span aria-current="page">Multi-Account Landing Zone</span></li></ol>
+  <a class="skip-link" href="#main" data-ui>Skip to content</a>
+  <header class="site-header">
+    <nav class="site-header-inner" aria-label="Main">
+      <a class="brand" href="index.html"><svg class="brand-mark" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M18.3 10.1a6.2 6.2 0 0 0-11.7-1.6 4.8 4.8 0 0 0 .6 9.5h10.6a4 4 0 0 0 .5-7.9Z"/></svg><span class="logo-text">AWS Cloud Architect Guide</span></a>
+      <ul class="site-nav" id="site-nav"><li><a href="index.html#roadmap">Roadmap</a></li><li><a href="index.html#certifications">Certifications</a></li><li><a href="interview-prep.html">Interview Prep</a></li><li><a href="projects.html">Projects</a></li><li><a href="resources.html">Resources</a></li><li><a href="tools.html">Tools</a></li></ul>
+      <button class="nav-toggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="site-nav"><span></span><span></span><span></span></button>
     </nav>
-    <main id="main">
-        <section class="page-header">
-            <div class="container">
-                <span class="page-eyebrow project-level level-advanced">Advanced</span>
-                <h1>Multi-Account <span class="highlight">Landing Zone</span></h1>
-                <p class="hero-subtitle">Set up enterprise-grade AWS organization with governance and security guardrails</p>
+  </header>
+  <nav class="breadcrumbs" aria-label="Breadcrumb" data-ui>
+    <ol class="container"><li><a href="index.html">Home</a></li><li><a href="projects.html">Projects</a></li><li><span aria-current="page">Multi-Account Landing Zone</span></li></ol>
+  </nav>
+  <main id="main">
+    <section class="page-header">
+      <div class="container">
+        <span class="page-eyebrow project-level level-advanced">Advanced</span>
+        <h1>Multi-Account <span class="highlight">Landing Zone</span></h1>
+        <p class="hero-subtitle">Set up enterprise-grade AWS organization with governance and security guardrails</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="project-guide">
+          <div class="guide-overview">
+            <h2>Project Overview</h2>
+            <p>Create a scalable, secure AWS multi-account structure using Control Tower, Organizations, and IAM Identity Center. Essential for enterprise environments.</p>
+
+            <div class="guide-meta">
+              <div class="meta-item">
+                <strong>Difficulty:</strong> Advanced
+              </div>
+              <div class="meta-item">
+                <strong>AWS Services:</strong> Organizations, Control Tower, IAM Identity Center, Service Catalog
+              </div>
+              <div class="meta-item">
+                <strong>Cost:</strong> ~$10-50/month (mostly free tier)
+              </div>
             </div>
-        </section>
+          </div>
 
-        <section class="section">
-            <div class="container">
-                <div class="project-guide">
-                    <div class="guide-overview">
-                        <h2>Project Overview</h2>
-                        <p>Create a scalable, secure AWS multi-account structure using Control Tower, Organizations, and IAM Identity Center. Essential for enterprise environments.</p>
+          <div class="guide-section">
+            <h2>Prerequisites</h2>
+            <ul class="guide-list">
+              <li>Understanding of IAM and permissions</li>
+              <li>Experience managing AWS accounts</li>
+              <li>Knowledge of compliance and security concepts</li>
+              <li>A "fresh" AWS account as management account</li>
+            </ul>
+          </div>
 
-                        <div class="guide-meta">
-                            <div class="meta-item">
-                                <strong>Difficulty:</strong> Advanced
-                            </div>
-                            <div class="meta-item">
-                                <strong>AWS Services:</strong> Organizations, Control Tower, IAM Identity Center, Service Catalog
-                            </div>
-                            <div class="meta-item">
-                                <strong>Cost:</strong> ~$10-50/month (mostly free tier)
-                            </div>
-                        </div>
-                    </div>
+          <div class="guide-section">
+            <h2>Architecture</h2>
+            <div class="architecture-diagram">
+              <div class="arch-vertical">
+                <div class="arch-component primary">
+                  <div class="arch-component-icon">&#127970;</div>
+                  <div class="arch-component-name">Management Account</div>
+                  <div class="arch-component-detail">Organizations + Control Tower</div>
+                </div>
+                <div class="arch-arrow-down">&#8595;</div>
+                <div class="arch-row">
+                  <div class="arch-component security">
+                    <div class="arch-component-icon">&#128274;</div>
+                    <div class="arch-component-name">IAM Identity Center</div>
+                    <div class="arch-component-detail">SSO</div>
+                  </div>
+                  <div class="arch-component security">
+                    <div class="arch-component-icon">&#128220;</div>
+                    <div class="arch-component-name">SCPs</div>
+                    <div class="arch-component-detail">Guardrails</div>
+                  </div>
+                </div>
+              </div>
+              <div class="arch-arrow-down">&#8595;</div>
+              <div class="arch-row">
+                <div class="arch-group">
+                  <div class="arch-group-label">Security OU</div>
+                  <div class="arch-component security">
+                    <div class="arch-component-icon">&#128737;</div>
+                    <div class="arch-component-name">Log Archive</div>
+                  </div>
+                </div>
+                <div class="arch-group">
+                  <div class="arch-group-label">Workloads OU</div>
+                  <div class="arch-component compute">
+                    <div class="arch-component-icon">&#128421;</div>
+                    <div class="arch-component-name">Production</div>
+                  </div>
+                </div>
+                <div class="arch-group">
+                  <div class="arch-group-label">Sandbox OU</div>
+                  <div class="arch-component user">
+                    <div class="arch-component-icon">&#128187;</div>
+                    <div class="arch-component-name">Development</div>
+                  </div>
+                </div>
+              </div>
+              <p class="arch-note">Account Factory automates new account provisioning</p>
+            </div>
+          </div>
 
-                    <div class="guide-section">
-                        <h2>Prerequisites</h2>
-                        <ul class="guide-list">
-                            <li>Understanding of IAM and permissions</li>
-                            <li>Experience managing AWS accounts</li>
-                            <li>Knowledge of compliance and security concepts</li>
-                            <li>A "fresh" AWS account as management account</li>
-                        </ul>
-                    </div>
+          <div class="guide-section">
+            <h2>Step-by-Step Instructions</h2>
 
-                    <div class="guide-section">
-                        <h2>Architecture</h2>
-                        <div class="architecture-diagram">
-                            <div class="arch-vertical">
-                                <div class="arch-component primary">
-                                    <div class="arch-component-icon">&#127970;</div>
-                                    <div class="arch-component-name">Management Account</div>
-                                    <div class="arch-component-detail">Organizations + Control Tower</div>
-                                </div>
-                                <div class="arch-arrow-down">&#8595;</div>
-                                <div class="arch-row">
-                                    <div class="arch-component security">
-                                        <div class="arch-component-icon">&#128274;</div>
-                                        <div class="arch-component-name">IAM Identity Center</div>
-                                        <div class="arch-component-detail">SSO</div>
-                                    </div>
-                                    <div class="arch-component security">
-                                        <div class="arch-component-icon">&#128220;</div>
-                                        <div class="arch-component-name">SCPs</div>
-                                        <div class="arch-component-detail">Guardrails</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="arch-arrow-down">&#8595;</div>
-                            <div class="arch-row">
-                                <div class="arch-group">
-                                    <div class="arch-group-label">Security OU</div>
-                                    <div class="arch-component security">
-                                        <div class="arch-component-icon">&#128737;</div>
-                                        <div class="arch-component-name">Log Archive</div>
-                                    </div>
-                                </div>
-                                <div class="arch-group">
-                                    <div class="arch-group-label">Workloads OU</div>
-                                    <div class="arch-component compute">
-                                        <div class="arch-component-icon">&#128421;</div>
-                                        <div class="arch-component-name">Production</div>
-                                    </div>
-                                </div>
-                                <div class="arch-group">
-                                    <div class="arch-group-label">Sandbox OU</div>
-                                    <div class="arch-component user">
-                                        <div class="arch-component-icon">&#128187;</div>
-                                        <div class="arch-component-name">Development</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <p class="arch-note">Account Factory automates new account provisioning</p>
-                        </div>
-                    </div>
+            <div class="guide-step">
+              <div class="step-number">1</div>
+              <div class="step-content">
+                <h3>Enable AWS Organizations</h3>
+                <ul class="guide-list">
+                  <li>Use a clean AWS account as management account</li>
+                  <li>Enable AWS Organizations</li>
+                  <li>Enable all features (not just consolidated billing)</li>
+                  <li>This account should NOT run workloads</li>
+                  <li>Secure with strong MFA and limited access</li>
+                </ul>
+              </div>
+            </div>
 
-                    <div class="guide-section">
-                        <h2>Step-by-Step Instructions</h2>
+            <div class="guide-step">
+              <div class="step-number">2</div>
+              <div class="step-content">
+                <h3>Set Up AWS Control Tower</h3>
+                <ul class="guide-list">
+                  <li>Launch Control Tower from the console</li>
+                  <li>Configure home region and governed regions</li>
+                  <li>Let Control Tower create Log Archive and Audit accounts</li>
+                  <li>Wait for setup to complete (~1 hour)</li>
+                  <li>Review created resources and baseline guardrails</li>
+                </ul>
+              </div>
+            </div>
 
-                        <div class="guide-step">
-                            <div class="step-number">1</div>
-                            <div class="step-content">
-                                <h3>Enable AWS Organizations</h3>
-                                <ul class="guide-list">
-                                    <li>Use a clean AWS account as management account</li>
-                                    <li>Enable AWS Organizations</li>
-                                    <li>Enable all features (not just consolidated billing)</li>
-                                    <li>This account should NOT run workloads</li>
-                                    <li>Secure with strong MFA and limited access</li>
-                                </ul>
-                            </div>
-                        </div>
+            <div class="guide-step">
+              <div class="step-number">3</div>
+              <div class="step-content">
+                <h3>Design Organizational Unit Structure</h3>
+                <ul class="guide-list">
+                  <li>Create Security OU (shared security services)</li>
+                  <li>Create Infrastructure OU (networking, shared services)</li>
+                  <li>Create Workloads OU (production accounts)</li>
+                  <li>Create Sandbox OU (development, experimentation)</li>
+                  <li>Consider nested OUs for larger organizations</li>
+                </ul>
+              </div>
+            </div>
 
-                        <div class="guide-step">
-                            <div class="step-number">2</div>
-                            <div class="step-content">
-                                <h3>Set Up AWS Control Tower</h3>
-                                <ul class="guide-list">
-                                    <li>Launch Control Tower from the console</li>
-                                    <li>Configure home region and governed regions</li>
-                                    <li>Let Control Tower create Log Archive and Audit accounts</li>
-                                    <li>Wait for setup to complete (~1 hour)</li>
-                                    <li>Review created resources and baseline guardrails</li>
-                                </ul>
-                            </div>
-                        </div>
+            <div class="guide-step">
+              <div class="step-number">4</div>
+              <div class="step-content">
+                <h3>Configure Service Control Policies</h3>
+                <ul class="guide-list">
+                  <li>Create SCPs to enforce security guardrails</li>
+                  <li>Deny actions: disabling CloudTrail, deleting VPC flow logs</li>
+                  <li>Restrict regions for compliance requirements</li>
+                  <li>Prevent leaving the organization</li>
+                  <li>Apply SCPs to appropriate OUs</li>
+                </ul>
+              </div>
+            </div>
 
-                        <div class="guide-step">
-                            <div class="step-number">3</div>
-                            <div class="step-content">
-                                <h3>Design Organizational Unit Structure</h3>
-                                <ul class="guide-list">
-                                    <li>Create Security OU (shared security services)</li>
-                                    <li>Create Infrastructure OU (networking, shared services)</li>
-                                    <li>Create Workloads OU (production accounts)</li>
-                                    <li>Create Sandbox OU (development, experimentation)</li>
-                                    <li>Consider nested OUs for larger organizations</li>
-                                </ul>
-                            </div>
-                        </div>
+            <div class="guide-step">
+              <div class="step-number">5</div>
+              <div class="step-content">
+                <h3>Set Up IAM Identity Center</h3>
+                <ul class="guide-list">
+                  <li>Enable IAM Identity Center (formerly AWS SSO)</li>
+                  <li>Configure identity source (built-in, AD, external IdP)</li>
+                  <li>Create permission sets for different roles</li>
+                  <li>Assign users/groups to accounts</li>
+                  <li>Users get single sign-on to all assigned accounts</li>
+                </ul>
+              </div>
+            </div>
 
-                        <div class="guide-step">
-                            <div class="step-number">4</div>
-                            <div class="step-content">
-                                <h3>Configure Service Control Policies</h3>
-                                <ul class="guide-list">
-                                    <li>Create SCPs to enforce security guardrails</li>
-                                    <li>Deny actions: disabling CloudTrail, deleting VPC flow logs</li>
-                                    <li>Restrict regions for compliance requirements</li>
-                                    <li>Prevent leaving the organization</li>
-                                    <li>Apply SCPs to appropriate OUs</li>
-                                </ul>
-                            </div>
-                        </div>
+            <div class="guide-step">
+              <div class="step-number">6</div>
+              <div class="step-content">
+                <h3>Implement Account Vending</h3>
+                <ul class="guide-list">
+                  <li>Use Account Factory in Control Tower</li>
+                  <li>Or create Service Catalog products</li>
+                  <li>Standardize account provisioning</li>
+                  <li>Include baseline configurations (VPC, security)</li>
+                  <li>Automate with Account Factory for Terraform (AFT)</li>
+                </ul>
+              </div>
+            </div>
+          </div>
 
-                        <div class="guide-step">
-                            <div class="step-number">5</div>
-                            <div class="step-content">
-                                <h3>Set Up IAM Identity Center</h3>
-                                <ul class="guide-list">
-                                    <li>Enable IAM Identity Center (formerly AWS SSO)</li>
-                                    <li>Configure identity source (built-in, AD, external IdP)</li>
-                                    <li>Create permission sets for different roles</li>
-                                    <li>Assign users/groups to accounts</li>
-                                    <li>Users get single sign-on to all assigned accounts</li>
-                                </ul>
-                            </div>
-                        </div>
+          <div class="guide-section">
+            <h2>Tips</h2>
+            <div class="tips-box">
+              <ul class="guide-list">
+                <li><strong>Use AWS SSO for centralized access</strong> - Single portal for all accounts, no need for separate IAM users</li>
+                <li><strong>Implement tag policies</strong> - Enforce consistent tagging for cost allocation</li>
+                <li><strong>Centralize logging in Log Archive account</strong> - CloudTrail, Config, and VPC flow logs</li>
+                <li><strong>Start with preventive guardrails</strong> - Easier than detecting and fixing violations later</li>
+              </ul>
+            </div>
+          </div>
 
-                        <div class="guide-step">
-                            <div class="step-number">6</div>
-                            <div class="step-content">
-                                <h3>Implement Account Vending</h3>
-                                <ul class="guide-list">
-                                    <li>Use Account Factory in Control Tower</li>
-                                    <li>Or create Service Catalog products</li>
-                                    <li>Standardize account provisioning</li>
-                                    <li>Include baseline configurations (VPC, security)</li>
-                                    <li>Automate with Account Factory for Terraform (AFT)</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
+          <div class="guide-section">
+            <h2>Code Examples</h2>
 
-                    <div class="guide-section">
-                        <h2>Tips</h2>
-                        <div class="tips-box">
-                            <ul class="guide-list">
-                                <li><strong>Use AWS SSO for centralized access</strong> - Single portal for all accounts, no need for separate IAM users</li>
-                                <li><strong>Implement tag policies</strong> - Enforce consistent tagging for cost allocation</li>
-                                <li><strong>Centralize logging in Log Archive account</strong> - CloudTrail, Config, and VPC flow logs</li>
-                                <li><strong>Start with preventive guardrails</strong> - Easier than detecting and fixing violations later</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="guide-section">
-                        <h2>Code Examples</h2>
-
-                        <h3>Service Control Policy - Deny Region</h3>
-                        <div class="code-block">
-                            <div class="code-header">
-                                <span class="code-label">deny-regions-scp.json</span>
-                                <span class="code-lang">JSON</span>
-                            </div>
-                            <pre><code>{
+            <h3>Service Control Policy - Deny Region</h3>
+            <div class="code-block">
+              <div class="code-header">
+                <span class="code-label">deny-regions-scp.json</span>
+                <span class="code-lang">JSON</span>
+              </div>
+              <pre><code>{
     "Version": "2012-10-17",
     "Statement": [
         {
@@ -272,15 +273,15 @@
         }
     ]
 }</code></pre>
-                        </div>
+            </div>
 
-                        <h3>SCP - Prevent Security Changes</h3>
-                        <div class="code-block">
-                            <div class="code-header">
-                                <span class="code-label">protect-security-scp.json</span>
-                                <span class="code-lang">JSON</span>
-                            </div>
-                            <pre><code>{
+            <h3>SCP - Prevent Security Changes</h3>
+            <div class="code-block">
+              <div class="code-header">
+                <span class="code-label">protect-security-scp.json</span>
+                <span class="code-lang">JSON</span>
+              </div>
+              <pre><code>{
     "Version": "2012-10-17",
     "Statement": [
         {
@@ -312,15 +313,15 @@
         }
     ]
 }</code></pre>
-                        </div>
+            </div>
 
-                        <h3>Create Organizational Units</h3>
-                        <div class="code-block">
-                            <div class="code-header">
-                                <span class="code-label">Terminal Commands</span>
-                                <span class="code-lang">BASH</span>
-                            </div>
-                            <pre><code># Get root ID
+            <h3>Create Organizational Units</h3>
+            <div class="code-block">
+              <div class="code-header">
+                <span class="code-label">Terminal Commands</span>
+                <span class="code-lang">BASH</span>
+              </div>
+              <pre><code># Get root ID
 ROOT_ID=$(aws organizations list-roots --query 'Roots[0].Id' --output text)
 
 # Create OUs
@@ -344,15 +345,15 @@ aws organizations create-organizational-unit \
 aws organizations attach-policy \
     --policy-id p-1234567 \
     --target-id ou-xxxx-xxxxxxxx</code></pre>
-                        </div>
+            </div>
 
-                        <h3>IAM Identity Center Permission Set</h3>
-                        <div class="code-block">
-                            <div class="code-header">
-                                <span class="code-label">admin-permission-set.json</span>
-                                <span class="code-lang">JSON</span>
-                            </div>
-                            <pre><code>{
+            <h3>IAM Identity Center Permission Set</h3>
+            <div class="code-block">
+              <div class="code-header">
+                <span class="code-label">admin-permission-set.json</span>
+                <span class="code-lang">JSON</span>
+              </div>
+              <pre><code>{
     "Name": "AdministratorAccess",
     "Description": "Full admin access to AWS accounts",
     "SessionDuration": "PT4H",
@@ -374,15 +375,15 @@ aws organizations attach-policy \
         ]
     }
 }</code></pre>
-                        </div>
+            </div>
 
-                        <h3>Account Factory CloudFormation StackSet</h3>
-                        <div class="code-block">
-                            <div class="code-header">
-                                <span class="code-label">account-baseline.yaml</span>
-                                <span class="code-lang">YAML</span>
-                            </div>
-                            <pre><code>AWSTemplateFormatVersion: '2010-09-09'
+            <h3>Account Factory CloudFormation StackSet</h3>
+            <div class="code-block">
+              <div class="code-header">
+                <span class="code-label">account-baseline.yaml</span>
+                <span class="code-lang">YAML</span>
+              </div>
+              <pre><code>AWSTemplateFormatVersion: '2010-09-09'
 Description: Baseline configuration for new accounts
 
 Resources:
@@ -416,68 +417,68 @@ Resources:
       Threshold: 1
       AlarmActions:
         - !Ref SecurityAlertTopic</code></pre>
-                        </div>
-                    </div>
-
-                    <div class="guide-section">
-                        <h2>What You'll Learn</h2>
-                        <ul class="guide-list">
-                            <li>AWS Organizations structure and management</li>
-                            <li>Service Control Policies (SCPs) for governance</li>
-                            <li>Centralized logging and security monitoring</li>
-                            <li>Account vending automation with Account Factory</li>
-                            <li>IAM Identity Center for federated access</li>
-                        </ul>
-                    </div>
-
-                    <div class="guide-navigation">
-                        <a href="project-realtime-data-pipeline.html" class="btn-secondary">&larr; Previous Project</a>
-                        <a href="projects.html" class="btn-primary">Back to All Projects</a>
-                    </div>
-                </div>
             </div>
-        </section>
-    </main>
+          </div>
 
-    <footer class="site-footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h4 aria-level="2">AWS Cloud Architect Guide</h4>
-                    <p>Your roadmap to a successful career in cloud architecture.</p>
-                </div>
-                <div class="footer-section">
-                    <h4 aria-level="2">Quick Links</h4>
-                    <ul>
-                        <li><a href="index.html#roadmap">Roadmap</a></li>
-                        <li><a href="interview-prep.html">Interview Prep</a></li>
-                        <li><a href="projects.html">Projects</a></li>
-                        <li><a href="resources.html">Resources</a></li>
-                        <li><a href="tools.html">Tools</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4 aria-level="2">Official AWS Links</h4>
-                    <ul>
-                        <li><a href="https://aws.amazon.com/certification/" target="_blank" rel="noopener">AWS Certification</a></li>
-                        <li><a href="https://aws.amazon.com/training/" target="_blank" rel="noopener">AWS Training</a></li>
-                        <li><a href="https://aws.amazon.com/architecture/" target="_blank" rel="noopener">AWS Architecture Center</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4 aria-level="2">Legal</h4>
-                    <ul>
-                        <li><a href="privacy.html">Privacy Policy</a></li>
-                        <li><a href="about.html">About</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 AWS Cloud Architect Guide. Not affiliated with Amazon Web Services.</p>
-            </div>
+          <div class="guide-section">
+            <h2>What You'll Learn</h2>
+            <ul class="guide-list">
+              <li>AWS Organizations structure and management</li>
+              <li>Service Control Policies (SCPs) for governance</li>
+              <li>Centralized logging and security monitoring</li>
+              <li>Account vending automation with Account Factory</li>
+              <li>IAM Identity Center for federated access</li>
+            </ul>
+          </div>
+
+          <div class="guide-navigation">
+            <a href="project-realtime-data-pipeline.html" class="btn-secondary">&larr; Previous Project</a>
+            <a href="projects.html" class="btn-primary">Back to All Projects</a>
+          </div>
         </div>
-    </footer>
+      </div>
+    </section>
+  </main>
 
-    <script src="script.js" defer></script>
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h4 aria-level="2">AWS Cloud Architect Guide</h4>
+          <p>Your roadmap to a successful career in cloud architecture.</p>
+        </div>
+        <div class="footer-section">
+          <h4 aria-level="2">Quick Links</h4>
+          <ul>
+            <li><a href="index.html#roadmap">Roadmap</a></li>
+            <li><a href="interview-prep.html">Interview Prep</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="resources.html">Resources</a></li>
+            <li><a href="tools.html">Tools</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4 aria-level="2">Official AWS Links</h4>
+          <ul>
+            <li><a href="https://aws.amazon.com/certification/" target="_blank" rel="noopener">AWS Certification</a></li>
+            <li><a href="https://aws.amazon.com/training/" target="_blank" rel="noopener">AWS Training</a></li>
+            <li><a href="https://aws.amazon.com/architecture/" target="_blank" rel="noopener">AWS Architecture Center</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4 aria-level="2">Legal</h4>
+          <ul>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+            <li><a href="about.html">About</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 AWS Cloud Architect Guide. Not affiliated with Amazon Web Services.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js" defer></script>
 </body>
 </html>

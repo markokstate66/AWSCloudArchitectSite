@@ -35,13 +35,17 @@ function extract() {
   const isExt = h => /^https?:\/\//.test(h) && !/awscloudarchitect\.com/.test(h);
   // Unique set of page targets (fragment stripped): an on-page TOC or breadcrumb pointing at
   // pages already linked does not change the set; a link to a new page or a dropped page does.
-  const internal = Array.from(new Set(links.filter(h => !isExt(h)).map(h => (h.replace(/^https?:\/\/(www\.)?awscloudarchitect\.com/, '').replace(/#.*$/, '') || '(self)')))).sort();
+  // Fragment-only hrefs (#roadmap, #main) are on-page navigation, not content links: ignored.
+  const internal = Array.from(new Set(links.filter(h => !isExt(h) && !h.startsWith('#')).map(h => h.replace(/^https?:\/\/(www\.)?awscloudarchitect\.com/, '').replace(/#.*$/, '')))).sort();
   const external = links.filter(isExt).sort();
   const CHROME = '[data-harness-placeholder],[data-ui],nav,button,.ad-well';
   const headings = q('h1,h2,h3,h4').filter(h => !h.closest(CHROME)).map(h => h.tagName + ':' + norm(h.textContent));
   const uiText = q('[data-ui]').map(e => norm(e.innerText)).filter(Boolean);
   const images = q('img').map(i => (i.getAttribute('src') || '') + '|' + (i.getAttribute('alt') === null ? 'NOALT' : norm(i.getAttribute('alt'))));
   const scripts = q('script[src]').map(s => s.getAttribute('src'));
+  // Exact (whitespace-preserving) text of every <pre>: the normalised text check would let an
+  // indentation change inside a code sample slip through, and copied code must stay byte-exact.
+  const pre = q('pre').filter(p => !p.closest('[data-harness-placeholder]')).map(p => p.textContent);
   const ads = q('ins.adsbygoogle').map(el => { const r = el.getBoundingClientRect(); const top = r.top + window.scrollY; return { slot: el.getAttribute('data-ad-slot') || '', format: el.getAttribute('data-ad-format') || '', top: Math.round(top), height: Math.round(r.height), aboveFold: top < window.innerHeight }; });
   const clone = document.body.cloneNode(true);
   clone.querySelectorAll(CHROME + ',script,style,noscript,template,ins.adsbygoogle').forEach(n => n.remove());
@@ -53,7 +57,7 @@ function extract() {
   const html = document.documentElement.innerHTML;
   return {
     title: norm(document.title), canonical: attr('link[rel="canonical"]', 'href'), lang: document.documentElement.lang || '', meta, ld,
-    headings, text, uiText, internalLinks: internal, externalLinks: external, images, scripts,
+    headings, text, uiText, pre, internalLinks: internal, externalLinks: external, images, scripts,
     adsenseLoader: !!document.querySelector('script[src*="adsbygoogle.js?client=ca-pub-6676281664229738"]'),
     gaId: (html.match(/gtag\/js\?id=(G-[A-Z0-9]+)/) || [])[1] || '',
     consentMode: /gtag\(\s*['"]consent['"]/.test(html),
@@ -134,7 +138,7 @@ function diffField(page, field, b, c, approvals, used, problems) {
     const cur = await capture();
     const approvals = loadApprovals();
     const used = [], problems = [], adProblems = [];
-    const CONTENT_FIELDS = ['title', 'canonical', 'lang', 'meta', 'ld', 'headings', 'text', 'internalLinks', 'externalLinks', 'images'];
+    const CONTENT_FIELDS = ['title', 'canonical', 'lang', 'meta', 'ld', 'headings', 'text', 'pre', 'internalLinks', 'externalLinks', 'images'];
     const AD_FIELDS = ['adsenseLoader', 'gaId', 'consentMode'];
     for (const page of Object.keys(base)) {
       if (!cur[page]) { problems.push({ page, field: 'PAGE', at: 0, baseline: 'present', current: 'MISSING' }); continue; }

@@ -1,236 +1,237 @@
 <!DOCTYPE html>
 <html lang="en" class="no-js">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Build a serverless REST API with AWS API Gateway, Lambda, DynamoDB, and Cognito. Complete CRUD backend guide.">
-    <meta name="keywords" content="AWS serverless API, API Gateway Lambda, DynamoDB CRUD, Cognito authentication">
-    <meta name="author" content="AWS Cloud Architect Guide">
-    <meta name="robots" content="index, follow">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Build a serverless REST API with AWS API Gateway, Lambda, DynamoDB, and Cognito. Complete CRUD backend guide.">
+  <meta name="keywords" content="AWS serverless API, API Gateway Lambda, DynamoDB CRUD, Cognito authentication">
+  <meta name="author" content="AWS Cloud Architect Guide">
+  <meta name="robots" content="index, follow">
 
-    <meta name="google-site-verification" content="S5Ea49iR485VLGQdZrR9g5bwazOFpVs8SFOiOPckRaY">
-    <meta name="msvalidate.01" content="E4792860CAB72733FACE91C7EE52BB14">
+  <meta name="google-site-verification" content="S5Ea49iR485VLGQdZrR9g5bwazOFpVs8SFOiOPckRaY">
+  <meta name="msvalidate.01" content="E4792860CAB72733FACE91C7EE52BB14">
 
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-VBQ33BLD4E"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-VBQ33BLD4E');
-    </script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-VBQ33BLD4E"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-VBQ33BLD4E');
+  </script>
 
-    <meta property="og:type" content="article">
-    <meta property="og:title" content="Serverless REST API on AWS | Project Guide">
-    <meta property="og:description" content="Build a serverless REST API with AWS API Gateway, Lambda, and DynamoDB.">
-    <meta property="og:url" content="https://www.awscloudarchitect.com/project-serverless-rest-api.html">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Serverless REST API on AWS | Project Guide">
+  <meta property="og:description" content="Build a serverless REST API with AWS API Gateway, Lambda, and DynamoDB.">
+  <meta property="og:url" content="https://www.awscloudarchitect.com/project-serverless-rest-api.html">
 
-    <title>Serverless REST API on AWS | Intermediate Project Guide</title>
-    <link rel="canonical" href="https://www.awscloudarchitect.com/project-serverless-rest-api.html">
-    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <title>Serverless REST API on AWS | Intermediate Project Guide</title>
+  <link rel="canonical" href="https://www.awscloudarchitect.com/project-serverless-rest-api.html">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
 
-    <link rel="preconnect" href="https://www.googletagmanager.com">
-    <link rel="preconnect" href="https://pagead2.googlesyndication.com" crossorigin>
-    <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://www.googletagmanager.com">
+  <link rel="preconnect" href="https://pagead2.googlesyndication.com" crossorigin>
+  <link rel="stylesheet" href="styles.css">
 
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6676281664229738" crossorigin="anonymous"></script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6676281664229738" crossorigin="anonymous"></script>
 </head>
 <body>
-    <header class="site-header">
-        <nav class="site-header-inner" aria-label="Main">
-            <a class="brand" href="index.html"><svg class="brand-mark" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M18.3 10.1a6.2 6.2 0 0 0-11.7-1.6 4.8 4.8 0 0 0 .6 9.5h10.6a4 4 0 0 0 .5-7.9Z"/></svg><span class="logo-text">AWS Cloud Architect Guide</span></a>
-            <ul class="site-nav" id="site-nav"><li><a href="index.html#roadmap">Roadmap</a></li><li><a href="index.html#certifications">Certifications</a></li><li><a href="interview-prep.html">Interview Prep</a></li><li><a href="projects.html">Projects</a></li><li><a href="resources.html">Resources</a></li><li><a href="tools.html">Tools</a></li></ul>
-            <button class="nav-toggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="site-nav"><span></span><span></span><span></span></button>
-        </nav>
-    </header>
-    <nav class="breadcrumbs" aria-label="Breadcrumb" data-ui>
-        <ol class="container"><li><a href="index.html">Home</a></li><li><a href="projects.html">Projects</a></li><li><span aria-current="page">Serverless REST API</span></li></ol>
+  <a class="skip-link" href="#main" data-ui>Skip to content</a>
+  <header class="site-header">
+    <nav class="site-header-inner" aria-label="Main">
+      <a class="brand" href="index.html"><svg class="brand-mark" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M18.3 10.1a6.2 6.2 0 0 0-11.7-1.6 4.8 4.8 0 0 0 .6 9.5h10.6a4 4 0 0 0 .5-7.9Z"/></svg><span class="logo-text">AWS Cloud Architect Guide</span></a>
+      <ul class="site-nav" id="site-nav"><li><a href="index.html#roadmap">Roadmap</a></li><li><a href="index.html#certifications">Certifications</a></li><li><a href="interview-prep.html">Interview Prep</a></li><li><a href="projects.html">Projects</a></li><li><a href="resources.html">Resources</a></li><li><a href="tools.html">Tools</a></li></ul>
+      <button class="nav-toggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="site-nav"><span></span><span></span><span></span></button>
     </nav>
-    <main id="main">
-        <section class="page-header">
-            <div class="container">
-                <span class="page-eyebrow project-level level-intermediate">Intermediate</span>
-                <h1>Serverless <span class="highlight">REST API</span></h1>
-                <p class="hero-subtitle">Build a complete CRUD API with API Gateway, Lambda, DynamoDB, and Cognito</p>
+  </header>
+  <nav class="breadcrumbs" aria-label="Breadcrumb" data-ui>
+    <ol class="container"><li><a href="index.html">Home</a></li><li><a href="projects.html">Projects</a></li><li><span aria-current="page">Serverless REST API</span></li></ol>
+  </nav>
+  <main id="main">
+    <section class="page-header">
+      <div class="container">
+        <span class="page-eyebrow project-level level-intermediate">Intermediate</span>
+        <h1>Serverless <span class="highlight">REST API</span></h1>
+        <p class="hero-subtitle">Build a complete CRUD API with API Gateway, Lambda, DynamoDB, and Cognito</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="project-guide">
+          <div class="guide-overview">
+            <h2>Project Overview</h2>
+            <p>Create a fully serverless backend API that handles CRUD operations with authentication. Perfect for mobile apps, SPAs, or any application needing a REST backend.</p>
+
+            <div class="guide-meta">
+              <div class="meta-item">
+                <strong>Difficulty:</strong> Intermediate
+              </div>
+              <div class="meta-item">
+                <strong>AWS Services:</strong> API Gateway, Lambda, DynamoDB, Cognito
+              </div>
+              <div class="meta-item">
+                <strong>Cost:</strong> Free Tier eligible
+              </div>
             </div>
-        </section>
+          </div>
 
-        <section class="section">
-            <div class="container">
-                <div class="project-guide">
-                    <div class="guide-overview">
-                        <h2>Project Overview</h2>
-                        <p>Create a fully serverless backend API that handles CRUD operations with authentication. Perfect for mobile apps, SPAs, or any application needing a REST backend.</p>
+          <div class="guide-section">
+            <h2>Prerequisites</h2>
+            <ul class="guide-list">
+              <li>Basic understanding of REST API concepts</li>
+              <li>Python or Node.js programming skills</li>
+              <li>Completed Serverless Contact Form project</li>
+              <li>Understanding of JSON and HTTP methods</li>
+            </ul>
+          </div>
 
-                        <div class="guide-meta">
-                            <div class="meta-item">
-                                <strong>Difficulty:</strong> Intermediate
-                            </div>
-                            <div class="meta-item">
-                                <strong>AWS Services:</strong> API Gateway, Lambda, DynamoDB, Cognito
-                            </div>
-                            <div class="meta-item">
-                                <strong>Cost:</strong> Free Tier eligible
-                            </div>
-                        </div>
-                    </div>
+          <div class="guide-section">
+            <h2>Architecture</h2>
+            <div class="architecture-diagram">
+              <div class="arch-flow">
+                <div class="arch-component user">
+                  <div class="arch-component-icon">&#128241;</div>
+                  <div class="arch-component-name">Client App</div>
+                  <div class="arch-component-detail">Web/Mobile</div>
+                </div>
+                <span class="arch-arrow">&#8594;</span>
+                <div class="arch-component security">
+                  <div class="arch-component-icon">&#128274;</div>
+                  <div class="arch-component-name">Cognito</div>
+                  <div class="arch-component-detail">Auth</div>
+                </div>
+                <span class="arch-arrow">&#8594;</span>
+                <div class="arch-component primary">
+                  <div class="arch-component-icon">&#128279;</div>
+                  <div class="arch-component-name">API Gateway</div>
+                  <div class="arch-component-detail">REST API</div>
+                </div>
+                <span class="arch-arrow">&#8594;</span>
+                <div class="arch-component compute">
+                  <div class="arch-component-icon">&#9889;</div>
+                  <div class="arch-component-name">Lambda</div>
+                  <div class="arch-component-detail">CRUD</div>
+                </div>
+                <span class="arch-arrow">&#8594;</span>
+                <div class="arch-component database">
+                  <div class="arch-component-icon">&#128451;</div>
+                  <div class="arch-component-name">DynamoDB</div>
+                  <div class="arch-component-detail">NoSQL</div>
+                </div>
+              </div>
+              <p class="arch-note">Fully serverless - pay only for what you use</p>
+            </div>
+          </div>
 
-                    <div class="guide-section">
-                        <h2>Prerequisites</h2>
-                        <ul class="guide-list">
-                            <li>Basic understanding of REST API concepts</li>
-                            <li>Python or Node.js programming skills</li>
-                            <li>Completed Serverless Contact Form project</li>
-                            <li>Understanding of JSON and HTTP methods</li>
-                        </ul>
-                    </div>
+          <div class="guide-section">
+            <h2>Step-by-Step Instructions</h2>
 
-                    <div class="guide-section">
-                        <h2>Architecture</h2>
-                        <div class="architecture-diagram">
-                            <div class="arch-flow">
-                                <div class="arch-component user">
-                                    <div class="arch-component-icon">&#128241;</div>
-                                    <div class="arch-component-name">Client App</div>
-                                    <div class="arch-component-detail">Web/Mobile</div>
-                                </div>
-                                <span class="arch-arrow">&#8594;</span>
-                                <div class="arch-component security">
-                                    <div class="arch-component-icon">&#128274;</div>
-                                    <div class="arch-component-name">Cognito</div>
-                                    <div class="arch-component-detail">Auth</div>
-                                </div>
-                                <span class="arch-arrow">&#8594;</span>
-                                <div class="arch-component primary">
-                                    <div class="arch-component-icon">&#128279;</div>
-                                    <div class="arch-component-name">API Gateway</div>
-                                    <div class="arch-component-detail">REST API</div>
-                                </div>
-                                <span class="arch-arrow">&#8594;</span>
-                                <div class="arch-component compute">
-                                    <div class="arch-component-icon">&#9889;</div>
-                                    <div class="arch-component-name">Lambda</div>
-                                    <div class="arch-component-detail">CRUD</div>
-                                </div>
-                                <span class="arch-arrow">&#8594;</span>
-                                <div class="arch-component database">
-                                    <div class="arch-component-icon">&#128451;</div>
-                                    <div class="arch-component-name">DynamoDB</div>
-                                    <div class="arch-component-detail">NoSQL</div>
-                                </div>
-                            </div>
-                            <p class="arch-note">Fully serverless - pay only for what you use</p>
-                        </div>
-                    </div>
+            <div class="guide-step">
+              <div class="step-number">1</div>
+              <div class="step-content">
+                <h3>Create DynamoDB Table</h3>
+                <ul class="guide-list">
+                  <li>Go to DynamoDB and create a new table</li>
+                  <li>Choose an appropriate partition key (e.g., "id" or "userId")</li>
+                  <li>Consider adding a sort key for queries</li>
+                  <li>Start with on-demand capacity mode</li>
+                  <li>Enable point-in-time recovery for production</li>
+                </ul>
+              </div>
+            </div>
 
-                    <div class="guide-section">
-                        <h2>Step-by-Step Instructions</h2>
+            <div class="guide-step">
+              <div class="step-number">2</div>
+              <div class="step-content">
+                <h3>Create Lambda Functions</h3>
+                <ul class="guide-list">
+                  <li>Create separate functions: createItem, getItem, updateItem, deleteItem, listItems</li>
+                  <li>Or create a single function that routes based on HTTP method</li>
+                  <li>Use the AWS SDK to interact with DynamoDB</li>
+                  <li>Return proper HTTP status codes and JSON responses</li>
+                  <li>Attach an IAM role with DynamoDB permissions</li>
+                </ul>
+              </div>
+            </div>
 
-                        <div class="guide-step">
-                            <div class="step-number">1</div>
-                            <div class="step-content">
-                                <h3>Create DynamoDB Table</h3>
-                                <ul class="guide-list">
-                                    <li>Go to DynamoDB and create a new table</li>
-                                    <li>Choose an appropriate partition key (e.g., "id" or "userId")</li>
-                                    <li>Consider adding a sort key for queries</li>
-                                    <li>Start with on-demand capacity mode</li>
-                                    <li>Enable point-in-time recovery for production</li>
-                                </ul>
-                            </div>
-                        </div>
+            <div class="guide-step">
+              <div class="step-number">3</div>
+              <div class="step-content">
+                <h3>Set Up API Gateway</h3>
+                <ul class="guide-list">
+                  <li>Create a REST API in API Gateway</li>
+                  <li>Create resources (e.g., /items, /items/{id})</li>
+                  <li>Add methods: GET, POST, PUT, DELETE</li>
+                  <li>Enable Lambda proxy integration</li>
+                  <li>Configure request/response models (optional)</li>
+                </ul>
+              </div>
+            </div>
 
-                        <div class="guide-step">
-                            <div class="step-number">2</div>
-                            <div class="step-content">
-                                <h3>Create Lambda Functions</h3>
-                                <ul class="guide-list">
-                                    <li>Create separate functions: createItem, getItem, updateItem, deleteItem, listItems</li>
-                                    <li>Or create a single function that routes based on HTTP method</li>
-                                    <li>Use the AWS SDK to interact with DynamoDB</li>
-                                    <li>Return proper HTTP status codes and JSON responses</li>
-                                    <li>Attach an IAM role with DynamoDB permissions</li>
-                                </ul>
-                            </div>
-                        </div>
+            <div class="guide-step">
+              <div class="step-number">4</div>
+              <div class="step-content">
+                <h3>Configure Cognito Authentication</h3>
+                <ul class="guide-list">
+                  <li>Create a Cognito User Pool</li>
+                  <li>Configure sign-up and sign-in options</li>
+                  <li>Create an App Client</li>
+                  <li>Add a Cognito Authorizer in API Gateway</li>
+                  <li>Apply authorizer to protected endpoints</li>
+                </ul>
+              </div>
+            </div>
 
-                        <div class="guide-step">
-                            <div class="step-number">3</div>
-                            <div class="step-content">
-                                <h3>Set Up API Gateway</h3>
-                                <ul class="guide-list">
-                                    <li>Create a REST API in API Gateway</li>
-                                    <li>Create resources (e.g., /items, /items/{id})</li>
-                                    <li>Add methods: GET, POST, PUT, DELETE</li>
-                                    <li>Enable Lambda proxy integration</li>
-                                    <li>Configure request/response models (optional)</li>
-                                </ul>
-                            </div>
-                        </div>
+            <div class="guide-step">
+              <div class="step-number">5</div>
+              <div class="step-content">
+                <h3>Deploy and Configure CORS</h3>
+                <ul class="guide-list">
+                  <li>Enable CORS on API Gateway resources</li>
+                  <li>Ensure Lambda returns CORS headers</li>
+                  <li>Deploy API to a stage (dev, prod)</li>
+                  <li>Note your API endpoint URL</li>
+                </ul>
+              </div>
+            </div>
 
-                        <div class="guide-step">
-                            <div class="step-number">4</div>
-                            <div class="step-content">
-                                <h3>Configure Cognito Authentication</h3>
-                                <ul class="guide-list">
-                                    <li>Create a Cognito User Pool</li>
-                                    <li>Configure sign-up and sign-in options</li>
-                                    <li>Create an App Client</li>
-                                    <li>Add a Cognito Authorizer in API Gateway</li>
-                                    <li>Apply authorizer to protected endpoints</li>
-                                </ul>
-                            </div>
-                        </div>
+            <div class="guide-step">
+              <div class="step-number">6</div>
+              <div class="step-content">
+                <h3>Test with Postman or curl</h3>
+                <ul class="guide-list">
+                  <li>Test unauthenticated endpoints first</li>
+                  <li>Get a JWT token from Cognito</li>
+                  <li>Add Authorization header to requests</li>
+                  <li>Test all CRUD operations</li>
+                  <li>Verify data in DynamoDB console</li>
+                </ul>
+              </div>
+            </div>
+          </div>
 
-                        <div class="guide-step">
-                            <div class="step-number">5</div>
-                            <div class="step-content">
-                                <h3>Deploy and Configure CORS</h3>
-                                <ul class="guide-list">
-                                    <li>Enable CORS on API Gateway resources</li>
-                                    <li>Ensure Lambda returns CORS headers</li>
-                                    <li>Deploy API to a stage (dev, prod)</li>
-                                    <li>Note your API endpoint URL</li>
-                                </ul>
-                            </div>
-                        </div>
+          <div class="guide-section">
+            <h2>Tips</h2>
+            <div class="tips-box">
+              <ul class="guide-list">
+                <li><strong>Use Lambda Layers for shared code</strong> - Share utilities and SDK clients across functions</li>
+                <li><strong>Enable DynamoDB Streams</strong> - Trigger additional processing when data changes</li>
+                <li><strong>Implement pagination</strong> - Use LastEvaluatedKey for listing endpoints</li>
+                <li><strong>Add request validation</strong> - Use API Gateway models to validate input</li>
+              </ul>
+            </div>
+          </div>
 
-                        <div class="guide-step">
-                            <div class="step-number">6</div>
-                            <div class="step-content">
-                                <h3>Test with Postman or curl</h3>
-                                <ul class="guide-list">
-                                    <li>Test unauthenticated endpoints first</li>
-                                    <li>Get a JWT token from Cognito</li>
-                                    <li>Add Authorization header to requests</li>
-                                    <li>Test all CRUD operations</li>
-                                    <li>Verify data in DynamoDB console</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
+          <div class="guide-section">
+            <h2>Code Examples</h2>
 
-                    <div class="guide-section">
-                        <h2>Tips</h2>
-                        <div class="tips-box">
-                            <ul class="guide-list">
-                                <li><strong>Use Lambda Layers for shared code</strong> - Share utilities and SDK clients across functions</li>
-                                <li><strong>Enable DynamoDB Streams</strong> - Trigger additional processing when data changes</li>
-                                <li><strong>Implement pagination</strong> - Use LastEvaluatedKey for listing endpoints</li>
-                                <li><strong>Add request validation</strong> - Use API Gateway models to validate input</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="guide-section">
-                        <h2>Code Examples</h2>
-
-                        <h3>Lambda CRUD Handler (Python)</h3>
-                        <div class="code-block">
-                            <div class="code-header">
-                                <span class="code-label">lambda_function.py</span>
-                                <span class="code-lang">PYTHON</span>
-                            </div>
-                            <pre><code>import json
+            <h3>Lambda CRUD Handler (Python)</h3>
+            <div class="code-block">
+              <div class="code-header">
+                <span class="code-label">lambda_function.py</span>
+                <span class="code-lang">PYTHON</span>
+              </div>
+              <pre><code>import json
 import boto3
 import uuid
 from decimal import Decimal
@@ -283,15 +284,15 @@ def build_response(status_code, body):
         },
         'body': json.dumps(body, default=str)
     }</code></pre>
-                        </div>
+            </div>
 
-                        <h3>DynamoDB Table (AWS CLI)</h3>
-                        <div class="code-block">
-                            <div class="code-header">
-                                <span class="code-label">Terminal Commands</span>
-                                <span class="code-lang">BASH</span>
-                            </div>
-                            <pre><code># Create DynamoDB table
+            <h3>DynamoDB Table (AWS CLI)</h3>
+            <div class="code-block">
+              <div class="code-header">
+                <span class="code-label">Terminal Commands</span>
+                <span class="code-lang">BASH</span>
+              </div>
+              <pre><code># Create DynamoDB table
 aws dynamodb create-table \
     --table-name Items \
     --attribute-definitions AttributeName=id,AttributeType=S \
@@ -302,15 +303,15 @@ aws dynamodb create-table \
 aws dynamodb update-continuous-backups \
     --table-name Items \
     --point-in-time-recovery-specification PointInTimeRecoveryEnabled=true</code></pre>
-                        </div>
+            </div>
 
-                        <h3>IAM Policy for Lambda</h3>
-                        <div class="code-block">
-                            <div class="code-header">
-                                <span class="code-label">lambda-dynamodb-policy.json</span>
-                                <span class="code-lang">JSON</span>
-                            </div>
-                            <pre><code>{
+            <h3>IAM Policy for Lambda</h3>
+            <div class="code-block">
+              <div class="code-header">
+                <span class="code-label">lambda-dynamodb-policy.json</span>
+                <span class="code-lang">JSON</span>
+              </div>
+              <pre><code>{
     "Version": "2012-10-17",
     "Statement": [
         {
@@ -327,15 +328,15 @@ aws dynamodb update-continuous-backups \
         }
     ]
 }</code></pre>
-                        </div>
+            </div>
 
-                        <h3>API Testing with curl</h3>
-                        <div class="code-block">
-                            <div class="code-header">
-                                <span class="code-label">API Tests</span>
-                                <span class="code-lang">BASH</span>
-                            </div>
-                            <pre><code>API_URL="https://abc123.execute-api.us-east-1.amazonaws.com/prod"
+            <h3>API Testing with curl</h3>
+            <div class="code-block">
+              <div class="code-header">
+                <span class="code-label">API Tests</span>
+                <span class="code-lang">BASH</span>
+              </div>
+              <pre><code>API_URL="https://abc123.execute-api.us-east-1.amazonaws.com/prod"
 
 # Create item
 curl -X POST "$API_URL/items" \
@@ -355,68 +356,68 @@ curl -X PUT "$API_URL/items/123-456-789" \
 
 # Delete item
 curl -X DELETE "$API_URL/items/123-456-789"</code></pre>
-                        </div>
-                    </div>
-
-                    <div class="guide-section">
-                        <h2>What You'll Learn</h2>
-                        <ul class="guide-list">
-                            <li>RESTful API design with API Gateway</li>
-                            <li>Lambda function patterns for CRUD operations</li>
-                            <li>DynamoDB data modeling and queries</li>
-                            <li>User authentication with Cognito</li>
-                            <li>API authorization strategies and JWT tokens</li>
-                        </ul>
-                    </div>
-
-                    <div class="guide-navigation">
-                        <a href="project-cicd-pipeline.html" class="btn-secondary">&larr; Previous Project</a>
-                        <a href="project-infrastructure-as-code.html" class="btn-primary">Next Project &rarr;</a>
-                    </div>
-                </div>
             </div>
-        </section>
-    </main>
+          </div>
 
-    <footer class="site-footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h4 aria-level="2">AWS Cloud Architect Guide</h4>
-                    <p>Your roadmap to a successful career in cloud architecture.</p>
-                </div>
-                <div class="footer-section">
-                    <h4 aria-level="2">Quick Links</h4>
-                    <ul>
-                        <li><a href="index.html#roadmap">Roadmap</a></li>
-                        <li><a href="interview-prep.html">Interview Prep</a></li>
-                        <li><a href="projects.html">Projects</a></li>
-                        <li><a href="resources.html">Resources</a></li>
-                        <li><a href="tools.html">Tools</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4 aria-level="2">Official AWS Links</h4>
-                    <ul>
-                        <li><a href="https://aws.amazon.com/certification/" target="_blank" rel="noopener">AWS Certification</a></li>
-                        <li><a href="https://aws.amazon.com/training/" target="_blank" rel="noopener">AWS Training</a></li>
-                        <li><a href="https://aws.amazon.com/architecture/" target="_blank" rel="noopener">AWS Architecture Center</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4 aria-level="2">Legal</h4>
-                    <ul>
-                        <li><a href="privacy.html">Privacy Policy</a></li>
-                        <li><a href="about.html">About</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 AWS Cloud Architect Guide. Not affiliated with Amazon Web Services.</p>
-            </div>
+          <div class="guide-section">
+            <h2>What You'll Learn</h2>
+            <ul class="guide-list">
+              <li>RESTful API design with API Gateway</li>
+              <li>Lambda function patterns for CRUD operations</li>
+              <li>DynamoDB data modeling and queries</li>
+              <li>User authentication with Cognito</li>
+              <li>API authorization strategies and JWT tokens</li>
+            </ul>
+          </div>
+
+          <div class="guide-navigation">
+            <a href="project-cicd-pipeline.html" class="btn-secondary">&larr; Previous Project</a>
+            <a href="project-infrastructure-as-code.html" class="btn-primary">Next Project &rarr;</a>
+          </div>
         </div>
-    </footer>
+      </div>
+    </section>
+  </main>
 
-    <script src="script.js" defer></script>
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h4 aria-level="2">AWS Cloud Architect Guide</h4>
+          <p>Your roadmap to a successful career in cloud architecture.</p>
+        </div>
+        <div class="footer-section">
+          <h4 aria-level="2">Quick Links</h4>
+          <ul>
+            <li><a href="index.html#roadmap">Roadmap</a></li>
+            <li><a href="interview-prep.html">Interview Prep</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="resources.html">Resources</a></li>
+            <li><a href="tools.html">Tools</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4 aria-level="2">Official AWS Links</h4>
+          <ul>
+            <li><a href="https://aws.amazon.com/certification/" target="_blank" rel="noopener">AWS Certification</a></li>
+            <li><a href="https://aws.amazon.com/training/" target="_blank" rel="noopener">AWS Training</a></li>
+            <li><a href="https://aws.amazon.com/architecture/" target="_blank" rel="noopener">AWS Architecture Center</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4 aria-level="2">Legal</h4>
+          <ul>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+            <li><a href="about.html">About</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 AWS Cloud Architect Guide. Not affiliated with Amazon Web Services.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js" defer></script>
 </body>
 </html>

@@ -128,8 +128,13 @@ a:hover { color: var(--accent-strong); text-decoration-thickness: 2px; }
 }
 
 /* ==== [layout-shell] skip link, header, nav, breadcrumbs, page header, footer, layout grid ==== */
-/* No .skip-link rule yet: the skip anchor is blocked by integrity.js, which records any
-   same-page "#id" href as the link target "(self)". See the round report. */
+/* skip link: first focusable element; visible only on keyboard focus */
+.skip-link {
+  position: absolute; left: var(--sp-3); top: -100px; z-index: var(--z-skip);
+  padding: var(--sp-2) var(--sp-3); border-radius: var(--radius-sm);
+  background: var(--aws-orange); color: var(--navy); font-weight: 650; text-decoration: none;
+}
+.skip-link:focus { top: var(--sp-3); }
 /* compact sticky header: 56px mobile / 64px from 48em. Nothing is hidden beneath it. */
 .site-header { position: sticky; top: 0; z-index: var(--z-header); background: var(--navy); color: var(--on-navy); }
 .site-header-inner {

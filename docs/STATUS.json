@@ -3,15 +3,72 @@
   "baselineLabel": "baseline-2026-09-13",
   "passCriteria": "every critic >= 8.5, 0 console errors, budgets met, 0 serious/critical axe, integrity + ad gates PASS",
   "areas": {
-    "design-system":     {"wave": 1, "status": "PENDING", "round": 0, "scores": {}, "openIssues": []},
-    "layout-shell":      {"wave": 1, "status": "PENDING", "round": 0, "scores": {}, "openIssues": []},
-    "article-template":  {"wave": 2, "status": "PENDING", "round": 0, "scores": {}, "openIssues": []},
-    "code-and-diagrams": {"wave": 2, "status": "PENDING", "round": 0, "scores": {}, "openIssues": []},
-    "listing-pages":     {"wave": 2, "status": "PENDING", "round": 0, "scores": {}, "openIssues": []},
-    "static-pages":      {"wave": 2, "status": "PENDING", "round": 0, "scores": {}, "openIssues": []},
-    "ad-presentation":   {"wave": 3, "status": "PENDING", "round": 0, "scores": {}, "openIssues": []},
-    "whole-site":        {"wave": 3, "status": "PENDING", "round": 0, "scores": {}, "openIssues": []}
+    "design-system": {
+      "wave": 1,
+      "status": "IN_GAUNTLET",
+      "round": 1,
+      "scores": {},
+      "openIssues": [],
+      "builderReport": "docs/rounds/wave1-builder.md"
+    },
+    "layout-shell": {
+      "wave": 1,
+      "status": "IN_GAUNTLET",
+      "round": 1,
+      "scores": {},
+      "openIssues": [],
+      "builderReport": "docs/rounds/wave1-builder.md"
+    },
+    "article-template": {
+      "wave": 2,
+      "status": "PENDING",
+      "round": 0,
+      "scores": {},
+      "openIssues": []
+    },
+    "code-and-diagrams": {
+      "wave": 2,
+      "status": "PENDING",
+      "round": 0,
+      "scores": {},
+      "openIssues": []
+    },
+    "listing-pages": {
+      "wave": 2,
+      "status": "PENDING",
+      "round": 0,
+      "scores": {},
+      "openIssues": []
+    },
+    "static-pages": {
+      "wave": 2,
+      "status": "PENDING",
+      "round": 0,
+      "scores": {},
+      "openIssues": []
+    },
+    "ad-presentation": {
+      "wave": 3,
+      "status": "PENDING",
+      "round": 0,
+      "scores": {},
+      "openIssues": []
+    },
+    "whole-site": {
+      "wave": 3,
+      "status": "PENDING",
+      "round": 0,
+      "scores": {},
+      "openIssues": []
+    }
   },
-  "phase0": {"backend": "OK (no 500s; workflow race fixed in repo, human to confirm SWA binding)", "contentAudit": "docs/CONTENT_AUDIT.md — 31 WRONG/STALE awaiting approval"},
-  "blocked": []
+  "phase0": {
+    "backend": "OK (no 500s; workflow race fixed in repo, human to confirm SWA binding)",
+    "contentAudit": "docs/CONTENT_AUDIT.md — 31 WRONG/STALE awaiting approval"
+  },
+  "blocked": [],
+  "notes": [
+    "Wave 1 built by one builder for both areas (cohesion); critics running round 1",
+    "Integrator: skip link added after gate fix (fragment-only hrefs ignored); pre-block exact text added to gate; HTML re-indented 4->2 spaces outside <pre> (68 KB headroom)"
+  ]
 }

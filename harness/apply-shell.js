@@ -101,10 +101,9 @@ for (const page of Object.keys(PAGES).sort()) {
   // contact.html inlined its form styles; they now live in styles.css [static-pages]
   s = s.replace(/\n[ \t]*<style>\n[ \t]*\.contact-form \{[\s\S]*?<\/style>\n/, '\n');
 
-  // 3. shell: header (replaces the old fixed header in either form). The skip anchor is
-  //    held back: integrity.js records any "#id" href as the link target "(self)", which
-  //    18 of 20 baselines do not contain. See docs/rounds/wave1-builder.md.
+  // 3. shell: skip link (first focusable; integrity.js ignores fragment-only hrefs) + header
   s = s.replace(/[ \t]*<a class="skip-link"[^>]*>[\s\S]*?<\/a>\n/, '');
+  s = s.replace(/(<body[^>]*>\n)/, '$1    <a class="skip-link" href="#main" data-ui>Skip to content</a>\n');
   const hdr = /[ \t]*<header class="(?:header|site-header)">[\s\S]*?<\/header>\n\n?/;
   if (hdr.test(s)) s = s.replace(hdr, header(page, home));
 

@@ -63,7 +63,6 @@
       "text": "How to Become an AWS Cloud Architect in 2026 Your complete roadmap to a six-figure cloud career. Learn the skills, get certified, and land your dream job. $150K+ AVG. SALARY 32% JOB GROWTH #1 CLOUD PLATFORM Start Your Journey What is an AWS Cloud Architect? An AWS Cloud Architect is a senior IT professional who designs, builds, and manages cloud infrastructure on Amazon Web Services. They are responsible for: Designing scalable, secure, and cost-effective cloud solutions Migrating on-premises applications to AWS Implementing best practices for security and compliance Optimizing cloud costs and performance Leading technical teams and mentoring engineers Cloud Architects are among the highest-paid IT professionals, with demand growing as companies accelerate their cloud adoption. Key Skills Required AWS Services Networking Security Infrastructure as Code DevOps Cost Optimization Python/Scripting Containers AWS Cloud Architect Roadmap Follow this proven path from beginner to certified AWS Cloud Architect 1 Learn the Fundamentals Start with cloud computing basics, networking concepts, and Linux administration. Understand how the internet works and basic security principles. TCP/IP Networking Linux Basics HTTP/DNS Basic Security 2 AWS Cloud Practitioner Get your first AWS certification. Learn core AWS services, pricing models, and cloud concepts. This builds your foundation for advanced learning. EC2 & S3 IAM Basics AWS Pricing Cloud Concepts 3 Solutions Architect Associate The most valuable entry-level AWS certification. Master designing resilient, high-performing, secure, and cost-optimized architectures. VPC Design High Availability Database Services Serverless 4 Hands-On Experience Build real projects on AWS. Create a portfolio showcasing your skills. Contribute to open source or build side projects. Personal Projects AWS Free Tier GitHub Portfolio Blog Writing 5 Solutions Architect Professional The gold standard for AWS architects. Demonstrates expert-level knowledge in designing distributed systems on AWS. Complex Architectures Migration Strategies Cost Control Enterprise Design 6 Specialize & Lead Add specialty certifications, develop leadership skills, and position yourself for senior architect or principal engineer roles. Security Specialty Networking Specialty Team Leadership Architecture Reviews AWS Certification Path The certifications that will accelerate your career FOUNDATIONAL AWS Cloud Practitioner Entry-level certification covering AWS Cloud concepts, services, security, and pricing. No prerequisites 90-minute exam $100 USD Learn More ASSOCIATE Solutions Architect Associate Design available, cost-efficient, fault-tolerant, and scalable distributed systems. 1+ year AWS experience recommended 130-minute exam $150 USD Learn More PROFESSIONAL Solutions Architect Professional Advanced architectural design, continuous improvement, and organizational complexity. 2+ years AWS experience recommended 180-minute exam $300 USD Learn More SPECIALTY Security Specialty Specialized knowledge of securing AWS workloads and understanding data protection. Security experience recommended 170-minute exam $300 USD Learn More Best AWS Learning Resources Curated list of the best free and paid resources Free Resources AWS Skill Builder Official free training from AWS AWS YouTube Channel Tutorials and re:Invent sessions AWS Architecture Center Reference architectures and best practices Well-Architected Framework Essential reading for architects AWS Free Tier Hands-on practice at no cost Paid Courses Stephane Maarek (Udemy) Most popular SAA course Adrian Cantrill In-depth, comprehensive courses A Cloud Guru Subscription-based learning platform Pluralsight Enterprise learning platform Tutorials Dojo Practice exams and cheat sheets Practice & Labs AWS Cloud Quest Gamified learning experience Whizlabs Practice tests and hands-on labs Cloud Academy Labs and learning paths Free Labs (Cantrill) Open source hands-on labs AWS Cloud Architect Salary Guide What you can expect to earn in 2026 Junior Cloud Architect $90K - $130K 0-2 years experience Solutions Architect Associate Entry-level design work Working under senior guidance Cloud Architect $130K - $180K 3-5 years experience Solutions Architect Professional Leading architecture decisions Mentoring junior engineers Senior/Principal Architect $180K - $250K+ 7+ years experience Multiple specialty certifications Enterprise-wide strategy Technical leadership Note: Salaries vary by location, company size, and industry. Tech hubs like San Francisco, Seattle, and NYC typically pay 20-40% above average. Remote roles often match major market rates. Frequently Asked Questions Most professionals can become an AWS Cloud Architect in 1-3 years, depending on their starting experience. Those with IT backgrounds (system administration, networking, development) may achieve this faster, while career changers should expect 2-3 years of dedicated learning and hands-on experience. The key is consistent practice and building real projects. The recommended certification path is: AWS Cloud Practitioner (foundational), AWS Solutions Architect Associate (SAA-C03), and AWS Solutions Architect Professional. Additional specialty certifications in Security, Networking, or Database can enhance your profile. However, certifications alone aren't enough - hands-on experience is equally important. Yes! Cloud architecture is one of the most accessible high-paying tech careers. Many successful cloud architects are self-taught or come from non-traditional backgrounds. What matters most is demonstrable skills, certifications, and a portfolio of projects. Focus on building real-world experience and showcasing your work. AWS Cloud Architects earn between $130,000 to $200,000+ annually in the United States, depending on experience, location, and company size. Senior architects at top tech companies can earn over $250,000 with bonuses and stock options. Remote positions often pay competitive rates regardless of location. AWS is the best starting point. It holds approximately 32% market share (the largest), has the most job opportunities, and offers the most comprehensive services. Once you master AWS, learning Azure or GCP becomes much easier as concepts transfer. Many organizations use multi-cloud, so AWS skills remain valuable regardless. Python is the most important language for cloud architects - it's used for AWS Lambda, automation scripts, and infrastructure tools. Additionally, learn YAML/JSON for CloudFormation and configuration, Bash for scripting, and optionally Terraform (HCL) for infrastructure as code. You don't need to be a software developer, but scripting skills are essential. Start Your AWS Cloud Architect Journey Today Join thousands of professionals who have transformed their careers with cloud skills. View the Roadmap Get AWS Free Tier AWS Cloud Architect Guide Your roadmap to a successful career in cloud architecture. Quick Links Roadmap Certifications Interview Prep Projects Tools Official AWS Links AWS Certification AWS Training AWS Architecture Center Legal Privacy Policy About © 2025 AWS Cloud Architect Guide. Not affiliated with Amazon Web Services. AWS and Amazon Web Services are trademarks of Amazon.com, Inc.",
       "uiText": [],
       "internalLinks": [
-        "(self)",
         "about.html",
         "interview-prep.html",
         "privacy.html",
@@ -104,7 +103,8 @@
       "adsenseLoader": true,
       "gaId": "G-VBQ33BLD4E",
       "consentMode": false,
-      "ads1440": []
+      "ads1440": [],
+      "pre": []
     },
     "projects.html": {
       "ads390": [],
@@ -212,7 +212,8 @@
       "adsenseLoader": true,
       "gaId": "G-VBQ33BLD4E",
       "consentMode": false,
-      "ads1440": []
+      "ads1440": [],
+      "pre": []
     },
     "resources.html": {
       "ads390": [],
@@ -313,7 +314,8 @@
       "adsenseLoader": true,
       "gaId": "G-VBQ33BLD4E",
       "consentMode": false,
-      "ads1440": []
+      "ads1440": [],
+      "pre": []
     },
     "tools.html": {
       "ads390": [],
@@ -387,7 +389,8 @@
       "adsenseLoader": true,
       "gaId": "G-VBQ33BLD4E",
       "consentMode": false,
-      "ads1440": []
+      "ads1440": [],
+      "pre": []
     },
     "interview-prep.html": {
       "ads390": [],
@@ -453,7 +456,8 @@
       "adsenseLoader": true,
       "gaId": "G-VBQ33BLD4E",
       "consentMode": false,
-      "ads1440": []
+      "ads1440": [],
+      "pre": []
     },
     "about.html": {
       "ads390": [],
@@ -514,7 +518,8 @@
       "adsenseLoader": true,
       "gaId": "G-VBQ33BLD4E",
       "consentMode": false,
-      "ads1440": []
+      "ads1440": [],
+      "pre": []
     },
     "contact.html": {
       "ads390": [],
@@ -563,7 +568,8 @@
       "adsenseLoader": true,
       "gaId": "G-VBQ33BLD4E",
       "consentMode": false,
-      "ads1440": []
+      "ads1440": [],
+      "pre": []
     },
     "privacy.html": {
       "ads390": [],
@@ -635,7 +641,8 @@
       "adsenseLoader": true,
       "gaId": "G-VBQ33BLD4E",
       "consentMode": false,
-      "ads1440": []
+      "ads1440": [],
+      "pre": []
     },
     "404.html": {
       "ads390": [],
@@ -660,7 +667,8 @@
       "adsenseLoader": false,
       "gaId": "",
       "consentMode": false,
-      "ads1440": []
+      "ads1440": [],
+      "pre": []
     },
     "project-static-website.html": {
       "ads390": [],
@@ -727,7 +735,12 @@
       "adsenseLoader": true,
       "gaId": "G-VBQ33BLD4E",
       "consentMode": false,
-      "ads1440": []
+      "ads1440": [],
+      "pre": [
+        "{\n    \"Version\": \"2012-10-17\",\n    \"Statement\": [\n        {\n            \"Sid\": \"AllowCloudFrontServicePrincipal\",\n            \"Effect\": \"Allow\",\n            \"Principal\": {\n                \"Service\": \"cloudfront.amazonaws.com\"\n            },\n            \"Action\": \"s3:GetObject\",\n            \"Resource\": \"arn:aws:s3:::your-bucket-name/*\",\n            \"Condition\": {\n                \"StringEquals\": {\n                    \"AWS:SourceArn\": \"arn:aws:cloudfront::ACCOUNT_ID:distribution/DISTRIBUTION_ID\"\n                }\n            }\n        }\n    ]\n}",
+        "# Create S3 bucket\naws s3 mb s3://my-portfolio-site-2024\n\n# Upload website files\naws s3 sync ./website s3://my-portfolio-site-2024\n\n# Invalidate CloudFront cache\naws cloudfront create-invalidation \\\n    --distribution-id E1234567890 \\\n    --paths \"/*\"",
+        "#!/bin/bash\nBUCKET=\"my-portfolio-site-2024\"\nDISTRIBUTION_ID=\"E1234567890\"\n\n# Sync files to S3\naws s3 sync ./dist s3://$BUCKET --delete\n\n# Invalidate CloudFront cache\naws cloudfront create-invalidation \\\n    --distribution-id $DISTRIBUTION_ID \\\n    --paths \"/*\"\n\necho \"Deployment complete!\""
+      ]
     },
     "project-serverless-contact-form.html": {
       "ads390": [],
@@ -795,7 +808,12 @@
       "adsenseLoader": true,
       "gaId": "G-VBQ33BLD4E",
       "consentMode": false,
-      "ads1440": []
+      "ads1440": [],
+      "pre": [
+        "import json\nimport boto3\nimport os\n\nses = boto3.client('ses')\n\ndef lambda_handler(event, context):\n    try:\n        body = json.loads(event['body'])\n        name = body['name']\n        email = body['email']\n        message = body['message']\n\n        # Send email via SES\n        ses.send_email(\n            Source=os.environ['SENDER_EMAIL'],\n            Destination={\n                'ToAddresses': [os.environ['RECIPIENT_EMAIL']]\n            },\n            Message={\n                'Subject': {'Data': f'Contact Form: {name}'},\n                'Body': {\n                    'Text': {'Data': f'From: {name} ({email})\\n\\n{message}'}\n                }\n            }\n        )\n\n        return {\n            'statusCode': 200,\n            'headers': {\n                'Access-Control-Allow-Origin': '*',\n                'Content-Type': 'application/json'\n            },\n            'body': json.dumps({'message': 'Email sent successfully'})\n        }\n    except Exception as e:\n        return {\n            'statusCode': 500,\n            'headers': {'Access-Control-Allow-Origin': '*'},\n            'body': json.dumps({'error': str(e)})\n        }",
+        "const form = document.getElementById('contact-form');\nconst API_URL = 'https://abc123.execute-api.us-east-1.amazonaws.com/prod/contact';\n\nform.addEventListener('submit', async (e) => {\n    e.preventDefault();\n\n    const data = {\n        name: document.getElementById('name').value,\n        email: document.getElementById('email').value,\n        message: document.getElementById('message').value\n    };\n\n    try {\n        const response = await fetch(API_URL, {\n            method: 'POST',\n            headers: { 'Content-Type': 'application/json' },\n            body: JSON.stringify(data)\n        });\n\n        if (response.ok) {\n            alert('Message sent successfully!');\n            form.reset();\n        } else {\n            throw new Error('Failed to send message');\n        }\n    } catch (error) {\n        alert('Error: ' + error.message);\n    }\n});",
+        "{\n    \"Version\": \"2012-10-17\",\n    \"Statement\": [\n        {\n            \"Effect\": \"Allow\",\n            \"Action\": [\n                \"ses:SendEmail\",\n                \"ses:SendRawEmail\"\n            ],\n            \"Resource\": \"*\"\n        },\n        {\n            \"Effect\": \"Allow\",\n            \"Action\": [\n                \"logs:CreateLogGroup\",\n                \"logs:CreateLogStream\",\n                \"logs:PutLogEvents\"\n            ],\n            \"Resource\": \"arn:aws:logs:*:*:*\"\n        }\n    ]\n}"
+      ]
     },
     "project-ec2-web-server.html": {
       "ads390": [],
@@ -863,7 +881,12 @@
       "adsenseLoader": true,
       "gaId": "G-VBQ33BLD4E",
       "consentMode": false,
-      "ads1440": []
+      "ads1440": [],
+      "pre": [
+        "#!/bin/bash\n# Update system packages\nyum update -y\n\n# Install nginx\namazon-linux-extras install nginx1 -y\n\n# Start and enable nginx\nsystemctl start nginx\nsystemctl enable nginx\n\n# Create a simple index page\ncat > /usr/share/nginx/html/index.html << 'EOF'\n<!DOCTYPE html>\n<html>\n<head><title>Welcome</title></head>\n<body><h1>Hello from EC2!</h1></body>\n</html>\nEOF",
+        "# Create security group\naws ec2 create-security-group \\\n    --group-name web-server-sg \\\n    --description \"Web server security group\"\n\n# Allow SSH (restrict to your IP in production)\naws ec2 authorize-security-group-ingress \\\n    --group-name web-server-sg \\\n    --protocol tcp --port 22 \\\n    --cidr 0.0.0.0/0\n\n# Allow HTTP\naws ec2 authorize-security-group-ingress \\\n    --group-name web-server-sg \\\n    --protocol tcp --port 80 \\\n    --cidr 0.0.0.0/0\n\n# Allow HTTPS\naws ec2 authorize-security-group-ingress \\\n    --group-name web-server-sg \\\n    --protocol tcp --port 443 \\\n    --cidr 0.0.0.0/0",
+        "server {\n    listen 80;\n    server_name example.com www.example.com;\n\n    root /var/www/myapp;\n    index index.html;\n\n    location / {\n        try_files $uri $uri/ =404;\n    }\n\n    # Enable gzip compression\n    gzip on;\n    gzip_types text/plain text/css application/json application/javascript;\n\n    # Security headers\n    add_header X-Frame-Options \"SAMEORIGIN\" always;\n    add_header X-Content-Type-Options \"nosniff\" always;\n}"
+      ]
     },
     "project-three-tier-web-app.html": {
       "ads390": [],
@@ -931,7 +954,12 @@
       "adsenseLoader": true,
       "gaId": "G-VBQ33BLD4E",
       "consentMode": false,
-      "ads1440": []
+      "ads1440": [],
+      "pre": [
+        "AWSTemplateFormatVersion: '2010-09-09'\nResources:\n  VPC:\n    Type: AWS::EC2::VPC\n    Properties:\n      CidrBlock: 10.0.0.0/16\n      EnableDnsHostnames: true\n      Tags:\n        - Key: Name\n          Value: three-tier-vpc\n\n  PublicSubnet1:\n    Type: AWS::EC2::Subnet\n    Properties:\n      VpcId: !Ref VPC\n      CidrBlock: 10.0.1.0/24\n      AvailabilityZone: !Select [0, !GetAZs '']\n      MapPublicIpOnLaunch: true\n\n  PrivateSubnet1:\n    Type: AWS::EC2::Subnet\n    Properties:\n      VpcId: !Ref VPC\n      CidrBlock: 10.0.10.0/24\n      AvailabilityZone: !Select [0, !GetAZs '']",
+        "AutoScalingGroup:\n  Type: AWS::AutoScaling::AutoScalingGroup\n  Properties:\n    LaunchTemplate:\n      LaunchTemplateId: !Ref LaunchTemplate\n      Version: !GetAtt LaunchTemplate.LatestVersionNumber\n    MinSize: 2\n    MaxSize: 4\n    DesiredCapacity: 2\n    VPCZoneIdentifier:\n      - !Ref PrivateSubnet1\n      - !Ref PrivateSubnet2\n    TargetGroupARNs:\n      - !Ref TargetGroup\n    HealthCheckType: ELB\n    HealthCheckGracePeriod: 300\n\nScalingPolicy:\n  Type: AWS::AutoScaling::ScalingPolicy\n  Properties:\n    AutoScalingGroupName: !Ref AutoScalingGroup\n    PolicyType: TargetTrackingScaling\n    TargetTrackingConfiguration:\n      PredefinedMetricSpecification:\n        PredefinedMetricType: ASGAverageCPUUtilization\n      TargetValue: 70",
+        "RDSInstance:\n  Type: AWS::RDS::DBInstance\n  Properties:\n    DBInstanceIdentifier: myapp-db\n    DBInstanceClass: db.t3.micro\n    Engine: mysql\n    EngineVersion: '8.0'\n    MasterUsername: admin\n    MasterUserPassword: !Ref DBPassword\n    AllocatedStorage: 20\n    MultiAZ: true\n    DBSubnetGroupName: !Ref DBSubnetGroup\n    VPCSecurityGroups:\n      - !Ref DBSecurityGroup\n    BackupRetentionPeriod: 7\n    StorageEncrypted: true"
+      ]
     },
     "project-cicd-pipeline.html": {
       "ads390": [],
@@ -1000,7 +1028,13 @@
       "adsenseLoader": true,
       "gaId": "G-VBQ33BLD4E",
       "consentMode": false,
-      "ads1440": []
+      "ads1440": [],
+      "pre": [
+        "version: 0.2\n\nphases:\n  install:\n    runtime-versions:\n      nodejs: 18\n    commands:\n      - npm install\n  pre_build:\n    commands:\n      - echo \"Running tests...\"\n      - npm test\n  build:\n    commands:\n      - echo \"Building application...\"\n      - npm run build\n  post_build:\n    commands:\n      - echo \"Build completed on $(date)\"\n\nartifacts:\n  files:\n    - '**/*'\n  base-directory: dist\n\ncache:\n  paths:\n    - node_modules/**/*",
+        "version: 0.0\nos: linux\n\nfiles:\n  - source: /\n    destination: /var/www/myapp\n\npermissions:\n  - object: /var/www/myapp\n    owner: www-data\n    group: www-data\n\nhooks:\n  BeforeInstall:\n    - location: scripts/before_install.sh\n      timeout: 300\n      runas: root\n  AfterInstall:\n    - location: scripts/after_install.sh\n      timeout: 300\n      runas: root\n  ApplicationStart:\n    - location: scripts/start_server.sh\n      timeout: 300\n      runas: root\n  ValidateService:\n    - location: scripts/validate.sh\n      timeout: 300",
+        "#!/bin/bash\nset -e\n\n# Navigate to app directory\ncd /var/www/myapp\n\n# Install dependencies\nnpm install --production\n\n# Set correct permissions\nchown -R www-data:www-data /var/www/myapp\n\necho \"After install completed\"",
+        "# Create CodeBuild project\naws codebuild create-project \\\n    --name my-build-project \\\n    --source type=GITHUB,location=https://github.com/user/repo \\\n    --artifacts type=S3,location=my-artifact-bucket \\\n    --environment type=LINUX_CONTAINER,image=aws/codebuild/amazonlinux2-x86_64-standard:4.0,computeType=BUILD_GENERAL1_SMALL \\\n    --service-role arn:aws:iam::123456789:role/CodeBuildRole\n\n# Create CodeDeploy application\naws deploy create-application \\\n    --application-name my-app \\\n    --compute-platform Server\n\n# Create deployment group\naws deploy create-deployment-group \\\n    --application-name my-app \\\n    --deployment-group-name production \\\n    --deployment-config-name CodeDeployDefault.OneAtATime \\\n    --ec2-tag-filters Key=Environment,Value=Production,Type=KEY_AND_VALUE \\\n    --service-role-arn arn:aws:iam::123456789:role/CodeDeployRole"
+      ]
     },
     "project-serverless-rest-api.html": {
       "ads390": [],
@@ -1069,7 +1103,13 @@
       "adsenseLoader": true,
       "gaId": "G-VBQ33BLD4E",
       "consentMode": false,
-      "ads1440": []
+      "ads1440": [],
+      "pre": [
+        "import json\nimport boto3\nimport uuid\nfrom decimal import Decimal\n\ndynamodb = boto3.resource('dynamodb')\ntable = dynamodb.Table('Items')\n\ndef lambda_handler(event, context):\n    http_method = event['httpMethod']\n\n    try:\n        if http_method == 'GET':\n            if event.get('pathParameters'):\n                # Get single item\n                item_id = event['pathParameters']['id']\n                response = table.get_item(Key={'id': item_id})\n                return build_response(200, response.get('Item'))\n            else:\n                # List all items\n                response = table.scan()\n                return build_response(200, response.get('Items', []))\n\n        elif http_method == 'POST':\n            body = json.loads(event['body'])\n            body['id'] = str(uuid.uuid4())\n            table.put_item(Item=body)\n            return build_response(201, body)\n\n        elif http_method == 'PUT':\n            item_id = event['pathParameters']['id']\n            body = json.loads(event['body'])\n            body['id'] = item_id\n            table.put_item(Item=body)\n            return build_response(200, body)\n\n        elif http_method == 'DELETE':\n            item_id = event['pathParameters']['id']\n            table.delete_item(Key={'id': item_id})\n            return build_response(200, {'message': 'Deleted'})\n\n    except Exception as e:\n        return build_response(500, {'error': str(e)})\n\ndef build_response(status_code, body):\n    return {\n        'statusCode': status_code,\n        'headers': {\n            'Content-Type': 'application/json',\n            'Access-Control-Allow-Origin': '*'\n        },\n        'body': json.dumps(body, default=str)\n    }",
+        "# Create DynamoDB table\naws dynamodb create-table \\\n    --table-name Items \\\n    --attribute-definitions AttributeName=id,AttributeType=S \\\n    --key-schema AttributeName=id,KeyType=HASH \\\n    --billing-mode PAY_PER_REQUEST\n\n# Enable point-in-time recovery\naws dynamodb update-continuous-backups \\\n    --table-name Items \\\n    --point-in-time-recovery-specification PointInTimeRecoveryEnabled=true",
+        "{\n    \"Version\": \"2012-10-17\",\n    \"Statement\": [\n        {\n            \"Effect\": \"Allow\",\n            \"Action\": [\n                \"dynamodb:GetItem\",\n                \"dynamodb:PutItem\",\n                \"dynamodb:UpdateItem\",\n                \"dynamodb:DeleteItem\",\n                \"dynamodb:Scan\",\n                \"dynamodb:Query\"\n            ],\n            \"Resource\": \"arn:aws:dynamodb:*:*:table/Items\"\n        }\n    ]\n}",
+        "API_URL=\"https://abc123.execute-api.us-east-1.amazonaws.com/prod\"\n\n# Create item\ncurl -X POST \"$API_URL/items\" \\\n    -H \"Content-Type: application/json\" \\\n    -d '{\"name\": \"Test Item\", \"price\": 29.99}'\n\n# Get all items\ncurl \"$API_URL/items\"\n\n# Get single item\ncurl \"$API_URL/items/123-456-789\"\n\n# Update item\ncurl -X PUT \"$API_URL/items/123-456-789\" \\\n    -H \"Content-Type: application/json\" \\\n    -d '{\"name\": \"Updated Item\", \"price\": 39.99}'\n\n# Delete item\ncurl -X DELETE \"$API_URL/items/123-456-789\""
+      ]
     },
     "project-infrastructure-as-code.html": {
       "ads390": [],
@@ -1138,7 +1178,13 @@
       "adsenseLoader": true,
       "gaId": "G-VBQ33BLD4E",
       "consentMode": false,
-      "ads1440": []
+      "ads1440": [],
+      "pre": [
+        "AWSTemplateFormatVersion: '2010-09-09'\nDescription: VPC with public and private subnets\n\nParameters:\n  VpcCidr:\n    Type: String\n    Default: 10.0.0.0/16\n\nResources:\n  VPC:\n    Type: AWS::EC2::VPC\n    Properties:\n      CidrBlock: !Ref VpcCidr\n      EnableDnsHostnames: true\n      Tags:\n        - Key: Name\n          Value: !Sub ${AWS::StackName}-vpc\n\n  PublicSubnet:\n    Type: AWS::EC2::Subnet\n    Properties:\n      VpcId: !Ref VPC\n      CidrBlock: !Select [0, !Cidr [!Ref VpcCidr, 4, 8]]\n      AvailabilityZone: !Select [0, !GetAZs '']\n      MapPublicIpOnLaunch: true\n\n  PrivateSubnet:\n    Type: AWS::EC2::Subnet\n    Properties:\n      VpcId: !Ref VPC\n      CidrBlock: !Select [1, !Cidr [!Ref VpcCidr, 4, 8]]\n      AvailabilityZone: !Select [0, !GetAZs '']\n\n  InternetGateway:\n    Type: AWS::EC2::InternetGateway\n\n  VPCGatewayAttachment:\n    Type: AWS::EC2::VPCGatewayAttachment\n    Properties:\n      VpcId: !Ref VPC\n      InternetGatewayId: !Ref InternetGateway\n\nOutputs:\n  VpcId:\n    Value: !Ref VPC\n    Export:\n      Name: !Sub ${AWS::StackName}-VpcId",
+        "terraform {\n  required_providers {\n    aws = {\n      source  = \"hashicorp/aws\"\n      version = \"~> 5.0\"\n    }\n  }\n  backend \"s3\" {\n    bucket = \"my-terraform-state\"\n    key    = \"vpc/terraform.tfstate\"\n    region = \"us-east-1\"\n  }\n}\n\nprovider \"aws\" {\n  region = var.aws_region\n}\n\nresource \"aws_vpc\" \"main\" {\n  cidr_block           = var.vpc_cidr\n  enable_dns_hostnames = true\n\n  tags = {\n    Name = \"${var.project_name}-vpc\"\n  }\n}\n\nresource \"aws_subnet\" \"public\" {\n  count             = length(var.availability_zones)\n  vpc_id            = aws_vpc.main.id\n  cidr_block        = cidrsubnet(var.vpc_cidr, 4, count.index)\n  availability_zone = var.availability_zones[count.index]\n\n  tags = {\n    Name = \"${var.project_name}-public-${count.index + 1}\"\n  }\n}\n\nresource \"aws_internet_gateway\" \"main\" {\n  vpc_id = aws_vpc.main.id\n\n  tags = {\n    Name = \"${var.project_name}-igw\"\n  }\n}",
+        "import * as cdk from 'aws-cdk-lib';\nimport * as ec2 from 'aws-cdk-lib/aws-ec2';\n\nexport class VpcStack extends cdk.Stack {\n  public readonly vpc: ec2.Vpc;\n\n  constructor(scope: cdk.App, id: string, props?: cdk.StackProps) {\n    super(scope, id, props);\n\n    this.vpc = new ec2.Vpc(this, 'MainVpc', {\n      maxAzs: 2,\n      subnetConfiguration: [\n        {\n          name: 'Public',\n          subnetType: ec2.SubnetType.PUBLIC,\n          cidrMask: 24,\n        },\n        {\n          name: 'Private',\n          subnetType: ec2.SubnetType.PRIVATE_WITH_EGRESS,\n          cidrMask: 24,\n        },\n      ],\n    });\n\n    new cdk.CfnOutput(this, 'VpcId', {\n      value: this.vpc.vpcId,\n    });\n  }\n}",
+        "# CloudFormation\naws cloudformation deploy \\\n    --template-file vpc-template.yaml \\\n    --stack-name my-vpc-stack \\\n    --parameter-overrides VpcCidr=10.0.0.0/16\n\n# View change set before applying\naws cloudformation create-change-set \\\n    --stack-name my-vpc-stack \\\n    --change-set-name my-changes \\\n    --template-body file://vpc-template.yaml\n\n# Terraform\nterraform init\nterraform plan -out=tfplan\nterraform apply tfplan\n\n# CDK\ncdk bootstrap\ncdk diff\ncdk deploy"
+      ]
     },
     "project-multi-region-active-active.html": {
       "ads390": [],
@@ -1207,7 +1253,13 @@
       "adsenseLoader": true,
       "gaId": "G-VBQ33BLD4E",
       "consentMode": false,
-      "ads1440": []
+      "ads1440": [],
+      "pre": [
+        "# Create DynamoDB table with Global Tables v2\naws dynamodb create-table \\\n    --table-name UserSessions \\\n    --attribute-definitions AttributeName=userId,AttributeType=S \\\n    --key-schema AttributeName=userId,KeyType=HASH \\\n    --billing-mode PAY_PER_REQUEST \\\n    --stream-specification StreamEnabled=true,StreamViewType=NEW_AND_OLD_IMAGES \\\n    --region us-east-1\n\n# Add replica in eu-west-1\naws dynamodb update-table \\\n    --table-name UserSessions \\\n    --replica-updates \"Create={RegionName=eu-west-1}\" \\\n    --region us-east-1",
+        "{\n    \"Changes\": [\n        {\n            \"Action\": \"CREATE\",\n            \"ResourceRecordSet\": {\n                \"Name\": \"app.example.com\",\n                \"Type\": \"A\",\n                \"SetIdentifier\": \"us-east-1\",\n                \"Region\": \"us-east-1\",\n                \"AliasTarget\": {\n                    \"HostedZoneId\": \"Z35SXDOTRQ7X7K\",\n                    \"DNSName\": \"us-east-1-alb.example.com\",\n                    \"EvaluateTargetHealth\": true\n                }\n            }\n        },\n        {\n            \"Action\": \"CREATE\",\n            \"ResourceRecordSet\": {\n                \"Name\": \"app.example.com\",\n                \"Type\": \"A\",\n                \"SetIdentifier\": \"eu-west-1\",\n                \"Region\": \"eu-west-1\",\n                \"AliasTarget\": {\n                    \"HostedZoneId\": \"Z32O12XQLNTSW2\",\n                    \"DNSName\": \"eu-west-1-alb.example.com\",\n                    \"EvaluateTargetHealth\": true\n                }\n            }\n        }\n    ]\n}",
+        "AWSTemplateFormatVersion: '2010-09-09'\nResources:\n  GlobalAccelerator:\n    Type: AWS::GlobalAccelerator::Accelerator\n    Properties:\n      Name: multi-region-accelerator\n      Enabled: true\n      IpAddressType: IPV4\n\n  Listener:\n    Type: AWS::GlobalAccelerator::Listener\n    Properties:\n      AcceleratorArn: !Ref GlobalAccelerator\n      Protocol: TCP\n      PortRanges:\n        - FromPort: 443\n          ToPort: 443\n\n  EndpointGroup1:\n    Type: AWS::GlobalAccelerator::EndpointGroup\n    Properties:\n      ListenerArn: !Ref Listener\n      EndpointGroupRegion: us-east-1\n      TrafficDialPercentage: 50\n      HealthCheckProtocol: HTTPS\n      EndpointConfigurations:\n        - EndpointId: !Ref USEastALB\n          Weight: 100\n\n  EndpointGroup2:\n    Type: AWS::GlobalAccelerator::EndpointGroup\n    Properties:\n      ListenerArn: !Ref Listener\n      EndpointGroupRegion: eu-west-1\n      TrafficDialPercentage: 50\n      EndpointConfigurations:\n        - EndpointId: !Ref EUWestALB\n          Weight: 100",
+        "# Create health check for primary region\naws route53 create-health-check --caller-reference $(date +%s) \\\n    --health-check-config '{\n        \"IPAddress\": \"1.2.3.4\",\n        \"Port\": 443,\n        \"Type\": \"HTTPS\",\n        \"ResourcePath\": \"/health\",\n        \"FullyQualifiedDomainName\": \"us-east-1-alb.example.com\",\n        \"RequestInterval\": 10,\n        \"FailureThreshold\": 3\n    }'\n\n# List health checks\naws route53 list-health-checks"
+      ]
     },
     "project-kubernetes-eks.html": {
       "ads390": [],
@@ -1277,7 +1329,14 @@
       "adsenseLoader": true,
       "gaId": "G-VBQ33BLD4E",
       "consentMode": false,
-      "ads1440": []
+      "ads1440": [],
+      "pre": [
+        "apiVersion: eksctl.io/v1alpha5\nkind: ClusterConfig\n\nmetadata:\n  name: my-cluster\n  region: us-east-1\n  version: \"1.28\"\n\nmanagedNodeGroups:\n  - name: ng-1\n    instanceType: t3.medium\n    desiredCapacity: 2\n    minSize: 1\n    maxSize: 4\n    volumeSize: 50\n    ssh:\n      allow: false\n    iam:\n      withAddonPolicies:\n        albIngress: true\n        cloudWatch: true\n\ncloudWatch:\n  clusterLogging:\n    enableTypes: [\"api\", \"audit\", \"authenticator\"]",
+        "apiVersion: apps/v1\nkind: Deployment\nmetadata:\n  name: myapp\n  labels:\n    app: myapp\nspec:\n  replicas: 3\n  selector:\n    matchLabels:\n      app: myapp\n  template:\n    metadata:\n      labels:\n        app: myapp\n    spec:\n      containers:\n      - name: myapp\n        image: 123456789.dkr.ecr.us-east-1.amazonaws.com/myapp:latest\n        ports:\n        - containerPort: 8080\n        resources:\n          requests:\n            memory: \"128Mi\"\n            cpu: \"100m\"\n          limits:\n            memory: \"256Mi\"\n            cpu: \"500m\"\n        livenessProbe:\n          httpGet:\n            path: /health\n            port: 8080\n          initialDelaySeconds: 30\n          periodSeconds: 10\n---\napiVersion: v1\nkind: Service\nmetadata:\n  name: myapp-service\nspec:\n  type: ClusterIP\n  selector:\n    app: myapp\n  ports:\n  - port: 80\n    targetPort: 8080",
+        "apiVersion: networking.k8s.io/v1\nkind: Ingress\nmetadata:\n  name: myapp-ingress\n  annotations:\n    kubernetes.io/ingress.class: alb\n    alb.ingress.kubernetes.io/scheme: internet-facing\n    alb.ingress.kubernetes.io/target-type: ip\n    alb.ingress.kubernetes.io/healthcheck-path: /health\n    alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:us-east-1:123456789:certificate/xxx\nspec:\n  rules:\n  - host: myapp.example.com\n    http:\n      paths:\n      - path: /\n        pathType: Prefix\n        backend:\n          service:\n            name: myapp-service\n            port:\n              number: 80",
+        "apiVersion: autoscaling/v2\nkind: HorizontalPodAutoscaler\nmetadata:\n  name: myapp-hpa\nspec:\n  scaleTargetRef:\n    apiVersion: apps/v1\n    kind: Deployment\n    name: myapp\n  minReplicas: 2\n  maxReplicas: 10\n  metrics:\n  - type: Resource\n    resource:\n      name: cpu\n      target:\n        type: Utilization\n        averageUtilization: 70\n  - type: Resource\n    resource:\n      name: memory\n      target:\n        type: Utilization\n        averageUtilization: 80",
+        "# Create cluster\neksctl create cluster -f cluster-config.yaml\n\n# Update kubeconfig\naws eks update-kubeconfig --name my-cluster --region us-east-1\n\n# Deploy application\nkubectl apply -f deployment.yaml\nkubectl apply -f ingress.yaml\n\n# Check status\nkubectl get pods\nkubectl get svc\nkubectl get ingress\n\n# View logs\nkubectl logs -f deployment/myapp\n\n# Scale deployment\nkubectl scale deployment myapp --replicas=5"
+      ]
     },
     "project-realtime-data-pipeline.html": {
       "ads390": [],
@@ -1347,7 +1406,14 @@
       "adsenseLoader": true,
       "gaId": "G-VBQ33BLD4E",
       "consentMode": false,
-      "ads1440": []
+      "ads1440": [],
+      "pre": [
+        "# Create Kinesis Data Stream (on-demand mode)\naws kinesis create-stream \\\n    --stream-name clickstream-events \\\n    --stream-mode-details StreamMode=ON_DEMAND\n\n# Or create with provisioned capacity\naws kinesis create-stream \\\n    --stream-name clickstream-events \\\n    --shard-count 2",
+        "import boto3\nimport json\nimport random\nfrom datetime import datetime\n\nkinesis = boto3.client('kinesis')\n\ndef generate_event():\n    return {\n        'event_id': f'evt-{random.randint(1000, 9999)}',\n        'user_id': f'user-{random.randint(1, 100)}',\n        'event_type': random.choice(['click', 'view', 'purchase']),\n        'page': random.choice(['/home', '/products', '/checkout']),\n        'timestamp': datetime.utcnow().isoformat()\n    }\n\ndef send_events(stream_name, count=100):\n    for _ in range(count):\n        event = generate_event()\n        kinesis.put_record(\n            StreamName=stream_name,\n            Data=json.dumps(event),\n            PartitionKey=event['user_id']\n        )\n    print(f'Sent {count} events to {stream_name}')\n\nif __name__ == '__main__':\n    send_events('clickstream-events', 100)",
+        "import json\nimport base64\nimport boto3\n\ndynamodb = boto3.resource('dynamodb')\ntable = dynamodb.Table('EventAggregates')\n\ndef lambda_handler(event, context):\n    aggregates = {}\n\n    for record in event['Records']:\n        # Decode the Kinesis data\n        payload = base64.b64decode(record['kinesis']['data'])\n        data = json.loads(payload)\n\n        # Aggregate by event type\n        event_type = data['event_type']\n        if event_type not in aggregates:\n            aggregates[event_type] = 0\n        aggregates[event_type] += 1\n\n    # Store aggregates\n    for event_type, count in aggregates.items():\n        table.update_item(\n            Key={'event_type': event_type},\n            UpdateExpression='ADD event_count :c',\n            ExpressionAttributeValues={':c': count}\n        )\n\n    return {\n        'statusCode': 200,\n        'body': f'Processed {len(event[\"Records\"])} records'\n    }",
+        "AWSTemplateFormatVersion: '2010-09-09'\nResources:\n  DeliveryStream:\n    Type: AWS::KinesisFirehose::DeliveryStream\n    Properties:\n      DeliveryStreamName: clickstream-to-s3\n      DeliveryStreamType: KinesisStreamAsSource\n      KinesisStreamSourceConfiguration:\n        KinesisStreamARN: !Sub arn:aws:kinesis:${AWS::Region}:${AWS::AccountId}:stream/clickstream-events\n        RoleARN: !GetAtt FirehoseRole.Arn\n      S3DestinationConfiguration:\n        BucketARN: !GetAtt DataLakeBucket.Arn\n        RoleARN: !GetAtt FirehoseRole.Arn\n        BufferingHints:\n          IntervalInSeconds: 60\n          SizeInMBs: 5\n        CompressionFormat: GZIP\n        Prefix: 'raw/year=!{timestamp:yyyy}/month=!{timestamp:MM}/day=!{timestamp:dd}/'\n        ErrorOutputPrefix: 'errors/'",
+        "{\n    \"mappings\": {\n        \"properties\": {\n            \"event_id\": { \"type\": \"keyword\" },\n            \"user_id\": { \"type\": \"keyword\" },\n            \"event_type\": { \"type\": \"keyword\" },\n            \"page\": { \"type\": \"keyword\" },\n            \"timestamp\": { \"type\": \"date\" },\n            \"location\": { \"type\": \"geo_point\" }\n        }\n    },\n    \"settings\": {\n        \"number_of_shards\": 2,\n        \"number_of_replicas\": 1\n    }\n}"
+      ]
     },
     "project-multi-account-landing-zone.html": {
       "ads390": [],
@@ -1416,7 +1482,14 @@
       "adsenseLoader": true,
       "gaId": "G-VBQ33BLD4E",
       "consentMode": false,
-      "ads1440": []
+      "ads1440": [],
+      "pre": [
+        "{\n    \"Version\": \"2012-10-17\",\n    \"Statement\": [\n        {\n            \"Sid\": \"DenyAllOutsideAllowedRegions\",\n            \"Effect\": \"Deny\",\n            \"NotAction\": [\n                \"iam:*\",\n                \"organizations:*\",\n                \"route53:*\",\n                \"budgets:*\",\n                \"support:*\",\n                \"cloudfront:*\",\n                \"globalaccelerator:*\"\n            ],\n            \"Resource\": \"*\",\n            \"Condition\": {\n                \"StringNotEquals\": {\n                    \"aws:RequestedRegion\": [\n                        \"us-east-1\",\n                        \"us-west-2\",\n                        \"eu-west-1\"\n                    ]\n                }\n            }\n        }\n    ]\n}",
+        "{\n    \"Version\": \"2012-10-17\",\n    \"Statement\": [\n        {\n            \"Sid\": \"ProtectCloudTrail\",\n            \"Effect\": \"Deny\",\n            \"Action\": [\n                \"cloudtrail:DeleteTrail\",\n                \"cloudtrail:StopLogging\",\n                \"cloudtrail:UpdateTrail\"\n            ],\n            \"Resource\": \"*\"\n        },\n        {\n            \"Sid\": \"ProtectConfig\",\n            \"Effect\": \"Deny\",\n            \"Action\": [\n                \"config:DeleteConfigRule\",\n                \"config:DeleteConfigurationRecorder\",\n                \"config:DeleteDeliveryChannel\",\n                \"config:StopConfigurationRecorder\"\n            ],\n            \"Resource\": \"*\"\n        },\n        {\n            \"Sid\": \"DenyLeaveOrganization\",\n            \"Effect\": \"Deny\",\n            \"Action\": \"organizations:LeaveOrganization\",\n            \"Resource\": \"*\"\n        }\n    ]\n}",
+        "# Get root ID\nROOT_ID=$(aws organizations list-roots --query 'Roots[0].Id' --output text)\n\n# Create OUs\naws organizations create-organizational-unit \\\n    --parent-id $ROOT_ID \\\n    --name \"Security\"\n\naws organizations create-organizational-unit \\\n    --parent-id $ROOT_ID \\\n    --name \"Infrastructure\"\n\naws organizations create-organizational-unit \\\n    --parent-id $ROOT_ID \\\n    --name \"Workloads\"\n\naws organizations create-organizational-unit \\\n    --parent-id $ROOT_ID \\\n    --name \"Sandbox\"\n\n# Attach SCP to an OU\naws organizations attach-policy \\\n    --policy-id p-1234567 \\\n    --target-id ou-xxxx-xxxxxxxx",
+        "{\n    \"Name\": \"AdministratorAccess\",\n    \"Description\": \"Full admin access to AWS accounts\",\n    \"SessionDuration\": \"PT4H\",\n    \"ManagedPolicies\": [\n        \"arn:aws:iam::aws:policy/AdministratorAccess\"\n    ],\n    \"InlinePolicy\": {\n        \"Version\": \"2012-10-17\",\n        \"Statement\": [\n            {\n                \"Sid\": \"DenyBillingAccess\",\n                \"Effect\": \"Deny\",\n                \"Action\": [\n                    \"aws-portal:*\",\n                    \"budgets:*\"\n                ],\n                \"Resource\": \"*\"\n            }\n        ]\n    }\n}",
+        "AWSTemplateFormatVersion: '2010-09-09'\nDescription: Baseline configuration for new accounts\n\nResources:\n  # Enable AWS Config\n  ConfigRecorder:\n    Type: AWS::Config::ConfigurationRecorder\n    Properties:\n      Name: default\n      RoleARN: !GetAtt ConfigRole.Arn\n      RecordingGroup:\n        AllSupported: true\n        IncludeGlobalResourceTypes: true\n\n  # Security notification topic\n  SecurityAlertTopic:\n    Type: AWS::SNS::Topic\n    Properties:\n      TopicName: security-alerts\n      KmsMasterKeyId: alias/aws/sns\n\n  # CloudWatch alarm for root login\n  RootLoginAlarm:\n    Type: AWS::CloudWatch::Alarm\n    Properties:\n      AlarmName: RootAccountUsage\n      MetricName: RootAccountUsage\n      Namespace: CloudTrailMetrics\n      Statistic: Sum\n      Period: 300\n      EvaluationPeriods: 1\n      Threshold: 1\n      AlarmActions:\n        - !Ref SecurityAlertTopic"
+      ]
     },
     "admin.html": {
       "ads390": [],
@@ -1440,7 +1513,9 @@
       "adsenseLoader": false,
       "gaId": "",
       "consentMode": false,
-      "ads1440": []
+      "ads1440": [],
+      "pre": []
     }
-  }
+  },
+  "note": " 2026-09-13: fragment-only links removed from internalLinks to match extractor change (integrator)."
 }
