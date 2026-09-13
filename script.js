@@ -7,21 +7,23 @@
   root.className = (root.className || '').replace(/\bno-js\b/, '').trim();
   root.classList.add('js');
 
-  /* --- mobile nav: aria-expanded, closes on Escape and on link click --- */
+  /* --- mobile nav drawer: aria-expanded + html.nav-open (scrim + scroll lock in CSS).
+         Closes on link click, on a tap outside the header (the scrim) and on Escape. --- */
   var tog = d.querySelector('.nav-toggle'), nav = d.getElementById('site-nav');
   if (tog && nav) {
+    var isOpen = function () { return tog.getAttribute('aria-expanded') === 'true'; };
     var open = function (on) {
       tog.setAttribute('aria-expanded', on ? 'true' : 'false');
       nav.classList.toggle('is-open', on);
+      root.classList.toggle('nav-open', on);
     };
-    tog.addEventListener('click', function () {
-      open(tog.getAttribute('aria-expanded') !== 'true');
-    });
-    nav.addEventListener('click', function (e) {
-      if (e.target && e.target.closest && e.target.closest('a')) open(false);
+    tog.addEventListener('click', function () { open(!isOpen()); });
+    d.addEventListener('click', function (e) {
+      if (!isOpen() || !e.target.closest) return;
+      if (e.target.closest('.site-nav a') || !e.target.closest('.site-header')) open(false);
     });
     d.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape' && tog.getAttribute('aria-expanded') === 'true') { open(false); tog.focus(); }
+      if (e.key === 'Escape' && isOpen()) { open(false); tog.focus(); }
     });
   }
 

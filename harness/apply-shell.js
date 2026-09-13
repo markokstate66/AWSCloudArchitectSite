@@ -55,8 +55,9 @@ function header(page, home) {
     '  <header class="site-header">',
     '    <nav class="site-header-inner" aria-label="Main">',
     brand,
-    `      <ul class="site-nav" id="site-nav">${links}</ul>`,
+    // the toggle comes BEFORE the list it controls so forward Tab enters the drawer
     '      <button class="nav-toggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="site-nav"><span></span><span></span><span></span></button>',
+    `      <ul class="site-nav" id="site-nav">${links}</ul>`,
     '    </nav>',
     '  </header>',
     '',
@@ -107,8 +108,12 @@ for (const page of Object.keys(PAGES).sort()) {
   const hdr = /[ \t]*<header class="(?:header|site-header)">[\s\S]*?<\/header>\n\n?/;
   if (hdr.test(s)) s = s.replace(hdr, header(page, home));
 
-  // 4. <main id="main">: named skip target, ready for the skip anchor
-  s = s.replace(/<main(?: id="main")?>/, '<main id="main">');
+  // 4. <main>: named skip target that actually TAKES focus (tabindex=-1, outline removed in
+  //    CSS), plus the .guide-page hook the project title band needs to share the article grid
+  const mainAttr = /^project-/.test(page)
+    ? ' id="main" class="guide-page" tabindex="-1"'
+    : ' id="main" tabindex="-1"';
+  s = s.replace(/<main\b[^>]*>/, `<main${mainAttr}>`);
 
   // 5. breadcrumbs under the header on every non-home page
   s = s.replace(/[ \t]*<nav class="breadcrumbs"[\s\S]*?<\/nav>\n\n?/, '');
