@@ -148,10 +148,38 @@ i.e. what these pages would weigh if article-template were the only Wave 2 area 
 8 of 11 pages under baseline; the three shortest are +104…+189 B (≤ 0.33 %).
 
 **Measured right now**, with the other three Wave 2 builders' concurrent `styles.css` work in the
-tree, the pages are **+3,794 … +4,947 B over baseline** (multi-account 67,441 vs 63,647;
-static-website 62,751 vs 57,804; kubernetes-eks 66,134 vs 61,772). The whole overage is
-`styles.css`: **42,713 B against a 35,518 B baseline (+7,195)**, of which **+2,421 is mine** and
-**+4,774 is the other sections**, still moving as I write. See §5.
+tree, the pages are **+3,794 … +4,947 raw B over baseline** (multi-account 67,441 vs 63,647;
+static-website 62,751 vs 57,804; kubernetes-eks 66,134 vs 61,772). The whole raw overage is
+`styles.css`: **42,732 B against a 35,518 B baseline (+7,214)**, of which **+2,421 is mine** and
+**+4,793 is the other sections**, still moving as I write.
+
+### Bytes, gzip — the budget as production actually delivers it
+
+The integrator landed `harness/weight.js` mid-round (gzip, the way Azure SWA serves text). That is
+the real budget, and it changes the picture, so I re-measured against it:
+
+```
+node harness/weight.js   ->   WEIGHT: FAIL (19 pages over their gzip baseline)
+OVER project-static-website.html             gzip 15625 vs 11000 (+4625)
+OVER project-multi-account-landing-zone.html gzip 16497 vs 11889 (+4608)
+styles.css: gzip 10254 (ref 6078)
+```
+
+Attribution, measured by swapping my section back out of the current `styles.css` and re-gzipping,
+and by gzipping each page's HTML before and after `apply-article.js`:
+
+| | gzip bytes |
+|---|---|
+| my `[article-template]` CSS section | **+521 B**, charged to **every page on the site** |
+| my project-page HTML (the rail, the ids, minus the `<dl>` compaction) | **+138–140 B/page** |
+| **my total footprint on a project page** | **+659 B** (≈ 14 % of that page's +4,6xx overage) |
+| the other three Wave 2 areas' CSS, so far | **+3,726 B/page** |
+
+**Correction to the round brief:** the "~3 KB/page headroom from the re-indent" does not exist in
+gzip. `project-static-website.html` HTML was 3,893 gzip B at the baseline commit and 3,979 gzip B
+*before* I touched it — the re-indent removed 2.9 KB of indentation, which gzip was already encoding
+for almost nothing, while the Wave 1 shell markup added real tokens. Net headroom going into
+Wave 2 was **−86 B**, not +3 KB. See §5.
 
 ---
 
@@ -189,14 +217,18 @@ node harness/apply-article.js --check -> 0/11 pages would change  (idempotent)
 
 ## 5. Needs the integrator / a decision
 
-1. **`styles.css` is over-subscribed and the per-page byte budget cannot hold.** Baseline 35,518 B;
-   the file is 42,713 B in the working tree with four Wave 2 builders in it (+7,195; mine +2,421).
-   The integrator's 2-space re-indent gave each project page ~2.3–3.0 KB of HTML headroom, and my
-   area spends ~2.4 KB of it — but that headroom is *per page* while `styles.css` growth is charged
-   to *every* page. Options, none of which are mine to take: (a) minify `styles.css` at deploy
-   (it is hand-written and comment-heavy — a conservative minify is worth ~5–6 KB); (b) re-baseline
-   the byte budget for Wave 2; (c) ask each area to cut. I trimmed my section from 6,451 B to
-   5,765 B for this reason and stopped where further cuts would have removed the documentation.
+1. **`styles.css` is over-subscribed and the per-page byte budget cannot hold — `weight.js` says
+   `WEIGHT: FAIL (19 pages)`, including the seven pages my area never touches.** The shared sheet is
+   +4,176 gzip B over its reference on every page; my section is **+521 gzip B** of that, the other
+   three Wave 2 areas are +3,726 (and still moving), and my project-page HTML adds +139. There is no
+   pre-existing headroom to spend: the re-indent looked like ~3 KB/page but is worth **−86 gzip B**
+   (see §3). So *any* Wave 2 area that adds CSS puts every page over, and no amount of trimming
+   inside one area fixes it. Options, none of which are mine to take: (a) minify `styles.css` on
+   deploy — it is hand-written, comment-heavy and 42.7 KB raw, and a conservative minify should
+   recover most of the 4.2 KB gzip growth; (b) re-baseline the weight budget for the facelift,
+   since Wave 2 deliberately adds four component systems; (c) ask each area to cut. I trimmed my
+   section from 6,451 B to 5,765 B raw for this reason and stopped where further cuts would have
+   removed the documentation.
 2. **Focus order below 64em** — see §2.1. One-line change in `apply-article.js` if the panel wants
    the rail first in the DOM instead.
 3. Nothing needs a content approval. `docs/APPROVALS.json` is untouched and still empty.
@@ -211,5 +243,6 @@ node harness/apply-article.js --check                   # -> 0/11 pages would ch
 node harness/snap.js --label article-r1 --force --pages project-multi-account-landing-zone.html,project-static-website.html,project-kubernetes-eks.html
 node harness/lh.js   --label article-r1 --force --pages project-multi-account-landing-zone.html
 node harness/integrity.js compare --base baseline-2026-09-13
+node harness/weight.js
 node harness/peek.js project-multi-account-landing-zone.html 390 2500
 ```
