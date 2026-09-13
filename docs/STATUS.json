@@ -227,5 +227,11 @@
     "activeVariants": 16,
     "pool": 4,
     "rotation": "client-side weighted per load + daily analyser via GitHub cron (POST /api/analyze)"
+  },
+  "consent": {
+    "date": "2026-09-13",
+    "cmp": "AdSense Privacy & messaging (owner)",
+    "consentModeV2": "default denied EEA/UK/CH on 19 pages",
+    "toConfirm": "AdSense \"Consent mode for advertising purposes\" toggle ON"
   }
 }

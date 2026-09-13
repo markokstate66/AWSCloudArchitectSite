@@ -151,7 +151,11 @@ function diffField(page, field, b, c, approvals, used, problems) {
     for (const page of Object.keys(base)) {
       if (!cur[page]) { problems.push({ page, field: 'PAGE', at: 0, baseline: 'present', current: 'MISSING' }); continue; }
       for (const fld of CONTENT_FIELDS) diffField(page, fld, base[page][fld], cur[page][fld], approvals, used, problems);
-      for (const fld of AD_FIELDS) if (JSON.stringify(base[page][fld]) !== JSON.stringify(cur[page][fld])) adProblems.push({ page, field: fld, baseline: base[page][fld], current: cur[page][fld], rule: 'TRACKING_SNIPPET_CHANGED' });
+      for (const fld of AD_FIELDS) if (JSON.stringify(base[page][fld]) !== JSON.stringify(cur[page][fld])) {
+        // A tracking-snippet change is allowed only with an explicit approval naming the page, field and both values.
+        const ok = approvals.some(a => a.page === page && a.field === fld && String(a.from) === String(base[page][fld]) && String(a.to) === String(cur[page][fld]));
+        if (ok) used.push({ page, field: fld, status: 'applied' }); else adProblems.push({ page, field: fld, baseline: base[page][fld], current: cur[page][fld], rule: 'TRACKING_SNIPPET_CHANGED' });
+      }
       for (const w of ['ads390', 'ads1440']) for (const ad of (cur[page][w] || [])) {
         if (ad.aboveFold) adProblems.push({ page, field: w, rule: 'NO_AD_ABOVE_FOLD', ad });
         if ((ad.kind === 'unit' || ad.hasIns) && !ad.slot) adProblems.push({ page, field: w, rule: 'AD_UNIT_WITHOUT_SLOT_ID', ad });

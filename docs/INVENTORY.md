@@ -53,7 +53,7 @@ by hand in every page (index nav links are `#anchors`, all other pages use `inde
 | 404.html, admin.html | absent | 0 | n/a |
 
 - `ads.txt`: `google.com, pub-6676281664229738, DIRECT, f08c47fec0942fa0` (served 200).
-- Consent/CMP: **none** (no `gtag('consent')`, no `googlefc`, no Funding Choices script).
+- Consent/CMP: baseline had **none**. Since 2026-09-13: AdSense-served European regulations message (owner) + Consent Mode v2 default on the 19 GA pages (region-scoped EEA/UK/CH).
 - Analytics: GA4 `G-VBQ33BLD4E` via gtag.js on the same 19 pages; no consent mode.
 - Legacy `.ad-container/.ad-placeholder/.ad-banner/.ad-rectangle` CSS exists but is unused.
 - **Ad settings (owner, 2026-09-13):** Auto ads ON; anchor ON; vignette OFF; side rails OFF. Manual units: 5 positions / 37 wells live since 2026-09-13 (docs/AD_UNITS.json). Pre-facelift Auto-ads format/ad-load settings were not recorded before the change.

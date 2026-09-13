@@ -101,15 +101,14 @@ Still useful when convenient: the excluded areas from docs/AD_PLAN.md, and one n
 a project page and the home page on a phone after a day of fill to note where Auto ads inject
 relative to the five manual wells.
 
-### B2. Consent: no CMP, no Consent Mode v2, GA4 on 19 pages
-There is no `gtag('consent', ...)` default, no Funding Choices / `googlefc` script, and the
-privacy policy describes cookies but offers no control. If the site has EEA/UK/Swiss traffic,
-Google requires a certified CMP for personalised ads. Check AdSense → Privacy & messaging: is
-a GDPR message published for this domain? If yes, its script tag is not on any page (the CSP
-already allows `fundingchoicesmessages.google.com`, suggesting it was intended). Decide:
-publish the AdSense-served CMP and tell an agent to add the exact snippet plus a Consent Mode
-v2 default (`ad_storage`, `ad_user_data`, `ad_personalization`, `analytics_storage` denied by
-default for EEA regions) — or document that traffic is non-EEA and the risk is accepted.
+### B2. Consent — WIRED 2026-09-13
+The owner confirmed the European regulations (GDPR) message is published in AdSense → Privacy &
+messaging; for AdSense sites that message is delivered by the existing ad code, no extra tag. A Consent
+Mode v2 default (ad_storage, ad_user_data, ad_personalization, analytics_storage denied; wait_for_update
+500 ms; region-scoped to the EEA, UK and Switzerland; ads_data_redaction on) now precedes the GA4 config
+on all 19 tagged pages (harness/apply-consent.js; 19 consentMode approvals). One toggle to confirm in
+AdSense: Privacy & messaging → European regulations → "Consent mode for advertising purposes" must be ON
+so Google's CMP passes the reader's choice to GA4 and the ad tags.
 
 ### B3. Core Web Vitals field data (lab numbers do not cover Auto ads)
 Auto ads inject after load in positions Google chooses. The harness blocks ad hosts, so every

@@ -971,5 +971,195 @@
     "note": "whole-field replacement: new verified book list (docs/BOOKS_RESEARCH.json)",
     "approvedBy": "mark@aerocoders.com (chat 2026-09-13: \"get a solid list from amazon with images and post it for me in my list\")",
     "date": "2026-09-13"
+  },
+  {
+    "page": "index.html",
+    "field": "consentMode",
+    "from": "false",
+    "to": "true",
+    "source": "HUMAN_TODO B2",
+    "note": "Consent Mode v2 default (EEA/UK/CH denied until the AdSense-served message answers)",
+    "approvedBy": "mark@aerocoders.com (chat 2026-09-13: \"the site has the EE approval setup, yes\")",
+    "date": "2026-09-13"
+  },
+  {
+    "page": "projects.html",
+    "field": "consentMode",
+    "from": "false",
+    "to": "true",
+    "source": "HUMAN_TODO B2",
+    "note": "Consent Mode v2 default (EEA/UK/CH denied until the AdSense-served message answers)",
+    "approvedBy": "mark@aerocoders.com (chat 2026-09-13: \"the site has the EE approval setup, yes\")",
+    "date": "2026-09-13"
+  },
+  {
+    "page": "resources.html",
+    "field": "consentMode",
+    "from": "false",
+    "to": "true",
+    "source": "HUMAN_TODO B2",
+    "note": "Consent Mode v2 default (EEA/UK/CH denied until the AdSense-served message answers)",
+    "approvedBy": "mark@aerocoders.com (chat 2026-09-13: \"the site has the EE approval setup, yes\")",
+    "date": "2026-09-13"
+  },
+  {
+    "page": "tools.html",
+    "field": "consentMode",
+    "from": "false",
+    "to": "true",
+    "source": "HUMAN_TODO B2",
+    "note": "Consent Mode v2 default (EEA/UK/CH denied until the AdSense-served message answers)",
+    "approvedBy": "mark@aerocoders.com (chat 2026-09-13: \"the site has the EE approval setup, yes\")",
+    "date": "2026-09-13"
+  },
+  {
+    "page": "interview-prep.html",
+    "field": "consentMode",
+    "from": "false",
+    "to": "true",
+    "source": "HUMAN_TODO B2",
+    "note": "Consent Mode v2 default (EEA/UK/CH denied until the AdSense-served message answers)",
+    "approvedBy": "mark@aerocoders.com (chat 2026-09-13: \"the site has the EE approval setup, yes\")",
+    "date": "2026-09-13"
+  },
+  {
+    "page": "about.html",
+    "field": "consentMode",
+    "from": "false",
+    "to": "true",
+    "source": "HUMAN_TODO B2",
+    "note": "Consent Mode v2 default (EEA/UK/CH denied until the AdSense-served message answers)",
+    "approvedBy": "mark@aerocoders.com (chat 2026-09-13: \"the site has the EE approval setup, yes\")",
+    "date": "2026-09-13"
+  },
+  {
+    "page": "contact.html",
+    "field": "consentMode",
+    "from": "false",
+    "to": "true",
+    "source": "HUMAN_TODO B2",
+    "note": "Consent Mode v2 default (EEA/UK/CH denied until the AdSense-served message answers)",
+    "approvedBy": "mark@aerocoders.com (chat 2026-09-13: \"the site has the EE approval setup, yes\")",
+    "date": "2026-09-13"
+  },
+  {
+    "page": "privacy.html",
+    "field": "consentMode",
+    "from": "false",
+    "to": "true",
+    "source": "HUMAN_TODO B2",
+    "note": "Consent Mode v2 default (EEA/UK/CH denied until the AdSense-served message answers)",
+    "approvedBy": "mark@aerocoders.com (chat 2026-09-13: \"the site has the EE approval setup, yes\")",
+    "date": "2026-09-13"
+  },
+  {
+    "page": "project-static-website.html",
+    "field": "consentMode",
+    "from": "false",
+    "to": "true",
+    "source": "HUMAN_TODO B2",
+    "note": "Consent Mode v2 default (EEA/UK/CH denied until the AdSense-served message answers)",
+    "approvedBy": "mark@aerocoders.com (chat 2026-09-13: \"the site has the EE approval setup, yes\")",
+    "date": "2026-09-13"
+  },
+  {
+    "page": "project-serverless-contact-form.html",
+    "field": "consentMode",
+    "from": "false",
+    "to": "true",
+    "source": "HUMAN_TODO B2",
+    "note": "Consent Mode v2 default (EEA/UK/CH denied until the AdSense-served message answers)",
+    "approvedBy": "mark@aerocoders.com (chat 2026-09-13: \"the site has the EE approval setup, yes\")",
+    "date": "2026-09-13"
+  },
+  {
+    "page": "project-ec2-web-server.html",
+    "field": "consentMode",
+    "from": "false",
+    "to": "true",
+    "source": "HUMAN_TODO B2",
+    "note": "Consent Mode v2 default (EEA/UK/CH denied until the AdSense-served message answers)",
+    "approvedBy": "mark@aerocoders.com (chat 2026-09-13: \"the site has the EE approval setup, yes\")",
+    "date": "2026-09-13"
+  },
+  {
+    "page": "project-three-tier-web-app.html",
+    "field": "consentMode",
+    "from": "false",
+    "to": "true",
+    "source": "HUMAN_TODO B2",
+    "note": "Consent Mode v2 default (EEA/UK/CH denied until the AdSense-served message answers)",
+    "approvedBy": "mark@aerocoders.com (chat 2026-09-13: \"the site has the EE approval setup, yes\")",
+    "date": "2026-09-13"
+  },
+  {
+    "page": "project-cicd-pipeline.html",
+    "field": "consentMode",
+    "from": "false",
+    "to": "true",
+    "source": "HUMAN_TODO B2",
+    "note": "Consent Mode v2 default (EEA/UK/CH denied until the AdSense-served message answers)",
+    "approvedBy": "mark@aerocoders.com (chat 2026-09-13: \"the site has the EE approval setup, yes\")",
+    "date": "2026-09-13"
+  },
+  {
+    "page": "project-serverless-rest-api.html",
+    "field": "consentMode",
+    "from": "false",
+    "to": "true",
+    "source": "HUMAN_TODO B2",
+    "note": "Consent Mode v2 default (EEA/UK/CH denied until the AdSense-served message answers)",
+    "approvedBy": "mark@aerocoders.com (chat 2026-09-13: \"the site has the EE approval setup, yes\")",
+    "date": "2026-09-13"
+  },
+  {
+    "page": "project-infrastructure-as-code.html",
+    "field": "consentMode",
+    "from": "false",
+    "to": "true",
+    "source": "HUMAN_TODO B2",
+    "note": "Consent Mode v2 default (EEA/UK/CH denied until the AdSense-served message answers)",
+    "approvedBy": "mark@aerocoders.com (chat 2026-09-13: \"the site has the EE approval setup, yes\")",
+    "date": "2026-09-13"
+  },
+  {
+    "page": "project-multi-region-active-active.html",
+    "field": "consentMode",
+    "from": "false",
+    "to": "true",
+    "source": "HUMAN_TODO B2",
+    "note": "Consent Mode v2 default (EEA/UK/CH denied until the AdSense-served message answers)",
+    "approvedBy": "mark@aerocoders.com (chat 2026-09-13: \"the site has the EE approval setup, yes\")",
+    "date": "2026-09-13"
+  },
+  {
+    "page": "project-kubernetes-eks.html",
+    "field": "consentMode",
+    "from": "false",
+    "to": "true",
+    "source": "HUMAN_TODO B2",
+    "note": "Consent Mode v2 default (EEA/UK/CH denied until the AdSense-served message answers)",
+    "approvedBy": "mark@aerocoders.com (chat 2026-09-13: \"the site has the EE approval setup, yes\")",
+    "date": "2026-09-13"
+  },
+  {
+    "page": "project-realtime-data-pipeline.html",
+    "field": "consentMode",
+    "from": "false",
+    "to": "true",
+    "source": "HUMAN_TODO B2",
+    "note": "Consent Mode v2 default (EEA/UK/CH denied until the AdSense-served message answers)",
+    "approvedBy": "mark@aerocoders.com (chat 2026-09-13: \"the site has the EE approval setup, yes\")",
+    "date": "2026-09-13"
+  },
+  {
+    "page": "project-multi-account-landing-zone.html",
+    "field": "consentMode",
+    "from": "false",
+    "to": "true",
+    "source": "HUMAN_TODO B2",
+    "note": "Consent Mode v2 default (EEA/UK/CH denied until the AdSense-served message answers)",
+    "approvedBy": "mark@aerocoders.com (chat 2026-09-13: \"the site has the EE approval setup, yes\")",
+    "date": "2026-09-13"
   }
 ]

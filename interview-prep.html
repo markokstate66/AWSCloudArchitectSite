@@ -18,6 +18,12 @@
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
+    // Consent Mode v2: denied by default in the EEA/UK/CH until the AdSense-served consent message answers
+    gtag('consent', 'default', {
+      ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied', analytics_storage: 'denied',
+      wait_for_update: 500, region: ["AT","BE","BG","HR","CY","CZ","DK","EE","FI","FR","DE","GR","HU","IE","IS","IT","LV","LI","LT","LU","MT","NL","NO","PL","PT","RO","SK","SI","ES","SE","GB","CH"]
+    });
+    gtag('set', 'ads_data_redaction', true);
     gtag('js', new Date());
     gtag('config', 'G-VBQ33BLD4E');
   </script>
