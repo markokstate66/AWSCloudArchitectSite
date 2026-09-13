@@ -45,34 +45,14 @@
       ]
     }
   ],
-  "navigationFallback": {
-    "rewrite": "/index.html",
-    "exclude": [
-      "*.css",
-      "*.js",
-      "*.png",
-      "*.jpg",
-      "*.jpeg",
-      "*.gif",
-      "*.svg",
-      "*.ico",
-      "*.webp",
-      "*.woff",
-      "*.woff2",
-      "*.xml",
-      "*.txt",
-      "/api/*",
-      "/admin.html"
-    ]
-  },
   "responseOverrides": {
     "401": {
       "redirect": "/.auth/login/aad?post_login_redirect_uri=/admin.html",
       "statusCode": 302
     },
     "404": {
-      "rewrite": "/index.html",
-      "statusCode": 200
+      "rewrite": "/404.html",
+      "statusCode": 404
     }
   },
   "globalHeaders": {

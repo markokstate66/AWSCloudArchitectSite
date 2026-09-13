@@ -52,9 +52,10 @@ it). Remaining binding: `www.awscloudarchitect.com` Ready.
 rewrites to `/index.html` with `statusCode: 200`. `GET /does-not-exist.html` returns 200 and the
 home page's `<title>`. `404.html` exists (with `noindex`) but is never served. Google treats
 this as soft-404 duplication of the home page.
-**Decision needed:** change the `404` override to `{"rewrite": "/404.html", "statusCode": 404}`
-and drop `navigationFallback` (this is a plain multi-page site, not an SPA). Agents did not
-change this because it changes what URLs return — it is a routing decision, yours to make.
+**Done in the branch on 2026-09-13 (owner asked for autonomous cleanup):** the `404` override now
+rewrites to `/404.html` with status 404 and `navigationFallback` is removed (multi-page site, not an
+SPA). Verified locally: a missing route returns a real 404. Takes effect on the launch merge; watch
+Search Console "Not found (404)" afterwards — those are the former soft-404s being dropped, which is correct.
 
 ### A3. Content truth — 13 WRONG, 18 STALE, 3 UNVERIFIED out of 78 claims
 Full table with sources and exact substitutions: `docs/CONTENT_AUDIT.md`. Nothing was changed
@@ -95,9 +96,9 @@ The headings field would also change ("Learn More" is link text, not a heading, 
    disclosure lives only on about.html and privacy.html). AdSense/FTC-wise the disclosure should be
    on the page with the links. Adding a sentence is new content: propose exact text for an approval,
    e.g. field "text", from: "Recommended AWS Books" to: "Recommended AWS Books As an Amazon Associate we earn from qualifying purchases." (context string must be unique; the builder will confirm the exact substring).
-2. **Affiliate links carry only rel="noopener".** Google asks for rel="sponsored" on paid/affiliate
-   links (8 Amazon ?tag= links, 5 Pluralsight). This is a link-attribute change, not a URL change;
-   say yes/no and an agent applies it site-wide.
+2. **rel="sponsored" added on 2026-09-13** to the 8 Amazon `?tag=` affiliate links (resources.html).
+   The Pluralsight links carry no tracking parameter, so they were left as editorial links; if they
+   are in fact a paid partnership, say so and they get the same attribute.
 3. **images/books/sap-c02.jpg is a photo of *The Kubernetes Book*** while its alt text says it is the
    SAP-C02 study guide (and the linked ASIN 1119951097 404s — CONTENT_AUDIT). Needs a new image
    (same filename keeps the gate green) and the link fix from the audit block.
