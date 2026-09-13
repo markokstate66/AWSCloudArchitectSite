@@ -1,21 +1,69 @@
 {
   "routes": [
     {
+      "route": "/README.md",
+      "statusCode": 404
+    },
+    {
+      "route": "/ARCHITECTURE.md",
+      "statusCode": 404
+    },
+    {
+      "route": "/AB-TESTING-*",
+      "statusCode": 404
+    },
+    {
+      "route": "/prompt.txt",
+      "statusCode": 404
+    },
+    {
+      "route": "/_showcase/*",
+      "statusCode": 404
+    },
+    {
+      "route": "/docs/*",
+      "statusCode": 404
+    },
+    {
+      "route": "/harness/*",
+      "statusCode": 404
+    },
+    {
       "route": "/index.html",
       "rewrite": "/"
     },
     {
       "route": "/admin.html",
-      "allowedRoles": ["admin"]
+      "allowedRoles": [
+        "admin"
+      ]
     },
     {
       "route": "/api/stats",
-      "allowedRoles": ["admin"]
+      "allowedRoles": [
+        "admin"
+      ]
     }
   ],
   "navigationFallback": {
     "rewrite": "/index.html",
-    "exclude": ["*.css", "*.js", "*.png", "*.jpg", "*.jpeg", "*.gif", "*.svg", "*.ico", "*.webp", "*.woff", "*.woff2", "*.xml", "*.txt", "/api/*", "/admin.html"]
+    "exclude": [
+      "*.css",
+      "*.js",
+      "*.png",
+      "*.jpg",
+      "*.jpeg",
+      "*.gif",
+      "*.svg",
+      "*.ico",
+      "*.webp",
+      "*.woff",
+      "*.woff2",
+      "*.xml",
+      "*.txt",
+      "/api/*",
+      "/admin.html"
+    ]
   },
   "responseOverrides": {
     "401": {

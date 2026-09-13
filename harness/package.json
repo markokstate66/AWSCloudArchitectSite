@@ -1,0 +1,17 @@
+{
+  "name": "awsca-harness",
+  "private": true,
+  "description": "Local verification harness: screenshots, Lighthouse, axe, content-integrity. Not deployed (blocked by staticwebapp.config.json route rule).",
+  "scripts": {
+    "serve": "node serve.js",
+    "snap": "node snap.js",
+    "integrity": "node integrity.js",
+    "lh": "node lh.js"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "^4.10.2",
+    "lighthouse": "^12.8.2",
+    "playwright": "^1.55.0",
+    "chrome-launcher": "^1.2.0"
+  }
+}

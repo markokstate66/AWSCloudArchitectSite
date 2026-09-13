@@ -1,0 +1,112 @@
+# HUMAN_TODO — things only the site owner can do
+
+Written 2026-09-13 during Phase 0 and the inventory. Nothing here blocks the facelift; agents
+keep going. Items are ordered by how much they matter, not by effort. None of these were done by
+an agent: no deploy, no AdSense/Search Console/DNS/CMP change was made.
+
+## A. Phase 0 findings (checked against the live site on 2026-09-13)
+
+### A1. Backend works — but only by luck of a race (fix before the next push)
+Every `/api/*` route was probed live. Result: **no HTTP 500s**. Public routes respond correctly
+(`GET /api/pool` 200, `GET /api/products` 200, `OPTIONS /api/contact` 204, `POST /api/contact`
+400 on an empty body, tracking routes 400, admin-only routes 401/302). The contact form's front
+end shows the API's error text on any non-OK response and a generic failure on a network error,
+so a failed send is **visible**, not reported as success. `api/package.json` `main` is a valid
+glob for the Functions v4 model, so the sister-site failure mode does not apply here.
+
+**However:** two workflow files in `.github/workflows/` both fired on every push to `main`.
+One deploys with `api_location: "api"`, the other with `api_location: ""` (no API), using
+different secrets (`AZURE_STATIC_WEB_APPS_API_TOKEN_GREEN_WATER_0B250A80F` vs
+`AZURE_STATIC_WEB_APPS_API_TOKEN`). GitHub Actions history shows both succeeding on the last
+push (run 20834935339 = no-API workflow finished first, run 20834935338 = API workflow finished
+last). The API is live today only because the API workflow happened to win.
+
+What was done in the repo: the no-API workflow was deleted and its HTML-validation job folded
+into the remaining one (`azure-static-web-apps-green-water-0b250a80f.yml`).
+
+**You must:**
+1. Confirm in the Azure portal that the `green-water-0b250a80f` Static Web App is the one bound
+   to `www.awscloudarchitect.com`. If a second SWA resource exists for the other token, delete
+   it (or at least its custom-domain binding) so nothing can deploy over production.
+2. Delete the unused GitHub secret `AZURE_STATIC_WEB_APPS_API_TOKEN` once confirmed.
+3. After the first push with the single workflow, re-probe `GET https://www.awscloudarchitect.com/api/products` (expect 200 JSON).
+
+### A2. Soft 404s: every unknown URL returns the home page with HTTP 200
+`staticwebapp.config.json` has `navigationFallback` → `/index.html` and a `404` override that
+rewrites to `/index.html` with `statusCode: 200`. `GET /does-not-exist.html` returns 200 and the
+home page's `<title>`. `404.html` exists (with `noindex`) but is never served. Google treats
+this as soft-404 duplication of the home page.
+**Decision needed:** change the `404` override to `{"rewrite": "/404.html", "statusCode": 404}`
+and drop `navigationFallback` (this is a plain multi-page site, not an SPA). Agents did not
+change this because it changes what URLs return — it is a routing decision, yours to make.
+
+### A3. Content truth — 13 WRONG, 18 STALE, 3 UNVERIFIED out of 78 claims
+Full table with sources and exact substitutions: `docs/CONTENT_AUDIT.md`. Nothing was changed
+on any page. The five that would embarrass the site most:
+1. `tools.html` budgets $300 for the **retired** Database Specialty exam (last sitting 2024-04-29).
+2. Home page: "32% Job Growth" (BLS: 8% for 2025–35) and "approximately 32% market share" (Synergy Q2 2026: 28%).
+3. `project-ec2-web-server.html`: "Elastic IPs are free when associated" (false since 2024-02-01) and a user-data script that calls `amazon-linux-extras` on an Amazon Linux 2023 AMI (does not exist there; the copy-paste fails).
+4. Five pages describe the pre-July-2025 Free Tier (12 months / 750 hours); new accounts now get $100–$200 credit over 6 months.
+5. `project-static-website.html` tells the reader to make the bucket public and then configures Origin Access Control, which requires it private.
+Also: EKS `1.28` (out of support), `PodSecurityPolicy` (removed in K8s 1.25), `aws-portal:*` in an SCP (inert since 2023-12-11), Terraform `~> 5.0` (v6 since 2025-06), RDS MySQL 8.0 (paid Extended Support since 2026-08-01), one affiliate link that 404s (SAP-C02 guide ASIN 1119951097), `acloudguru.com` and `cloudacademy.com` redirect to other brands, `© 2025` on 20 pages.
+
+**To approve corrections:** copy the entries you accept from the "Approval block" at the end of
+`docs/CONTENT_AUDIT.md` into `docs/APPROVALS.json`, fill in `approvedBy` (your name) and `date`.
+Each entry is one exact substitution on one page and field; the integrity gate applies exactly
+that and nothing else. An agent will then make the edits and the gate will verify them.
+
+### A4. No credentials found in the repo
+`git grep` for storage keys, ACS connection strings, AWS keys and private keys: nothing. A
+`.gitignore` net for those shapes was added (`local.settings.json`, `*.pem`, `.env*`, etc.).
+
+## B. AdSense / consent (only you can see or change these)
+
+### B1. Record the Auto ads settings and injected slots (needed as the ad baseline)
+In AdSense → Ads → By site → awscloudarchitect.com, record: Auto ads on/off, which formats are
+enabled (in-page, anchor, vignette, side rails, multiplex), the ad load slider, and any
+excluded pages/areas. Then, in a normal browser (not automation), load one page of each type
+(home, project, listing, static) on a phone and on desktop, scroll to the bottom, and note how
+many ads were injected and roughly where. Put the results in `docs/INVENTORY.md` under
+"Ad baseline (human-captured)". Agents block ad hosts and cannot see this.
+
+### B2. Consent: no CMP, no Consent Mode v2, GA4 on 19 pages
+There is no `gtag('consent', ...)` default, no Funding Choices / `googlefc` script, and the
+privacy policy describes cookies but offers no control. If the site has EEA/UK/Swiss traffic,
+Google requires a certified CMP for personalised ads. Check AdSense → Privacy & messaging: is
+a GDPR message published for this domain? If yes, its script tag is not on any page (the CSP
+already allows `fundingchoicesmessages.google.com`, suggesting it was intended). Decide:
+publish the AdSense-served CMP and tell an agent to add the exact snippet plus a Consent Mode
+v2 default (`ad_storage`, `ad_user_data`, `ad_personalization`, `analytics_storage` denied by
+default for EEA regions) — or document that traffic is non-EEA and the risk is accepted.
+
+### B3. Core Web Vitals field data (lab numbers do not cover Auto ads)
+Auto ads inject after load in positions Google chooses. The harness blocks ad hosts, so every
+CLS number in `docs/INVENTORY.md` and the gauntlet **excludes ad-induced shift**. The honest
+number is field data. PageSpeed Insights' keyless API quota was exhausted on 2026-09-13
+(HTTP 429), so no CrUX data was captured. Please: Search Console → Core Web Vitals → Mobile,
+screenshot the 28-day status and the URL groups, and paste the numbers into
+`docs/INVENTORY.md` under "Field data (human-captured)". Do the same the week after launch.
+
+### B4. Phase 2 — manual ad units (when the facelift passes)
+The AdSense Management API cannot create units for this account type (`adunits.create` → 403),
+and in-feed layout keys are only visible in the UI. When asked, create these display units and
+paste the `data-ad-slot` ids into `docs/AD_UNITS.json`: `article-mid-1`, `article-mid-2`,
+`article-end`, `listing-mid`, `home-mid`. One unit per position so each earns separately in
+reports. Set Auto ads: **anchor on, vignette off**, in-page on, side rails off on this domain.
+Reservations in the ad wrappers are guesses until you have seen them with real fill; report
+back the real filled sizes per position on mobile and desktop after one week.
+
+## C. Post-launch watch plan (you run it; agents cannot see AdSense or GSC)
+
+Baseline window: the 28 days before the launch push. Compare each week for 4 weeks.
+
+| Metric | Where | Rollback trigger |
+|--------|-------|------------------|
+| Page RPM, RPM, ad CTR | AdSense → Reports → by site | Page RPM down > 25% for 7 consecutive days with stable pageviews |
+| Viewability (Active View) | AdSense → Reports → Active View viewable | Down > 10 points |
+| Invalid-traffic warnings / policy centre | AdSense → Policy centre | Any new issue → stop and investigate the same day |
+| CLS / LCP / INP (mobile, field) | Search Console → Core Web Vitals | Any URL group moving from Good to Needs improvement |
+| Organic clicks, impressions, avg. position | Search Console → Performance | Clicks down > 20% week-over-week for 2 weeks (after seasonal check) |
+| Soft-404 / not-indexed pages | Search Console → Pages | Any project page dropping out of the index |
+
+Rollback = `git revert` of the launch merge and push; the single workflow redeploys in ~90 s.

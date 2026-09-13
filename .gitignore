@@ -27,3 +27,22 @@ npm-debug.log*
 # Temporary files
 *.tmp
 *.temp
+
+# Verification harness artefacts (screenshots, Lighthouse JSON) — regenerate locally
+harness/node_modules/
+harness/out/
+
+# Secrets net: app_location "/" publishes the whole repo, so never let these shapes in
+local.settings.json
+*.pem
+*.key
+*.pfx
+*.p12
+*.publishsettings
+.azure/
+*.secret
+*.secrets
+secrets*.json
+appsettings.*.json
+.env*
+!.env.example

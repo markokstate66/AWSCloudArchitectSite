@@ -1,0 +1,222 @@
+ # Goal
+
+  Give awscloudarchitect.com a full visual facelift and put its monetization on a proper
+  footing. This is an AdSense-monetized AWS/cloud-architecture site, so organic search traffic
+  and ad revenue are the business. The bar is a best-in-class technical publication: editorial
+  typography, effortless reading on a phone, diagrams and code that are a pleasure to read and
+  copy, fast pages, and ads that sit in the layout cleanly instead of fighting it. A reader
+  should find their answer faster than on any competing site. Never template look.
+
+  This is a facelift, not a rebuild. Same pages, same URLs, same content, same stack and
+  hosting. No framework migration.
+
+  # What is already known about this site — verified, do not spend a round rediscovering it
+
+  - **Stack:** hand-written static HTML/CSS/JS. 21 pages, flat at the repo root: `index`,
+    `projects` hub plus 11 `project-*` pages, `resources`, `tools`, `interview-prep`, `about`,
+    `contact`, `privacy`, `404`, `admin`. One stylesheet (`styles.css`), two scripts
+    (`script.js`, `abtest.js`).
+  - **Hosting:** Azure Static Web Apps with `app_location: "/"`, which means **the repo is
+    deployed wholesale**. Anything committed at the root is published to the live site. There
+    are **two** workflow files in `.github/workflows/` — establish whether both fire, because
+    two deploys racing each other is worth knowing about before you start pushing.
+  - **AdSense:** publisher `ca-pub-6676281664229738`. Loader present on 19 of 21 pages.
+  - **There are zero manual ad units.** `<ins class="adsbygoogle">` appears 0 times across all
+    21 pages. Every impression on this site today comes from **Auto ads**, which is enabled
+    for this domain. This is the single biggest difference from its sister site and it changes
+    how you must verify — see "The Auto ads problem" below.
+  - **There is no consent configuration at all.** No `gtag('consent', ...)`, no Funding Choices
+    or `googlefc` reference on any page. GA4 is on 19 pages. Whether an AdSense-served CMP
+    message is published for this domain can only be checked in the AdSense UI, but the GA4
+    side is definitely not wired for Consent Mode v2.
+  - There is an `api/` directory and an `admin.html`. Treat both as suspect until proven —
+    see Phase 0.
+
+  # Phase 0 — two checks before any visual work
+
+  On the sister site, both of these turned out to matter more than the entire facelift. Do
+  them first, timeboxed, and write what you find to `docs/HUMAN_TODO.md`.
+
+  1. **Does the backend actually work?** Hit every `/api/*` route on the live site and record
+     the status codes. On the sister site every route had been returning HTTP 500 for at least
+     six deploys because `api/package.json` declared `"main": "index.js"` and that file had
+     never existed — a dangling entry point breaks module loading for every function on the
+     Functions v4 host. The contact form reported "Message Sent!" the entire time and the
+     messages were lost. Check the front end's failure path too: a form that reports success
+     on a failed request is worse than a form that is visibly broken.
+
+  2. **Is the content still true?** This is a technical reference site; AWS service names,
+     limits, pricing and console flows go stale. Spot-check the claims that would embarrass
+     the site if wrong, especially anything with a number in it. On the sister site 25 pricing
+     figures were wrong. Do not fix content silently — list what is wrong, propose the
+     correction with a source, and get it approved before changing a word.
+
+  # How to work
+
+  0. **Inventory first.** Write `docs/INVENTORY.md`:
+     - Stack, hosting, build/deploy path, how to run it locally.
+     - Every page template and page type.
+     - Full URL list with sitemap, redirects, canonicals.
+     - Ad configuration per page type: Auto ads on/off, formats enabled, ad load setting, and
+       any manual unit (there are none today — record that as the baseline).
+     - `ads.txt` contents, the consent/CMP setup, the analytics and AdSense snippets.
+     - A Lighthouse + axe baseline per page type.
+     - Screenshots of every page type at 390, 768 and 1440 px.
+     - A rendered-text snapshot of every page.
+
+     This is the regression baseline and the "before" for blind judging. **Snapshot it to an
+     explicit, named label and never let a tool default to writing the baseline** — on the
+     sister site a refresh command defaulted to the baseline label, overwrote the reference
+     with the working tree, and the next comparison was the site against itself.
+
+  1. **Architecture.** Write `ARCHITECTURE.md` with an ownership map. Non-overlapping areas,
+     one builder each: design-system; layout shell; article/project template; code &
+     architecture-diagram blocks; listing pages; ad slot presentation (layout only); static
+     pages.
+
+     Budgets, measured with ads stubbed: Lighthouse mobile Performance ≥95, Accessibility 100,
+     Best Practices 100, SEO 100; LCP ≤1.8 s, CLS ≤0.05, INP ≤200 ms. Page weight and JS at or
+     below baseline. Failure isolation: if ads, fonts or JS fail, the page still renders fully
+     readable.
+
+  2. **Verification loop before any visual change.**
+     - Headless Chromium (Playwright) that loads any route at 390/768/1440 and writes a PNG
+       plus a JSON log: console errors, failed requests, Lighthouse scores, axe violations,
+       Core Web Vitals.
+     - The tool **blocks every live ad and ad-script request at the route layer** and injects
+       clearly labelled placeholders. Never generate a real impression. Never click an ad.
+     - A content-integrity check: per page, diff rendered text, title, meta description,
+       canonical, headings, structured data and internal links against the baseline. Any
+       change to content is a failure unless it carries a **named, dated approval that names
+       the exact substitution** — not the page, not the field. On the sister site an approval
+       scoped to "text on this page" waved through every other change on it, and a `$10 → $14`
+       price approval would have rewritten `$10,000` to `$14,000` in a table.
+     - **Prove the gate bites.** Before trusting it, tamper with a page deliberately — change
+       a number, add an ad unit — and confirm it fails. A gate nobody has tested is decoration.
+       On the sister site one tamper test targeted a page the rule did not apply to, so it
+       "passed" while proving nothing.
+     - Showcase: each area ships a `/_showcase/<area>` page, excluded from build output,
+       sitemap and indexing, staging the hardest real cases — the longest project page, the
+       widest table, the biggest architecture diagram, the longest CLI block.
+     - No agent may claim anything it has not screenshotted and looked at.
+
+  3. **Fan out.** Multi-agent orchestration. Wave 1: design-system and layout shell. Wave 2:
+     project template, code blocks, listing pages, static pages. Wave 3: ad presentation, then
+     whole-site polish. Between waves one integrator — the only agent allowed to touch shared
+     files, global styles and the base layout — applies change requests and fixes seams.
+
+  4. **Gauntlet every area.** A critic panel that writes no code takes its own screenshots at
+     every breakpoint and checks console errors, budgets and both integrity checks.
+     - **Creative director.** Picks 3 best-in-class technical publication or cloud-documentation
+       sites at the start and records them in `docs/REFERENCES.md`. Frozen thereafter so the
+       bar never moves.
+     - **Reader critic.** A cloud engineer on a phone mid-task: can they find the answer, read
+       the diagram, and copy the command in seconds?
+     - **Monetization & SEO critic.** Ad viewability at or above baseline; ads clearly
+       distinguishable from content; nothing inviting accidental clicks; no AdSense policy
+       violation; CMP intact; no SEO regressions.
+
+     Scoring 0–10: 10 = indistinguishable from the references, 8.5 = publication-grade with
+     nits, 7 = good theme, 5 = generic template.
+
+     **Pass = every critic ≥8.5, zero console errors, budgets met, zero serious/critical axe
+     violations, both integrity checks clean.** Below that the builder gets the ranked list and
+     goes again, up to 4 rounds, then the area is marked BLOCKED and the loop returns to it.
+
+  5. **Final gate.** Whole-site critic score; a full-URL crawl confirming every URL returns
+     what it did before with identical content and metadata; blind A/B judging, order
+     shuffled, new vs old baseline and new vs each reference.
+
+  6. **/loop until every critic passes.** Persist per-area scores, rounds, open issues and
+     status to `docs/STATUS.json` so each iteration resumes from the weakest area.
+
+  # The Auto ads problem — read before touching ad presentation
+
+  Auto ads injects ads into the page **after load**, in positions Google chooses. That breaks
+  the two techniques the sister site relied on:
+
+  - **You cannot reserve space for an ad you did not place.** Every Auto ad is a potential
+    layout shift, and your harness blocks ad hosts, so it will report CLS 0 and be wrong. The
+    only honest source for Auto-ads CLS is field data — Search Console's Core Web Vitals
+    report or CrUX. Read it before and after, and say plainly in `HUMAN_TODO.md` that the lab
+    number does not cover this.
+  - **You cannot diff unit IDs, because there are none.** The ad-integrity check must instead
+    record the Auto ads settings and the count and position of injected slots per page type,
+    captured with ads *unblocked* in a one-off manual pass by the human, not by an agent.
+
+  Do not turn Auto ads off to make measurement easier. It is currently the site's entire
+  revenue.
+
+  # Phase 2 — monetization, with permission already granted
+
+  Unlike the sister site's original brief, you do **not** need to freeze ad count here. The
+  owner has explicitly asked for revenue work. Once the facelift passes:
+
+  - **Place manual units in chosen positions** and let Auto ads fill the gaps. Manual units
+    can be reserved, styled and measured; Auto ads cannot. The pattern that worked on the
+    sister site: one unit per position, each a **separate ad unit ID**, so AdSense reports
+    which placement earns instead of merging everything into one number.
+  - **Anchor ads on, vignettes off.** Anchor is the format that earns on mobile. Vignettes are
+    full-screen interstitials and will undo the Core Web Vitals work.
+  - **No ad above the fold, anywhere.** Make the integrity check fail the build if one appears.
+  - **Every ad sits in a wrapper that reserves its height before fill and collapses to nothing
+    when unfilled.** Collapse only on a definite signal — AdSense's `data-ad-status="unfilled"`,
+    or the library demonstrably never having run. "No status yet" is not a signal: with a
+    certified CMP the library loads and then waits for the reader to answer the banner, and
+    collapsing on a missing attribute hides the slot from every reader who consents. And never
+    collapse a slot the reader can currently see or has already scrolled past — that pulls the
+    footer up into view and is a worse shift than the one you are preventing.
+  - **Creating ad units needs the human.** The AdSense Management API is read-only for
+    non-partner accounts: `adunits.create` returns 403, and `adunits.getAdcode` returns code
+    for DISPLAY units only — so an in-feed unit's `data-ad-layout-key` has to be pasted from
+    the UI by hand.
+  - **Reservations are guesses until seen with real fill.** Say so in `HUMAN_TODO.md` rather
+    than implying they are measured.
+
+  # Lessons that cost the sister site real rounds
+
+  - **Fix the component, not the page you were shown.** A critic showed one page with a layout
+    void; it was fixed there and left broken on the shared component used by 37 others. The
+    critic's words: *"you fixed the page I showed you, not the component."*
+  - **Reconcile per component, not per CSS class.** Four different price treatments survived a
+    pass that claimed to have unified them.
+  - **Watch for CSS that overrides your own JS guard.** A `:has()` rule written to collapse
+    empty ad slots silently defeated the JavaScript that was supposed to decide when to
+    collapse, and reintroduced a 0.62 CLS bug by another route. Scope such rules to `.no-js`.
+  - **Beware grid auto-placement.** A sticky sidebar that came first in the DOM claimed row 1,
+    pushing the article body to row 2 and opening a 146–386px void on 37 pages. Place grid
+    items explicitly.
+  - **Folding a page-local style into a global stylesheet makes it global.** One such fold
+    painted a gold word on violet at 1.41:1 contrast on the home page.
+  - **Never report a gate as clean without confirming it ran against a fresh snapshot.**
+
+  # Human-gated — never block on these
+
+  Agents must not deploy to production, change anything in the AdSense account, or touch
+  Search Console, DNS or the CMP account. Write exact steps to `docs/HUMAN_TODO.md` and keep
+  going. Include a post-launch watch plan: RPM, page RPM, CTR, viewability, Core Web Vitals
+  and organic clicks against a pre-launch baseline window, with a rollback trigger.
+
+  # Rules
+
+  - Never inflate scores. Report real numbers, failed rounds, BLOCKED areas, and what is missing.
+  - Never edit files another builder owns. Shared changes go through the integrator.
+  - Keep the dev server running and the site loadable at all times; other agents are screenshotting
+  it.
+  - No new features, modules, pages or dependencies beyond what the refresh needs. New ideas go
+    in `docs/IDEAS.md`, not the build.
+  - Never change page text, titles, meta descriptions, slugs, URLs, canonicals, structured data
+    or internal links without a named, approved, specific substitution.
+  - Never change `ads.txt`, the AdSense publisher ID, the analytics snippet or consent
+    configuration without sign-off.
+  - Never load live ads in automation and never click an ad. Invalid traffic can get the
+    AdSense account suspended — and this account hosts several sites, so a suspension is not
+    contained to this one.
+  - **Never commit a credential anywhere in this repo.** `app_location: "/"` means the repo is
+    published wholesale, so a committed key is served from the live website, not merely
+    exposed in git history. Keep secrets outside the repo and add a `.gitignore` net for the
+    shapes they take.
+  - Never deploy to production. Local and preview environments only.
+  - Do not ask me questions. Make routine decisions yourself, state assumptions, keep going.
+
+  Start now with Phase 0, then the inventory.
