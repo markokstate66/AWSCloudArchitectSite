@@ -38,9 +38,8 @@ deleted from the SWA (apex DNS points at Squarespace, which 301s to www; Azure c
 it). Remaining binding: `www.awscloudarchitect.com` Ready.
 
 **You must:**
-1. Delete the GitHub repository secret `AZURE_STATIC_WEB_APPS_API_TOKEN` (the removed workflow's):
-   `gh secret delete AZURE_STATIC_WEB_APPS_API_TOKEN` — the agent's secret-store write was blocked by
-   policy. Keep `AZURE_STATIC_WEB_APPS_API_TOKEN_GREEN_WATER_0B250A80F`.
+1. GitHub secret `AZURE_STATIC_WEB_APPS_API_TOKEN` deleted on 2026-09-13 at the owner's request; only
+   `AZURE_STATIC_WEB_APPS_API_TOKEN_GREEN_WATER_0B250A80F` remains (the one the workflow uses).
 2. **Orphaned monitoring: deleted on 2026-09-13 at the owner's request.** `aws-architect-insights`
    (Application Insights), its portal dashboard and the managed workspace resource group
    `ai_aws-architect-insights_…_managed` are gone. `DefaultResourceGroup-EUS` now holds only the
