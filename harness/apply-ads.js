@@ -70,11 +70,14 @@ function insertBeforeSection(html, id, block) {
   const wrapped = ['<div class="container">', ...block.split(NL).map(l => '  ' + l), '</div>'].map(l => ind + l).join(NL) + NL;
   return html.slice(0, lineStart) + wrapped + html.slice(lineStart);
 }
-const STRIP = /(?: *<div class="container">\n)? *<div class="ad-well" data-position="[^"]+"[\s\S]*?<\/div>\n *<script>\(adsbygoogle=window\.adsbygoogle\|\|\[\]\)\.push\(\{\}\);<\/script>\n(?: *<\/div>\n)?/g;
+// Two passes: the home-mid form (wrapped in its own .container, so its closing div is ours) and the
+// bare form (never consume a following </div>: it belongs to the surrounding section).
+const STRIP_WRAPPED = / *<div class="container">\n *<div class="ad-well" data-position="[^"]+"[\s\S]*?<\/div>\n *<script>\(adsbygoogle=window\.adsbygoogle\|\|\[\]\)\.push\(\{\}\);<\/script>\n *<\/div>\n/g;
+const STRIP = / *<div class="ad-well" data-position="[^"]+"[\s\S]*?<\/div>\n *<script>\(adsbygoogle=window\.adsbygoogle\|\|\[\]\)\.push\(\{\}\);<\/script>\n/g;
 const pages = fs.readdirSync(ROOT).filter(f => f.endsWith('.html') && !/^(admin|404)\.html$/.test(f));
 let placed = 0; const skipped = []; const perPage = {};
 for (const page of pages) {
-  let html = fs.readFileSync(path.join(ROOT, page), 'utf8').replace(STRIP, '');
+  let html = fs.readFileSync(path.join(ROOT, page), 'utf8').replace(STRIP_WRAPPED, '').replace(STRIP, '');
   const before = html;
   for (const [pos, rule] of Object.entries(PLAN)) {
     if (!rule.pages(page)) continue;
