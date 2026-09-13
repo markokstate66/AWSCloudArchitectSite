@@ -5,34 +5,46 @@
   "areas": {
     "design-system": {
       "wave": 1,
-      "status": "IN_GAUNTLET_R2",
+      "status": "R2_PASS_CD_READER__MS_FAIL_ADWELL",
       "round": 2,
       "scores": {
         "r1": {
           "creativeDirector": 7.6,
           "reader": 7.4,
           "monetizationSeo": 8.6
+        },
+        "r2": {
+          "creativeDirector": 8.6,
+          "reader": 8.6,
+          "monetizationSeo": 8.3
         }
       },
       "openIssues": [
-        "docs/rounds/wave1-r2-request.md (12 items)"
+        "M&S: .ad-well width/label (fixed by integrator after the critic ran; re-verify in Wave 2 r2 critic pass)",
+        "reader nits: drawer focus trap, breadcrumb 44px (polish round)"
       ],
       "builderReport": "docs/rounds/wave1-r2-builder.md",
       "next": "round 2 after Wave 2 builders land"
     },
     "layout-shell": {
       "wave": 1,
-      "status": "IN_GAUNTLET_R2",
+      "status": "R2_PASS_CD_READER__MS_FAIL_ADWELL",
       "round": 2,
       "scores": {
         "r1": {
           "creativeDirector": 7.6,
           "reader": 7.4,
           "monetizationSeo": 8.6
+        },
+        "r2": {
+          "creativeDirector": 8.6,
+          "reader": 8.6,
+          "monetizationSeo": 8.3
         }
       },
       "openIssues": [
-        "docs/rounds/wave1-r2-request.md (12 items)"
+        "M&S: .ad-well width/label (fixed by integrator after the critic ran; re-verify in Wave 2 r2 critic pass)",
+        "reader nits: drawer focus trap, breadcrumb 44px (polish round)"
       ],
       "builderReport": "docs/rounds/wave1-r2-builder.md",
       "next": "round 2 after Wave 2 builders land"
@@ -71,7 +83,7 @@
     },
     "listing-pages": {
       "wave": 2,
-      "status": "ROUND_2_BUILDING",
+      "status": "R2_BUILT_AWAITING_CRITICS",
       "round": 2,
       "scores": {
         "r1": {
@@ -87,7 +99,7 @@
     },
     "static-pages": {
       "wave": 2,
-      "status": "ROUND_2_BUILDING",
+      "status": "R2_BUILT_AWAITING_CRITICS",
       "round": 2,
       "scores": {
         "r1": {
