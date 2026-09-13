@@ -90,7 +90,8 @@
   var tt = d.querySelector('.to-top');
   if (tt) {
     tt.onclick = () => scrollTo(0, 0);
-    onscroll = () => tt.classList.toggle('is-on', scrollY > innerHeight);
+    /* hidden while an ad well crosses its band */
+    onscroll = () => tt.classList.toggle('is-on', scrollY > innerHeight && ![...d.querySelectorAll('.ad-well')].some(w => { var r = w.getBoundingClientRect(); return r.bottom > innerHeight - 160 && r.top < innerHeight - 40 }));
   }
 
   /* --- ad wells: collapse only on unfilled AND never seen --- */

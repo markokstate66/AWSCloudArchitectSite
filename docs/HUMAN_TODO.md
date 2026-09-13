@@ -177,6 +177,13 @@ which changes the frozen image markup and the A/B renderer. **Decide:** accept 2
 this one page (real-user LCP on a fast connection is far below this simulation), or approve an
 "images" change so the covers are inserted by script after first paint.
 
+### B5. One automation slip to know about (2026-09-13)
+During the last integrator check a Playwright test loaded one project page from the local server
+(127.0.0.1:4173) once WITHOUT the harness ad-block route, so the browser requested the AdSense loader
+and GA tag from Google for a localhost origin. No ad can serve to a non-registered origin, nothing was
+clicked, and the test was corrected and re-run with the block. Worth knowing if you ever see a stray
+localhost hit in GA4 realtime; no action needed in AdSense.
+
 ## E. Launch steps (agents do not deploy)
 
 The facelift is on the local branch `facelift` (never pushed). Before launch:
