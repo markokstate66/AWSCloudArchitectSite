@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Showcase — hardest cases (local only)</title>
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main" data-ui>Skip to content</a>
+  <main id="main" class="container" tabindex="-1" style="padding-block: var(--sp-6)">
+    <h1>Showcase: hardest real cases</h1>
+    <p>Not served in production (<code class="code-inline">/_showcase/*</code> returns 404 via <code class="code-inline">staticwebapp.config.json</code>), not in the sitemap, <code class="code-inline">noindex</code>. Critics and builders use these links to stage each area against its worst case.</p>
+    <h2 id="areas">Per area</h2>
+    <ul>
+      <li><strong>design-system / layout-shell</strong> — <a href="../index.html">home (widest hero, most section types)</a>, <a href="../about.html">about (shortest chrome page)</a></li>
+      <li><strong>article-template</strong> — <a href="../project-multi-account-landing-zone.html">longest project page (6,256 chars, 5 code blocks)</a>, <a href="../project-static-website.html">shortest project page</a></li>
+      <li><strong>code-and-diagrams</strong> — <a href="../project-kubernetes-eks.html">biggest diagram + longest CLI</a>, <a href="../project-three-tier-web-app.html">three-tier diagram (most groups)</a>, <a href="../project-multi-region-active-active.html">multi-region (widest row)</a></li>
+      <li><strong>listing-pages</strong> — <a href="../projects.html">11 cards in 3 groups</a>, <a href="../resources.html">heaviest page (8 cover images, A/B-rendered grid)</a>, <a href="../interview-prep.html">17 disclosure rows</a>, <a href="../tools.html">two forms</a></li>
+      <li><strong>static-pages</strong> — <a href="../privacy.html">12 h2 prose wall</a>, <a href="../contact.html">form states</a>, <a href="../404.html">self-contained 404</a></li>
+    </ul>
+    <h2 id="ad-well">ad-presentation: the wrapper contract (no real ad, ever)</h2>
+    <p>Below is the exact wrapper Wave 3 will place. The <code class="code-inline">&lt;ins&gt;</code> carries no client or slot, so nothing is requested; the harness paints it as a placeholder. Filled, unfilled and no-JS states are exercised by <code class="code-inline">harness/out/adwell-states.js</code> in Wave 3.</p>
+    <div class="ad-well" data-position="showcase" style="--ad-h:280px">
+      <span class="ad-well-label" data-ui>Advertisement</span>
+      <div class="ad-well-slot"><ins class="adsbygoogle-demo" style="display:block;min-height:250px" aria-hidden="true"></ins></div>
+    </div>
+    <p>Reserved height is a guess until seen with real fill (see docs/AD_PLAN.md).</p>
+  </main>
+  <script src="../script.js" defer></script>
+</body>
+</html>
