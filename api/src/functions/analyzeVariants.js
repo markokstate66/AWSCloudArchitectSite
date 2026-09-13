@@ -286,7 +286,29 @@ async function analyzeVariants(myTimer, context) {
   }
 }
 
+// Timer triggers do not run on Static Web Apps managed functions (HTTP triggers only), so this
+// schedule never fired in production. Kept for local/dedicated hosts; the HTTP route below is what
+// the daily GitHub Actions workflow (.github/workflows/ab-daily-analysis.yml) calls instead.
 app.timer("analyzeVariants", {
   schedule: "0 0 6 * * *", // 6 AM UTC daily
   handler: analyzeVariants
+});
+
+const ADMIN_KEY = process.env.ADMIN_API_KEY || "";
+app.http("analyzeVariantsHttp", {
+  methods: ["POST"],
+  authLevel: "anonymous",
+  route: "analyze",
+  handler: async (request, context) => {
+    if (!ADMIN_KEY || request.headers.get("x-admin-key") !== ADMIN_KEY) {
+      return { status: 401, jsonBody: { error: "Unauthorized" } };
+    }
+    try {
+      await analyzeVariants(null, context);
+      return { status: 200, jsonBody: { ok: true, ranAt: new Date().toISOString() } };
+    } catch (error) {
+      context.error("Analysis failed:", error);
+      return { status: 500, jsonBody: { ok: false, error: error.message } };
+    }
+  }
 });

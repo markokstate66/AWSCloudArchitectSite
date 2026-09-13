@@ -1,0 +1,26 @@
+name: A/B daily book analysis
+
+# Static Web Apps managed functions cannot run timer triggers, so this workflow calls the
+# analyser's HTTP route once a day. It drops book variants whose CTR falls below the slot
+# average (after AB_MIN_DAYS / AB_MIN_IMPRESSIONS) and promotes replacements from the pool.
+# Needs the repository secret ADMIN_API_KEY = the Static Web App's ADMIN_API_KEY app setting.
+
+on:
+  schedule:
+    - cron: "0 6 * * *" # 06:00 UTC daily
+  workflow_dispatch:
+
+jobs:
+  analyze:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run the analyser
+        env:
+          ADMIN_API_KEY: ${{ secrets.ADMIN_API_KEY }}
+        run: |
+          if [ -z "$ADMIN_API_KEY" ]; then echo "ADMIN_API_KEY secret is not set"; exit 1; fi
+          code=$(curl -s -o /tmp/out.json -w "%{http_code}" -X POST \
+            -H "x-admin-key: $ADMIN_API_KEY" \
+            https://www.awscloudarchitect.com/api/analyze)
+          cat /tmp/out.json; echo
+          [ "$code" = "200" ] || { echo "analyser returned HTTP $code"; exit 1; }
