@@ -158,3 +158,21 @@ resources.html, 0 console errors, 0 axe). The overage is the cost of the feature
 for; the CSS has already been consolidated to within ~175 B of its floor. **Decide:** accept the
 exception (recommended — 14 KB total for a project page is still very small), or tell an agent
 which features to drop.
+
+### D2. resources.html LCP is 2.1 s in the lab against a 1.8 s budget (every other page ≤ 1.65 s)
+Measured 2026-09-13 with Lighthouse mobile simulated throttling, ads blocked. The LCP element is
+the page's <h1>; the extra 0.3 s is the simulator charging the eight book-cover requests that the
+preload scanner starts before first paint. Controlled experiments on scratch copies:
+
+| Variant | LCP |
+|---------|-----|
+| as shipped (8 covers, 143 KB, first eager, rest lazy) | 2.1 s |
+| abtest.js deferred / removed | 2.2 s / 2.1 s (not the cause) |
+| all covers lazy, no fetchpriority | 2.2 s |
+| covers re-encoded 320 px tall (101 KB) | 2.1 s (bytes are not the cause; request count is) |
+| covers removed entirely | 1.8 s |
+
+The only in-budget option is to not have the covers in the initial HTML (inject them after load),
+which changes the frozen image markup and the A/B renderer. **Decide:** accept 2.1 s lab LCP on
+this one page (real-user LCP on a fast connection is far below this simulation), or approve an
+"images" change so the covers are inserted by script after first paint.
