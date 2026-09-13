@@ -5,19 +5,37 @@
   "areas": {
     "design-system": {
       "wave": 1,
-      "status": "IN_GAUNTLET",
+      "status": "FAILED_R1",
       "round": 1,
-      "scores": {},
-      "openIssues": [],
-      "builderReport": "docs/rounds/wave1-builder.md"
+      "scores": {
+        "r1": {
+          "creativeDirector": 7.6,
+          "reader": 7.4,
+          "monetizationSeo": 8.6
+        }
+      },
+      "openIssues": [
+        "docs/rounds/wave1-r2-request.md (12 items)"
+      ],
+      "builderReport": "docs/rounds/wave1-builder.md",
+      "next": "round 2 after Wave 2 builders land"
     },
     "layout-shell": {
       "wave": 1,
-      "status": "IN_GAUNTLET",
+      "status": "FAILED_R1",
       "round": 1,
-      "scores": {},
-      "openIssues": [],
-      "builderReport": "docs/rounds/wave1-builder.md"
+      "scores": {
+        "r1": {
+          "creativeDirector": 7.6,
+          "reader": 7.4,
+          "monetizationSeo": 8.6
+        }
+      },
+      "openIssues": [
+        "docs/rounds/wave1-r2-request.md (12 items)"
+      ],
+      "builderReport": "docs/rounds/wave1-builder.md",
+      "next": "round 2 after Wave 2 builders land"
     },
     "article-template": {
       "wave": 2,
